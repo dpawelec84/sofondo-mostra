@@ -3,14 +3,16 @@ import Layout from "../../layouts/Layout.astro";
 import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
 ---
 
-<Layout title="Get Started - Sofondo Template">
+<Layout title="Get Started - Sofondo Mostra">
   <section class="page-content" data-bg-theme="light">
     <div class="container">
       <FadeInOnScroll>
-        <h1 class="page-title">Get Started</h1>
-        <p class="page-description intro">
-          Start building your next project with this template in minutes.
-        </p>
+        <div class="page-header">
+          <h1 class="page-title">Get Started</h1>
+          <p class="page-description intro">
+            Start building your next project with this template in minutes.
+          </p>
+        </div>
       </FadeInOnScroll>
 
       <div class="steps">
@@ -99,6 +101,11 @@ cd my-project</code></pre>
     padding: 4rem 0;
   }
 
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
   .page-title {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 600;
@@ -110,7 +117,7 @@ cd my-project</code></pre>
     font-size: 1.25rem;
     color: var(--text-secondary);
     max-width: 600px;
-    margin-bottom: 3rem;
+    margin: 0 auto;
   }
 
   .steps {
@@ -118,6 +125,7 @@ cd my-project</code></pre>
     flex-direction: column;
     gap: 2rem;
     max-width: 700px;
+    margin: 0 auto;
   }
 
   .step {
@@ -199,6 +207,8 @@ cd my-project</code></pre>
     border-radius: 12px;
     border: 1px solid var(--border-color);
     max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .next-steps h2 {

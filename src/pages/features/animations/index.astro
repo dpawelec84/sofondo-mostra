@@ -1,0 +1,193 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+---
+
+<Layout title="Animations - Sofondo Mostra">
+  <SubNav variant="simple">
+    <a href="/features/">Overview</a>
+    <a href="/features/scrolling/">Smooth Scrolling</a>
+    <a href="/features/animations/" class="active">Animations</a>
+    <a href="/features/components/">Components</a>
+  </SubNav>
+
+  <section class="page-content" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <div class="page-header">
+          <h1 class="page-title">Animations</h1>
+          <p class="page-description intro">
+            Scroll-triggered animations and smooth transitions.
+          </p>
+        </div>
+      </FadeInOnScroll>
+
+      <div class="content">
+        <FadeInOnScroll delay={0}>
+          <section class="content-section">
+            <h2>FadeInOnScroll</h2>
+            <p>
+              The FadeInOnScroll component reveals content as users scroll down the page.
+              It uses the Intersection Observer API for optimal performance.
+            </p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <section class="content-section">
+            <h2>Basic Usage</h2>
+            <p>Wrap any content you want to animate:</p>
+            <div class="code-block">
+              <pre><code>&lt;FadeInOnScroll&gt;
+  &lt;h2&gt;This content fades in on scroll&lt;/h2&gt;
+&lt;/FadeInOnScroll&gt;</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <section class="content-section">
+            <h2>Staggered Animations</h2>
+            <p>Add delays for staggered reveal effects:</p>
+            <div class="code-block">
+              <pre><code>&lt;FadeInOnScroll delay={'{'}0{'}'}&gt;
+  &lt;div class="card"&gt;First card&lt;/div&gt;
+&lt;/FadeInOnScroll&gt;
+
+&lt;FadeInOnScroll delay={'{'}100{'}'}&gt;
+  &lt;div class="card"&gt;Second card&lt;/div&gt;
+&lt;/FadeInOnScroll&gt;
+
+&lt;FadeInOnScroll delay={'{'}200{'}'}&gt;
+  &lt;div class="card"&gt;Third card&lt;/div&gt;
+&lt;/FadeInOnScroll&gt;</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <section class="content-section">
+            <h2>View Transitions</h2>
+            <p>
+              Astro's View Transitions API enables smooth page transitions.
+              Enable it in your configuration:
+            </p>
+            <div class="code-block">
+              <pre><code>// src/config/site.ts
+export const siteConfig = {'{'}
+  features: {'{'}
+    viewTransitions: true,
+  {'}'},
+{'}'}</code></pre>
+            </div>
+            <p>
+              Elements will smoothly transition between pages, creating a native app-like experience.
+            </p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <section class="content-section">
+            <h2>Animation Properties</h2>
+            <ul class="feature-list">
+              <li><strong>Duration</strong> - 0.6s default transition time</li>
+              <li><strong>Easing</strong> - Smooth ease-out curve</li>
+              <li><strong>Transform</strong> - 20px upward translate</li>
+              <li><strong>Opacity</strong> - 0 to 1 fade effect</li>
+              <li><strong>Threshold</strong> - Triggers at 10% visibility</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .content-section p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+    color: #cdd6f4;
+    line-height: 1.6;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .feature-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .feature-list li:last-child {
+    border-bottom: none;
+  }
+
+  .feature-list strong {
+    color: var(--text-primary);
+  }
+</style>

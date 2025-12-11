@@ -1,0 +1,256 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+---
+
+<Layout title="Customization - Sofondo Mostra">
+  <SubNav variant="simple">
+    <a href="/docs/">Getting Started</a>
+    <a href="/docs/configuration/">Configuration</a>
+    <a href="/docs/components/">Components</a>
+    <a href="/docs/customization/" class="active">Customization</a>
+  </SubNav>
+
+  <section class="page-content" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <div class="page-header">
+          <h1 class="page-title">Customization</h1>
+          <p class="page-description intro">
+            Make the template your own with custom styles and themes.
+          </p>
+        </div>
+      </FadeInOnScroll>
+
+      <div class="content">
+        <FadeInOnScroll delay={0}>
+          <section class="content-section">
+            <h2>CSS Variables</h2>
+            <p>
+              Customize colors and styling by editing CSS variables in
+              <code>src/styles/global.css</code>:
+            </p>
+            <div class="code-block">
+              <pre><code>:root {'{'}
+  /* Background colors */
+  --bg-light: #fafafa;
+  --bg-card: #ffffff;
+  --bg-secondary: #f5f5f4;
+
+  /* Text colors */
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+
+  /* Accent colors */
+  --accent-primary: #1e3a5f;
+  --accent-secondary: #f0f4f8;
+
+  /* Border and shadows */
+  --border-color: #e7e5e4;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+{'}'}</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <section class="content-section">
+            <h2>Typography</h2>
+            <p>
+              The template uses self-hosted fonts. Replace font files in
+              <code>public/fonts/</code> and update the <code>@font-face</code>
+              declarations in Layout.astro.
+            </p>
+            <div class="code-block">
+              <pre><code>:root {'{'}
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+{'}'}</code></pre>
+            </div>
+            <p>Current fonts:</p>
+            <ul class="feature-list">
+              <li><strong>Outfit</strong> - Sans-serif for body text and UI</li>
+              <li><strong>Fraunces</strong> - Serif for headings and display text</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <section class="content-section">
+            <h2>Tailwind CSS</h2>
+            <p>
+              This template includes Tailwind CSS v4. You can use utility classes
+              alongside the custom CSS:
+            </p>
+            <div class="code-block">
+              <pre><code>&lt;div class="flex items-center gap-4 p-6 bg-white rounded-lg"&gt;
+  &lt;h2 class="text-xl font-semibold"&gt;Title&lt;/h2&gt;
+  &lt;p class="text-gray-600"&gt;Description&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <section class="content-section">
+            <h2>Custom Scrollbar</h2>
+            <p>
+              Customize the scrollbar appearance in <code>global.css</code>:
+            </p>
+            <div class="code-block">
+              <pre><code>.custom-scrollbar {'{'}
+  --scrollbar-width: 8px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.3);
+{'}'}</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <section class="content-section">
+            <h2>Adding Pages</h2>
+            <p>
+              Create new pages by adding <code>.astro</code> files to the
+              <code>src/pages/</code> directory. File-based routing automatically
+              creates URLs:
+            </p>
+            <ul class="feature-list">
+              <li><strong>pages/index.astro</strong> - /</li>
+              <li><strong>pages/about.astro</strong> - /about/</li>
+              <li><strong>pages/blog/index.astro</strong> - /blog/</li>
+              <li><strong>pages/blog/[slug].astro</strong> - Dynamic routes</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={500}>
+          <section class="content-section">
+            <h2>Creating Components</h2>
+            <p>
+              Add new components to <code>src/components/</code>. Use Astro components
+              for static content or React components for interactivity:
+            </p>
+            <div class="code-block">
+              <pre><code>&lt;!-- Astro component --&gt;
+---
+const {'{'} title {'}'} = Astro.props;
+---
+&lt;div class="card"&gt;
+  &lt;h3&gt;{'{'}title{'}'}&lt;/h3&gt;
+  &lt;slot /&gt;
+&lt;/div&gt;
+
+&lt;!-- React component with interactivity --&gt;
+&lt;Counter client:load /&gt;</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .content-section p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .content-section code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+    color: #cdd6f4;
+    line-height: 1.6;
+    background: transparent;
+    padding: 0;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .feature-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .feature-list li:last-child {
+    border-bottom: none;
+  }
+
+  .feature-list strong {
+    color: var(--text-primary);
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+  }
+</style>

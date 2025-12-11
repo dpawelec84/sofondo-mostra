@@ -1,0 +1,242 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+---
+
+<Layout title="Components - Sofondo Mostra">
+  <SubNav variant="simple">
+    <a href="/docs/">Getting Started</a>
+    <a href="/docs/configuration/">Configuration</a>
+    <a href="/docs/components/" class="active">Components</a>
+    <a href="/docs/customization/">Customization</a>
+  </SubNav>
+
+  <section class="page-content" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <div class="page-header">
+          <h1 class="page-title">Components</h1>
+          <p class="page-description intro">
+            Documentation for all included components.
+          </p>
+        </div>
+      </FadeInOnScroll>
+
+      <div class="content">
+        <FadeInOnScroll delay={0}>
+          <section class="content-section">
+            <h2>Layout</h2>
+            <p>
+              The main layout component wraps all pages and handles global features
+              like smooth scrolling, custom scrollbar, and view transitions.
+            </p>
+            <div class="code-block">
+              <pre><code>---
+import Layout from "../layouts/Layout.astro";
+---
+
+&lt;Layout title="Page Title"&gt;
+  &lt;!-- Your page content --&gt;
+&lt;/Layout&gt;</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <section class="content-section">
+            <h2>Header</h2>
+            <p>
+              Responsive header with logo, navigation, and mobile menu.
+              Automatically pulls configuration from <code>site.ts</code>.
+            </p>
+            <div class="code-block">
+              <pre><code>&lt;Header /&gt;</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <section class="content-section">
+            <h2>SubNav</h2>
+            <p>
+              Sticky sub-navigation with glassmorphism effects.
+              Two variants available: <code>simple</code> and <code>services</code>.
+            </p>
+            <div class="code-block">
+              <pre><code>&lt;!-- Simple variant --&gt;
+&lt;SubNav variant="simple"&gt;
+  &lt;a href="/docs/" class="active"&gt;Getting Started&lt;/a&gt;
+  &lt;a href="/docs/config/"&gt;Configuration&lt;/a&gt;
+&lt;/SubNav&gt;
+
+&lt;!-- Services variant with color-coded groups --&gt;
+&lt;SubNav variant="services"&gt;
+  &lt;div class="sub-nav-group sub-nav-group-design"&gt;
+    &lt;a href="/design/"&gt;Web Design&lt;/a&gt;
+    &lt;a href="/branding/"&gt;Branding&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="sub-nav-group sub-nav-group-hosting"&gt;
+    &lt;a href="/hosting/"&gt;Hosting&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/SubNav&gt;</code></pre>
+            </div>
+            <p>Available group classes:</p>
+            <ul class="feature-list">
+              <li><strong>sub-nav-group-design</strong> - Blue gradient indicator</li>
+              <li><strong>sub-nav-group-hosting</strong> - Green gradient indicator</li>
+              <li><strong>sub-nav-group-accessibility</strong> - Orange gradient indicator</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <section class="content-section">
+            <h2>FadeInOnScroll</h2>
+            <p>
+              Wrapper component that reveals content with a fade-in animation
+              when it enters the viewport.
+            </p>
+            <div class="code-block">
+              <pre><code>&lt;FadeInOnScroll delay={'{'}100{'}'}&gt;
+  &lt;div class="card"&gt;
+    Content that fades in on scroll
+  &lt;/div&gt;
+&lt;/FadeInOnScroll&gt;</code></pre>
+            </div>
+            <p>Props:</p>
+            <ul class="feature-list">
+              <li><strong>delay</strong> - Delay in milliseconds before animation starts (default: 0)</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <section class="content-section">
+            <h2>Logo</h2>
+            <p>
+              Displays the site logo and name. Supports optional logo image
+              and template name suffix.
+            </p>
+            <div class="code-block">
+              <pre><code>&lt;Logo width={'{'}140{'}'} height={'{'}32{'}'} color="currentColor" /&gt;</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={500}>
+          <section class="content-section">
+            <h2>Footer</h2>
+            <p>
+              Simple footer with copyright and links.
+              Configuration pulled from <code>site.ts</code>.
+            </p>
+            <div class="code-block">
+              <pre><code>&lt;Footer /&gt;</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .content-section p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .content-section code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+    color: #cdd6f4;
+    line-height: 1.6;
+    background: transparent;
+    padding: 0;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .feature-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .feature-list li:last-child {
+    border-bottom: none;
+  }
+
+  .feature-list strong {
+    color: var(--text-primary);
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+  }
+</style>

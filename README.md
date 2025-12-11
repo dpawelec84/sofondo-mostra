@@ -1,12 +1,11 @@
-# Sofondo Marketing Astro Template
+# Sofondo Mostra - Astro Marketing Template
 
-A modern, feature-rich Astro template for building marketing sites and landing pages with smooth scrolling, interactive backgrounds, and polished UI components.
+A modern, feature-rich Astro template for building marketing sites and landing pages with smooth scrolling, polished UI components, and elegant animations.
 
 ## Features
 
 - **Lenis Smooth Scrolling** - Buttery smooth scrolling experience (opt-in)
 - **Custom Scrollbar** - Chrome-style custom scrollbar with theme awareness (opt-in)
-- **Interactive Shards Background** - Animated geometric shapes that respond to mouse movement (opt-in)
 - **View Transitions** - Smooth page transitions using Astro's View Transitions API (opt-in)
 - **SubNav Component** - Sticky navigation with glassmorphism effects and grouped links
 - **FadeIn Animations** - Scroll-triggered fade-in animations for content
@@ -17,7 +16,7 @@ A modern, feature-rich Astro template for building marketing sites and landing p
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-repo/sofondo-marketing-astro-template.git my-project
+git clone https://github.com/sofondo/mostra.git my-project
 cd my-project
 
 # Install dependencies
@@ -64,13 +63,14 @@ All configuration is done through `src/config/site.ts`:
 
 ```typescript
 export const siteConfig = {
-  // Site metadata
+  // Site metadata - "Sofondo" is the brand, "Mostra" is the template name
   name: "Your Site Name",
+  templateName: "",  // Optional template/product name suffix
   description: "Your site description",
 
-  // Branding
+  // Branding - leave src empty for text-only logo
   logo: {
-    src: "/logo.png",
+    src: "",  // e.g., "/logo.png" - leave empty if no logo
     alt: "Logo",
     width: 32,
     height: 32,
@@ -102,7 +102,6 @@ export const siteConfig = {
   features: {
     smoothScrolling: true,  // Lenis smooth scrolling
     customScrollbar: true,  // Chrome-style custom scrollbar
-    shardsBackground: true, // Interactive background
     viewTransitions: true,  // Page transitions
   },
 };

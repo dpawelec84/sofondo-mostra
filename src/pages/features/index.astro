@@ -4,7 +4,7 @@ import SubNav from "../../components/SubNav.astro";
 import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
 ---
 
-<Layout title="Features - Sofondo Template">
+<Layout title="Features - Sofondo Mostra">
   <SubNav variant="simple">
     <a href="/features/" class="active">Overview</a>
     <a href="/features/scrolling/">Smooth Scrolling</a>
@@ -15,10 +15,12 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
   <section class="page-content">
     <div class="container">
       <FadeInOnScroll>
-        <h1 class="page-title">Template Features</h1>
-        <p class="page-description intro">
-          Explore all the features included in this template.
-        </p>
+        <div class="page-header">
+          <h1 class="page-title">Template Features</h1>
+          <p class="page-description intro">
+            Explore all the features included in this template.
+          </p>
+        </div>
       </FadeInOnScroll>
 
       <div class="features-list">
@@ -46,11 +48,11 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
 
         <FadeInOnScroll delay={200}>
           <div class="feature-item">
-            <h2>Interactive Shards Background</h2>
+            <h2>Mobile-First Design</h2>
             <p>
-              Animated geometric triangles that respond to mouse movement, creating an
-              engaging parallax effect. The shards smoothly transition when scrolling
-              to the bottom of the page.
+              Responsive layouts that work beautifully on all devices. The template
+              includes horizontal scroll navigation on mobile and adapts gracefully
+              to different screen sizes.
             </p>
           </div>
         </FadeInOnScroll>
@@ -95,6 +97,11 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     padding: 2rem 0 4rem;
   }
 
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
   .page-title {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 600;
@@ -106,7 +113,7 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     font-size: 1.25rem;
     color: var(--text-secondary);
     max-width: 600px;
-    margin-bottom: 3rem;
+    margin: 0 auto;
   }
 
   .features-list {
@@ -114,6 +121,7 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     flex-direction: column;
     gap: 2rem;
     max-width: 800px;
+    margin: 0 auto;
   }
 
   .feature-item {

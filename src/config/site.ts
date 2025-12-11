@@ -6,13 +6,14 @@
  */
 
 export const siteConfig = {
-  // Site metadata
-  name: "Sofondo Template",
+  // Site metadata - "Sofondo" is the brand, "Mostra" is the template name
+  name: "Sofondo",
+  templateName: "Mostra",
   description: "A modern Astro template for marketing sites and landing pages",
 
-  // Branding
+  // Branding - leave src empty for no logo mark
   logo: {
-    src: "/logo.png",
+    src: "", // e.g., "/logo.png" - leave empty if no logo
     alt: "Site Logo",
     width: 32,
     height: 32,
@@ -35,7 +36,7 @@ export const siteConfig = {
 
   // Footer
   footer: {
-    copyright: "Sofondo Template",
+    copyright: "Sofondo Mostra",
     links: [
       { label: "GitHub", href: "https://github.com" },
       { label: "Documentation", href: "/docs/" },
@@ -57,13 +58,6 @@ export const siteConfig = {
      * Set to false to use native browser scrollbar
      */
     customScrollbar: true,
-
-    /**
-     * Interactive shards background
-     * Animated geometric shapes that respond to mouse movement
-     * Set to false for a static background
-     */
-    shardsBackground: true,
 
     /**
      * View transitions

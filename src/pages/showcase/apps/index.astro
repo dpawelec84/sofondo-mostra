@@ -1,17 +1,17 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import SubNav from "../../components/SubNav.astro";
-import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
+import Layout from "../../../layouts/Layout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 ---
 
-<Layout title="Showcase - Sofondo Mostra">
+<Layout title="Applications - Sofondo Mostra">
   <SubNav variant="services">
     <div class="sub-nav-group sub-nav-group-design">
-      <a href="/showcase/" class="active">All Projects</a>
+      <a href="/showcase/">All Projects</a>
       <a href="/showcase/websites/">Websites</a>
     </div>
     <div class="sub-nav-group sub-nav-group-hosting">
-      <a href="/showcase/apps/">Applications</a>
+      <a href="/showcase/apps/" class="active">Applications</a>
     </div>
     <div class="sub-nav-group sub-nav-group-accessibility">
       <a href="/showcase/landing/">Landing Pages</a>
@@ -22,9 +22,9 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     <div class="container">
       <FadeInOnScroll>
         <div class="page-header">
-          <h1 class="page-title">Showcase</h1>
+          <h1 class="page-title">Application Examples</h1>
           <p class="page-description intro">
-            Examples of what you can build with this template.
+            Web applications and dashboards built with this template.
           </p>
         </div>
       </FadeInOnScroll>
@@ -32,40 +32,30 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
       <div class="showcase-grid">
         <FadeInOnScroll delay={0}>
           <div class="showcase-card">
-            <div class="showcase-image showcase-image--blue"></div>
+            <div class="showcase-image showcase-image--green"></div>
             <div class="showcase-content">
-              <h3>Marketing Website</h3>
-              <p>A clean, modern marketing site with smooth animations.</p>
+              <h3>SaaS Dashboard</h3>
+              <p>Analytics dashboard with charts, tables, and data visualization.</p>
             </div>
           </div>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={100}>
           <div class="showcase-card">
-            <div class="showcase-image showcase-image--green"></div>
+            <div class="showcase-image showcase-image--blue"></div>
             <div class="showcase-content">
-              <h3>SaaS Landing Page</h3>
-              <p>Feature-rich landing page with pricing tables and CTAs.</p>
+              <h3>Admin Panel</h3>
+              <p>Full-featured admin interface with user management.</p>
             </div>
           </div>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={200}>
           <div class="showcase-card">
-            <div class="showcase-image showcase-image--purple"></div>
-            <div class="showcase-content">
-              <h3>Portfolio Site</h3>
-              <p>Creative portfolio with stunning visual effects.</p>
-            </div>
-          </div>
-        </FadeInOnScroll>
-
-        <FadeInOnScroll delay={300}>
-          <div class="showcase-card">
             <div class="showcase-image showcase-image--orange"></div>
             <div class="showcase-content">
-              <h3>Documentation Site</h3>
-              <p>Clean documentation with easy navigation.</p>
+              <h3>Project Manager</h3>
+              <p>Task and project tracking application with Kanban boards.</p>
             </div>
           </div>
         </FadeInOnScroll>
@@ -125,16 +115,12 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     background-position: center;
   }
 
-  .showcase-image--blue {
-    background: linear-gradient(135deg, #3b82f6, #6366f1);
-  }
-
   .showcase-image--green {
     background: linear-gradient(135deg, #10b981, #14b8a6);
   }
 
-  .showcase-image--purple {
-    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  .showcase-image--blue {
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
   }
 
   .showcase-image--orange {

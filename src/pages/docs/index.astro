@@ -4,7 +4,7 @@ import SubNav from "../../components/SubNav.astro";
 import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
 ---
 
-<Layout title="Documentation - Sofondo Template">
+<Layout title="Documentation - Sofondo Mostra">
   <SubNav variant="simple">
     <a href="/docs/" class="active">Getting Started</a>
     <a href="/docs/configuration/">Configuration</a>
@@ -15,10 +15,12 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
   <section class="page-content" data-bg-theme="light">
     <div class="container">
       <FadeInOnScroll>
-        <h1 class="page-title">Documentation</h1>
-        <p class="page-description intro">
-          Everything you need to get started with this template.
-        </p>
+        <div class="page-header">
+          <h1 class="page-title">Documentation</h1>
+          <p class="page-description intro">
+            Everything you need to get started with this template.
+          </p>
+        </div>
       </FadeInOnScroll>
 
       <div class="docs-content">
@@ -87,7 +89,6 @@ npm run dev</code></pre>
   features: {'{'}
     smoothScrolling: true,
     customScrollbar: true,
-    shardsBackground: true,
     viewTransitions: true,
   {'}'},
 {'}'}</code></pre>
@@ -102,7 +103,6 @@ npm run dev</code></pre>
             <ul class="feature-list">
               <li><strong>smoothScrolling</strong> - Enable Lenis smooth scrolling</li>
               <li><strong>customScrollbar</strong> - Enable custom scrollbar</li>
-              <li><strong>shardsBackground</strong> - Enable interactive background</li>
               <li><strong>viewTransitions</strong> - Enable page transitions</li>
             </ul>
           </section>
@@ -117,6 +117,11 @@ npm run dev</code></pre>
     padding: 2rem 0 4rem;
   }
 
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
   .page-title {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 600;
@@ -128,11 +133,12 @@ npm run dev</code></pre>
     font-size: 1.25rem;
     color: var(--text-secondary);
     max-width: 600px;
-    margin-bottom: 3rem;
+    margin: 0 auto;
   }
 
   .docs-content {
     max-width: 800px;
+    margin: 0 auto;
   }
 
   .docs-section {

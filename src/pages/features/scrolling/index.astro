@@ -1,0 +1,173 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+---
+
+<Layout title="Smooth Scrolling - Sofondo Mostra">
+  <SubNav variant="simple">
+    <a href="/features/">Overview</a>
+    <a href="/features/scrolling/" class="active">Smooth Scrolling</a>
+    <a href="/features/animations/">Animations</a>
+    <a href="/features/components/">Components</a>
+  </SubNav>
+
+  <section class="page-content" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <div class="page-header">
+          <h1 class="page-title">Smooth Scrolling</h1>
+          <p class="page-description intro">
+            Buttery smooth scrolling powered by Lenis.
+          </p>
+        </div>
+      </FadeInOnScroll>
+
+      <div class="content">
+        <FadeInOnScroll delay={0}>
+          <section class="content-section">
+            <h2>About Lenis</h2>
+            <p>
+              Lenis is a lightweight, robust, and performant smooth scroll library.
+              It provides a premium scrolling experience with customizable easing,
+              duration, and behavior.
+            </p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <section class="content-section">
+            <h2>Configuration</h2>
+            <p>Enable or disable smooth scrolling in your site configuration:</p>
+            <div class="code-block">
+              <pre><code>// src/config/site.ts
+export const siteConfig = {'{'}
+  features: {'{'}
+    smoothScrolling: true, // Enable Lenis
+  {'}'},
+{'}'}</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <section class="content-section">
+            <h2>Features</h2>
+            <ul class="feature-list">
+              <li><strong>Smooth wheel scrolling</strong> - Natural feeling scroll with momentum</li>
+              <li><strong>Touch support</strong> - Works great on mobile devices</li>
+              <li><strong>Keyboard navigation</strong> - Supports arrow keys and page up/down</li>
+              <li><strong>Anchor links</strong> - Smooth scrolling to anchor targets</li>
+              <li><strong>Performance</strong> - Optimized for 60fps on all devices</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <section class="content-section">
+            <h2>Default Settings</h2>
+            <p>The template uses these default Lenis settings:</p>
+            <div class="code-block">
+              <pre><code>new Lenis({'{'}
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  orientation: 'vertical',
+  smoothWheel: true,
+  wheelMultiplier: 1,
+  touchMultiplier: 2,
+{'}'});</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .content-section p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+    color: #cdd6f4;
+    line-height: 1.6;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .feature-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .feature-list li:last-child {
+    border-bottom: none;
+  }
+
+  .feature-list strong {
+    color: var(--text-primary);
+  }
+</style>

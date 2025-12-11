@@ -8,10 +8,12 @@ interface Props {
 }
 
 const { width = 140, height = 32, color = "currentColor" } = Astro.props;
+const hasLogo = siteConfig.logo.src && siteConfig.logo.src.trim() !== "";
+const hasTemplateName = siteConfig.templateName && siteConfig.templateName.trim() !== "";
 ---
 
-<div class="logo-container" style={`width: ${width}px; height: ${height}px;`}>
-  {siteConfig.logo.src && (
+<div class="logo-container" style={`color: ${color};`}>
+  {hasLogo && (
     <img
       src={siteConfig.logo.src}
       alt={siteConfig.logo.alt}
@@ -21,7 +23,10 @@ const { width = 140, height = 32, color = "currentColor" } = Astro.props;
       loading="eager"
     />
   )}
-  <span class="logo-text" style={`color: ${color};`}>{siteConfig.name}</span>
+  <span class="logo-text">
+    <span class="logo-name">{siteConfig.name}</span>
+    {hasTemplateName && <span class="logo-template">{siteConfig.templateName}</span>}
+  </span>
 </div>
 
 <style>
@@ -29,7 +34,6 @@ const { width = 140, height = 32, color = "currentColor" } = Astro.props;
     display: flex;
     align-items: center;
     gap: 8px;
-    min-width: 140px;
   }
 
   .logo-mark {
@@ -42,11 +46,25 @@ const { width = 140, height = 32, color = "currentColor" } = Astro.props;
   }
 
   .logo-text {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .logo-name {
     font-family: var(--font-sans);
     font-weight: 700;
     font-size: 20px;
     letter-spacing: -0.5px;
-    flex-shrink: 0;
-    white-space: nowrap;
+  }
+
+  .logo-template {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: -0.3px;
+    opacity: 0.7;
   }
 </style>

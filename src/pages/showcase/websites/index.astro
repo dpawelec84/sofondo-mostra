@@ -1,14 +1,14 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import SubNav from "../../components/SubNav.astro";
-import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
+import Layout from "../../../layouts/Layout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 ---
 
-<Layout title="Showcase - Sofondo Mostra">
+<Layout title="Websites - Sofondo Mostra">
   <SubNav variant="services">
     <div class="sub-nav-group sub-nav-group-design">
-      <a href="/showcase/" class="active">All Projects</a>
-      <a href="/showcase/websites/">Websites</a>
+      <a href="/showcase/">All Projects</a>
+      <a href="/showcase/websites/" class="active">Websites</a>
     </div>
     <div class="sub-nav-group sub-nav-group-hosting">
       <a href="/showcase/apps/">Applications</a>
@@ -22,9 +22,9 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     <div class="container">
       <FadeInOnScroll>
         <div class="page-header">
-          <h1 class="page-title">Showcase</h1>
+          <h1 class="page-title">Website Examples</h1>
           <p class="page-description intro">
-            Examples of what you can build with this template.
+            Full website builds using this template.
           </p>
         </div>
       </FadeInOnScroll>
@@ -34,18 +34,18 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
           <div class="showcase-card">
             <div class="showcase-image showcase-image--blue"></div>
             <div class="showcase-content">
-              <h3>Marketing Website</h3>
-              <p>A clean, modern marketing site with smooth animations.</p>
+              <h3>Corporate Website</h3>
+              <p>Professional business site with multiple sections and contact forms.</p>
             </div>
           </div>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={100}>
           <div class="showcase-card">
-            <div class="showcase-image showcase-image--green"></div>
+            <div class="showcase-image showcase-image--teal"></div>
             <div class="showcase-content">
-              <h3>SaaS Landing Page</h3>
-              <p>Feature-rich landing page with pricing tables and CTAs.</p>
+              <h3>Agency Portfolio</h3>
+              <p>Creative agency site showcasing work and team members.</p>
             </div>
           </div>
         </FadeInOnScroll>
@@ -54,18 +54,8 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
           <div class="showcase-card">
             <div class="showcase-image showcase-image--purple"></div>
             <div class="showcase-content">
-              <h3>Portfolio Site</h3>
-              <p>Creative portfolio with stunning visual effects.</p>
-            </div>
-          </div>
-        </FadeInOnScroll>
-
-        <FadeInOnScroll delay={300}>
-          <div class="showcase-card">
-            <div class="showcase-image showcase-image--orange"></div>
-            <div class="showcase-content">
-              <h3>Documentation Site</h3>
-              <p>Clean documentation with easy navigation.</p>
+              <h3>Tech Startup</h3>
+              <p>Modern startup site with product features and pricing.</p>
             </div>
           </div>
         </FadeInOnScroll>
@@ -129,16 +119,12 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     background: linear-gradient(135deg, #3b82f6, #6366f1);
   }
 
-  .showcase-image--green {
-    background: linear-gradient(135deg, #10b981, #14b8a6);
+  .showcase-image--teal {
+    background: linear-gradient(135deg, #14b8a6, #06b6d4);
   }
 
   .showcase-image--purple {
     background: linear-gradient(135deg, #8b5cf6, #a855f7);
-  }
-
-  .showcase-image--orange {
-    background: linear-gradient(135deg, #f59e0b, #f97316);
   }
 
   .showcase-content {
