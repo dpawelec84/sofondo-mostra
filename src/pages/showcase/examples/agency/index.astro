@@ -1,0 +1,701 @@
+---
+import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
+---
+
+<ShowcaseLayout title="Prism Studio - Creative Agency" returnUrl="/showcase/marketing/">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --ps-bg-dark: #0a0a0a;
+        --ps-bg-card: #141414;
+        --ps-bg-elevated: #1a1a1a;
+        --ps-text: #ffffff;
+        --ps-text-muted: #a3a3a3;
+        --ps-accent: #7c3aed;
+        --ps-accent-light: #a78bfa;
+        --ps-gradient-1: #7c3aed;
+        --ps-gradient-2: #ec4899;
+        --ps-gradient-3: #06b6d4;
+        --ps-border: #262626;
+        --font-sans: 'Space Grotesk', system-ui, sans-serif;
+        --font-serif: 'DM Serif Display', Georgia, serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-sans);
+        color: var(--ps-text);
+        background: var(--ps-bg-dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.8);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--ps-border);
+        z-index: 1000;
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+      }
+
+      .logo {
+        font-family: var(--font-serif);
+        font-size: 1.75rem;
+        color: var(--ps-text);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logo-mark {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, var(--ps-gradient-1), var(--ps-gradient-2));
+        border-radius: 8px;
+      }
+
+      .nav {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .nav a {
+        color: var(--ps-text-muted);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9375rem;
+        transition: color 0.2s;
+      }
+
+      .nav a:hover {
+        color: var(--ps-text);
+      }
+
+      .nav-cta {
+        background: linear-gradient(135deg, var(--ps-gradient-1), var(--ps-gradient-2));
+        color: var(--ps-text) !important;
+        padding: 0.75rem 1.5rem;
+        border-radius: 100px;
+        font-weight: 600;
+      }
+
+      .nav-cta:hover {
+        opacity: 0.9;
+      }
+
+      /* Hero */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 8rem 0 4rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 80%;
+        height: 150%;
+        background: radial-gradient(ellipse, rgba(124, 58, 237, 0.15) 0%, transparent 60%);
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+      }
+
+      .hero-tag {
+        display: inline-block;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--ps-accent-light);
+        margin-bottom: 1.5rem;
+      }
+
+      .hero h1 {
+        font-family: var(--font-serif);
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 2rem;
+      }
+
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--ps-gradient-1), var(--ps-gradient-2), var(--ps-gradient-3));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: var(--ps-text-muted);
+        max-width: 500px;
+        margin-bottom: 2.5rem;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        border-radius: 100px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--ps-gradient-1), var(--ps-gradient-2));
+        color: var(--ps-text);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 40px rgba(124, 58, 237, 0.3);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--ps-text);
+        border: 1px solid var(--ps-border);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--ps-text-muted);
+        background: var(--ps-bg-elevated);
+      }
+
+      /* Work Section */
+      .work {
+        padding: 8rem 0;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 4rem;
+      }
+
+      .section-header h2 {
+        font-family: var(--font-serif);
+        font-size: 3rem;
+        font-weight: 400;
+      }
+
+      .section-header a {
+        color: var(--ps-text-muted);
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color 0.2s;
+      }
+
+      .section-header a:hover {
+        color: var(--ps-text);
+      }
+
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .work-item {
+        position: relative;
+        aspect-ratio: 4/3;
+        border-radius: 16px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .work-item-bg {
+        position: absolute;
+        inset: 0;
+        transition: transform 0.4s ease;
+      }
+
+      .work-item:hover .work-item-bg {
+        transform: scale(1.05);
+      }
+
+      .work-item--1 .work-item-bg {
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      }
+
+      .work-item--2 .work-item-bg {
+        background: linear-gradient(135deg, #ec4899, #f43f5e);
+      }
+
+      .work-item--3 .work-item-bg {
+        background: linear-gradient(135deg, #10b981, #06b6d4);
+      }
+
+      .work-item--4 .work-item-bg {
+        background: linear-gradient(135deg, #f59e0b, #ef4444);
+      }
+
+      .work-item-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      }
+
+      .work-item h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .work-item p {
+        color: var(--ps-text-muted);
+        font-size: 0.9375rem;
+      }
+
+      /* Services */
+      .services {
+        padding: 8rem 0;
+        background: var(--ps-bg-card);
+      }
+
+      .services .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .services .section-header p {
+        color: var(--ps-text-muted);
+        font-size: 1.125rem;
+        max-width: 500px;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--ps-border);
+        border: 1px solid var(--ps-border);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .service-item {
+        background: var(--ps-bg-card);
+        padding: 3rem 2rem;
+        transition: background 0.3s;
+      }
+
+      .service-item:hover {
+        background: var(--ps-bg-elevated);
+      }
+
+      .service-number {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--ps-accent-light);
+        margin-bottom: 1.5rem;
+      }
+
+      .service-item h3 {
+        font-family: var(--font-serif);
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+      }
+
+      .service-item p {
+        color: var(--ps-text-muted);
+        font-size: 0.9375rem;
+        line-height: 1.7;
+      }
+
+      /* About */
+      .about {
+        padding: 8rem 0;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+        align-items: center;
+      }
+
+      .about-content h2 {
+        font-family: var(--font-serif);
+        font-size: 3rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+      }
+
+      .about-content p {
+        color: var(--ps-text-muted);
+        font-size: 1.125rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+
+      .about-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .about-stat h4 {
+        font-family: var(--font-serif);
+        font-size: 2.5rem;
+        font-weight: 400;
+        background: linear-gradient(135deg, var(--ps-gradient-1), var(--ps-gradient-2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+      }
+
+      .about-stat p {
+        color: var(--ps-text-muted);
+        font-size: 0.9375rem;
+        margin: 0;
+      }
+
+      .about-image {
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, var(--ps-gradient-1), var(--ps-gradient-2));
+        border-radius: 24px;
+        position: relative;
+      }
+
+      .about-image::after {
+        content: '';
+        position: absolute;
+        inset: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+      }
+
+      /* CTA */
+      .cta {
+        padding: 8rem 0;
+        text-align: center;
+        background: var(--ps-bg-card);
+      }
+
+      .cta h2 {
+        font-family: var(--font-serif);
+        font-size: 3.5rem;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta p {
+        color: var(--ps-text-muted);
+        font-size: 1.25rem;
+        max-width: 500px;
+        margin: 0 auto 2.5rem;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 4rem 0 2rem;
+        border-top: 1px solid var(--ps-border);
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-left {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .footer-links a {
+        color: var(--ps-text-muted);
+        text-decoration: none;
+        font-size: 0.9375rem;
+        transition: color 0.2s;
+      }
+
+      .footer-links a:hover {
+        color: var(--ps-text);
+      }
+
+      .footer-right {
+        color: var(--ps-text-muted);
+        font-size: 0.875rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 968px) {
+        .nav {
+          display: none;
+        }
+
+        .work-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+
+        .about-image {
+          order: -1;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+          gap: 2rem;
+          text-align: center;
+        }
+
+        .footer-left {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .about-stats {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+      }
+    </style>
+  </Fragment>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <div class="logo-mark"></div>
+        Prism
+      </a>
+      <nav class="nav">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="nav-cta">Let's Talk</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-tag">Creative Studio</span>
+        <h1>We craft <span>digital experiences</span> that inspire</h1>
+        <p>Award-winning creative agency specializing in brand identity, digital design, and immersive experiences.</p>
+        <div class="hero-buttons">
+          <a href="#work" class="btn btn-primary">View Our Work</a>
+          <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section class="work" id="work">
+    <div class="container">
+      <div class="section-header">
+        <h2>Selected Work</h2>
+        <a href="#">View All Projects &rarr;</a>
+      </div>
+      <div class="work-grid">
+        <div class="work-item work-item--1">
+          <div class="work-item-bg"></div>
+          <div class="work-item-content">
+            <h3>Lumina Wellness</h3>
+            <p>Brand Identity & Web Design</p>
+          </div>
+        </div>
+        <div class="work-item work-item--2">
+          <div class="work-item-bg"></div>
+          <div class="work-item-content">
+            <h3>Velo Cycling</h3>
+            <p>E-commerce & Digital Campaign</p>
+          </div>
+        </div>
+        <div class="work-item work-item--3">
+          <div class="work-item-bg"></div>
+          <div class="work-item-content">
+            <h3>Habitat Homes</h3>
+            <p>Brand Strategy & Website</p>
+          </div>
+        </div>
+        <div class="work-item work-item--4">
+          <div class="work-item-bg"></div>
+          <div class="work-item-content">
+            <h3>Sonica Festival</h3>
+            <p>Visual Identity & Print</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <h2>What We Do</h2>
+        <p>Full-service creative solutions for brands that want to stand out in a crowded market.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-item">
+          <span class="service-number">01</span>
+          <h3>Brand Identity</h3>
+          <p>Strategic brand development from naming and positioning to visual systems that resonate.</p>
+        </div>
+        <div class="service-item">
+          <span class="service-number">02</span>
+          <h3>Digital Design</h3>
+          <p>User-centered websites and applications that combine beauty with exceptional usability.</p>
+        </div>
+        <div class="service-item">
+          <span class="service-number">03</span>
+          <h3>Motion & Video</h3>
+          <p>Compelling motion graphics and video content that tells your story with impact.</p>
+        </div>
+        <div class="service-item">
+          <span class="service-number">04</span>
+          <h3>Art Direction</h3>
+          <p>Creative direction for campaigns, photoshoots, and visual storytelling.</p>
+        </div>
+        <div class="service-item">
+          <span class="service-number">05</span>
+          <h3>Development</h3>
+          <p>Custom web development with clean code, smooth animations, and optimal performance.</p>
+        </div>
+        <div class="service-item">
+          <span class="service-number">06</span>
+          <h3>Strategy</h3>
+          <p>Research-driven insights that inform creative decisions and drive business results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <h2>A collective of curious minds</h2>
+          <p>Founded in 2018, Prism Studio brings together designers, developers, and strategists who believe in the power of thoughtful design to transform businesses.</p>
+          <p>We partner with ambitious brands to create meaningful work that connects with audiences and drives growth.</p>
+          <div class="about-stats">
+            <div class="about-stat">
+              <h4>120+</h4>
+              <p>Projects Completed</p>
+            </div>
+            <div class="about-stat">
+              <h4>15</h4>
+              <p>Team Members</p>
+            </div>
+            <div class="about-stat">
+              <h4>8</h4>
+              <p>Awards Won</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-image"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2>Have a project in mind?</h2>
+      <p>Let's create something extraordinary together. We'd love to hear about your vision.</p>
+      <a href="#" class="btn btn-primary">Start a Project</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <a href="#" class="logo">
+          <div class="logo-mark"></div>
+          Prism
+        </a>
+        <div class="footer-links">
+          <a href="#">Instagram</a>
+          <a href="#">Dribbble</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+      <div class="footer-right">
+        &copy; 2024 Prism Studio. All rights reserved.
+      </div>
+    </div>
+  </footer>
+</ShowcaseLayout>

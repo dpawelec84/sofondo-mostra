@@ -37,14 +37,15 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={100}>
-          <div class="showcase-card">
+          <a href="/showcase/examples/agency/" class="showcase-card">
             <div class="showcase-image showcase-image--teal"></div>
             <div class="showcase-content">
               <span class="showcase-tag">Marketing</span>
               <h3>Agency Portfolio</h3>
               <p>Creative agency site showcasing work and team members.</p>
+              <span class="showcase-link">View Demo &rarr;</span>
             </div>
-          </div>
+          </a>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={200}>
@@ -215,6 +216,7 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
   }
 
   a.showcase-card {
+    display: block;
     text-decoration: none;
     color: inherit;
   }
