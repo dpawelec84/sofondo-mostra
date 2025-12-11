@@ -25,14 +25,15 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
       <div class="showcase-grid">
         <!-- Marketing Sites -->
         <FadeInOnScroll delay={0}>
-          <div class="showcase-card">
+          <a href="/showcase/examples/corporate/" class="showcase-card">
             <div class="showcase-image showcase-image--blue"></div>
             <div class="showcase-content">
               <span class="showcase-tag">Marketing</span>
               <h3>Corporate Website</h3>
               <p>Professional business site with multiple sections and contact forms.</p>
+              <span class="showcase-link">View Demo &rarr;</span>
             </div>
-          </div>
+          </a>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={100}>
@@ -198,5 +199,23 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     font-size: 0.9375rem;
     color: var(--text-secondary);
     line-height: 1.5;
+  }
+
+  .showcase-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    transition: color 0.2s;
+  }
+
+  .showcase-card:hover .showcase-link {
+    color: var(--text-primary);
+  }
+
+  a.showcase-card {
+    text-decoration: none;
+    color: inherit;
   }
 </style>

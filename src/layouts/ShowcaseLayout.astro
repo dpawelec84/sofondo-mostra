@@ -1,0 +1,62 @@
+---
+/**
+ * ShowcaseLayout - A special layout for showcase demo sites
+ * Includes a floating close button to return to the parent showcase page
+ */
+interface Props {
+  title: string;
+  returnUrl?: string;
+}
+
+const { title, returnUrl = '/showcase/' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <slot name="head" />
+  </head>
+  <body>
+    <a href={returnUrl} class="showcase-close-btn" title="Close preview and return to Showcase">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </a>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  .showcase-close-btn {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .showcase-close-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+  }
+
+  .showcase-close-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+</style>
