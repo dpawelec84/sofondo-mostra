@@ -1,16 +1,27 @@
 ---
 import Navigation from "./Navigation";
 import Logo from "./Logo.astro";
+import { siteConfig, type HeaderLayout, type CTAShape } from "../config/site";
+
+const headerLayout = (siteConfig.header?.layout || 'standard') as HeaderLayout;
+const ctaShape = (siteConfig.header?.ctaShape || 'rounded') as CTAShape;
+const ctaShapeClass = ctaShape === 'pill' ? 'cta-pill' : 'cta-rounded';
 ---
 
-<header class="header glass" id="main-header">
-  <div class="container header-content">
+<header class="header glass" id="main-header" data-layout={headerLayout}>
+  <div class="container header-content" data-layout={headerLayout}>
     <a href="/" class="logo">
       <Logo width={80} height={20} />
     </a>
     <div class="nav-wrapper">
       <Navigation client:load />
     </div>
+    {/* CTA button as separate element for centered layout - placed in third grid column */}
+    {headerLayout === 'centered' && siteConfig.nav.cta && (
+      <a class={`header-cta NavigationCTAButton ${ctaShapeClass}`} href={siteConfig.nav.cta.href}>
+        {siteConfig.nav.cta.label}
+      </a>
+    )}
   </div>
 </header>
 
@@ -135,6 +146,44 @@ import Logo from "./Logo.astro";
     justify-content: space-between;
     align-items: center;
     width: 100%;
+  }
+
+  /* Centered layout: logo left, nav center, CTA right */
+  .header-content[data-layout="centered"] {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .header-content[data-layout="centered"] .logo {
+    justify-self: start;
+  }
+
+  .header-content[data-layout="centered"] .nav-wrapper {
+    justify-self: center;
+  }
+
+  .header-content[data-layout="centered"] .header-cta {
+    justify-self: end;
+  }
+
+  /* Header CTA styling - matches NavigationCTAButton */
+  .header-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .header-cta.cta-pill {
+    border-radius: 9999px;
   }
 
   .logo {

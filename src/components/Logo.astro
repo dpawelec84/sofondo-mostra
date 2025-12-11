@@ -8,11 +8,15 @@ interface Props {
 }
 
 const { width = 140, height = 32, color = "currentColor" } = Astro.props;
-const hasLogo = siteConfig.logo.src && siteConfig.logo.src.trim() !== "";
+const hasEmoji = siteConfig.logo.emoji && siteConfig.logo.emoji.trim() !== "";
+const hasLogo = !hasEmoji && siteConfig.logo.src && siteConfig.logo.src.trim() !== "";
 const hasTemplateName = siteConfig.templateName && siteConfig.templateName.trim() !== "";
 ---
 
 <div class="logo-container" style={`color: ${color};`}>
+  {hasEmoji && (
+    <span class="logo-emoji">{siteConfig.logo.emoji}</span>
+  )}
   {hasLogo && (
     <img
       src={siteConfig.logo.src}
@@ -34,6 +38,12 @@ const hasTemplateName = siteConfig.templateName && siteConfig.templateName.trim(
     display: flex;
     align-items: center;
     gap: 8px;
+  }
+
+  .logo-emoji {
+    font-size: 1.5rem;
+    line-height: 1;
+    flex-shrink: 0;
   }
 
   .logo-mark {

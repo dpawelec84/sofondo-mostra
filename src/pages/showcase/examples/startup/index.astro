@@ -33,18 +33,18 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
         <div class="hero-grid"></div>
       </div>
       <div class="container">
-        <div class="hero-badge">
+        <div class="hero-badge fade-in">
           <span class="badge-dot"></span>
           Now in Public Beta
         </div>
-        <h1 class="hero-title">
+        <h1 class="hero-title fade-in fade-in-delay-1">
           Analytics that <span class="text-gradient">think ahead</span>
         </h1>
-        <p class="hero-subtitle">
+        <p class="hero-subtitle fade-in fade-in-delay-2">
           Quantum uses advanced AI to predict trends, identify opportunities,
           and automate insights—so you can make smarter decisions faster.
         </p>
-        <div class="hero-actions">
+        <div class="hero-actions fade-in fade-in-delay-3">
           <a href="#" class="btn btn-primary">
             Start Free Trial
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
@@ -54,7 +54,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
             Watch Demo
           </a>
         </div>
-        <div class="hero-stats">
+        <div class="hero-stats fade-in fade-in-delay-4">
           <div class="stat">
             <span class="stat-value">10K+</span>
             <span class="stat-label">Active Users</span>
@@ -88,14 +88,14 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     <!-- Features Section -->
     <section class="features" id="features">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header fade-in">
           <span class="section-tag">Features</span>
           <h2 class="section-title">Everything you need to <span class="text-gradient">understand your data</span></h2>
           <p class="section-subtitle">Powerful tools that work together seamlessly to give you complete visibility.</p>
         </div>
 
         <div class="features-grid">
-          <div class="feature-card feature-card--large">
+          <div class="feature-card feature-card--large fade-in">
             <div class="feature-visual">
               <div class="feature-chart">
                 <div class="chart-bar" style="--height: 40%"></div>
@@ -115,7 +115,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
             </div>
           </div>
 
-          <div class="feature-card">
+          <div class="feature-card fade-in fade-in-delay-1">
             <div class="feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
@@ -123,7 +123,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
             <p>See your metrics update instantly as new data flows in, with sub-second latency.</p>
           </div>
 
-          <div class="feature-card">
+          <div class="feature-card fade-in fade-in-delay-2">
             <div class="feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
             </div>
@@ -131,7 +131,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
             <p>Build dashboards that tell your story with drag-and-drop widgets and templates.</p>
           </div>
 
-          <div class="feature-card">
+          <div class="feature-card fade-in fade-in-delay-3">
             <div class="feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
@@ -139,7 +139,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
             <p>SOC 2 certified with end-to-end encryption, SSO, and role-based access control.</p>
           </div>
 
-          <div class="feature-card">
+          <div class="feature-card fade-in fade-in-delay-4">
             <div class="feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
@@ -147,7 +147,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
             <p>Get notified about anomalies and opportunities via email, Slack, or webhooks.</p>
           </div>
 
-          <div class="feature-card">
+          <div class="feature-card fade-in fade-in-delay-5">
             <div class="feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             </div>
@@ -161,24 +161,24 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     <!-- How It Works -->
     <section class="how-it-works">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header fade-in">
           <span class="section-tag">How It Works</span>
           <h2 class="section-title">Up and running in minutes</h2>
           <p class="section-subtitle">Getting started with Quantum is simple and straightforward.</p>
         </div>
 
         <div class="steps-grid">
-          <div class="step">
+          <div class="step fade-in fade-in-delay-1">
             <div class="step-number">01</div>
             <h3>Connect Your Data</h3>
             <p>Integrate with 100+ data sources including databases, APIs, spreadsheets, and cloud services.</p>
           </div>
-          <div class="step">
+          <div class="step fade-in fade-in-delay-2">
             <div class="step-number">02</div>
             <h3>Configure Metrics</h3>
             <p>Define the KPIs that matter to your business using our intuitive query builder or SQL.</p>
           </div>
-          <div class="step">
+          <div class="step fade-in fade-in-delay-3">
             <div class="step-number">03</div>
             <h3>Get Insights</h3>
             <p>Let our AI analyze your data and surface actionable insights automatically.</p>
@@ -190,14 +190,14 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     <!-- Pricing Section -->
     <section class="pricing" id="pricing">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header fade-in">
           <span class="section-tag">Pricing</span>
           <h2 class="section-title">Simple, transparent pricing</h2>
           <p class="section-subtitle">No hidden fees. No surprises. Cancel anytime.</p>
         </div>
 
         <div class="pricing-grid">
-          <div class="pricing-card">
+          <div class="pricing-card fade-in fade-in-delay-1">
             <div class="pricing-header">
               <h3>Starter</h3>
               <p class="pricing-desc">For individuals and small teams</p>
@@ -217,7 +217,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
             <a href="#" class="btn btn-outline">Get Started</a>
           </div>
 
-          <div class="pricing-card pricing-card--popular">
+          <div class="pricing-card pricing-card--popular fade-in fade-in-delay-2">
             <div class="popular-badge">Most Popular</div>
             <div class="pricing-header">
               <h3>Pro</h3>
@@ -240,7 +240,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
             <a href="#" class="btn btn-primary">Get Started</a>
           </div>
 
-          <div class="pricing-card">
+          <div class="pricing-card fade-in fade-in-delay-3">
             <div class="pricing-header">
               <h3>Enterprise</h3>
               <p class="pricing-desc">For large organizations</p>
@@ -267,13 +267,13 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     <!-- Testimonials -->
     <section class="testimonials">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header fade-in">
           <span class="section-tag">Testimonials</span>
           <h2 class="section-title">Loved by data teams everywhere</h2>
         </div>
 
         <div class="testimonials-grid">
-          <div class="testimonial-card">
+          <div class="testimonial-card fade-in fade-in-delay-1">
             <div class="testimonial-content">
               <p>"Quantum has transformed how we approach data analysis. The AI predictions have helped us identify trends weeks before our competitors."</p>
             </div>
@@ -286,7 +286,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
             </div>
           </div>
 
-          <div class="testimonial-card">
+          <div class="testimonial-card fade-in fade-in-delay-2">
             <div class="testimonial-content">
               <p>"The setup was incredibly smooth. We had our first dashboard running within an hour of signing up. The real-time updates are game-changing."</p>
             </div>
@@ -299,7 +299,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
             </div>
           </div>
 
-          <div class="testimonial-card">
+          <div class="testimonial-card fade-in fade-in-delay-3">
             <div class="testimonial-content">
               <p>"Finally, an analytics platform that doesn't require a PhD to use. Our entire team can now access and understand our metrics."</p>
             </div>
@@ -318,7 +318,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     <!-- CTA Section -->
     <section class="cta">
       <div class="container">
-        <div class="cta-content">
+        <div class="cta-content fade-in">
           <h2>Ready to unlock your data's potential?</h2>
           <p>Start your 14-day free trial today. No credit card required.</p>
           <div class="cta-actions">
@@ -376,6 +376,32 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     </footer>
   </div>
 </ShowcaseLayout>
+
+<script>
+  // Simple Fade-In on Scroll Animation
+  function initFadeInOnScroll() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    fadeElements.forEach(el => observer.observe(el));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFadeInOnScroll);
+  } else {
+    initFadeInOnScroll();
+  }
+</script>
 
 <style>
   /* Reset & Base */
@@ -1145,4 +1171,22 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
       gap: 2rem;
     }
   }
+
+  /* Fade In On Scroll Animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in-delay-1 { transition-delay: 0.1s; }
+  .fade-in-delay-2 { transition-delay: 0.2s; }
+  .fade-in-delay-3 { transition-delay: 0.3s; }
+  .fade-in-delay-4 { transition-delay: 0.4s; }
+  .fade-in-delay-5 { transition-delay: 0.5s; }
 </style>

@@ -181,6 +181,41 @@ const { variant = 'grouped', gap = '1.5rem' } = Astro.props;
     --corner-border: rgba(0, 0, 0, 0.04);
   }
 
+  /* Dark theme support */
+  :global(html[data-theme="dark"]) .sub-nav-container::before {
+    background: var(--bg-light);
+  }
+
+  :global(html[data-theme="dark"].sub-nav-stuck) .sub-nav-container::before {
+    background: rgba(15, 15, 15, 0.85);
+  }
+
+  :global(html[data-theme="dark"]) .sub-nav {
+    background: var(--bg-light);
+  }
+
+  :global(html[data-theme="dark"].sub-nav-stuck) .sub-nav {
+    background: rgba(15, 15, 15, 0.85);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  :global(html[data-theme="dark"].sub-nav-stuck) .sub-nav::after {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  :global(html[data-theme="dark"]) .sub-nav-corner {
+    --corner-bg: var(--bg-light);
+  }
+
+  :global(html[data-theme="dark"].sub-nav-stuck) .sub-nav-corner {
+    --corner-bg: rgba(15, 15, 15, 0.85);
+    --corner-border: rgba(255, 255, 255, 0.06);
+  }
+
+  :global(html[data-theme="dark"].sub-nav-stuck) .sub-nav-corner-border {
+    color: rgba(255, 255, 255, 0.06);
+  }
+
   .sub-nav-corner-left {
     left: -16px;
   }
@@ -387,6 +422,23 @@ const { variant = 'grouped', gap = '1.5rem' } = Astro.props;
 
     :global(html.sub-nav-stuck) .sub-nav-fade-right {
       background: linear-gradient(to left, rgba(246, 247, 249, 0.85), transparent);
+    }
+
+    /* Dark theme mobile fades */
+    :global(html[data-theme="dark"]) .sub-nav-fade-left {
+      background: linear-gradient(to right, var(--bg-light), transparent);
+    }
+
+    :global(html[data-theme="dark"]) .sub-nav-fade-right {
+      background: linear-gradient(to left, var(--bg-light), transparent);
+    }
+
+    :global(html[data-theme="dark"].sub-nav-stuck) .sub-nav-fade-left {
+      background: linear-gradient(to right, rgba(15, 15, 15, 0.85), transparent);
+    }
+
+    :global(html[data-theme="dark"].sub-nav-stuck) .sub-nav-fade-right {
+      background: linear-gradient(to left, rgba(15, 15, 15, 0.85), transparent);
     }
 
     .sub-nav-container.can-scroll-left .sub-nav-fade-left {

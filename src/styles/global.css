@@ -129,6 +129,21 @@ h6 {
   z-index: 1;
 }
 
+/* Standard layout: nav right-aligned */
+.NavigationMenuRoot[data-layout="standard"] {
+  justify-content: flex-end;
+}
+
+/* Centered layout: nav center, CTA separate (at the end of grid) */
+.NavigationMenuRoot[data-layout="centered"] {
+  justify-content: flex-end;
+}
+
+/* Minimal layout: only CTA, right-aligned */
+.NavigationMenuRoot[data-layout="minimal"] {
+  justify-content: flex-end;
+}
+
 .NavigationMenuList {
   display: flex;
   justify-content: center;
@@ -138,6 +153,23 @@ h6 {
   list-style: none;
   margin: 0;
   gap: 4px;
+}
+
+/* Standard layout: nav list right-aligned */
+.NavigationMenuList[data-layout="standard"] {
+  justify-content: flex-end;
+}
+
+/* Centered layout: nav list centered - CTA stays separate */
+.NavigationMenuList[data-layout="centered"] {
+  justify-content: center;
+  flex: 1;
+  /* CTA button handled separately in header-content */
+}
+
+/* In centered layout, CTA should not be in the nav list */
+.NavigationMenuList[data-layout="centered"] .NavigationCTAButton {
+  display: none;
 }
 
 .NavigationMenuLink,
@@ -201,20 +233,31 @@ h6 {
   transform: translateY(-1px);
 }
 
-/* Book Discovery Call CTA Button - Solid style */
+/* CTA Button - Solid style */
 .NavigationCTAButton {
   background: var(--header-cta-bg, var(--accent-primary)) !important;
   color: var(--header-cta-text, #ffffff) !important;
-  border-radius: var(--header-cta-radius, 8px);
-  padding: var(--header-cta-padding, 8px 20px);
+  border-radius: var(--header-cta-radius, 6px);
+  padding: var(--header-cta-padding, 0.625rem 1.25rem);
+  font-size: var(--header-cta-font-size, 0.875rem);
   margin-left: 8px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .NavigationCTAButton:hover {
   background: var(--header-cta-hover-bg, #152d4a) !important;
   color: var(--header-cta-text, #ffffff) !important;
+}
+
+/* CTA Shape variants */
+.NavigationCTAButton.cta-pill {
+  border-radius: 100px !important;
+}
+
+.NavigationCTAButton.cta-rounded {
+  border-radius: var(--header-cta-radius, 8px) !important;
 }
 
 /* Mobile specific adjustments for login button */

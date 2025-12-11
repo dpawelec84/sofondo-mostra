@@ -42,6 +42,54 @@ export const isMegaMenu = (item: NavItem): item is MegaMenuItem => {
   return 'menuId' in item && 'sections' in item;
 };
 
+/**
+ * Header layout options
+ * - 'standard': Logo left, nav right, CTA right (default)
+ * - 'centered': Logo left, nav center, CTA right
+ * - 'minimal': Logo left, CTA right only (no nav)
+ */
+export type HeaderLayout = 'standard' | 'centered' | 'minimal';
+
+/**
+ * CTA button shape
+ * - 'rounded': Rounded corners (6-8px radius)
+ * - 'pill': Fully rounded pill shape
+ */
+export type CTAShape = 'rounded' | 'pill';
+
+/**
+ * Footer social icon style
+ * - 'icons': Lucide icons (Github, Twitter, etc.)
+ * - 'initials': Circular badges with initials (FB, TW, IG)
+ * - 'text': Plain text links
+ * - 'none': No social links
+ */
+export type SocialStyle = 'icons' | 'initials' | 'text' | 'none';
+
+/**
+ * Social links position in footer
+ * - 'brand': Under the brand/logo section (nonprofit style)
+ * - 'column': In a separate link group column (corporate style - uses linkGroups)
+ */
+export type SocialPosition = 'brand' | 'column';
+
+/**
+ * Footer link group for grid layouts
+ */
+export type FooterLinkGroup = {
+  heading: string;
+  links: { label: string; href: string }[];
+};
+
+/**
+ * Social link configuration
+ */
+export type SocialLink = {
+  platform: string;  // e.g., 'twitter', 'facebook', 'instagram'
+  label: string;     // Display text or initials
+  href: string;
+};
+
 export const siteConfig = {
   // Site metadata - "Sofondo" is the brand, "Mostra" is the template name
   name: "Sofondo",
@@ -51,10 +99,25 @@ export const siteConfig = {
   // Branding - leave src empty for no logo mark
   logo: {
     src: "", // e.g., "/logo.png" - leave empty if no logo
+    emoji: "", // e.g., "🌊" - use emoji instead of image (takes precedence over src)
     alt: "Site Logo",
     width: 32,
     height: 32,
   },
+
+  // Logo mark type: 'text-only' | 'icon-text' | 'gradient-box'
+  logoMark: "icon-text" as const,
+
+  // Header configuration
+  header: {
+    // Layout: 'standard' (nav right), 'centered' (nav center), 'minimal' (no nav)
+    layout: "standard" as HeaderLayout,
+    // CTA button shape: 'rounded' or 'pill'
+    ctaShape: "rounded" as CTAShape,
+  },
+
+  // Footer layout: 'grid-4col' | 'flex-row' | 'flex-sections'
+  footerLayout: "grid-4col" as const,
 
   // Navigation - supports both simple links and mega menus
   nav: {
@@ -142,11 +205,41 @@ export const siteConfig = {
   // Footer
   footer: {
     copyright: "Sofondo",
+    copyrightSuffix: "", // Optional suffix after "All rights reserved." (e.g., "A 501(c)(3) nonprofit organization.")
     tagline: "A modern Astro template for marketing sites and landing pages.",
+    // Simple links for flex layouts
     links: [
       { label: "GitHub", href: "https://github.com" },
       { label: "Documentation", href: "/docs/" },
     ],
+    // Link groups for grid layout (optional - if not provided, uses simple links)
+    linkGroups: [
+      {
+        heading: "Links",
+        links: [
+          { label: "Features", href: "/features/" },
+          { label: "Documentation", href: "/docs/" },
+        ],
+      },
+    ] as FooterLinkGroup[],
+    // Social links configuration
+    social: {
+      style: "icons" as SocialStyle,  // 'icons' | 'initials' | 'text' | 'none'
+      position: "brand" as SocialPosition, // 'brand' (under logo) | 'column' (in linkGroups)
+      links: [
+        { platform: "github", label: "GitHub", href: "https://github.com" },
+      ] as SocialLink[],
+    },
+    // Legal links (Privacy, Terms) - shown in bottom bar
+    legalLinks: [] as { label: string; href: string }[],
+    // Show legal links in separate bottom row (true) or inline (false)
+    legalInBottomRow: false,
+    // Show legal links (set to false to hide privacy/terms links entirely)
+    showLegalLinks: false,
+    // Show copyright line (set to false to hide "© 2025 Company. All rights reserved.")
+    showCopyright: false,
+    // Show template credit line (set to false to hide "Mostra template by Sofondo")
+    showTemplateCredit: true,
   },
 
   // Feature flags - enable/disable optional features

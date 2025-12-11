@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronDown, X } from 'lucide-react';
-import { siteConfig, isMegaMenu, type NavItem, type MegaMenuItem } from '../config/site';
+import { siteConfig, isMegaMenu, type NavItem, type MegaMenuItem, type HeaderLayout, type CTAShape } from '../config/site';
+
+// Get header config with defaults
+const headerLayout = (siteConfig.header?.layout || 'standard') as HeaderLayout;
+const ctaShape = (siteConfig.header?.ctaShape || 'rounded') as CTAShape;
 
 // Custom menu icon with shorter third bar
 const MenuIcon = ({ size = 24 }: { size?: number }) => (
@@ -251,9 +255,10 @@ const Navigation = () => {
                 style={{ display: activeMenu ? 'block' : 'none' }}
             />
 
-            <nav className="NavigationMenuRoot">
-                {/* Desktop Menu List */}
-                <ul className="NavigationMenuList">
+            <nav className="NavigationMenuRoot" data-layout={headerLayout}>
+                {/* Desktop Menu List - hidden if minimal layout */}
+                {headerLayout !== 'minimal' && (
+                <ul className="NavigationMenuList" data-layout={headerLayout}>
                     {siteConfig.nav.items.map((item: NavItem) => (
                         isMegaMenu(item) ? (
                             <li
@@ -280,14 +285,25 @@ const Navigation = () => {
                             </li>
                         )
                     ))}
-                    {siteConfig.nav.cta && (
+                    {/* CTA inside nav list for standard layout only */}
+                    {headerLayout === 'standard' && siteConfig.nav.cta && (
                         <li>
-                            <a className="NavigationMenuLink NavigationCTAButton" href={siteConfig.nav.cta.href}>
+                            <a className={`NavigationMenuLink NavigationCTAButton ${ctaShape === 'pill' ? 'cta-pill' : 'cta-rounded'}`} href={siteConfig.nav.cta.href}>
                                 {siteConfig.nav.cta.label}
                             </a>
                         </li>
                     )}
                 </ul>
+                )}
+
+                {/* CTA button for centered layout is now rendered in Header.astro */}
+
+                {/* CTA button for minimal layout (no nav) */}
+                {headerLayout === 'minimal' && siteConfig.nav.cta && (
+                    <a className={`NavigationMenuLink NavigationCTAButton ${ctaShape === 'pill' ? 'cta-pill' : 'cta-rounded'}`} href={siteConfig.nav.cta.href}>
+                        {siteConfig.nav.cta.label}
+                    </a>
+                )}
 
                 {/* Mobile Burger Button */}
                 <button

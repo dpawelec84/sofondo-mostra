@@ -65,6 +65,18 @@ function parseRecipes() {
       source: extractField(recipeContent, 'source'),
       theme: extractTheme(recipeContent),
       fonts: extractFonts(recipeContent),
+      logo: extractLogo(recipeContent),
+      // Header/footer config
+      logoMark: extractField(recipeContent, 'logoMark'),
+      footerLayout: extractField(recipeContent, 'footerLayout'),
+      headerLayout: extractField(recipeContent, 'headerLayout'),
+      ctaShape: extractField(recipeContent, 'ctaShape'),
+      socialStyle: extractField(recipeContent, 'socialStyle'),
+      socialPosition: extractField(recipeContent, 'socialPosition'),
+      socialLinks: extractArray(recipeContent, 'socialLinks'),
+      linkGroups: extractArray(recipeContent, 'linkGroups'),
+      legalLinks: extractArray(recipeContent, 'legalLinks'),
+      legalInBottomRow: extractBoolean(recipeContent, 'legalInBottomRow'),
     };
   }
 
@@ -125,6 +137,84 @@ function extractTheme(content) {
 function extractFonts(content) {
   const fontsMatch = content.match(/fonts:\s*\{[\s\S]*?google:\s*['"](.+?)['"]/);
   return fontsMatch ? { google: fontsMatch[1] } : undefined;
+}
+
+function extractBoolean(content, fieldName) {
+  const regex = new RegExp(`${fieldName}:\\s*(true|false)`);
+  const match = content.match(regex);
+  return match ? match[1] === 'true' : undefined;
+}
+
+function extractArray(content, fieldName) {
+  // Find the array start: fieldName: [
+  const regex = new RegExp(`${fieldName}:\\s*\\[`);
+  const match = content.match(regex);
+  if (!match) return undefined;
+
+  const startIndex = content.indexOf(match[0]) + match[0].length - 1;
+  const endIndex = findMatchingBracket(content, startIndex);
+  if (endIndex === -1) return undefined;
+
+  const arrayContent = content.substring(startIndex, endIndex + 1);
+
+  // Parse the array content - this is a simplified parser
+  // For our use case, we know the structure is arrays of objects
+  try {
+    // Convert TypeScript-style to JSON-style (single quotes to double, etc.)
+    let jsonStr = arrayContent
+      .replace(/'/g, '"')
+      .replace(/(\w+):/g, '"$1":')
+      .replace(/,\s*}/g, '}')
+      .replace(/,\s*]/g, ']');
+    return JSON.parse(jsonStr);
+  } catch (e) {
+    // If JSON parsing fails, return the raw array content for debugging
+    return undefined;
+  }
+}
+
+function findMatchingBracket(str, startIndex) {
+  let count = 0;
+  let inString = false;
+  let stringChar = '';
+
+  for (let i = startIndex; i < str.length; i++) {
+    const char = str[i];
+
+    if (!inString && (char === '"' || char === "'")) {
+      inString = true;
+      stringChar = char;
+    } else if (inString && char === stringChar && str[i - 1] !== '\\') {
+      inString = false;
+    } else if (!inString) {
+      if (char === '[') count++;
+      if (char === ']') {
+        count--;
+        if (count === 0) return i;
+      }
+    }
+  }
+  return -1;
+}
+
+function extractLogo(content) {
+  const logoMatch = content.match(/logo:\s*\{([\s\S]*?)\n\s*\}/);
+  if (!logoMatch) return undefined;
+
+  const logoContent = logoMatch[1];
+  const src = logoContent.match(/src:\s*['"]([^'"]+)['"]/);
+  const alt = logoContent.match(/alt:\s*['"]([^'"]+)['"]/);
+  const width = logoContent.match(/width:\s*(\d+)/);
+  const height = logoContent.match(/height:\s*(\d+)/);
+
+  if (!src) return undefined;
+
+  return {
+    src: src[1],
+    alt: alt ? alt[1] : 'Logo',
+    width: width ? parseInt(width[1]) : 32,
+    height: height ? parseInt(height[1]) : 32,
+  };
 }
 
 // CLI argument parsing
@@ -340,8 +430,140 @@ siteConfig = siteConfig.replace(
   `copyright: "${recipe.name}"`
 );
 
+// Update logo settings if provided
+if (recipe.logo) {
+  // Update logo src
+  siteConfig = siteConfig.replace(
+    /logo:\s*\{[^}]*src:\s*"[^"]*"/,
+    `logo: {\n    src: "${recipe.logo.src}"`
+  );
+  // Update logo alt
+  siteConfig = siteConfig.replace(
+    /(logo:\s*\{[^}]*?)alt:\s*"[^"]*"/,
+    `$1alt: "${recipe.logo.alt}"`
+  );
+  // Update logo width
+  siteConfig = siteConfig.replace(
+    /(logo:\s*\{[^}]*?)width:\s*\d+/,
+    `$1width: ${recipe.logo.width}`
+  );
+  // Update logo height
+  siteConfig = siteConfig.replace(
+    /(logo:\s*\{[^}]*?)height:\s*\d+/,
+    `$1height: ${recipe.logo.height}`
+  );
+  console.log('✓ Updated logo settings');
+}
+
+// Update logo mark type if provided
+if (recipe.logoMark) {
+  siteConfig = siteConfig.replace(
+    /logoMark:\s*"[^"]+"\s*as const/,
+    `logoMark: "${recipe.logoMark}" as const`
+  );
+  console.log(`✓ Updated logoMark to "${recipe.logoMark}"`);
+}
+
+// Update footer layout if provided
+if (recipe.footerLayout) {
+  siteConfig = siteConfig.replace(
+    /footerLayout:\s*"[^"]+"\s*as const/,
+    `footerLayout: "${recipe.footerLayout}" as const`
+  );
+  console.log(`✓ Updated footerLayout to "${recipe.footerLayout}"`);
+}
+
+// Update header configuration if provided
+if (recipe.headerLayout) {
+  siteConfig = siteConfig.replace(
+    /layout:\s*"[^"]+"\s*as HeaderLayout/,
+    `layout: "${recipe.headerLayout}" as HeaderLayout`
+  );
+  console.log(`✓ Updated header layout to "${recipe.headerLayout}"`);
+}
+
+if (recipe.ctaShape) {
+  siteConfig = siteConfig.replace(
+    /ctaShape:\s*"[^"]+"\s*as CTAShape/,
+    `ctaShape: "${recipe.ctaShape}" as CTAShape`
+  );
+  console.log(`✓ Updated CTA shape to "${recipe.ctaShape}"`);
+}
+
+// Update footer social configuration
+if (recipe.socialStyle) {
+  siteConfig = siteConfig.replace(
+    /style:\s*"[^"]+"\s*as SocialStyle/,
+    `style: "${recipe.socialStyle}" as SocialStyle`
+  );
+  console.log(`✓ Updated social style to "${recipe.socialStyle}"`);
+}
+
+// Update social position if provided
+if (recipe.socialPosition) {
+  siteConfig = siteConfig.replace(
+    /position:\s*"[^"]+"\s*as SocialPosition/,
+    `position: "${recipe.socialPosition}" as SocialPosition`
+  );
+  console.log(`✓ Updated social position to "${recipe.socialPosition}"`);
+}
+
+// Update social links if provided
+if (recipe.socialLinks && recipe.socialLinks.length > 0) {
+  const socialLinksStr = JSON.stringify(recipe.socialLinks, null, 6)
+    .replace(/"/g, "'")
+    .replace(/'(\w+)':/g, '$1:')
+    .replace(/\n/g, '\n      ');
+
+  // Replace the social links array
+  siteConfig = siteConfig.replace(
+    /links:\s*\[\s*\{[^[\]]*platform:[^[\]]*\}\s*\]\s*as SocialLink\[\]/s,
+    `links: ${socialLinksStr} as SocialLink[]`
+  );
+  console.log(`✓ Updated social links (${recipe.socialLinks.length} links)`);
+}
+
+// Update footer link groups if provided
+if (recipe.linkGroups && recipe.linkGroups.length > 0) {
+  const linkGroupsStr = JSON.stringify(recipe.linkGroups, null, 6)
+    .replace(/"/g, "'")
+    .replace(/'(\w+)':/g, '$1:')
+    .replace(/\n/g, '\n    ');
+
+  // Replace the linkGroups array
+  siteConfig = siteConfig.replace(
+    /linkGroups:\s*\[\s*\{[\s\S]*?\}\s*\]\s*as FooterLinkGroup\[\]/,
+    `linkGroups: ${linkGroupsStr} as FooterLinkGroup[]`
+  );
+  console.log(`✓ Updated footer link groups (${recipe.linkGroups.length} groups)`);
+}
+
+// Update legal links if provided
+if (recipe.legalLinks && recipe.legalLinks.length > 0) {
+  const legalLinksStr = JSON.stringify(recipe.legalLinks, null, 6)
+    .replace(/"/g, "'")
+    .replace(/'(\w+)':/g, '$1:')
+    .replace(/\n/g, '\n    ');
+
+  // Replace the legalLinks array
+  siteConfig = siteConfig.replace(
+    /legalLinks:\s*\[\s*\{[^[\]]*label:[^[\]]*\}\s*\]/s,
+    `legalLinks: ${legalLinksStr}`
+  );
+  console.log(`✓ Updated legal links (${recipe.legalLinks.length} links)`);
+}
+
+// Update legalInBottomRow if provided
+if (recipe.legalInBottomRow !== undefined) {
+  siteConfig = siteConfig.replace(
+    /legalInBottomRow:\s*(true|false)/,
+    `legalInBottomRow: ${recipe.legalInBottomRow}`
+  );
+  console.log(`✓ Updated legalInBottomRow to ${recipe.legalInBottomRow}`);
+}
+
 fs.writeFileSync(siteConfigPath, siteConfig);
-console.log('✓ Updated site.ts with recipe name and tagline');
+console.log('✓ Updated site.ts with recipe configuration');
 
 // 4. Add font imports if needed
 if (recipe.fonts?.google) {

@@ -579,4 +579,25 @@ const { smoothScrolling, customScrollbar, viewTransitions } = siteConfig.feature
     opacity: 1;
     pointer-events: auto;
   }
+
+  /* Global Dark Theme Support - Light scrollbar for dark themed pages */
+  html[data-theme="dark"] .custom-thumb {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  html[data-theme="dark"] .custom-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  html[data-theme="dark"] .custom-thumb.dragging {
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  html[data-theme="dark"] .scroll-arrow-up::after {
+    border-bottom-color: rgba(255, 255, 255, 0.8);
+  }
+
+  html[data-theme="dark"] .scroll-arrow-down::after {
+    border-top-color: rgba(255, 255, 255, 0.8);
+  }
 </style>

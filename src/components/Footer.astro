@@ -1,58 +1,201 @@
 ---
-import { Github, Heart } from "lucide-react";
-import { siteConfig } from "../config/site";
+import { Github, Twitter, Facebook, Instagram, Linkedin, Youtube, Heart } from "lucide-react";
+import { siteConfig, type SocialStyle, type SocialLink, type FooterLinkGroup, type SocialPosition } from "../config/site";
+import Logo from "./Logo.astro";
+
+type FooterLayout = 'grid-4col' | 'flex-row' | 'flex-sections';
+const footerLayout = (siteConfig.footerLayout || 'grid-4col') as FooterLayout;
+
+// Social configuration with defaults
+const socialStyle = (siteConfig.footer.social?.style || 'icons') as SocialStyle;
+const socialPosition = (siteConfig.footer.social?.position || 'brand') as SocialPosition;
+const socialLinks = (siteConfig.footer.social?.links || []) as SocialLink[];
+const linkGroups = (siteConfig.footer.linkGroups || []) as FooterLinkGroup[];
+const legalLinks = siteConfig.footer.legalLinks || [];
+const legalInBottomRow = siteConfig.footer.legalInBottomRow ?? false;
+const showLegalLinks = siteConfig.footer.showLegalLinks ?? true;
+const showCopyright = siteConfig.footer.showCopyright ?? true;
+const showTemplateCredit = siteConfig.footer.showTemplateCredit ?? true;
+const copyrightSuffix = siteConfig.footer.copyrightSuffix || "";
+
+// Check if social links should show under brand (not when position is 'column')
+const showSocialUnderBrand = socialPosition === 'brand' && socialStyle !== 'none' && socialLinks.length > 0;
+
+// Map platform names to Lucide icons
+const platformIcons: Record<string, any> = {
+  github: Github,
+  twitter: Twitter,
+  facebook: Facebook,
+  instagram: Instagram,
+  linkedin: Linkedin,
+  youtube: Youtube,
+};
+
+// Get initials from platform name (e.g., "facebook" -> "FB")
+const getInitials = (platform: string): string => {
+  const initialsMap: Record<string, string> = {
+    github: 'GH',
+    twitter: 'TW',
+    facebook: 'FB',
+    instagram: 'IG',
+    linkedin: 'LI',
+    youtube: 'YT',
+  };
+  return initialsMap[platform.toLowerCase()] || platform.slice(0, 2).toUpperCase();
+};
 ---
 
-<footer class="footer" data-bg-theme="light">
+<footer class="footer" data-layout={footerLayout}>
   <div class="container">
-    <!-- Navigation Grid -->
-    <div class="footer-grid">
-      <!-- Brand Column -->
-      <div class="footer-column footer-brand">
-        <a href="/" class="footer-logo-link">{siteConfig.name} {siteConfig.templateName}</a>
-        {siteConfig.footer.tagline && (
-          <p class="footer-tagline">{siteConfig.footer.tagline}</p>
+    {/* Grid 4-Column Layout (corporate, startup, nonprofit style) */}
+    {footerLayout === 'grid-4col' && (
+      <div class="footer-grid">
+        <div class="footer-column footer-brand">
+          <a href="/" class="footer-logo-link">
+            <Logo />
+          </a>
+          {siteConfig.footer.tagline && (
+            <p class="footer-tagline">{siteConfig.footer.tagline}</p>
+          )}
+          {/* Social links under brand (nonprofit style) - only when position is 'brand' */}
+          {showSocialUnderBrand && (
+            <div class={`social-links social-style-${socialStyle}`}>
+              {socialLinks.map((social) => {
+                const IconComponent = platformIcons[social.platform.toLowerCase()];
+                return socialStyle === 'icons' && IconComponent ? (
+                  <a href={social.href} aria-label={social.label} class="social-icon" target="_blank" rel="noopener noreferrer">
+                    <IconComponent size={20} />
+                  </a>
+                ) : socialStyle === 'initials' ? (
+                  <a href={social.href} aria-label={social.label} class="social-initial" target="_blank" rel="noopener noreferrer">
+                    {getInitials(social.platform)}
+                  </a>
+                ) : socialStyle === 'text' ? (
+                  <a href={social.href} class="social-text-link" target="_blank" rel="noopener noreferrer">
+                    {social.label}
+                  </a>
+                ) : null;
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* Render link groups if provided, otherwise fall back to simple links */}
+        {linkGroups.length > 0 ? (
+          linkGroups.map((group) => (
+            <div class="footer-column">
+              <h3 class="footer-heading">{group.heading}</h3>
+              <ul class="footer-links">
+                {group.links.map((link) => (
+                  <li>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        ) : (
+          <div class="footer-column">
+            <h3 class="footer-heading">Links</h3>
+            <ul class="footer-links">
+              {siteConfig.footer.links.map((link) => (
+                <li>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
+    )}
 
-      <!-- Links Column -->
-      <div class="footer-column">
-        <h3 class="footer-heading">Links</h3>
-        <ul class="footer-links">
-          {
-            siteConfig.footer.links.map((link) => (
-              <li>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-
-      <!-- Social Column -->
-      <div class="footer-column">
-        <h3 class="footer-heading">Connect</h3>
-        <div class="social-links">
-          <a href="https://github.com" aria-label="GitHub" class="social-icon" target="_blank" rel="noopener noreferrer">
-            <Github size={20} />
+    {/* Flex Row Layout (agency style) - logo+links left, copyright right */}
+    {footerLayout === 'flex-row' && (
+      <div class="footer-flex-row">
+        <div class="footer-left">
+          <a href="/" class="footer-logo-link">
+            <Logo />
           </a>
+          <nav class="footer-nav">
+            {siteConfig.footer.links.map((link) => (
+              <a href={link.href}>{link.label}</a>
+            ))}
+          </nav>
         </div>
+        {showCopyright && (
+          <div class="footer-right">
+            <p class="footer-copyright">&copy; {new Date().getFullYear()} {siteConfig.footer.copyright}. All rights reserved.{copyrightSuffix && ` ${copyrightSuffix}`}</p>
+          </div>
+        )}
       </div>
-    </div>
+    )}
 
-    <!-- Simple Bottom -->
-    <div class="footer-bottom">
-      <p class="footer-template-credit">
-        {siteConfig.templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
-      </p>
-    </div>
+    {/* Flex Sections Layout (product, app, newsletter style) - brand left, links right */}
+    {footerLayout === 'flex-sections' && (
+      <>
+        <div class="footer-content">
+          <div class="footer-brand-section">
+            <a href="/" class="footer-logo-link">
+              <Logo />
+            </a>
+            {siteConfig.footer.tagline && (
+              <p class="footer-tagline">{siteConfig.footer.tagline}</p>
+            )}
+          </div>
+          <nav class="footer-links-section">
+            {siteConfig.footer.links.map((link) => (
+              <a href={link.href}>{link.label}</a>
+            ))}
+          </nav>
+        </div>
+        {showCopyright && (
+          <div class="footer-bottom-sections">
+            <p class="footer-copyright">&copy; {new Date().getFullYear()} {siteConfig.footer.copyright}. All rights reserved.{copyrightSuffix && ` ${copyrightSuffix}`}</p>
+          </div>
+        )}
+      </>
+    )}
+
+    {/* Bottom bar for grid layout */}
+    {footerLayout === 'grid-4col' && (
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          {showCopyright && (
+            <p class="footer-copyright">&copy; {new Date().getFullYear()} {siteConfig.footer.copyright}. All rights reserved.{copyrightSuffix && ` ${copyrightSuffix}`}</p>
+          )}
+
+          {/* Legal links - inline or in bottom row based on config */}
+          {showLegalLinks && !legalInBottomRow && legalLinks.length > 0 && (
+            <nav class="footer-legal">
+              {legalLinks.map((link) => (
+                <a href={link.href}>{link.label}</a>
+              ))}
+            </nav>
+          )}
+        </div>
+
+        {/* Legal links in separate row */}
+        {showLegalLinks && legalInBottomRow && legalLinks.length > 0 && (
+          <nav class="footer-legal-row">
+            {legalLinks.map((link) => (
+              <a href={link.href}>{link.label}</a>
+            ))}
+          </nav>
+        )}
+
+        {showTemplateCredit && (
+          <p class="footer-template-credit">
+            {siteConfig.templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
+          </p>
+        )}
+      </div>
+    )}
   </div>
 </footer>
 
 <style>
   .footer {
     padding: 4rem 0 2rem;
-    text-align: center;
     background: var(--footer-bg, var(--bg-light));
     color: var(--footer-text, var(--text-secondary));
     margin-top: 4rem;
@@ -64,9 +207,12 @@ import { siteConfig } from "../config/site";
     padding: 0 2rem;
   }
 
+  /* ========================================
+     Grid 4-Column Layout (corporate, startup, nonprofit)
+     ======================================== */
   .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 3rem;
     margin-bottom: 3rem;
     text-align: left;
@@ -82,13 +228,18 @@ import { siteConfig } from "../config/site";
   }
 
   .footer-logo-link {
-    font-family: var(--font-serif);
+    font-family: var(--header-logo-font, var(--font-serif));
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--footer-heading, var(--text-primary));
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     margin-bottom: 0.75rem;
+    /* Override Logo component's header colors for footer context */
+    --header-logo-color: var(--footer-heading, #ffffff);
+    --header-logo-accent: var(--footer-link-hover, var(--accent-secondary));
   }
 
   .footer-tagline {
@@ -99,13 +250,12 @@ import { siteConfig } from "../config/site";
   }
 
   .footer-heading {
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 600;
     color: var(--footer-heading, var(--text-primary));
     margin-bottom: 1.25rem;
     letter-spacing: 0.025em;
     text-transform: uppercase;
-    font-size: 0.875rem;
   }
 
   .footer-links {
@@ -128,6 +278,7 @@ import { siteConfig } from "../config/site";
     color: var(--footer-link-hover, var(--accent-primary));
   }
 
+  /* Social Links - Icon Style */
   .social-links {
     display: flex;
     gap: 0.75rem;
@@ -153,11 +304,94 @@ import { siteConfig } from "../config/site";
     transform: translateY(-2px);
   }
 
+  /* Social Links - Initials Style */
+  .social-initial {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--social-initial-bg, rgba(255, 255, 255, 0.1));
+    color: var(--social-initial-text, var(--footer-link));
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+  }
+
+  .social-initial:hover {
+    background: var(--footer-link-hover, var(--accent-primary));
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  /* Social Links - Text Style */
+  .social-text-link {
+    color: var(--footer-link, var(--text-secondary));
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color 0.2s ease;
+  }
+
+  .social-text-link:hover {
+    color: var(--footer-link-hover, var(--accent-primary));
+  }
+
   .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--footer-border, rgba(255, 255, 255, 0.1));
     padding-top: 2rem;
     margin-top: 2rem;
-    text-align: center;
+  }
+
+  .footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.8125rem;
+    color: var(--footer-text, var(--text-secondary));
+    margin: 0;
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-legal a {
+    color: var(--footer-link, var(--text-secondary));
+    text-decoration: none;
+    font-size: 0.8125rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-legal a:hover {
+    color: var(--footer-link-hover, var(--accent-primary));
+  }
+
+  .footer-legal-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--footer-border, rgba(255, 255, 255, 0.05));
+  }
+
+  .footer-legal-row a {
+    color: var(--footer-link, var(--text-secondary));
+    text-decoration: none;
+    font-size: 0.8125rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-legal-row a:hover {
+    color: var(--footer-link-hover, var(--accent-primary));
   }
 
   .footer-template-credit {
@@ -168,6 +402,7 @@ import { siteConfig } from "../config/site";
     align-items: center;
     justify-content: center;
     gap: 0.25rem;
+    margin: 0;
   }
 
   .footer-template-credit :global(.heart-icon) {
@@ -176,10 +411,126 @@ import { siteConfig } from "../config/site";
     vertical-align: middle;
   }
 
+  /* ========================================
+     Flex Row Layout (agency style)
+     ======================================== */
+  .footer-flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-nav a {
+    color: var(--footer-link, var(--text-secondary));
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-nav a:hover {
+    color: var(--footer-link-hover, var(--accent-primary));
+  }
+
+  .footer-right {
+    text-align: right;
+  }
+
+  /* ========================================
+     Flex Sections Layout (product, app, newsletter)
+     ======================================== */
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-brand-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-links-section {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .footer-links-section a {
+    color: var(--footer-link, var(--text-secondary));
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links-section a:hover {
+    color: var(--footer-link-hover, var(--accent-primary));
+  }
+
+  .footer-bottom-sections {
+    border-top: 1px solid var(--footer-border, rgba(255, 255, 255, 0.1));
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+
+  /* ========================================
+     Responsive Styles
+     ======================================== */
   @media (max-width: 768px) {
     .footer-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
+    }
+
+    .footer-flex-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .footer-left {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .footer-right {
+      text-align: left;
+    }
+
+    .footer-content {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .footer-links-section {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom-content {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .footer-legal {
+      flex-wrap: wrap;
+      justify-content: center;
     }
   }
 
@@ -187,6 +538,11 @@ import { siteConfig } from "../config/site";
     .footer-grid {
       grid-template-columns: 1fr;
       gap: 2rem;
+    }
+
+    .footer-nav {
+      flex-wrap: wrap;
+      gap: 1rem;
     }
   }
 </style>
