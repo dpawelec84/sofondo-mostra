@@ -1,0 +1,237 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
+---
+
+<Layout title="Get Started - Sofondo Template">
+  <section class="page-content" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <h1 class="page-title">Get Started</h1>
+        <p class="page-description intro">
+          Start building your next project with this template in minutes.
+        </p>
+      </FadeInOnScroll>
+
+      <div class="steps">
+        <FadeInOnScroll delay={0}>
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h2>Clone the Repository</h2>
+              <p>Get a copy of the template from GitHub:</p>
+              <div class="code-block">
+                <pre><code>git clone https://github.com/your-repo/sofondo-marketing-astro-template.git my-project
+cd my-project</code></pre>
+              </div>
+            </div>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h2>Install Dependencies</h2>
+              <p>Install the required packages:</p>
+              <div class="code-block">
+                <pre><code>npm install</code></pre>
+              </div>
+            </div>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h2>Configure Your Site</h2>
+              <p>Edit <code>src/config/site.ts</code> to customize your site's name, navigation, and features.</p>
+            </div>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h2>Start Development</h2>
+              <p>Run the development server:</p>
+              <div class="code-block">
+                <pre><code>npm run dev</code></pre>
+              </div>
+              <p>Open <a href="http://localhost:4321">http://localhost:4321</a> in your browser.</p>
+            </div>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <div class="step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h2>Build for Production</h2>
+              <p>When you're ready to deploy:</p>
+              <div class="code-block">
+                <pre><code>npm run build</code></pre>
+              </div>
+              <p>The built files will be in the <code>dist/</code> directory.</p>
+            </div>
+          </div>
+        </FadeInOnScroll>
+      </div>
+
+      <FadeInOnScroll delay={500}>
+        <div class="next-steps">
+          <h2>Next Steps</h2>
+          <ul>
+            <li><a href="/docs/">Read the full documentation</a></li>
+            <li><a href="/features/">Explore all features</a></li>
+            <li><a href="/showcase/">See example projects</a></li>
+          </ul>
+        </div>
+      </FadeInOnScroll>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 4rem 0;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 700px;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .step-content {
+    flex: 1;
+    padding-top: 0.25rem;
+  }
+
+  .step-content h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .step-content p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .step-content code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  .step-content a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 0.75rem 0;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+    color: #cdd6f4;
+    line-height: 1.5;
+    background: transparent;
+    padding: 0;
+  }
+
+  .next-steps {
+    margin-top: 4rem;
+    padding: 2rem;
+    background: var(--bg-card);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    max-width: 700px;
+  }
+
+  .next-steps h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .next-steps ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .next-steps li {
+    padding: 0.5rem 0;
+  }
+
+  .next-steps a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .next-steps a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .step {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style>

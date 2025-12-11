@@ -1,0 +1,207 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SubNav from "../../components/SubNav.astro";
+import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
+---
+
+<Layout title="Documentation - Sofondo Template">
+  <SubNav variant="simple">
+    <a href="/docs/" class="active">Getting Started</a>
+    <a href="/docs/configuration/">Configuration</a>
+    <a href="/docs/components/">Components</a>
+    <a href="/docs/customization/">Customization</a>
+  </SubNav>
+
+  <section class="page-content" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <h1 class="page-title">Documentation</h1>
+        <p class="page-description intro">
+          Everything you need to get started with this template.
+        </p>
+      </FadeInOnScroll>
+
+      <div class="docs-content">
+        <FadeInOnScroll delay={0}>
+          <section class="docs-section">
+            <h2>Quick Start</h2>
+            <p>Clone the repository and install dependencies:</p>
+            <div class="code-block">
+              <pre><code>git clone https://github.com/your-repo/sofondo-marketing-astro-template.git
+cd sofondo-marketing-astro-template
+npm install
+npm run dev</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <section class="docs-section">
+            <h2>Project Structure</h2>
+            <div class="code-block">
+              <pre><code>src/
+├── components/      # Reusable components
+│   ├── Header.astro
+│   ├── Footer.astro
+│   ├── SubNav.astro
+│   ├── FadeInOnScroll.astro
+│   └── Navigation.tsx
+├── config/
+│   └── site.ts      # Site configuration
+├── layouts/
+│   └── Layout.astro # Main layout
+├── pages/           # Page routes
+└── styles/
+    └── global.css   # Global styles</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <section class="docs-section">
+            <h2>Configuration</h2>
+            <p>Customize the template by editing <code>src/config/site.ts</code>:</p>
+            <div class="code-block">
+              <pre><code>export const siteConfig = {'{'}
+  name: "Your Site Name",
+  description: "Your site description",
+
+  logo: {'{'}
+    src: "/logo.png",
+    alt: "Logo",
+    width: 32,
+    height: 32,
+  {'}'},
+
+  nav: {'{'}
+    links: [
+      {'{'} label: "Features", href: "/features/" {'}'},
+      {'{'} label: "Showcase", href: "/showcase/" {'}'},
+    ],
+    cta: {'{'}
+      label: "Get Started",
+      href: "/get-started/",
+    {'}'},
+  {'}'},
+
+  features: {'{'}
+    smoothScrolling: true,
+    customScrollbar: true,
+    shardsBackground: true,
+    viewTransitions: true,
+  {'}'},
+{'}'}</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <section class="docs-section">
+            <h2>Feature Flags</h2>
+            <p>Toggle features on or off in the configuration:</p>
+            <ul class="feature-list">
+              <li><strong>smoothScrolling</strong> - Enable Lenis smooth scrolling</li>
+              <li><strong>customScrollbar</strong> - Enable custom scrollbar</li>
+              <li><strong>shardsBackground</strong> - Enable interactive background</li>
+              <li><strong>viewTransitions</strong> - Enable page transitions</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  .docs-content {
+    max-width: 800px;
+  }
+
+  .docs-section {
+    margin-bottom: 3rem;
+  }
+
+  .docs-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .docs-section p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .docs-section code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+    color: #cdd6f4;
+    line-height: 1.6;
+    background: transparent;
+    padding: 0;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .feature-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .feature-list li:last-child {
+    border-bottom: none;
+  }
+
+  .feature-list strong {
+    color: var(--text-primary);
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+  }
+</style>

@@ -1,0 +1,411 @@
+---
+export interface Props {
+  variant?: 'services' | 'simple';
+  gap?: string;
+}
+
+const { variant = 'services', gap = '1.5rem' } = Astro.props;
+---
+
+<div class="sub-nav-container" data-variant={variant}>
+  <nav class="sub-nav" style={`--sub-nav-gap: ${gap}`}>
+    <div class="sub-nav-blur">
+      <div class="sub-nav-blur-left"></div>
+      <div class="sub-nav-blur-center"></div>
+      <div class="sub-nav-blur-right"></div>
+    </div>
+    <span class="sub-nav-corner sub-nav-corner-left"></span>
+    <span class="sub-nav-corner sub-nav-corner-right"></span>
+    <svg class="sub-nav-corner-border sub-nav-corner-border-left" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 16C16 7.163 8.837 0 0 0" stroke="currentColor" stroke-width="1"/>
+    </svg>
+    <svg class="sub-nav-corner-border sub-nav-corner-border-right" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 16C0 7.163 7.163 0 16 0" stroke="currentColor" stroke-width="1"/>
+    </svg>
+    <slot />
+  </nav>
+  <div class="sub-nav-fade sub-nav-fade-left"></div>
+  <div class="sub-nav-fade sub-nav-fade-right"></div>
+</div>
+
+<style is:global>
+  @property --corner-bg {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: #fafafa;
+  }
+
+  @property --corner-border {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: transparent;
+  }
+</style>
+
+<style>
+  .sub-nav-container {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    transition: top 0.3s ease-in-out;
+  }
+
+  :global(html.header-hidden) .sub-nav-container {
+    top: 0;
+  }
+
+  .sub-nav-container::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-light);
+    z-index: -1;
+    pointer-events: none;
+    transition: background 0.3s ease;
+  }
+
+  :global(html.sub-nav-stuck) .sub-nav-container::before {
+    background: rgba(246, 247, 249, 0.85);
+  }
+
+  .sub-nav {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: var(--sub-nav-gap, 1.5rem);
+    flex-wrap: wrap;
+    background: var(--bg-light);
+    padding: 1rem 2rem;
+    width: fit-content;
+    border-radius: 0 0 16px 16px;
+    border: none;
+    box-shadow: none;
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+  }
+
+
+  .sub-nav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 16px;
+    bottom: 0;
+    border: 1px solid transparent;
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    pointer-events: none;
+    transition: border-color 0.3s ease;
+  }
+
+  :global(html.sub-nav-stuck) .sub-nav::after {
+    border-color: rgba(0, 0, 0, 0.06);
+  }
+
+  :global(html.sub-nav-stuck) .sub-nav {
+    background: rgba(246, 247, 249, 0.85);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Blur layer - split into 3 parts for proper masking */
+  .sub-nav-blur {
+    position: absolute;
+    left: -16px;
+    right: -16px;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    display: flex;
+  }
+
+  .sub-nav-blur-left,
+  .sub-nav-blur-center,
+  .sub-nav-blur-right {
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    transition: backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+  }
+
+  :global(html.sub-nav-stuck) .sub-nav-blur-left,
+  :global(html.sub-nav-stuck) .sub-nav-blur-center,
+  :global(html.sub-nav-stuck) .sub-nav-blur-right {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .sub-nav-blur-left {
+    width: 16px;
+    flex-shrink: 0;
+    /* Flipped vertically: curve from (16,16) to (0,0), fill top-right area */
+    clip-path: path('M16 16 C16 7.163 8.837 0 0 0 L16 0 Z');
+  }
+
+  .sub-nav-blur-center {
+    flex: 1;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .sub-nav-blur-right {
+    width: 16px;
+    flex-shrink: 0;
+    /* Flipped vertically: curve from (0,16) to (16,0), fill top-left area */
+    clip-path: path('M0 16 C0 7.163 7.163 0 16 0 L0 0 Z');
+  }
+
+  .sub-nav-fade {
+    display: none;
+  }
+
+  .sub-nav-corner {
+    position: absolute;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+    z-index: 1;
+    --corner-bg: var(--bg-light);
+    --corner-border: transparent;
+    transition: --corner-bg 0.3s ease, --corner-border 0.3s ease;
+  }
+
+  :global(html.sub-nav-stuck) .sub-nav-corner {
+    --corner-bg: rgba(246, 247, 249, 0.85);
+    --corner-border: rgba(0, 0, 0, 0.04);
+  }
+
+  .sub-nav-corner-left {
+    left: -16px;
+  }
+
+  .sub-nav-corner-right {
+    right: -16px;
+  }
+
+  .sub-nav-corner-left {
+    background: var(--corner-bg);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M0 0h16v16H0V0zM16 16C16 7.163 8.837 0 0 0v16h16z' fill-rule='evenodd' fill='%23000'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M0 0h16v16H0V0zM16 16C16 7.163 8.837 0 0 0v16h16z' fill-rule='evenodd' fill='%23000'/%3E%3C/svg%3E");
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
+  }
+
+  .sub-nav-corner-right {
+    background: var(--corner-bg);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M0 0h16v16H0V0zM0 16C0 7.163 7.163 0 16 0v16H0z' fill-rule='evenodd' fill='%23000'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath d='M0 0h16v16H0V0zM0 16C0 7.163 7.163 0 16 0v16H0z' fill-rule='evenodd' fill='%23000'/%3E%3C/svg%3E");
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
+  }
+
+  .sub-nav-corner-border {
+    position: absolute;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    color: transparent;
+    pointer-events: none;
+    z-index: 2;
+    transition: color 0.3s ease;
+  }
+
+  .sub-nav-corner-border-left {
+    left: -16px;
+  }
+
+  .sub-nav-corner-border-right {
+    right: -16px;
+  }
+
+  :global(html.sub-nav-stuck) .sub-nav-corner-border {
+    color: rgba(0, 0, 0, 0.04);
+  }
+
+  /* Sub-nav groups (for services variant) */
+  .sub-nav :global(.sub-nav-group) {
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+    padding-top: 0.75rem;
+  }
+
+  .sub-nav :global(.sub-nav-group)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .sub-nav :global(.sub-nav-group-design) {
+    --group-color: #4f7df3;
+  }
+
+  .sub-nav :global(.sub-nav-group-design)::before {
+    background: linear-gradient(90deg, #3b82f6, #6366f1);
+  }
+
+  .sub-nav :global(.sub-nav-group-hosting) {
+    --group-color: #12b38d;
+  }
+
+  .sub-nav :global(.sub-nav-group-hosting)::before {
+    background: linear-gradient(90deg, #10b981, #14b8a6);
+  }
+
+  .sub-nav :global(.sub-nav-group-accessibility) {
+    --group-color: #f78c11;
+  }
+
+  .sub-nav :global(.sub-nav-group-accessibility)::before {
+    background: linear-gradient(90deg, #f59e0b, #f97316);
+  }
+
+  /* Link styles */
+  .sub-nav :global(a) {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    position: relative;
+    transition: color 0.2s;
+  }
+
+  .sub-nav :global(a:hover) {
+    color: var(--text-primary);
+  }
+
+  .sub-nav :global(a.active) {
+    color: var(--text-primary);
+  }
+
+  .sub-nav :global(a.active)::before {
+    content: "";
+    position: absolute;
+    top: -0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--group-color, var(--accent-primary));
+  }
+
+  /* Hide active indicator for simple variant */
+  .sub-nav-container[data-variant="simple"] .sub-nav :global(a.active)::before {
+    display: none;
+  }
+
+  /* Mobile horizontal scroll */
+  @media (max-width: 767px) {
+    .sub-nav-container {
+      position: sticky;
+      top: var(--header-height);
+      z-index: 100;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    .sub-nav {
+      width: 100%;
+      max-width: 100vw;
+      padding: 0.625rem 0;
+      gap: 1rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      justify-content: safe center;
+      border-radius: 0;
+    }
+
+    .sub-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sub-nav-fade {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2rem;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .sub-nav-fade-left {
+      left: 0;
+      background: linear-gradient(to right, var(--bg-light), transparent);
+    }
+
+    .sub-nav-fade-right {
+      right: 0;
+      background: linear-gradient(to left, var(--bg-light), transparent);
+    }
+
+    :global(html.sub-nav-stuck) .sub-nav-fade-left {
+      background: linear-gradient(to right, rgba(246, 247, 249, 0.85), transparent);
+    }
+
+    :global(html.sub-nav-stuck) .sub-nav-fade-right {
+      background: linear-gradient(to left, rgba(246, 247, 249, 0.85), transparent);
+    }
+
+    .sub-nav-container.can-scroll-left .sub-nav-fade-left {
+      opacity: 1;
+    }
+
+    .sub-nav-container.can-scroll-right .sub-nav-fade-right {
+      opacity: 1;
+    }
+
+    .sub-nav :global(.sub-nav-group) {
+      gap: 1rem;
+      flex-shrink: 0;
+      padding: 0.5rem 0.5rem 0;
+    }
+
+    .sub-nav :global(.sub-nav-group:first-child) {
+      padding-left: 1.5rem;
+    }
+
+    .sub-nav :global(.sub-nav-group:last-child) {
+      padding-right: 1.5rem;
+    }
+
+    .sub-nav :global(a) {
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .sub-nav :global(a.active)::before {
+      top: -0.5rem;
+      border-left-width: 6px;
+      border-right-width: 6px;
+      border-top-width: 6px;
+    }
+
+    /* Simple variant mobile padding */
+    .sub-nav :global(a:first-child:not(.sub-nav-group a)) {
+      padding-left: 1.5rem;
+    }
+
+    .sub-nav :global(a:last-child:not(.sub-nav-group a)) {
+      padding-right: 1.5rem;
+    }
+  }
+</style>

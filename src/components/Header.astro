@@ -1,0 +1,165 @@
+---
+import Navigation from "./Navigation";
+import Logo from "./Logo.astro";
+---
+
+<header class="header glass" id="main-header">
+  <div class="container header-content">
+    <a href="/" class="logo">
+      <Logo width={80} height={20} />
+    </a>
+    <div class="nav-wrapper">
+      <Navigation client:load />
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    let lastScrollY = window.scrollY;
+    const header = document.getElementById("main-header");
+
+    if (!header) return;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        header.classList.add("header-hidden");
+        document.documentElement.classList.add("header-hidden");
+      } else {
+        header.classList.remove("header-hidden");
+        document.documentElement.classList.remove("header-hidden");
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Detect when sub-nav is stuck at top
+    const subNav = document.querySelector(".sub-nav");
+    const subNavContainer = document.querySelector(".sub-nav-container");
+    if (subNav) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) {
+            document.documentElement.classList.add("sub-nav-stuck");
+          } else {
+            document.documentElement.classList.remove("sub-nav-stuck");
+          }
+        },
+        {
+          rootMargin: "-1px 0px 0px 0px",
+          threshold: 1,
+        }
+      );
+
+      observer.observe(subNavContainer || subNav);
+    }
+
+    // Handle sub-nav horizontal scroll fade indicators
+    if (subNav && subNavContainer) {
+      const updateScrollFades = () => {
+        const scrollLeft = subNav.scrollLeft;
+        const scrollWidth = subNav.scrollWidth;
+        const clientWidth = subNav.clientWidth;
+        const threshold = 5;
+
+        if (scrollLeft > threshold) {
+          subNavContainer.classList.add("can-scroll-left");
+        } else {
+          subNavContainer.classList.remove("can-scroll-left");
+        }
+
+        if (scrollLeft + clientWidth < scrollWidth - threshold) {
+          subNavContainer.classList.add("can-scroll-right");
+        } else {
+          subNavContainer.classList.remove("can-scroll-right");
+        }
+      };
+
+      // Scroll active item into view on page load
+      const activeItem = subNav.querySelector("a.active");
+      if (activeItem) {
+        setTimeout(() => {
+          const navRect = subNav.getBoundingClientRect();
+          const itemRect = activeItem.getBoundingClientRect();
+
+          const itemCenter = itemRect.left + itemRect.width / 2;
+          const navCenter = navRect.left + navRect.width / 2;
+          const scrollOffset = itemCenter - navCenter;
+
+          subNav.scrollBy({
+            left: scrollOffset,
+            behavior: "smooth"
+          });
+
+          setTimeout(updateScrollFades, 300);
+        }, 0);
+      }
+
+      updateScrollFades();
+      subNav.addEventListener("scroll", updateScrollFades);
+      window.addEventListener("resize", updateScrollFades);
+    }
+  });
+</script>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    background: var(--bg-light);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  :global(body.mobile-menu-open) .header {
+    z-index: 10000;
+  }
+
+  .header-hidden {
+    transform: translateY(-100%);
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .logo-text {
+    background: linear-gradient(
+      90deg,
+      var(--text-primary),
+      var(--text-secondary)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .nav-wrapper {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    /* Desktop specific styles if needed */
+  }
+</style>

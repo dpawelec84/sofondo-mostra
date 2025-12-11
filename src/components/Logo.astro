@@ -1,0 +1,52 @@
+---
+import { siteConfig } from "../config/site";
+
+interface Props {
+  width?: number;
+  height?: number;
+  color?: string;
+}
+
+const { width = 140, height = 32, color = "currentColor" } = Astro.props;
+---
+
+<div class="logo-container" style={`width: ${width}px; height: ${height}px;`}>
+  {siteConfig.logo.src && (
+    <img
+      src={siteConfig.logo.src}
+      alt={siteConfig.logo.alt}
+      class="logo-mark"
+      width={siteConfig.logo.width}
+      height={siteConfig.logo.height}
+      loading="eager"
+    />
+  )}
+  <span class="logo-text" style={`color: ${color};`}>{siteConfig.name}</span>
+</div>
+
+<style>
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 140px;
+  }
+
+  .logo-mark {
+    display: block;
+    flex-shrink: 0;
+    flex-grow: 0;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  .logo-text {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+</style>

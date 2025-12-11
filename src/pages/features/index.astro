@@ -1,0 +1,138 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SubNav from "../../components/SubNav.astro";
+import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
+---
+
+<Layout title="Features - Sofondo Template">
+  <SubNav variant="simple">
+    <a href="/features/" class="active">Overview</a>
+    <a href="/features/scrolling/">Smooth Scrolling</a>
+    <a href="/features/animations/">Animations</a>
+    <a href="/features/components/">Components</a>
+  </SubNav>
+
+  <section class="page-content">
+    <div class="container">
+      <FadeInOnScroll>
+        <h1 class="page-title">Template Features</h1>
+        <p class="page-description intro">
+          Explore all the features included in this template.
+        </p>
+      </FadeInOnScroll>
+
+      <div class="features-list">
+        <FadeInOnScroll delay={0}>
+          <div class="feature-item">
+            <h2>Lenis Smooth Scrolling</h2>
+            <p>
+              Experience buttery smooth scrolling powered by Lenis. This feature provides
+              a premium feel to your website with customizable duration, easing, and behavior.
+              It's fully opt-in and can be disabled through the site configuration.
+            </p>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <div class="feature-item">
+            <h2>Custom Scrollbar</h2>
+            <p>
+              A modern Chrome-style custom scrollbar that's theme-aware. It automatically
+              adjusts its color based on the background of the current section, ensuring
+              visibility on both light and dark backgrounds.
+            </p>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <div class="feature-item">
+            <h2>Interactive Shards Background</h2>
+            <p>
+              Animated geometric triangles that respond to mouse movement, creating an
+              engaging parallax effect. The shards smoothly transition when scrolling
+              to the bottom of the page.
+            </p>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <div class="feature-item">
+            <h2>View Transitions</h2>
+            <p>
+              Smooth page transitions using Astro's View Transitions API. Elements can
+              persist across navigations, and the background animation continues seamlessly.
+            </p>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <div class="feature-item">
+            <h2>SubNav Component</h2>
+            <p>
+              A sticky navigation component with glassmorphism effects. Supports grouped
+              links with color-coded indicators, horizontal scrolling on mobile, and
+              smooth transitions when becoming stuck.
+            </p>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={500}>
+          <div class="feature-item">
+            <h2>FadeIn Animations</h2>
+            <p>
+              Scroll-triggered fade-in animations that reveal content as users scroll.
+              Supports configurable delays for staggered animations.
+            </p>
+          </div>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  .features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 800px;
+  }
+
+  .feature-item {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+  }
+
+  .feature-item h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .feature-item p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+</style>

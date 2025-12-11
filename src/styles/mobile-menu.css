@@ -1,0 +1,155 @@
+/* Mobile Menu Dropdown - Native Details/Summary */
+
+/* Enable smooth height transitions on details element */
+.MobileMenuDetails {
+    interpolate-size: allow-keywords;
+}
+
+/* Reset default details/summary styles */
+.MobileMenuDetails>summary {
+    list-style: none;
+}
+
+.MobileMenuDetails>summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Animate the ::details-content pseudo-element for smooth expansion */
+.MobileMenuDetails::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition: block-size 0.4s ease, content-visibility 0.4s ease;
+    transition-behavior: allow-discrete;
+}
+
+.MobileMenuDetails[open]::details-content {
+    block-size: auto;
+}
+
+/* Summary acts as the trigger - Match previous MobileMenuTrigger styles */
+.MobileMenuSummary {
+    /* Copy all styles from .MobileMenuLink */
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+
+    /* Button-specific resets */
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    /* Layout */
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    position: relative;
+}
+
+.MobileMenuSummary:hover {
+    color: var(--accent-primary);
+}
+
+/* Wrapper for text to allow absolute positioning of chevron relative to text */
+.MobileMenuText {
+    position: relative;
+    display: inline-block;
+}
+
+/* Chevron Styling & Rotation */
+.MobileMenuSummary svg {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    margin-top: -10px;
+    /* Center vertically (20px height / 2) */
+    margin-left: 0.5rem;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+/* Rotate chevron when details is open */
+.MobileMenuDetails[open] .MobileMenuSummary svg {
+    transform: rotate(180deg);
+}
+
+/* Submenu Container - additional styling for content */
+.MobileSubMenu {
+    background: transparent;
+    margin-block-start: 1rem;
+}
+
+.MobileSubMenuSection {
+    padding: 0.5rem 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+}
+
+.MobileSubMenuSection h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.5rem 0;
+}
+
+/* Colored indicators for mobile menu section titles */
+.MobileSubMenuTitle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.MobileSubMenuTitle::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.MobileSubMenuTitle--design::before {
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+}
+
+.MobileSubMenuTitle--hosting::before {
+    background: linear-gradient(135deg, #10b981, #14b8a6);
+}
+
+.MobileSubMenuTitle--accessibility::before {
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+}
+
+.MobileSubMenuTitle--neutral::before {
+    background: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.MobileSubMenuSection a,
+.MobileSubMenu>a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+    display: block;
+    text-align: center;
+}
+
+.MobileSubMenuSection a:hover,
+.MobileSubMenu>a:hover {
+    color: var(--primary);
+}
+
+/* Fix layout shift on expand */
+.MobileMenuOverlay {
+    scrollbar-gutter: stable;
+}

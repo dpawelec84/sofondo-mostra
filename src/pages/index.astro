@@ -1,0 +1,384 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FadeInOnScroll from "../components/FadeInOnScroll.astro";
+import { siteConfig } from "../config/site";
+---
+
+<Layout title={`${siteConfig.name} - Modern Astro Template`}>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <FadeInOnScroll>
+        <h1 class="hero-title">
+          Build Beautiful <span class="text-gradient">Marketing Sites</span>
+        </h1>
+      </FadeInOnScroll>
+      <FadeInOnScroll delay={100}>
+        <p class="hero-description intro">
+          A modern, feature-rich Astro template with smooth scrolling,
+          interactive backgrounds, and polished UI components.
+        </p>
+      </FadeInOnScroll>
+      <FadeInOnScroll delay={200}>
+        <div class="hero-actions">
+          <a href="/features/" class="btn btn-primary">Explore Features</a>
+          <a href="/docs/" class="btn btn-secondary">Documentation</a>
+        </div>
+      </FadeInOnScroll>
+    </div>
+  </section>
+
+  <!-- Features Overview -->
+  <section class="features-section" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <h2 class="section-title">Everything You Need</h2>
+        <p class="section-description intro">
+          This template comes packed with features to help you build stunning marketing sites.
+        </p>
+      </FadeInOnScroll>
+
+      <div class="features-grid">
+        <FadeInOnScroll delay={0}>
+          <div class="feature-card">
+            <div class="feature-icon feature-icon--blue">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <h3>Lenis Smooth Scrolling</h3>
+            <p>Buttery smooth scrolling experience with opt-in configuration.</p>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <div class="feature-card">
+            <div class="feature-icon feature-icon--green">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                <path d="M3 9h18"></path>
+                <path d="M9 21V9"></path>
+              </svg>
+            </div>
+            <h3>Custom Scrollbar</h3>
+            <p>Chrome-style custom scrollbar with theme awareness.</p>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <div class="feature-card">
+            <div class="feature-icon feature-icon--purple">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <h3>Interactive Background</h3>
+            <p>Animated geometric shards that respond to mouse movement.</p>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <div class="feature-card">
+            <div class="feature-icon feature-icon--orange">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"></path>
+                <path d="M12 5v14"></path>
+              </svg>
+            </div>
+            <h3>View Transitions</h3>
+            <p>Smooth page transitions using Astro's View Transitions API.</p>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <div class="feature-card">
+            <div class="feature-icon feature-icon--teal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              </svg>
+            </div>
+            <h3>SubNav Component</h3>
+            <p>Sticky navigation with glassmorphism and grouped links.</p>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={500}>
+          <div class="feature-card">
+            <div class="feature-icon feature-icon--pink">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+              </svg>
+            </div>
+            <h3>FadeIn Animations</h3>
+            <p>Scroll-triggered fade-in animations for content.</p>
+          </div>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+
+  <!-- Configuration Section -->
+  <section class="config-section" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <h2 class="section-title">Easy Configuration</h2>
+        <p class="section-description intro">
+          All features are opt-in and configurable through a simple config file.
+        </p>
+      </FadeInOnScroll>
+
+      <FadeInOnScroll delay={100}>
+        <div class="code-block">
+          <pre><code>// src/config/site.ts
+export const siteConfig = {'{'}
+  features: {'{'}
+    smoothScrolling: true,  // Lenis smooth scrolling
+    customScrollbar: true,  // Chrome-style scrollbar
+    shardsBackground: true, // Interactive background
+    viewTransitions: true,  // Page transitions
+  {'}'},
+{'}'}</code></pre>
+        </div>
+      </FadeInOnScroll>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <h2 class="section-title">Ready to Get Started?</h2>
+        <p class="section-description intro">
+          Clone this template and start building your next project.
+        </p>
+      </FadeInOnScroll>
+      <FadeInOnScroll delay={100}>
+        <div class="cta-actions">
+          <a href={siteConfig.nav.cta?.href || "/get-started/"} class="btn btn-primary btn-large">
+            {siteConfig.nav.cta?.label || "Get Started"}
+          </a>
+        </div>
+      </FadeInOnScroll>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding: 6rem 0 4rem;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--accent-primary);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background: #152d4a;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1.5px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+
+  .features-section,
+  .config-section,
+  .cta-section {
+    padding: 4rem 0;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .section-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto 3rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .feature-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .feature-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .feature-card p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .feature-icon--blue {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(99, 102, 241, 0.15));
+    color: #3b82f6;
+  }
+
+  .feature-icon--green {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(20, 184, 166, 0.15));
+    color: #10b981;
+  }
+
+  .feature-icon--purple {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(168, 85, 247, 0.15));
+    color: #8b5cf6;
+  }
+
+  .feature-icon--orange {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(249, 115, 22, 0.15));
+    color: #f59e0b;
+  }
+
+  .feature-icon--teal {
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.15), rgba(6, 182, 212, 0.15));
+    color: #14b8a6;
+  }
+
+  .feature-icon--pink {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(244, 114, 182, 0.15));
+    color: #ec4899;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+    color: #cdd6f4;
+    line-height: 1.6;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding-bottom: 6rem;
+  }
+
+  .cta-actions {
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 4rem 0 3rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 100%;
+      max-width: 280px;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

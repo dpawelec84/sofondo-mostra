@@ -1,0 +1,291 @@
+import * as React from 'react';
+import { createPortal } from 'react-dom';
+import { X } from 'lucide-react';
+import { siteConfig } from '../config/site';
+
+// Custom menu icon with shorter third bar
+const MenuIcon = ({ size = 24 }: { size?: number }) => (
+    <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+    >
+        <line x1="4" y1="6" x2="20" y2="6" />
+        <line x1="4" y1="12" x2="20" y2="12" />
+        <line x1="4" y1="18" x2="14" y2="18" />
+    </svg>
+);
+
+import Lenis from '@studio-freight/lenis';
+import '../styles/global.css';
+import '../styles/mobile-menu.css';
+
+const Navigation = () => {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+    const [mounted, setMounted] = React.useState(false);
+
+    // Lenis & Scrollbar Refs
+    const lenisRef = React.useRef<Lenis | null>(null);
+    const overlayRef = React.useRef<HTMLDivElement>(null);
+    const scrollbarRef = React.useRef<HTMLDivElement>(null);
+    const trackRef = React.useRef<HTMLDivElement>(null);
+    const thumbRef = React.useRef<HTMLDivElement>(null);
+    const rafIdRef = React.useRef<number | null>(null);
+
+    React.useEffect(() => {
+        setMounted(true);
+        return () => {
+            if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+            lenisRef.current?.destroy();
+        };
+    }, []);
+
+    // Initialize Lenis for Mobile Menu
+    React.useEffect(() => {
+        if (!isMobileMenuOpen || !overlayRef.current) {
+            if (lenisRef.current) {
+                lenisRef.current.destroy();
+                lenisRef.current = null;
+            }
+            if (rafIdRef.current) {
+                cancelAnimationFrame(rafIdRef.current);
+                rafIdRef.current = null;
+            }
+            return;
+        }
+
+        // Initialize Lenis scoped to the overlay
+        const lenis = new Lenis({
+            wrapper: overlayRef.current,
+            content: overlayRef.current.firstElementChild as HTMLElement,
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            touchMultiplier: 2,
+        });
+        lenisRef.current = lenis;
+
+        // RAF Loop
+        const raf = (time: number) => {
+            lenis.raf(time);
+            rafIdRef.current = requestAnimationFrame(raf);
+        };
+        rafIdRef.current = requestAnimationFrame(raf);
+
+        // Scrollbar Logic
+        const updateScrollbar = () => {
+            const scrollbar = scrollbarRef.current;
+            const track = trackRef.current;
+            const thumb = thumbRef.current;
+            const overlay = overlayRef.current;
+
+            if (!scrollbar || !track || !thumb || !overlay) return;
+
+            const scrollHeight = overlay.scrollHeight;
+            const clientHeight = overlay.clientHeight;
+
+            if (scrollHeight <= clientHeight) {
+                scrollbar.style.opacity = '0';
+                scrollbar.style.pointerEvents = 'none';
+                return;
+            }
+            scrollbar.style.opacity = '1';
+            scrollbar.style.pointerEvents = 'auto';
+
+            const trackHeight = track.clientHeight;
+            const scrollRatio = clientHeight / scrollHeight;
+            const thumbHeight = Math.max(40, trackHeight * scrollRatio);
+            thumb.style.height = `${thumbHeight}px`;
+
+            const maxScroll = scrollHeight - clientHeight;
+            const maxThumbTop = trackHeight - thumbHeight;
+
+            const progress = lenis.scroll / maxScroll;
+            const thumbTop = progress * maxThumbTop;
+
+            thumb.style.transform = `translateY(${thumbTop}px)`;
+        };
+
+        lenis.on('scroll', updateScrollbar);
+        updateScrollbar();
+
+        // Thumb Drag Handling
+        let isDragging = false;
+        let startY = 0;
+        let startScroll = 0;
+
+        const handleThumbMouseDown = (e: MouseEvent) => {
+            if (!overlayRef.current) return;
+            isDragging = true;
+            startY = e.clientY;
+            startScroll = lenis.scroll;
+            thumbRef.current?.classList.add('dragging');
+            if (document.body) {
+                document.body.style.userSelect = 'none';
+            }
+        };
+
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!isDragging || !overlayRef.current || !trackRef.current || !thumbRef.current) return;
+            e.preventDefault();
+
+            const deltaY = e.clientY - startY;
+            const scrollHeight = overlayRef.current.scrollHeight;
+            const clientHeight = overlayRef.current.clientHeight;
+            const trackHeight = trackRef.current.clientHeight;
+            const thumbHeight = parseFloat(thumbRef.current.style.height);
+            const maxThumbTop = trackHeight - thumbHeight;
+            const maxScroll = scrollHeight - clientHeight;
+
+            const scrollRatio = maxScroll / maxThumbTop;
+            const targetScroll = Math.max(
+                0,
+                Math.min(startScroll + deltaY * scrollRatio, maxScroll)
+            );
+
+            lenis.scrollTo(targetScroll, { immediate: false });
+        };
+
+        const handleMouseUp = () => {
+            if (isDragging) {
+                isDragging = false;
+                thumbRef.current?.classList.remove('dragging');
+                if (document.body) {
+                    document.body.style.userSelect = '';
+                }
+            }
+        };
+
+        if (thumbRef.current) {
+            thumbRef.current.addEventListener('mousedown', handleThumbMouseDown);
+        }
+        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mouseup', handleMouseUp);
+
+        // Watch for content height changes
+        const resizeObserver = new ResizeObserver(() => {
+            updateScrollbar();
+        });
+
+        if (overlayRef.current) {
+            resizeObserver.observe(overlayRef.current);
+            const contentElement = overlayRef.current.firstElementChild as HTMLElement;
+            if (contentElement) {
+                resizeObserver.observe(contentElement);
+            }
+        }
+
+        return () => {
+            lenis.destroy();
+            resizeObserver.disconnect();
+            if (thumbRef.current) {
+                thumbRef.current.removeEventListener('mousedown', handleThumbMouseDown);
+            }
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseup', handleMouseUp);
+            if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+        };
+    }, [isMobileMenuOpen]);
+
+    const toggleMobileMenu = () => {
+        const newState = !isMobileMenuOpen;
+        setIsMobileMenuOpen(newState);
+
+        const event = new CustomEvent('mobile-menu-toggle', {
+            detail: { isOpen: newState }
+        });
+        window.dispatchEvent(event);
+    };
+
+    const closeMobileMenu = () => {
+        setIsMobileMenuOpen(false);
+        const event = new CustomEvent('mobile-menu-toggle', {
+            detail: { isOpen: false }
+        });
+        window.dispatchEvent(event);
+    };
+
+    return (
+        <>
+            <nav className="NavigationMenuRoot">
+                {/* Desktop Menu List */}
+                <ul className="NavigationMenuList">
+                    {siteConfig.nav.links.map((link) => (
+                        <li key={link.href}>
+                            <a className="NavigationMenuLink" href={link.href}>{link.label}</a>
+                        </li>
+                    ))}
+                    {siteConfig.nav.cta && (
+                        <li>
+                            <a className="NavigationMenuLink NavigationCTAButton" href={siteConfig.nav.cta.href}>
+                                {siteConfig.nav.cta.label}
+                            </a>
+                        </li>
+                    )}
+                </ul>
+
+                {/* Mobile Burger Button */}
+                <button
+                    className="BurgerButton"
+                    onClick={toggleMobileMenu}
+                    aria-label="Toggle menu"
+                    style={{ zIndex: 10001 }}
+                >
+                    {isMobileMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
+                </button>
+            </nav>
+
+            {/* Mobile Menu Overlay */}
+            {mounted && isMobileMenuOpen && createPortal(
+                <div className="MobileMenuOverlay" ref={overlayRef}>
+                    <ul className="MobileMenuList">
+                        <li>
+                            <a className="MobileMenuLink" href="/" onClick={closeMobileMenu}>Home</a>
+                        </li>
+                        {siteConfig.nav.links.map((link) => (
+                            <li key={link.href}>
+                                <a className="MobileMenuLink" href={link.href} onClick={closeMobileMenu}>
+                                    {link.label}
+                                </a>
+                            </li>
+                        ))}
+                        {siteConfig.nav.cta && (
+                            <li>
+                                <a
+                                    className="MobileMenuLink NavigationCTAButton"
+                                    href={siteConfig.nav.cta.href}
+                                    onClick={closeMobileMenu}
+                                >
+                                    {siteConfig.nav.cta.label}
+                                </a>
+                            </li>
+                        )}
+                    </ul>
+                </div>,
+                document.body
+            )}
+
+            {/* Custom Scrollbar for Mobile Menu */}
+            {mounted && isMobileMenuOpen && createPortal(
+                <div className="custom-scrollbar" ref={scrollbarRef} style={{ position: 'fixed', zIndex: 10002 }}>
+                    <div className="scroll-arrow scroll-arrow-up" aria-hidden="true"></div>
+                    <div className="scroll-track" ref={trackRef}>
+                        <div className="custom-thumb" ref={thumbRef}></div>
+                    </div>
+                    <div className="scroll-arrow scroll-arrow-down" aria-hidden="true"></div>
+                </div>,
+                document.body
+            )}
+        </>
+    );
+};
+
+export default Navigation;

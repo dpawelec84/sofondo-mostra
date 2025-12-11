@@ -1,0 +1,152 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SubNav from "../../components/SubNav.astro";
+import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
+---
+
+<Layout title="Showcase - Sofondo Template">
+  <SubNav variant="services">
+    <div class="sub-nav-group sub-nav-group-design">
+      <a href="/showcase/" class="active">All Projects</a>
+      <a href="/showcase/websites/">Websites</a>
+    </div>
+    <div class="sub-nav-group sub-nav-group-hosting">
+      <a href="/showcase/apps/">Applications</a>
+    </div>
+    <div class="sub-nav-group sub-nav-group-accessibility">
+      <a href="/showcase/landing/">Landing Pages</a>
+    </div>
+  </SubNav>
+
+  <section class="page-content" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <h1 class="page-title">Showcase</h1>
+        <p class="page-description intro">
+          Examples of what you can build with this template.
+        </p>
+      </FadeInOnScroll>
+
+      <div class="showcase-grid">
+        <FadeInOnScroll delay={0}>
+          <div class="showcase-card">
+            <div class="showcase-image showcase-image--blue"></div>
+            <div class="showcase-content">
+              <h3>Marketing Website</h3>
+              <p>A clean, modern marketing site with smooth animations.</p>
+            </div>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <div class="showcase-card">
+            <div class="showcase-image showcase-image--green"></div>
+            <div class="showcase-content">
+              <h3>SaaS Landing Page</h3>
+              <p>Feature-rich landing page with pricing tables and CTAs.</p>
+            </div>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <div class="showcase-card">
+            <div class="showcase-image showcase-image--purple"></div>
+            <div class="showcase-content">
+              <h3>Portfolio Site</h3>
+              <p>Creative portfolio with stunning visual effects.</p>
+            </div>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <div class="showcase-card">
+            <div class="showcase-image showcase-image--orange"></div>
+            <div class="showcase-content">
+              <h3>Documentation Site</h3>
+              <p>Clean documentation with easy navigation.</p>
+            </div>
+          </div>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+  }
+
+  .showcase-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+  }
+
+  .showcase-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .showcase-image {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .showcase-image--blue {
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+  }
+
+  .showcase-image--green {
+    background: linear-gradient(135deg, #10b981, #14b8a6);
+  }
+
+  .showcase-image--purple {
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  }
+
+  .showcase-image--orange {
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+  }
+
+  .showcase-content {
+    padding: 1.5rem;
+  }
+
+  .showcase-content h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .showcase-content p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+</style>
