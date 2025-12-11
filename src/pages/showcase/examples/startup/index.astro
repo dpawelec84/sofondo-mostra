@@ -1,0 +1,1148 @@
+---
+import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
+---
+
+<ShowcaseLayout title="Quantum - AI-Powered Analytics" returnUrl="/showcase/">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </Fragment>
+
+  <div class="startup-site">
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <a href="#" class="logo">
+          <span class="logo-icon">Q</span>
+          Quantum
+        </a>
+        <nav class="nav">
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#about">About</a>
+          <a href="#" class="nav-cta">Get Started</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="hero-gradient"></div>
+        <div class="hero-grid"></div>
+      </div>
+      <div class="container">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Now in Public Beta
+        </div>
+        <h1 class="hero-title">
+          Analytics that <span class="text-gradient">think ahead</span>
+        </h1>
+        <p class="hero-subtitle">
+          Quantum uses advanced AI to predict trends, identify opportunities,
+          and automate insights—so you can make smarter decisions faster.
+        </p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary">
+            Start Free Trial
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </a>
+          <a href="#" class="btn btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
+            Watch Demo
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value">10K+</span>
+            <span class="stat-label">Active Users</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">99.9%</span>
+            <span class="stat-label">Uptime</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">50M+</span>
+            <span class="stat-label">Data Points</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logos Section -->
+    <section class="logos">
+      <div class="container">
+        <p class="logos-label">Trusted by innovative teams</p>
+        <div class="logos-grid">
+          <div class="logo-item">TechCorp</div>
+          <div class="logo-item">DataFlow</div>
+          <div class="logo-item">CloudNine</div>
+          <div class="logo-item">Nexus AI</div>
+          <div class="logo-item">Velocity</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Features</span>
+          <h2 class="section-title">Everything you need to <span class="text-gradient">understand your data</span></h2>
+          <p class="section-subtitle">Powerful tools that work together seamlessly to give you complete visibility.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card feature-card--large">
+            <div class="feature-visual">
+              <div class="feature-chart">
+                <div class="chart-bar" style="--height: 40%"></div>
+                <div class="chart-bar" style="--height: 65%"></div>
+                <div class="chart-bar" style="--height: 45%"></div>
+                <div class="chart-bar chart-bar--highlight" style="--height: 90%"></div>
+                <div class="chart-bar" style="--height: 70%"></div>
+                <div class="chart-bar" style="--height: 55%"></div>
+              </div>
+            </div>
+            <div class="feature-content">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+              </div>
+              <h3>Predictive Analytics</h3>
+              <p>Our AI models analyze historical data and current trends to forecast future outcomes with remarkable accuracy.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3>Real-time Updates</h3>
+            <p>See your metrics update instantly as new data flows in, with sub-second latency.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <h3>Custom Dashboards</h3>
+            <p>Build dashboards that tell your story with drag-and-drop widgets and templates.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Enterprise Security</h3>
+            <p>SOC 2 certified with end-to-end encryption, SSO, and role-based access control.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <h3>Smart Alerts</h3>
+            <p>Get notified about anomalies and opportunities via email, Slack, or webhooks.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+            <h3>API Access</h3>
+            <p>Integrate with your existing tools using our comprehensive REST and GraphQL APIs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">How It Works</span>
+          <h2 class="section-title">Up and running in minutes</h2>
+          <p class="section-subtitle">Getting started with Quantum is simple and straightforward.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step">
+            <div class="step-number">01</div>
+            <h3>Connect Your Data</h3>
+            <p>Integrate with 100+ data sources including databases, APIs, spreadsheets, and cloud services.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">02</div>
+            <h3>Configure Metrics</h3>
+            <p>Define the KPIs that matter to your business using our intuitive query builder or SQL.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">03</div>
+            <h3>Get Insights</h3>
+            <p>Let our AI analyze your data and surface actionable insights automatically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Pricing</span>
+          <h2 class="section-title">Simple, transparent pricing</h2>
+          <p class="section-subtitle">No hidden fees. No surprises. Cancel anytime.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Starter</h3>
+              <p class="pricing-desc">For individuals and small teams</p>
+            </div>
+            <div class="pricing-price">
+              <span class="price-currency">$</span>
+              <span class="price-amount">29</span>
+              <span class="price-period">/month</span>
+            </div>
+            <ul class="pricing-features">
+              <li>Up to 5 team members</li>
+              <li>10 data sources</li>
+              <li>Basic analytics</li>
+              <li>Email support</li>
+              <li>7-day data retention</li>
+            </ul>
+            <a href="#" class="btn btn-outline">Get Started</a>
+          </div>
+
+          <div class="pricing-card pricing-card--popular">
+            <div class="popular-badge">Most Popular</div>
+            <div class="pricing-header">
+              <h3>Pro</h3>
+              <p class="pricing-desc">For growing businesses</p>
+            </div>
+            <div class="pricing-price">
+              <span class="price-currency">$</span>
+              <span class="price-amount">99</span>
+              <span class="price-period">/month</span>
+            </div>
+            <ul class="pricing-features">
+              <li>Up to 20 team members</li>
+              <li>Unlimited data sources</li>
+              <li>Advanced AI analytics</li>
+              <li>Priority support</li>
+              <li>30-day data retention</li>
+              <li>Custom dashboards</li>
+              <li>API access</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Enterprise</h3>
+              <p class="pricing-desc">For large organizations</p>
+            </div>
+            <div class="pricing-price">
+              <span class="price-amount">Custom</span>
+            </div>
+            <ul class="pricing-features">
+              <li>Unlimited team members</li>
+              <li>Unlimited data sources</li>
+              <li>Custom AI models</li>
+              <li>Dedicated support</li>
+              <li>Unlimited data retention</li>
+              <li>White-label options</li>
+              <li>SLA guarantee</li>
+              <li>On-premise deployment</li>
+            </ul>
+            <a href="#" class="btn btn-outline">Contact Sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Testimonials</span>
+          <h2 class="section-title">Loved by data teams everywhere</h2>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"Quantum has transformed how we approach data analysis. The AI predictions have helped us identify trends weeks before our competitors."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">SM</div>
+              <div class="author-info">
+                <strong>Sarah Mitchell</strong>
+                <span>VP of Analytics, TechCorp</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"The setup was incredibly smooth. We had our first dashboard running within an hour of signing up. The real-time updates are game-changing."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">JC</div>
+              <div class="author-info">
+                <strong>James Chen</strong>
+                <span>Data Lead, DataFlow</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"Finally, an analytics platform that doesn't require a PhD to use. Our entire team can now access and understand our metrics."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">AL</div>
+              <div class="author-info">
+                <strong>Amanda Lee</strong>
+                <span>CEO, Velocity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to unlock your data's potential?</h2>
+          <p>Start your 14-day free trial today. No credit card required.</p>
+          <div class="cta-actions">
+            <a href="#" class="btn btn-primary btn-large">
+              Start Free Trial
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+            </a>
+            <a href="#" class="btn btn-ghost">Talk to Sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="logo">
+              <span class="logo-icon">Q</span>
+              Quantum
+            </a>
+            <p>AI-powered analytics for modern teams.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Product</h4>
+            <a href="#">Features</a>
+            <a href="#">Pricing</a>
+            <a href="#">Integrations</a>
+            <a href="#">Changelog</a>
+          </div>
+          <div class="footer-links">
+            <h4>Company</h4>
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact</a>
+          </div>
+          <div class="footer-links">
+            <h4>Resources</h4>
+            <a href="#">Documentation</a>
+            <a href="#">API Reference</a>
+            <a href="#">Status</a>
+            <a href="#">Support</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Quantum Analytics. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</ShowcaseLayout>
+
+<style>
+  /* Reset & Base */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .startup-site {
+    font-family: 'Outfit', -apple-system, sans-serif;
+    background: #09090b;
+    color: #fafafa;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #a855f7, #6366f1, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.4);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fafafa;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: #a1a1aa;
+  }
+
+  .btn-ghost:hover {
+    color: #fafafa;
+  }
+
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* Header */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1rem 0;
+    background: rgba(9, 9, 11, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #fafafa;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav a {
+    color: #a1a1aa;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color 0.2s;
+  }
+
+  .nav a:hover {
+    color: #fafafa;
+  }
+
+  .nav-cta {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+  }
+
+  .nav-cta:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    padding: 10rem 0 6rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-gradient {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 100px;
+    font-size: 0.875rem;
+    color: #a855f7;
+    margin-bottom: 1.5rem;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background: #a855f7;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #a1a1aa;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-family: 'Sora', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fafafa, #a1a1aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: #71717a;
+  }
+
+  /* Logos */
+  .logos {
+    padding: 4rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .logos-label {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #71717a;
+    margin-bottom: 2rem;
+  }
+
+  .logos-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .logo-item {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #3f3f46;
+  }
+
+  /* Section Styles */
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-tag {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #a855f7;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: #a1a1aa;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Features */
+  .features {
+    padding: 6rem 0;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s;
+  }
+
+  .feature-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(168, 85, 247, 0.2);
+    transform: translateY(-4px);
+  }
+
+  .feature-card--large {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .feature-visual {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .feature-chart {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-end;
+    height: 100%;
+  }
+
+  .chart-bar {
+    width: 32px;
+    height: var(--height);
+    background: linear-gradient(180deg, rgba(168, 85, 247, 0.6), rgba(99, 102, 241, 0.3));
+    border-radius: 4px 4px 0 0;
+  }
+
+  .chart-bar--highlight {
+    background: linear-gradient(180deg, #a855f7, #6366f1);
+  }
+
+  .feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(168, 85, 247, 0.1);
+    border-radius: 12px;
+    color: #a855f7;
+    margin-bottom: 1rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-card p {
+    color: #a1a1aa;
+    font-size: 0.9375rem;
+  }
+
+  /* How It Works */
+  .how-it-works {
+    padding: 6rem 0;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .step {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .step-number {
+    font-family: 'Sora', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+
+  .step h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .step p {
+    color: #a1a1aa;
+    font-size: 0.9375rem;
+  }
+
+  /* Pricing */
+  .pricing {
+    padding: 6rem 0;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .pricing-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .pricing-card--popular {
+    background: rgba(168, 85, 247, 0.05);
+    border-color: rgba(168, 85, 247, 0.3);
+    transform: scale(1.05);
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.375rem 1rem;
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .pricing-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-desc {
+    color: #71717a;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-price {
+    margin-bottom: 1.5rem;
+  }
+
+  .price-currency {
+    font-size: 1.5rem;
+    color: #71717a;
+    vertical-align: top;
+  }
+
+  .price-amount {
+    font-family: 'Sora', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+  }
+
+  .price-period {
+    color: #71717a;
+    font-size: 1rem;
+  }
+
+  .pricing-features {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .pricing-features li {
+    padding: 0.5rem 0;
+    color: #a1a1aa;
+    font-size: 0.9375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .pricing-features li::before {
+    content: "✓";
+    color: #a855f7;
+    font-weight: 600;
+  }
+
+  .pricing-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Testimonials */
+  .testimonials {
+    padding: 6rem 0;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .testimonial-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .testimonial-content p {
+    font-size: 1rem;
+    color: #d4d4d8;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .author-info strong {
+    display: block;
+    font-size: 0.9375rem;
+  }
+
+  .author-info span {
+    font-size: 0.8125rem;
+    color: #71717a;
+  }
+
+  /* CTA */
+  .cta {
+    padding: 6rem 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    padding: 4rem;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(99, 102, 241, 0.1));
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 24px;
+  }
+
+  .cta-content h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    color: #a1a1aa;
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 4rem 0 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand p {
+    color: #71717a;
+    font-size: 0.9375rem;
+    margin-top: 1rem;
+  }
+
+  .footer-links h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .footer-links a {
+    display: block;
+    color: #71717a;
+    text-decoration: none;
+    font-size: 0.875rem;
+    padding: 0.375rem 0;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: #fafafa;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.875rem;
+    color: #71717a;
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-legal a {
+    color: #71717a;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-legal a:hover {
+    color: #fafafa;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-card--large {
+      grid-column: span 2;
+    }
+
+    .pricing-grid,
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .pricing-card--popular {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
+    }
+
+    .hero {
+      padding: 8rem 0 4rem;
+    }
+
+    .hero-stats {
+      gap: 2rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .feature-card--large {
+      grid-column: span 1;
+      grid-template-columns: 1fr;
+    }
+
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .logos-grid {
+      gap: 2rem;
+    }
+  }
+</style>
