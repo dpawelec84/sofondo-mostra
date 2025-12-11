@@ -219,8 +219,66 @@ sourceContent = sourceContent.replace(
 );
 sourceContent = sourceContent.replace(/<\/ShowcaseLayout>/g, '</Layout>');
 
-// Move <Fragment slot="head"> styles to a <style> block (handled by Astro)
-// Keep the head styles but transform them to work in Layout context
+// Strip the example's header element (Layout.astro provides its own Header component)
+// Match: <!-- Header --> comment (optional) + <header ...>...</header>
+sourceContent = sourceContent.replace(
+  /\s*<!--\s*Header\s*-->\s*<header[^>]*>[\s\S]*?<\/header>/gi,
+  ''
+);
+// Also try without comment
+sourceContent = sourceContent.replace(
+  /\s*<header\s+class="header"[^>]*>[\s\S]*?<\/header>/gi,
+  ''
+);
+
+// Strip the example's footer element (Layout.astro provides its own Footer component)
+// Match: <!-- Footer --> comment (optional) + <footer ...>...</footer>
+sourceContent = sourceContent.replace(
+  /\s*<!--\s*Footer\s*-->\s*<footer[^>]*>[\s\S]*?<\/footer>/gi,
+  ''
+);
+// Also try without comment
+sourceContent = sourceContent.replace(
+  /\s*<footer\s+class="footer"[^>]*>[\s\S]*?<\/footer>/gi,
+  ''
+);
+
+// Remove conflicting CSS from the example's <style> block
+// These conflict with Layout's global styles and Lenis smooth scrolling
+const conflictingCSSPatterns = [
+  // Reset styles that conflict with global.css
+  /\s*\*\s*\{[^}]*margin:\s*0[^}]*\}/g,
+  // HTML scroll behavior that conflicts with Lenis
+  /\s*html\s*\{[^}]*scroll-behavior:\s*smooth[^}]*\}/g,
+  // Body styles that override Layout's body
+  /\s*body\s*\{[^}]*font-family:[^}]*\}/g,
+  // Header CSS (no longer needed since we use Layout's Header)
+  /\s*\/\*\s*Header\s*\*\/[\s\S]*?(?=\/\*|\.hero|$)/g,
+  /\s*\.header\s*\{[^}]*\}/g,
+  /\s*\.header-inner\s*\{[^}]*\}/g,
+  /\s*\.logo\s*\{[^}]*\}/g,
+  /\s*\.logo\s+span\s*\{[^}]*\}/g,
+  /\s*\.nav\s*\{[^}]*\}/g,
+  /\s*\.nav\s+a\s*\{[^}]*\}/g,
+  /\s*\.nav\s+a:hover\s*\{[^}]*\}/g,
+  /\s*\.nav-cta\s*\{[^}]*\}/g,
+  /\s*\.nav-cta:hover\s*\{[^}]*\}/g,
+  // Footer CSS (no longer needed since we use Layout's Footer)
+  /\s*\/\*\s*Footer\s*\*\/[\s\S]*?(?=\/\*|\s*@media|\s*\.fade-in|\s*<\/style>)/g,
+  /\s*\.footer\s*\{[^}]*\}/g,
+  /\s*\.footer-grid\s*\{[^}]*\}/g,
+  /\s*\.footer-brand[^{]*\{[^}]*\}/g,
+  /\s*\.footer-links[^{]*\{[^}]*\}/g,
+  /\s*\.footer-bottom\s*\{[^}]*\}/g,
+];
+
+for (const pattern of conflictingCSSPatterns) {
+  sourceContent = sourceContent.replace(pattern, '');
+}
+
+// Clean up any leftover /* Header */ or /* Footer */ comment blocks
+sourceContent = sourceContent.replace(/\s*\/\*\s*Header\s*\*\/\s*/g, '');
+sourceContent = sourceContent.replace(/\s*\/\*\s*Footer\s*\*\/\s*/g, '');
 
 fs.writeFileSync(targetPath, sourceContent);
 console.log(`✓ Created new homepage from ${recipe.source} example`);
