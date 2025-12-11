@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import { X } from 'lucide-react';
-import { siteConfig } from '../config/site';
+import { ChevronDown, X } from 'lucide-react';
+import { siteConfig, isMegaMenu, type NavItem, type MegaMenuItem } from '../config/site';
 
 // Custom menu icon with shorter third bar
 const MenuIcon = ({ size = 24 }: { size?: number }) => (
@@ -26,8 +26,10 @@ import '../styles/global.css';
 import '../styles/mobile-menu.css';
 
 const Navigation = () => {
+    const [activeMenu, setActiveMenu] = React.useState<string | null>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
     const [mounted, setMounted] = React.useState(false);
+    const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
     // Lenis & Scrollbar Refs
     const lenisRef = React.useRef<Lenis | null>(null);
@@ -195,6 +197,30 @@ const Navigation = () => {
         };
     }, [isMobileMenuOpen]);
 
+    const handleMouseEnter = (menuId: string) => {
+        // Ignore hover events on touch devices
+        if (typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches) {
+            return;
+        }
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+        setActiveMenu(menuId);
+    };
+
+    const handleMouseLeave = () => {
+        timeoutRef.current = setTimeout(() => {
+            setActiveMenu(null);
+        }, 100);
+    };
+
+    const toggleMenu = (menuId: string) => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+        setActiveMenu(activeMenu === menuId ? null : menuId);
+    };
+
     const toggleMobileMenu = () => {
         const newState = !isMobileMenuOpen;
         setIsMobileMenuOpen(newState);
@@ -213,15 +239,46 @@ const Navigation = () => {
         window.dispatchEvent(event);
     };
 
+    // Get mega menu items for rendering dropdown content
+    const megaMenuItems = siteConfig.nav.items.filter(isMegaMenu) as MegaMenuItem[];
+
     return (
         <>
+            {/* Overlay behind mega menu */}
+            <div
+                className="MenuOverlay"
+                onMouseEnter={handleMouseLeave}
+                style={{ display: activeMenu ? 'block' : 'none' }}
+            />
+
             <nav className="NavigationMenuRoot">
                 {/* Desktop Menu List */}
                 <ul className="NavigationMenuList">
-                    {siteConfig.nav.links.map((link) => (
-                        <li key={link.href}>
-                            <a className="NavigationMenuLink" href={link.href}>{link.label}</a>
-                        </li>
+                    {siteConfig.nav.items.map((item: NavItem) => (
+                        isMegaMenu(item) ? (
+                            <li
+                                key={item.menuId}
+                                className="NavigationMenuItem"
+                                onMouseEnter={() => handleMouseEnter(item.menuId)}
+                                onMouseLeave={handleMouseLeave}
+                            >
+                                <button
+                                    className={`NavigationMenuTrigger ${activeMenu === item.menuId ? 'active' : ''}`}
+                                    type="button"
+                                    onClick={() => toggleMenu(item.menuId)}
+                                >
+                                    {item.label}
+                                    <ChevronDown
+                                        className="NavigationMenuChevron"
+                                        style={{ transform: activeMenu === item.menuId ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                                    />
+                                </button>
+                            </li>
+                        ) : (
+                            <li key={item.href}>
+                                <a className="NavigationMenuLink" href={item.href}>{item.label}</a>
+                            </li>
+                        )
                     ))}
                     {siteConfig.nav.cta && (
                         <li>
@@ -243,6 +300,44 @@ const Navigation = () => {
                 </button>
             </nav>
 
+            {/* Desktop Mega Menu Content */}
+            {activeMenu && (
+                <div
+                    className="NavigationMenuContent"
+                    onMouseEnter={() => handleMouseEnter(activeMenu)}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <div className="MegaMenuContainer">
+                        {megaMenuItems.map((menuItem) => (
+                            activeMenu === menuItem.menuId && (
+                                <div key={menuItem.menuId} className="MegaMenu">
+                                    {menuItem.sections.map((section, sectionIndex) => (
+                                        <div key={sectionIndex} className="MegaMenuSection">
+                                            <h3 className={`MegaMenuSectionTitle MegaMenuSectionTitle--${section.titleStyle || 'neutral'}`}>
+                                                {section.title}
+                                            </h3>
+                                            {section.links.map((link, linkIndex) => (
+                                                <a
+                                                    key={linkIndex}
+                                                    href={link.href}
+                                                    className="MegaMenuLink"
+                                                    {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                                >
+                                                    <span className="MegaMenuLinkTitle">{link.title}</span>
+                                                    {link.description && (
+                                                        <span className="MegaMenuLinkDesc">{link.description}</span>
+                                                    )}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    ))}
+                                </div>
+                            )
+                        ))}
+                    </div>
+                </div>
+            )}
+
             {/* Mobile Menu Overlay */}
             {mounted && isMobileMenuOpen && createPortal(
                 <div className="MobileMenuOverlay" ref={overlayRef}>
@@ -250,12 +345,44 @@ const Navigation = () => {
                         <li>
                             <a className="MobileMenuLink" href="/" onClick={closeMobileMenu}>Home</a>
                         </li>
-                        {siteConfig.nav.links.map((link) => (
-                            <li key={link.href}>
-                                <a className="MobileMenuLink" href={link.href} onClick={closeMobileMenu}>
-                                    {link.label}
-                                </a>
-                            </li>
+                        {siteConfig.nav.items.map((item: NavItem) => (
+                            isMegaMenu(item) ? (
+                                <li key={item.menuId}>
+                                    <details name="mobile-menu-accordion-group" className="MobileMenuDetails">
+                                        <summary className="MobileMenuSummary">
+                                            <span className="MobileMenuText">
+                                                {item.label}
+                                                <ChevronDown size={20} />
+                                            </span>
+                                        </summary>
+                                        <div className="MobileSubMenu">
+                                            {item.sections.map((section, sectionIndex) => (
+                                                <div key={sectionIndex} className="MobileSubMenuSection">
+                                                    <h4 className={`MobileSubMenuTitle MobileSubMenuTitle--${section.titleStyle || 'neutral'}`}>
+                                                        {section.title}
+                                                    </h4>
+                                                    {section.links.map((link, linkIndex) => (
+                                                        <a
+                                                            key={linkIndex}
+                                                            href={link.href}
+                                                            onClick={closeMobileMenu}
+                                                            {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                                        >
+                                                            {link.title}
+                                                        </a>
+                                                    ))}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </details>
+                                </li>
+                            ) : (
+                                <li key={item.href}>
+                                    <a className="MobileMenuLink" href={item.href} onClick={closeMobileMenu}>
+                                        {item.label}
+                                    </a>
+                                </li>
+                            )
                         ))}
                         {siteConfig.nav.cta && (
                             <li>

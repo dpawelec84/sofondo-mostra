@@ -1,10 +1,10 @@
 ---
 export interface Props {
-  variant?: 'services' | 'simple';
+  variant?: 'grouped' | 'simple';
   gap?: string;
 }
 
-const { variant = 'services', gap = '1.5rem' } = Astro.props;
+const { variant = 'grouped', gap = '1.5rem' } = Astro.props;
 ---
 
 <div class="sub-nav-container" data-variant={variant}>
@@ -228,7 +228,7 @@ const { variant = 'services', gap = '1.5rem' } = Astro.props;
     color: rgba(0, 0, 0, 0.04);
   }
 
-  /* Sub-nav groups (for services variant) */
+  /* Sub-nav groups (for grouped variant) */
   .sub-nav :global(.sub-nav-group) {
     display: flex;
     gap: 1.5rem;

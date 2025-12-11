@@ -5,11 +5,16 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 ---
 
 <Layout title="Smooth Scrolling - Sofondo Mostra">
-  <SubNav variant="simple">
-    <a href="/features/">Overview</a>
-    <a href="/features/scrolling/" class="active">Smooth Scrolling</a>
-    <a href="/features/animations/">Animations</a>
-    <a href="/features/components/">Components</a>
+  <SubNav variant="grouped">
+    <div class="sub-nav-group sub-nav-group-design">
+      <a href="/features/">Overview</a>
+      <a href="/features/scrolling/" class="active">Smooth Scrolling</a>
+      <a href="/features/animations/">Animations</a>
+    </div>
+    <div class="sub-nav-group sub-nav-group-hosting">
+      <a href="/features/components/subnav/">SubNav</a>
+      <a href="/features/components/fadein/">FadeInOnScroll</a>
+    </div>
   </SubNav>
 
   <section class="page-content" data-bg-theme="light">

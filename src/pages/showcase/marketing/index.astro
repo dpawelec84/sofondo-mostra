@@ -4,27 +4,20 @@ import SubNav from "../../../components/SubNav.astro";
 import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 ---
 
-<Layout title="Applications - Sofondo Mostra">
-  <SubNav variant="services">
-    <div class="sub-nav-group sub-nav-group-design">
-      <a href="/showcase/">All Projects</a>
-      <a href="/showcase/websites/">Websites</a>
-    </div>
-    <div class="sub-nav-group sub-nav-group-hosting">
-      <a href="/showcase/apps/" class="active">Applications</a>
-    </div>
-    <div class="sub-nav-group sub-nav-group-accessibility">
-      <a href="/showcase/landing/">Landing Pages</a>
-    </div>
+<Layout title="Marketing Sites - Sofondo Mostra">
+  <SubNav variant="simple">
+    <a href="/showcase/">All Projects</a>
+    <a href="/showcase/marketing/" class="active">Marketing Sites</a>
+    <a href="/showcase/landing/">Landing Pages</a>
   </SubNav>
 
   <section class="page-content" data-bg-theme="light">
     <div class="container">
       <FadeInOnScroll>
         <div class="page-header">
-          <h1 class="page-title">Application Examples</h1>
+          <h1 class="page-title">Marketing Site Examples</h1>
           <p class="page-description intro">
-            Web applications and dashboards built with this template.
+            Corporate and brand website builds using this template.
           </p>
         </div>
       </FadeInOnScroll>
@@ -32,30 +25,30 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
       <div class="showcase-grid">
         <FadeInOnScroll delay={0}>
           <div class="showcase-card">
-            <div class="showcase-image showcase-image--green"></div>
+            <div class="showcase-image showcase-image--blue"></div>
             <div class="showcase-content">
-              <h3>SaaS Dashboard</h3>
-              <p>Analytics dashboard with charts, tables, and data visualization.</p>
+              <h3>Corporate Website</h3>
+              <p>Professional business site with multiple sections and contact forms.</p>
             </div>
           </div>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={100}>
           <div class="showcase-card">
-            <div class="showcase-image showcase-image--blue"></div>
+            <div class="showcase-image showcase-image--teal"></div>
             <div class="showcase-content">
-              <h3>Admin Panel</h3>
-              <p>Full-featured admin interface with user management.</p>
+              <h3>Agency Portfolio</h3>
+              <p>Creative agency site showcasing work and team members.</p>
             </div>
           </div>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={200}>
           <div class="showcase-card">
-            <div class="showcase-image showcase-image--orange"></div>
+            <div class="showcase-image showcase-image--purple"></div>
             <div class="showcase-content">
-              <h3>Project Manager</h3>
-              <p>Task and project tracking application with Kanban boards.</p>
+              <h3>Tech Startup</h3>
+              <p>Modern startup site with product features and pricing.</p>
             </div>
           </div>
         </FadeInOnScroll>
@@ -115,16 +108,16 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     background-position: center;
   }
 
-  .showcase-image--green {
-    background: linear-gradient(135deg, #10b981, #14b8a6);
-  }
-
   .showcase-image--blue {
     background: linear-gradient(135deg, #3b82f6, #6366f1);
   }
 
-  .showcase-image--orange {
-    background: linear-gradient(135deg, #f59e0b, #f97316);
+  .showcase-image--teal {
+    background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  }
+
+  .showcase-image--purple {
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
   }
 
   .showcase-content {

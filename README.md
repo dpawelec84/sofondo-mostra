@@ -121,14 +121,14 @@ A sticky sub-navigation component with two variants:
   <a href="/docs/components/">Components</a>
 </SubNav>
 
-<!-- Services variant - grouped links with color indicators -->
-<SubNav variant="services">
+<!-- Grouped variant - links with color indicators -->
+<SubNav variant="grouped">
   <div class="sub-nav-group sub-nav-group-design">
-    <a href="/services/web/" class="active">Web Design</a>
-    <a href="/services/branding/">Branding</a>
+    <a href="/features/" class="active">Overview</a>
+    <a href="/features/scrolling/">Smooth Scrolling</a>
   </div>
   <div class="sub-nav-group sub-nav-group-hosting">
-    <a href="/services/hosting/">Hosting</a>
+    <a href="/features/components/subnav/">SubNav</a>
   </div>
 </SubNav>
 ```

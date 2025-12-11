@@ -1,18 +1,18 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import SubNav from "../../../components/SubNav.astro";
-import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+import Layout from "../../../../layouts/Layout.astro";
+import SubNav from "../../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../../components/FadeInOnScroll.astro";
 ---
 
-<Layout title="Animations - Sofondo Mostra">
+<Layout title="SubNav Component - Sofondo Mostra">
   <SubNav variant="grouped">
     <div class="sub-nav-group sub-nav-group-design">
       <a href="/features/">Overview</a>
       <a href="/features/scrolling/">Smooth Scrolling</a>
-      <a href="/features/animations/" class="active">Animations</a>
+      <a href="/features/animations/">Animations</a>
     </div>
     <div class="sub-nav-group sub-nav-group-hosting">
-      <a href="/features/components/subnav/">SubNav</a>
+      <a href="/features/components/subnav/" class="active">SubNav</a>
       <a href="/features/components/fadein/">FadeInOnScroll</a>
     </div>
   </SubNav>
@@ -21,9 +21,9 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     <div class="container">
       <FadeInOnScroll>
         <div class="page-header">
-          <h1 class="page-title">Animations</h1>
+          <h1 class="page-title">SubNav Component</h1>
           <p class="page-description intro">
-            Scroll-triggered animations and smooth transitions.
+            Sticky navigation with glassmorphism effects.
           </p>
         </div>
       </FadeInOnScroll>
@@ -31,76 +31,67 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
       <div class="content">
         <FadeInOnScroll delay={0}>
           <section class="content-section">
-            <h2>FadeInOnScroll</h2>
+            <h2>About SubNav</h2>
             <p>
-              The FadeInOnScroll component reveals content as users scroll down the page.
-              It uses the Intersection Observer API for optimal performance.
+              The SubNav component provides a sticky sub-navigation bar that sits below the main header.
+              It features a glassmorphism effect when scrolled, horizontal scrolling on mobile,
+              and supports both simple and grouped link styles.
             </p>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={100}>
           <section class="content-section">
-            <h2>Basic Usage</h2>
-            <p>Wrap any content you want to animate:</p>
+            <h2>Simple Variant</h2>
+            <p>Use the simple variant for a flat list of navigation links:</p>
             <div class="code-block">
-              <pre><code>&lt;FadeInOnScroll&gt;
-  &lt;h2&gt;This content fades in on scroll&lt;/h2&gt;
-&lt;/FadeInOnScroll&gt;</code></pre>
+              <pre><code>&lt;SubNav variant="simple"&gt;
+  &lt;a href="/docs/" class="active"&gt;Getting Started&lt;/a&gt;
+  &lt;a href="/docs/configuration/"&gt;Configuration&lt;/a&gt;
+  &lt;a href="/docs/components/"&gt;Components&lt;/a&gt;
+&lt;/SubNav&gt;</code></pre>
             </div>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={200}>
           <section class="content-section">
-            <h2>Staggered Animations</h2>
-            <p>Add delays for staggered reveal effects:</p>
+            <h2>Grouped Variant</h2>
+            <p>Use the grouped variant for links with color-coded group indicators:</p>
             <div class="code-block">
-              <pre><code>&lt;FadeInOnScroll delay={'{'}0{'}'}&gt;
-  &lt;div class="card"&gt;First card&lt;/div&gt;
-&lt;/FadeInOnScroll&gt;
-
-&lt;FadeInOnScroll delay={'{'}100{'}'}&gt;
-  &lt;div class="card"&gt;Second card&lt;/div&gt;
-&lt;/FadeInOnScroll&gt;
-
-&lt;FadeInOnScroll delay={'{'}200{'}'}&gt;
-  &lt;div class="card"&gt;Third card&lt;/div&gt;
-&lt;/FadeInOnScroll&gt;</code></pre>
+              <pre><code>&lt;SubNav variant="grouped"&gt;
+  &lt;div class="sub-nav-group sub-nav-group-design"&gt;
+    &lt;a href="/features/"&gt;Overview&lt;/a&gt;
+    &lt;a href="/features/scrolling/"&gt;Smooth Scrolling&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="sub-nav-group sub-nav-group-hosting"&gt;
+    &lt;a href="/features/components/subnav/"&gt;SubNav&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/SubNav&gt;</code></pre>
             </div>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={300}>
           <section class="content-section">
-            <h2>View Transitions</h2>
-            <p>
-              Astro's View Transitions API enables smooth page transitions.
-              Enable it in your configuration:
-            </p>
-            <div class="code-block">
-              <pre><code>// src/config/site.ts
-export const siteConfig = {'{'}
-  features: {'{'}
-    viewTransitions: true,
-  {'}'},
-{'}'}</code></pre>
-            </div>
-            <p>
-              Elements will smoothly transition between pages, creating a native app-like experience.
-            </p>
+            <h2>Available Group Styles</h2>
+            <ul class="feature-list">
+              <li><strong>sub-nav-group-design</strong> - Blue gradient indicator</li>
+              <li><strong>sub-nav-group-hosting</strong> - Green gradient indicator</li>
+              <li><strong>sub-nav-group-accessibility</strong> - Orange gradient indicator</li>
+            </ul>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={400}>
           <section class="content-section">
-            <h2>Animation Properties</h2>
+            <h2>Features</h2>
             <ul class="feature-list">
-              <li><strong>Duration</strong> - 0.6s default transition time</li>
-              <li><strong>Easing</strong> - Smooth ease-out curve</li>
-              <li><strong>Transform</strong> - 20px upward translate</li>
-              <li><strong>Opacity</strong> - 0 to 1 fade effect</li>
-              <li><strong>Threshold</strong> - Triggers at 10% visibility</li>
+              <li><strong>Sticky positioning</strong> - Stays visible as you scroll</li>
+              <li><strong>Glassmorphism</strong> - Frosted glass effect when stuck</li>
+              <li><strong>Mobile scroll</strong> - Horizontal scrolling on small screens</li>
+              <li><strong>Active states</strong> - Highlight current page with <code>class="active"</code></li>
+              <li><strong>Theme aware</strong> - Adapts to light and dark backgrounds</li>
             </ul>
           </section>
         </FadeInOnScroll>
@@ -194,5 +185,13 @@ export const siteConfig = {'{'}
 
   .feature-list strong {
     color: var(--text-primary);
+  }
+
+  .feature-list code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
   }
 </style>

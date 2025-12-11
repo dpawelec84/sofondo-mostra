@@ -1,19 +1,19 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import SubNav from "../../../components/SubNav.astro";
-import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+import Layout from "../../../../layouts/Layout.astro";
+import SubNav from "../../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../../components/FadeInOnScroll.astro";
 ---
 
-<Layout title="Animations - Sofondo Mostra">
+<Layout title="FadeInOnScroll Component - Sofondo Mostra">
   <SubNav variant="grouped">
     <div class="sub-nav-group sub-nav-group-design">
       <a href="/features/">Overview</a>
       <a href="/features/scrolling/">Smooth Scrolling</a>
-      <a href="/features/animations/" class="active">Animations</a>
+      <a href="/features/animations/">Animations</a>
     </div>
     <div class="sub-nav-group sub-nav-group-hosting">
       <a href="/features/components/subnav/">SubNav</a>
-      <a href="/features/components/fadein/">FadeInOnScroll</a>
+      <a href="/features/components/fadein/" class="active">FadeInOnScroll</a>
     </div>
   </SubNav>
 
@@ -21,9 +21,9 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     <div class="container">
       <FadeInOnScroll>
         <div class="page-header">
-          <h1 class="page-title">Animations</h1>
+          <h1 class="page-title">FadeInOnScroll Component</h1>
           <p class="page-description intro">
-            Scroll-triggered animations and smooth transitions.
+            Scroll-triggered reveal animations for content.
           </p>
         </div>
       </FadeInOnScroll>
@@ -31,10 +31,10 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
       <div class="content">
         <FadeInOnScroll delay={0}>
           <section class="content-section">
-            <h2>FadeInOnScroll</h2>
+            <h2>About FadeInOnScroll</h2>
             <p>
-              The FadeInOnScroll component reveals content as users scroll down the page.
-              It uses the Intersection Observer API for optimal performance.
+              The FadeInOnScroll component wraps content and reveals it with a smooth fade-in animation
+              when it enters the viewport. It uses the Intersection Observer API for optimal performance.
             </p>
           </section>
         </FadeInOnScroll>
@@ -45,7 +45,10 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
             <p>Wrap any content you want to animate:</p>
             <div class="code-block">
               <pre><code>&lt;FadeInOnScroll&gt;
-  &lt;h2&gt;This content fades in on scroll&lt;/h2&gt;
+  &lt;div class="card"&gt;
+    &lt;h2&gt;Card Title&lt;/h2&gt;
+    &lt;p&gt;This content fades in when scrolled into view.&lt;/p&gt;
+  &lt;/div&gt;
 &lt;/FadeInOnScroll&gt;</code></pre>
             </div>
           </section>
@@ -54,18 +57,18 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
         <FadeInOnScroll delay={200}>
           <section class="content-section">
             <h2>Staggered Animations</h2>
-            <p>Add delays for staggered reveal effects:</p>
+            <p>Add delays to create staggered reveal effects:</p>
             <div class="code-block">
               <pre><code>&lt;FadeInOnScroll delay={'{'}0{'}'}&gt;
   &lt;div class="card"&gt;First card&lt;/div&gt;
 &lt;/FadeInOnScroll&gt;
 
 &lt;FadeInOnScroll delay={'{'}100{'}'}&gt;
-  &lt;div class="card"&gt;Second card&lt;/div&gt;
+  &lt;div class="card"&gt;Second card (100ms delay)&lt;/div&gt;
 &lt;/FadeInOnScroll&gt;
 
 &lt;FadeInOnScroll delay={'{'}200{'}'}&gt;
-  &lt;div class="card"&gt;Third card&lt;/div&gt;
+  &lt;div class="card"&gt;Third card (200ms delay)&lt;/div&gt;
 &lt;/FadeInOnScroll&gt;</code></pre>
             </div>
           </section>
@@ -73,22 +76,10 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 
         <FadeInOnScroll delay={300}>
           <section class="content-section">
-            <h2>View Transitions</h2>
-            <p>
-              Astro's View Transitions API enables smooth page transitions.
-              Enable it in your configuration:
-            </p>
-            <div class="code-block">
-              <pre><code>// src/config/site.ts
-export const siteConfig = {'{'}
-  features: {'{'}
-    viewTransitions: true,
-  {'}'},
-{'}'}</code></pre>
-            </div>
-            <p>
-              Elements will smoothly transition between pages, creating a native app-like experience.
-            </p>
+            <h2>Props</h2>
+            <ul class="feature-list">
+              <li><strong>delay</strong> - Delay in milliseconds before animation starts (default: 0)</li>
+            </ul>
           </section>
         </FadeInOnScroll>
 
@@ -96,12 +87,24 @@ export const siteConfig = {'{'}
           <section class="content-section">
             <h2>Animation Properties</h2>
             <ul class="feature-list">
-              <li><strong>Duration</strong> - 0.6s default transition time</li>
+              <li><strong>Duration</strong> - 0.6s transition time</li>
               <li><strong>Easing</strong> - Smooth ease-out curve</li>
               <li><strong>Transform</strong> - 20px upward translate</li>
               <li><strong>Opacity</strong> - 0 to 1 fade effect</li>
               <li><strong>Threshold</strong> - Triggers at 10% visibility</li>
             </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={500}>
+          <section class="content-section">
+            <h2>How It Works</h2>
+            <p>
+              The component uses the Intersection Observer API to detect when elements
+              enter the viewport. When an element becomes visible, a CSS class is added
+              that triggers the animation. This approach is much more performant than
+              scroll event listeners.
+            </p>
           </section>
         </FadeInOnScroll>
       </div>
