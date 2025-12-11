@@ -246,28 +246,52 @@ const { variant = 'grouped', gap = '1.5rem' } = Astro.props;
     border-radius: 2px;
   }
 
-  .sub-nav :global(.sub-nav-group-design) {
-    --group-color: #4f7df3;
+  .sub-nav :global(.sub-nav-group-primary) {
+    --group-color: var(--group-primary-solid);
   }
 
-  .sub-nav :global(.sub-nav-group-design)::before {
-    background: linear-gradient(90deg, #3b82f6, #6366f1);
+  .sub-nav :global(.sub-nav-group-primary)::before {
+    background: linear-gradient(90deg, var(--group-primary-start), var(--group-primary-end));
   }
 
-  .sub-nav :global(.sub-nav-group-hosting) {
-    --group-color: #12b38d;
+  .sub-nav :global(.sub-nav-group-secondary) {
+    --group-color: var(--group-secondary-solid);
   }
 
-  .sub-nav :global(.sub-nav-group-hosting)::before {
-    background: linear-gradient(90deg, #10b981, #14b8a6);
+  .sub-nav :global(.sub-nav-group-secondary)::before {
+    background: linear-gradient(90deg, var(--group-secondary-start), var(--group-secondary-end));
   }
 
-  .sub-nav :global(.sub-nav-group-accessibility) {
-    --group-color: #f78c11;
+  .sub-nav :global(.sub-nav-group-tertiary) {
+    --group-color: var(--group-tertiary-solid);
   }
 
-  .sub-nav :global(.sub-nav-group-accessibility)::before {
-    background: linear-gradient(90deg, #f59e0b, #f97316);
+  .sub-nav :global(.sub-nav-group-tertiary)::before {
+    background: linear-gradient(90deg, var(--group-tertiary-start), var(--group-tertiary-end));
+  }
+
+  .sub-nav :global(.sub-nav-group-quaternary) {
+    --group-color: var(--group-quaternary-solid);
+  }
+
+  .sub-nav :global(.sub-nav-group-quaternary)::before {
+    background: linear-gradient(90deg, var(--group-quaternary-start), var(--group-quaternary-end));
+  }
+
+  .sub-nav :global(.sub-nav-group-quinary) {
+    --group-color: var(--group-quinary-solid);
+  }
+
+  .sub-nav :global(.sub-nav-group-quinary)::before {
+    background: linear-gradient(90deg, var(--group-quinary-start), var(--group-quinary-end));
+  }
+
+  .sub-nav :global(.sub-nav-group-senary) {
+    --group-color: var(--group-senary-solid);
+  }
+
+  .sub-nav :global(.sub-nav-group-senary)::before {
+    background: linear-gradient(90deg, var(--group-senary-start), var(--group-senary-end));
   }
 
   /* Link styles */

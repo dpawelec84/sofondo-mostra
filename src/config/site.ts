@@ -25,7 +25,7 @@ export type MegaMenuLink = {
 
 export type MegaMenuSection = {
   title: string;
-  titleStyle?: 'design' | 'hosting' | 'accessibility' | 'neutral';
+  titleStyle?: 'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'quinary' | 'senary' | 'neutral';
   links: MegaMenuLink[];
 };
 
@@ -66,7 +66,7 @@ export const siteConfig = {
         sections: [
           {
             title: "Core Features",
-            titleStyle: "design" as const,
+            titleStyle: "primary" as const,
             links: [
               {
                 title: "Smooth Scrolling",
@@ -82,7 +82,7 @@ export const siteConfig = {
           },
           {
             title: "Components",
-            titleStyle: "hosting" as const,
+            titleStyle: "secondary" as const,
             links: [
               {
                 title: "SubNav",
@@ -105,7 +105,7 @@ export const siteConfig = {
         sections: [
           {
             title: "Examples",
-            titleStyle: "accessibility" as const,
+            titleStyle: "tertiary" as const,
             links: [
               {
                 title: "Marketing Sites",

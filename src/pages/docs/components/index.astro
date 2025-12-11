@@ -72,21 +72,27 @@ import Layout from "../layouts/Layout.astro";
 
 &lt;!-- Grouped variant with color-coded groups --&gt;
 &lt;SubNav variant="grouped"&gt;
-  &lt;div class="sub-nav-group sub-nav-group-design"&gt;
+  &lt;div class="sub-nav-group sub-nav-group-primary"&gt;
     &lt;a href="/design/"&gt;Web Design&lt;/a&gt;
     &lt;a href="/branding/"&gt;Branding&lt;/a&gt;
   &lt;/div&gt;
-  &lt;div class="sub-nav-group sub-nav-group-hosting"&gt;
+  &lt;div class="sub-nav-group sub-nav-group-secondary"&gt;
     &lt;a href="/hosting/"&gt;Hosting&lt;/a&gt;
   &lt;/div&gt;
 &lt;/SubNav&gt;</code></pre>
             </div>
-            <p>Available group classes:</p>
+            <p>Available group classes (up to 6):</p>
             <ul class="feature-list">
-              <li><strong>sub-nav-group-design</strong> - Blue gradient indicator</li>
-              <li><strong>sub-nav-group-hosting</strong> - Green gradient indicator</li>
-              <li><strong>sub-nav-group-accessibility</strong> - Orange gradient indicator</li>
+              <li><strong>sub-nav-group-primary</strong> - Blue gradient</li>
+              <li><strong>sub-nav-group-secondary</strong> - Green gradient</li>
+              <li><strong>sub-nav-group-tertiary</strong> - Orange gradient</li>
+              <li><strong>sub-nav-group-quaternary</strong> - Purple gradient</li>
+              <li><strong>sub-nav-group-quinary</strong> - Pink gradient</li>
+              <li><strong>sub-nav-group-senary</strong> - Cyan gradient</li>
             </ul>
+            <p>
+              Colors are configurable via CSS variables. Need more groups? Follow the pattern in <code>global.css</code>.
+            </p>
           </section>
         </FadeInOnScroll>
 

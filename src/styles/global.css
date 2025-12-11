@@ -16,6 +16,26 @@
   --font-serif: 'Fraunces', 'Playfair Display', Georgia, serif;
   --container-width: 1200px;
   --header-height: 56px;
+
+  /* Group colors - used in SubNav and MegaMenu (6 groups available) */
+  --group-primary-start: #3b82f6;
+  --group-primary-end: #6366f1;
+  --group-primary-solid: #4f7df3;
+  --group-secondary-start: #10b981;
+  --group-secondary-end: #14b8a6;
+  --group-secondary-solid: #12b38d;
+  --group-tertiary-start: #f59e0b;
+  --group-tertiary-end: #f97316;
+  --group-tertiary-solid: #f78c11;
+  --group-quaternary-start: #8b5cf6;
+  --group-quaternary-end: #a855f7;
+  --group-quaternary-solid: #9955f6;
+  --group-quinary-start: #ec4899;
+  --group-quinary-end: #f43f5e;
+  --group-quinary-solid: #ef447b;
+  --group-senary-start: #06b6d4;
+  --group-senary-end: #0ea5e9;
+  --group-senary-solid: #0aadde;
 }
 
 * {
@@ -290,16 +310,28 @@ h6 {
   flex-shrink: 0;
 }
 
-.MegaMenuSectionTitle--design::before {
-  background: linear-gradient(135deg, #3b82f6, #6366f1);
+.MegaMenuSectionTitle--primary::before {
+  background: linear-gradient(135deg, var(--group-primary-start), var(--group-primary-end));
 }
 
-.MegaMenuSectionTitle--hosting::before {
-  background: linear-gradient(135deg, #10b981, #14b8a6);
+.MegaMenuSectionTitle--secondary::before {
+  background: linear-gradient(135deg, var(--group-secondary-start), var(--group-secondary-end));
 }
 
-.MegaMenuSectionTitle--accessibility::before {
-  background: linear-gradient(135deg, #f59e0b, #f97316);
+.MegaMenuSectionTitle--tertiary::before {
+  background: linear-gradient(135deg, var(--group-tertiary-start), var(--group-tertiary-end));
+}
+
+.MegaMenuSectionTitle--quaternary::before {
+  background: linear-gradient(135deg, var(--group-quaternary-start), var(--group-quaternary-end));
+}
+
+.MegaMenuSectionTitle--quinary::before {
+  background: linear-gradient(135deg, var(--group-quinary-start), var(--group-quinary-end));
+}
+
+.MegaMenuSectionTitle--senary::before {
+  background: linear-gradient(135deg, var(--group-senary-start), var(--group-senary-end));
 }
 
 .MegaMenuSectionTitle--neutral::before {

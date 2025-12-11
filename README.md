@@ -123,11 +123,11 @@ A sticky sub-navigation component with two variants:
 
 <!-- Grouped variant - links with color indicators -->
 <SubNav variant="grouped">
-  <div class="sub-nav-group sub-nav-group-design">
+  <div class="sub-nav-group sub-nav-group-primary">
     <a href="/features/" class="active">Overview</a>
     <a href="/features/scrolling/">Smooth Scrolling</a>
   </div>
-  <div class="sub-nav-group sub-nav-group-hosting">
+  <div class="sub-nav-group sub-nav-group-secondary">
     <a href="/features/components/subnav/">SubNav</a>
   </div>
 </SubNav>

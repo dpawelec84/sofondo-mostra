@@ -6,12 +6,12 @@ import FadeInOnScroll from "../../../../components/FadeInOnScroll.astro";
 
 <Layout title="SubNav Component - Sofondo Mostra">
   <SubNav variant="grouped">
-    <div class="sub-nav-group sub-nav-group-design">
+    <div class="sub-nav-group sub-nav-group-primary">
       <a href="/features/">Overview</a>
       <a href="/features/scrolling/">Smooth Scrolling</a>
       <a href="/features/animations/">Animations</a>
     </div>
-    <div class="sub-nav-group sub-nav-group-hosting">
+    <div class="sub-nav-group sub-nav-group-secondary">
       <a href="/features/components/subnav/" class="active">SubNav</a>
       <a href="/features/components/fadein/">FadeInOnScroll</a>
     </div>
@@ -60,11 +60,11 @@ import FadeInOnScroll from "../../../../components/FadeInOnScroll.astro";
             <p>Use the grouped variant for links with color-coded group indicators:</p>
             <div class="code-block">
               <pre><code>&lt;SubNav variant="grouped"&gt;
-  &lt;div class="sub-nav-group sub-nav-group-design"&gt;
+  &lt;div class="sub-nav-group sub-nav-group-primary"&gt;
     &lt;a href="/features/"&gt;Overview&lt;/a&gt;
     &lt;a href="/features/scrolling/"&gt;Smooth Scrolling&lt;/a&gt;
   &lt;/div&gt;
-  &lt;div class="sub-nav-group sub-nav-group-hosting"&gt;
+  &lt;div class="sub-nav-group sub-nav-group-secondary"&gt;
     &lt;a href="/features/components/subnav/"&gt;SubNav&lt;/a&gt;
   &lt;/div&gt;
 &lt;/SubNav&gt;</code></pre>
@@ -75,11 +75,58 @@ import FadeInOnScroll from "../../../../components/FadeInOnScroll.astro";
         <FadeInOnScroll delay={300}>
           <section class="content-section">
             <h2>Available Group Styles</h2>
-            <ul class="feature-list">
-              <li><strong>sub-nav-group-design</strong> - Blue gradient indicator</li>
-              <li><strong>sub-nav-group-hosting</strong> - Green gradient indicator</li>
-              <li><strong>sub-nav-group-accessibility</strong> - Orange gradient indicator</li>
-            </ul>
+            <p>Up to 6 color-coded groups are available:</p>
+            <div class="color-swatches">
+              <div class="color-swatch">
+                <div class="swatch swatch-primary"></div>
+                <div class="swatch-info">
+                  <strong>primary</strong>
+                  <span>Blue</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="swatch swatch-secondary"></div>
+                <div class="swatch-info">
+                  <strong>secondary</strong>
+                  <span>Green</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="swatch swatch-tertiary"></div>
+                <div class="swatch-info">
+                  <strong>tertiary</strong>
+                  <span>Orange</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="swatch swatch-quaternary"></div>
+                <div class="swatch-info">
+                  <strong>quaternary</strong>
+                  <span>Purple</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="swatch swatch-quinary"></div>
+                <div class="swatch-info">
+                  <strong>quinary</strong>
+                  <span>Pink</span>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="swatch swatch-senary"></div>
+                <div class="swatch-info">
+                  <strong>senary</strong>
+                  <span>Cyan</span>
+                </div>
+              </div>
+            </div>
+            <p>
+              Group colors are configurable via CSS variables in <code>global.css</code>.
+              Override <code>--group-primary-start</code>, <code>--group-primary-end</code>, etc. to customize.
+            </p>
+            <p>
+              <strong>Need more than 6 groups?</strong> Add custom CSS variables and styles following the existing pattern in <code>global.css</code> and <code>SubNav.astro</code>.
+            </p>
           </section>
         </FadeInOnScroll>
 
@@ -192,5 +239,65 @@ import FadeInOnScroll from "../../../../components/FadeInOnScroll.astro";
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
     font-size: 0.875rem;
+  }
+
+  .color-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .swatch {
+    height: 48px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .swatch-primary {
+    background: linear-gradient(135deg, var(--group-primary-start), var(--group-primary-end));
+  }
+
+  .swatch-secondary {
+    background: linear-gradient(135deg, var(--group-secondary-start), var(--group-secondary-end));
+  }
+
+  .swatch-tertiary {
+    background: linear-gradient(135deg, var(--group-tertiary-start), var(--group-tertiary-end));
+  }
+
+  .swatch-quaternary {
+    background: linear-gradient(135deg, var(--group-quaternary-start), var(--group-quaternary-end));
+  }
+
+  .swatch-quinary {
+    background: linear-gradient(135deg, var(--group-quinary-start), var(--group-quinary-end));
+  }
+
+  .swatch-senary {
+    background: linear-gradient(135deg, var(--group-senary-start), var(--group-senary-end));
+  }
+
+  .swatch-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .swatch-info strong {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.8125rem;
+    color: var(--text-primary);
+  }
+
+  .swatch-info span {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
   }
 </style>
