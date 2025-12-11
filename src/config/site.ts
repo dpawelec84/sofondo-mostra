@@ -117,6 +117,11 @@ export const siteConfig = {
                 description: "High-converting campaign pages",
                 href: "/showcase/landing/",
               },
+              {
+                title: "Non-profit",
+                description: "Charity and foundation sites",
+                href: "/showcase/nonprofit/",
+              },
             ],
           },
         ],
