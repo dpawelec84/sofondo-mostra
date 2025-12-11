@@ -54,17 +54,18 @@ const hasTemplateName = siteConfig.templateName && siteConfig.templateName.trim(
   }
 
   .logo-name {
-    font-family: var(--font-sans);
+    font-family: var(--header-logo-font, var(--font-sans));
     font-weight: 700;
     font-size: 20px;
     letter-spacing: -0.5px;
+    color: var(--header-logo-color, var(--text-primary));
   }
 
   .logo-template {
-    font-family: var(--font-sans);
+    font-family: var(--header-logo-font, var(--font-sans));
     font-weight: 300;
     font-size: 20px;
     letter-spacing: -0.3px;
-    opacity: 0.7;
+    color: var(--header-logo-accent, var(--text-primary));
   }
 </style>

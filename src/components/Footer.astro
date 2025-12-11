@@ -1,5 +1,5 @@
 ---
-import { Github } from "lucide-react";
+import { Github, Heart } from "lucide-react";
 import { siteConfig } from "../config/site";
 ---
 
@@ -9,7 +9,7 @@ import { siteConfig } from "../config/site";
     <div class="footer-grid">
       <!-- Brand Column -->
       <div class="footer-column footer-brand">
-        <a href="/" class="footer-logo-link">{siteConfig.name}</a>
+        <a href="/" class="footer-logo-link">{siteConfig.name} {siteConfig.templateName}</a>
         {siteConfig.footer.tagline && (
           <p class="footer-tagline">{siteConfig.footer.tagline}</p>
         )}
@@ -42,7 +42,9 @@ import { siteConfig } from "../config/site";
 
     <!-- Simple Bottom -->
     <div class="footer-bottom">
-      <span class="footer-copyright">&copy; {new Date().getFullYear()} {siteConfig.footer.copyright}. All rights reserved.</span>
+      <p class="footer-template-credit">
+        {siteConfig.templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
+      </p>
     </div>
   </div>
 </footer>
@@ -158,10 +160,20 @@ import { siteConfig } from "../config/site";
     text-align: center;
   }
 
-  .footer-copyright {
-    font-size: 0.875rem;
+  .footer-template-credit {
+    font-size: 0.75rem;
     color: var(--footer-text, var(--text-secondary));
-    opacity: 0.7;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  .footer-template-credit :global(.heart-icon) {
+    color: #e11d48;
+    display: inline-block;
+    vertical-align: middle;
   }
 
   @media (max-width: 768px) {

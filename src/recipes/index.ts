@@ -31,6 +31,13 @@ export interface RecipeTheme {
   '--header-cta-bg'?: string;
   '--header-cta-text'?: string;
   '--header-cta-hover-bg'?: string;
+  '--header-cta-padding'?: string;
+  '--header-cta-radius'?: string;
+
+  // Logo styling
+  '--header-logo-font'?: string;
+  '--header-logo-color'?: string;
+  '--header-logo-accent'?: string;
 
   // Footer styling
   '--footer-bg'?: string;
@@ -80,6 +87,12 @@ export const recipes: Record<string, Recipe> = {
       '--header-cta-bg': '#1e3a5f',
       '--header-cta-text': '#ffffff',
       '--header-cta-hover-bg': '#152a45',
+      '--header-cta-padding': '0.625rem 1.25rem',
+      '--header-cta-radius': '6px',
+      // Logo styling
+      '--header-logo-font': 'var(--font-serif)',
+      '--header-logo-color': '#1e3a5f',
+      '--header-logo-accent': '#c9a227',
       // Footer: dark navy background
       '--footer-bg': '#152a45',
       '--footer-text': 'rgba(255, 255, 255, 0.7)',

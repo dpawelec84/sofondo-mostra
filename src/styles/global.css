@@ -24,6 +24,11 @@
   --header-cta-bg: var(--accent-primary);
   --header-cta-text: #ffffff;
   --header-cta-hover-bg: var(--accent-primary);
+  --header-cta-padding: 8px 20px;
+  --header-cta-radius: 8px;
+  --header-logo-font: var(--font-sans);
+  --header-logo-color: var(--text-primary);
+  --header-logo-accent: var(--text-primary);
 
   /* Footer styling - overridden by recipes */
   --footer-bg: var(--bg-light);
@@ -198,17 +203,18 @@ h6 {
 
 /* Book Discovery Call CTA Button - Solid style */
 .NavigationCTAButton {
-  background-color: var(--accent-primary) !important;
-  color: #ffffff !important;
-  border-radius: 8px;
-  padding: 8px 20px;
+  background: var(--header-cta-bg, var(--accent-primary)) !important;
+  color: var(--header-cta-text, #ffffff) !important;
+  border-radius: var(--header-cta-radius, 8px);
+  padding: var(--header-cta-padding, 8px 20px);
   margin-left: 8px;
   transition: background-color 0.2s ease;
   font-weight: 600;
 }
 
 .NavigationCTAButton:hover {
-  background-color: #152d4a !important;
+  background: var(--header-cta-hover-bg, #152d4a) !important;
+  color: var(--header-cta-text, #ffffff) !important;
 }
 
 /* Mobile specific adjustments for login button */
