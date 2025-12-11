@@ -49,10 +49,10 @@ const { title, returnUrl = '/showcase/' } = Astro.props;
     scroll-behavior: smooth;
   }
 
-  /* Page entrance animation */
+  /* Page entrance animation - starts visible, brief subtle fade */
   @keyframes showcasePageFadeIn {
     from {
-      opacity: 0;
+      opacity: 0.85;
     }
     to {
       opacity: 1;
@@ -60,7 +60,7 @@ const { title, returnUrl = '/showcase/' } = Astro.props;
   }
 
   .showcase-page-enter {
-    animation: showcasePageFadeIn 0.5s ease-out forwards;
+    animation: showcasePageFadeIn 0.2s ease-out forwards;
   }
 
   .showcase-close-btn {
