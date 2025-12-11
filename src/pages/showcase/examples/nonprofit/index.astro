@@ -11,7 +11,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
 
   <div class="nonprofit-site">
     <!-- Header -->
-    <header class="header">
+    <header class="header" data-bg-theme="light">
       <div class="container">
         <a href="#" class="logo">
           <span class="logo-icon">🌊</span>
@@ -28,7 +28,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" data-bg-theme="dark">
       <div class="hero-bg">
         <div class="hero-overlay"></div>
         <div class="hero-waves">
@@ -38,7 +38,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
         </div>
       </div>
       <div class="container">
-        <div class="hero-content">
+        <div class="hero-content fade-in">
           <span class="hero-tagline">Together for the oceans</span>
           <h1 class="hero-title">
             Protecting marine life<br>for future generations
@@ -60,22 +60,22 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     </section>
 
     <!-- Impact Stats -->
-    <section class="impact-stats">
+    <section class="impact-stats" data-bg-theme="light">
       <div class="container">
         <div class="stats-grid">
-          <div class="stat-item">
+          <div class="stat-item fade-in">
             <span class="stat-number">2.5M+</span>
             <span class="stat-label">Marine animals protected</span>
           </div>
-          <div class="stat-item">
+          <div class="stat-item fade-in fade-in-delay-1">
             <span class="stat-number">150+</span>
             <span class="stat-label">Conservation projects</span>
           </div>
-          <div class="stat-item">
+          <div class="stat-item fade-in fade-in-delay-2">
             <span class="stat-number">45</span>
             <span class="stat-label">Countries reached</span>
           </div>
-          <div class="stat-item">
+          <div class="stat-item fade-in fade-in-delay-3">
             <span class="stat-number">$12M</span>
             <span class="stat-label">Invested in ocean health</span>
           </div>
@@ -84,10 +84,10 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="about" id="about" data-bg-theme="light">
       <div class="container">
         <div class="about-grid">
-          <div class="about-content">
+          <div class="about-content fade-in">
             <span class="section-label">Our Mission</span>
             <h2>Safeguarding the blue heart of our planet</h2>
             <p>
@@ -116,7 +116,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
               </div>
             </div>
           </div>
-          <div class="about-image">
+          <div class="about-image fade-in fade-in-delay-2">
             <div class="image-placeholder">
               <span class="placeholder-icon">🐋</span>
               <span class="placeholder-text">Marine Conservation</span>
@@ -127,34 +127,34 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     </section>
 
     <!-- Programs Section -->
-    <section class="programs" id="programs">
+    <section class="programs" id="programs" data-bg-theme="light">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header fade-in">
           <span class="section-label">What We Do</span>
           <h2>Our Programs</h2>
           <p>From local beach cleanups to international policy work, we're tackling ocean conservation from every angle.</p>
         </div>
 
         <div class="programs-grid">
-          <div class="program-card">
+          <div class="program-card fade-in">
             <div class="program-icon">🐢</div>
             <h3>Species Protection</h3>
             <p>Protecting endangered marine species through habitat restoration, rescue operations, and breeding programs.</p>
             <a href="#" class="program-link">Learn more →</a>
           </div>
-          <div class="program-card">
+          <div class="program-card fade-in fade-in-delay-1">
             <div class="program-icon">🏖️</div>
             <h3>Clean Coasts</h3>
             <p>Organizing beach cleanups and working with communities to reduce plastic waste entering our oceans.</p>
             <a href="#" class="program-link">Learn more →</a>
           </div>
-          <div class="program-card">
+          <div class="program-card fade-in fade-in-delay-2">
             <div class="program-icon">📚</div>
             <h3>Ocean Education</h3>
             <p>Teaching the next generation about marine ecosystems through school programs and interactive workshops.</p>
             <a href="#" class="program-link">Learn more →</a>
           </div>
-          <div class="program-card">
+          <div class="program-card fade-in fade-in-delay-3">
             <div class="program-icon">🏛️</div>
             <h3>Policy Advocacy</h3>
             <p>Working with governments to establish marine protected areas and strengthen environmental regulations.</p>
@@ -165,15 +165,15 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     </section>
 
     <!-- Impact Stories -->
-    <section class="stories" id="impact">
+    <section class="stories" id="impact" data-bg-theme="light">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header fade-in">
           <span class="section-label">Making a Difference</span>
           <h2>Impact Stories</h2>
         </div>
 
         <div class="stories-grid">
-          <div class="story-card story-card--featured">
+          <div class="story-card story-card--featured fade-in">
             <div class="story-image story-image--coral"></div>
             <div class="story-content">
               <span class="story-tag">Success Story</span>
@@ -182,7 +182,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
               <a href="#" class="story-link">Read the full story →</a>
             </div>
           </div>
-          <div class="story-card">
+          <div class="story-card fade-in fade-in-delay-1">
             <div class="story-image story-image--turtle"></div>
             <div class="story-content">
               <h3>Sea Turtle Rescue Program</h3>
@@ -190,7 +190,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
               <a href="#" class="story-link">Read more →</a>
             </div>
           </div>
-          <div class="story-card">
+          <div class="story-card fade-in fade-in-delay-2">
             <div class="story-image story-image--cleanup"></div>
             <div class="story-content">
               <h3>1 Million Pounds Removed</h3>
@@ -203,28 +203,28 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     </section>
 
     <!-- Get Involved -->
-    <section class="get-involved" id="get-involved">
+    <section class="get-involved" id="get-involved" data-bg-theme="light">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header fade-in">
           <span class="section-label">Take Action</span>
           <h2>Ways to Get Involved</h2>
           <p>Every action counts. Here's how you can help protect our oceans.</p>
         </div>
 
         <div class="involve-grid">
-          <div class="involve-card">
+          <div class="involve-card fade-in">
             <div class="involve-icon">💙</div>
             <h3>Donate</h3>
             <p>Your contribution directly funds conservation projects, research, and education programs.</p>
             <a href="#donate" class="btn btn-primary">Give Now</a>
           </div>
-          <div class="involve-card">
+          <div class="involve-card fade-in fade-in-delay-1">
             <div class="involve-icon">🙋</div>
             <h3>Volunteer</h3>
             <p>Join beach cleanups, assist with research, or help at local events in your community.</p>
             <a href="#" class="btn btn-outline">Sign Up</a>
           </div>
-          <div class="involve-card">
+          <div class="involve-card fade-in fade-in-delay-2">
             <div class="involve-icon">📢</div>
             <h3>Spread the Word</h3>
             <p>Follow us on social media and share our mission with friends and family.</p>
@@ -235,9 +235,9 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     </section>
 
     <!-- Donate Section -->
-    <section class="donate" id="donate">
+    <section class="donate" id="donate" data-bg-theme="light">
       <div class="container">
-        <div class="donate-card">
+        <div class="donate-card fade-in">
           <div class="donate-content">
             <span class="section-label section-label--light">Support Our Work</span>
             <h2>Make a Donation Today</h2>
@@ -274,9 +274,9 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     </section>
 
     <!-- Newsletter -->
-    <section class="newsletter">
+    <section class="newsletter" data-bg-theme="light">
       <div class="container">
-        <div class="newsletter-content">
+        <div class="newsletter-content fade-in">
           <h3>Stay Connected</h3>
           <p>Get monthly updates on our conservation work and ways you can help.</p>
           <form class="newsletter-form">
@@ -288,7 +288,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     </section>
 
     <!-- Partners -->
-    <section class="partners">
+    <section class="partners" data-bg-theme="light">
       <div class="container">
         <p class="partners-label">Proudly supported by</p>
         <div class="partners-grid">
@@ -301,7 +301,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" data-bg-theme="dark">
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
@@ -1230,4 +1230,47 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
       justify-content: center;
     }
   }
+
+  /* Fade In On Scroll Animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in-delay-1 { transition-delay: 0.1s; }
+  .fade-in-delay-2 { transition-delay: 0.2s; }
+  .fade-in-delay-3 { transition-delay: 0.3s; }
+  .fade-in-delay-4 { transition-delay: 0.4s; }
 </style>
+
+<script>
+  // Simple Fade-In on Scroll Animation
+  function initFadeInOnScroll() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    fadeElements.forEach(el => observer.observe(el));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFadeInOnScroll);
+  } else {
+    initFadeInOnScroll();
+  }
+</script>

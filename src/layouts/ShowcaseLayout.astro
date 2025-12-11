@@ -2,7 +2,9 @@
 /**
  * ShowcaseLayout - A special layout for showcase demo sites
  * Includes a floating close button to return to the parent showcase page
+ * Uses native scrolling for simplicity and compatibility
  */
+
 interface Props {
   title: string;
   returnUrl?: string;
@@ -31,6 +33,21 @@ const { title, returnUrl = '/showcase/' } = Astro.props;
 </html>
 
 <style is:global>
+  /* Reset default margins */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Ensure smooth scrolling on showcase pages */
+  html {
+    scroll-behavior: smooth;
+  }
+
   .showcase-close-btn {
     position: fixed;
     top: 1rem;

@@ -520,11 +520,29 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
           grid-template-columns: 1fr;
         }
       }
+
+      /* Fade In On Scroll Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .fade-in-delay-1 { transition-delay: 0.1s; }
+      .fade-in-delay-2 { transition-delay: 0.2s; }
+      .fade-in-delay-3 { transition-delay: 0.3s; }
+      .fade-in-delay-4 { transition-delay: 0.4s; }
+      .fade-in-delay-5 { transition-delay: 0.5s; }
     </style>
   </Fragment>
 
   <!-- Header -->
-  <header class="header">
+  <header class="header" data-bg-theme="light">
     <div class="container header-inner">
       <a href="#" class="logo">Nexus<span>Corp</span></a>
       <nav class="nav">
@@ -537,11 +555,11 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
   </header>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" data-bg-theme="dark">
     <div class="container">
-      <h1>Strategic Solutions for<br>Business Excellence</h1>
-      <p>We help organizations transform challenges into opportunities through innovative consulting and strategic advisory services.</p>
-      <div class="hero-buttons">
+      <h1 class="fade-in">Strategic Solutions for<br>Business Excellence</h1>
+      <p class="fade-in fade-in-delay-1">We help organizations transform challenges into opportunities through innovative consulting and strategic advisory services.</p>
+      <div class="hero-buttons fade-in fade-in-delay-2">
         <a href="#contact" class="btn btn-primary">Schedule Consultation</a>
         <a href="#services" class="btn btn-secondary">Our Services</a>
       </div>
@@ -549,21 +567,21 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
   </section>
 
   <!-- Stats -->
-  <section class="stats">
+  <section class="stats" data-bg-theme="light">
     <div class="container" style="display: contents;">
-      <div class="stat-item">
+      <div class="stat-item fade-in">
         <h3>25<span>+</span></h3>
         <p>Years of Experience</p>
       </div>
-      <div class="stat-item">
+      <div class="stat-item fade-in fade-in-delay-1">
         <h3>500<span>+</span></h3>
         <p>Clients Worldwide</p>
       </div>
-      <div class="stat-item">
+      <div class="stat-item fade-in fade-in-delay-2">
         <h3>98<span>%</span></h3>
         <p>Client Satisfaction</p>
       </div>
-      <div class="stat-item">
+      <div class="stat-item fade-in fade-in-delay-3">
         <h3>$2.5<span>B</span></h3>
         <p>Revenue Generated</p>
       </div>
@@ -571,14 +589,14 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
   </section>
 
   <!-- Services -->
-  <section class="services" id="services">
+  <section class="services" id="services" data-bg-theme="light">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header fade-in">
         <h2>Our Expertise</h2>
         <p>Comprehensive business solutions tailored to drive growth and maximize value for your organization.</p>
       </div>
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card fade-in">
           <div class="service-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -637,7 +655,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
   </section>
 
   <!-- About -->
-  <section class="about" id="about">
+  <section class="about" id="about" data-bg-theme="light">
     <div class="container">
       <div class="about-grid">
         <div class="about-image"></div>
@@ -677,7 +695,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
   </section>
 
   <!-- Testimonials -->
-  <section class="testimonials" id="testimonials">
+  <section class="testimonials" id="testimonials" data-bg-theme="dark">
     <div class="container">
       <div class="section-header">
         <h2>Client Success Stories</h2>
@@ -697,7 +715,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
   </section>
 
   <!-- CTA -->
-  <section class="cta" id="contact">
+  <section class="cta" id="contact" data-bg-theme="light">
     <div class="container">
       <h2>Ready to Transform Your Business?</h2>
       <p>Schedule a complimentary consultation with our senior advisors to discuss your strategic objectives.</p>
@@ -706,7 +724,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" data-bg-theme="dark">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -741,3 +759,29 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     </div>
   </footer>
 </ShowcaseLayout>
+
+<script>
+  // Simple Fade-In on Scroll Animation
+  function initFadeInOnScroll() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    fadeElements.forEach(el => observer.observe(el));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFadeInOnScroll);
+  } else {
+    initFadeInOnScroll();
+  }
+</script>
