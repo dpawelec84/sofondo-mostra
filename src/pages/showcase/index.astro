@@ -23,22 +23,25 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
       </FadeInOnScroll>
 
       <div class="showcase-grid">
+        <!-- Marketing Sites -->
         <FadeInOnScroll delay={0}>
           <div class="showcase-card">
             <div class="showcase-image showcase-image--blue"></div>
             <div class="showcase-content">
-              <h3>Marketing Website</h3>
-              <p>A clean, modern marketing site with smooth animations.</p>
+              <span class="showcase-tag">Marketing</span>
+              <h3>Corporate Website</h3>
+              <p>Professional business site with multiple sections and contact forms.</p>
             </div>
           </div>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={100}>
           <div class="showcase-card">
-            <div class="showcase-image showcase-image--green"></div>
+            <div class="showcase-image showcase-image--teal"></div>
             <div class="showcase-content">
-              <h3>SaaS Landing Page</h3>
-              <p>Feature-rich landing page with pricing tables and CTAs.</p>
+              <span class="showcase-tag">Marketing</span>
+              <h3>Agency Portfolio</h3>
+              <p>Creative agency site showcasing work and team members.</p>
             </div>
           </div>
         </FadeInOnScroll>
@@ -47,18 +50,43 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
           <div class="showcase-card">
             <div class="showcase-image showcase-image--purple"></div>
             <div class="showcase-content">
-              <h3>Portfolio Site</h3>
-              <p>Creative portfolio with stunning visual effects.</p>
+              <span class="showcase-tag">Marketing</span>
+              <h3>Tech Startup</h3>
+              <p>Modern startup site with product features and pricing.</p>
             </div>
           </div>
         </FadeInOnScroll>
 
+        <!-- Landing Pages -->
         <FadeInOnScroll delay={300}>
           <div class="showcase-card">
             <div class="showcase-image showcase-image--orange"></div>
             <div class="showcase-content">
-              <h3>Documentation Site</h3>
-              <p>Clean documentation with easy navigation.</p>
+              <span class="showcase-tag">Landing</span>
+              <h3>Product Launch</h3>
+              <p>Eye-catching product launch page with features and pricing.</p>
+            </div>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <div class="showcase-card">
+            <div class="showcase-image showcase-image--pink"></div>
+            <div class="showcase-content">
+              <span class="showcase-tag">Landing</span>
+              <h3>App Download</h3>
+              <p>Mobile app landing page with download links and screenshots.</p>
+            </div>
+          </div>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={500}>
+          <div class="showcase-card">
+            <div class="showcase-image showcase-image--cyan"></div>
+            <div class="showcase-content">
+              <span class="showcase-tag">Landing</span>
+              <h3>Newsletter Signup</h3>
+              <p>Simple landing page focused on email capture and conversion.</p>
             </div>
           </div>
         </FadeInOnScroll>
@@ -122,8 +150,8 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     background: linear-gradient(135deg, #3b82f6, #6366f1);
   }
 
-  .showcase-image--green {
-    background: linear-gradient(135deg, #10b981, #14b8a6);
+  .showcase-image--teal {
+    background: linear-gradient(135deg, #14b8a6, #06b6d4);
   }
 
   .showcase-image--purple {
@@ -134,8 +162,29 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     background: linear-gradient(135deg, #f59e0b, #f97316);
   }
 
+  .showcase-image--pink {
+    background: linear-gradient(135deg, #ec4899, #f43f5e);
+  }
+
+  .showcase-image--cyan {
+    background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  }
+
   .showcase-content {
     padding: 1.5rem;
+  }
+
+  .showcase-tag {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
   }
 
   .showcase-content h3 {
