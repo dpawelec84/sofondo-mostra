@@ -23,6 +23,21 @@ export interface RecipeTheme {
   // Optional overrides
   '--font-sans'?: string;
   '--font-serif'?: string;
+
+  // Header styling
+  '--header-bg'?: string;
+  '--header-text'?: string;
+  '--header-border'?: string;
+  '--header-cta-bg'?: string;
+  '--header-cta-text'?: string;
+  '--header-cta-hover-bg'?: string;
+
+  // Footer styling
+  '--footer-bg'?: string;
+  '--footer-text'?: string;
+  '--footer-heading'?: string;
+  '--footer-link'?: string;
+  '--footer-link-hover'?: string;
 }
 
 export interface RecipeFonts {
@@ -56,6 +71,19 @@ export const recipes: Record<string, Recipe> = {
       '--border-color': '#e7e5e4',
       '--font-sans': "'Inter', system-ui, sans-serif",
       '--font-serif': "'Playfair Display', Georgia, serif",
+      // Header: light background with navy CTA
+      '--header-bg': 'rgba(255, 255, 255, 0.95)',
+      '--header-text': '#57534e',
+      '--header-border': '#e7e5e4',
+      '--header-cta-bg': '#1e3a5f',
+      '--header-cta-text': '#ffffff',
+      '--header-cta-hover-bg': '#152a45',
+      // Footer: dark navy background
+      '--footer-bg': '#152a45',
+      '--footer-text': 'rgba(255, 255, 255, 0.7)',
+      '--footer-heading': '#ffffff',
+      '--footer-link': 'rgba(255, 255, 255, 0.7)',
+      '--footer-link-hover': '#c9a227',
     },
     fonts: {
       google: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap',
@@ -78,6 +106,19 @@ export const recipes: Record<string, Recipe> = {
       '--border-color': '#27272a',
       '--font-sans': "'Space Grotesk', system-ui, sans-serif",
       '--font-serif': "'Space Grotesk', system-ui, sans-serif",
+      // Header: dark glassmorphism with gradient CTA
+      '--header-bg': 'rgba(10, 10, 10, 0.8)',
+      '--header-text': '#a1a1aa',
+      '--header-border': '#27272a',
+      '--header-cta-bg': 'linear-gradient(135deg, #a855f7, #ec4899)',
+      '--header-cta-text': '#ffffff',
+      '--header-cta-hover-bg': 'linear-gradient(135deg, #9333ea, #db2777)',
+      // Footer: dark background
+      '--footer-bg': '#0a0a0a',
+      '--footer-text': '#a1a1aa',
+      '--footer-heading': '#ffffff',
+      '--footer-link': '#a1a1aa',
+      '--footer-link-hover': '#a855f7',
     },
     fonts: {
       google: 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap',

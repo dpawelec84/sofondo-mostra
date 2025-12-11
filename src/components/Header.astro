@@ -116,7 +116,9 @@ import Logo from "./Logo.astro";
     height: var(--header-height);
     display: flex;
     align-items: center;
-    background: var(--bg-light);
+    background: var(--header-bg, var(--bg-light));
+    border-bottom: 1px solid var(--header-border, transparent);
+    backdrop-filter: blur(10px);
     transition: transform 0.3s ease-in-out;
   }
 
@@ -157,6 +159,28 @@ import Logo from "./Logo.astro";
 
   .nav-wrapper {
     display: block;
+  }
+
+  /* Navigation link colors from recipe */
+  :global(.NavigationMenuLink),
+  :global(.NavigationMenuTrigger) {
+    color: var(--header-text, var(--text-secondary)) !important;
+  }
+
+  :global(.NavigationMenuLink:hover),
+  :global(.NavigationMenuTrigger:hover) {
+    color: var(--text-primary) !important;
+  }
+
+  /* CTA button styling from recipe */
+  :global(.NavigationCTAButton) {
+    background: var(--header-cta-bg, var(--accent-primary)) !important;
+    color: var(--header-cta-text, #ffffff) !important;
+  }
+
+  :global(.NavigationCTAButton:hover) {
+    background: var(--header-cta-hover-bg, var(--accent-primary)) !important;
+    opacity: 0.9;
   }
 
   @media (min-width: 768px) {

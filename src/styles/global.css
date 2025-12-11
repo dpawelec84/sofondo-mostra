@@ -17,6 +17,21 @@
   --container-width: 1200px;
   --header-height: 56px;
 
+  /* Header styling - overridden by recipes */
+  --header-bg: var(--bg-light);
+  --header-text: var(--text-secondary);
+  --header-border: transparent;
+  --header-cta-bg: var(--accent-primary);
+  --header-cta-text: #ffffff;
+  --header-cta-hover-bg: var(--accent-primary);
+
+  /* Footer styling - overridden by recipes */
+  --footer-bg: var(--bg-light);
+  --footer-text: var(--text-secondary);
+  --footer-heading: var(--text-primary);
+  --footer-link: var(--text-secondary);
+  --footer-link-hover: var(--accent-primary);
+
   /* Group colors - used in SubNav and MegaMenu (6 groups available) */
   --group-primary-start: #3b82f6;
   --group-primary-end: #6366f1;

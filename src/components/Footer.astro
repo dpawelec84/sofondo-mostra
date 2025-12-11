@@ -43,7 +43,8 @@ import { siteConfig } from "../config/site";
   .footer {
     padding: 4rem 0 2rem;
     text-align: center;
-    color: var(--text-secondary);
+    background: var(--footer-bg, var(--bg-light));
+    color: var(--footer-text, var(--text-secondary));
     margin-top: 4rem;
   }
 
@@ -69,7 +70,7 @@ import { siteConfig } from "../config/site";
   .footer-heading {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--footer-heading, var(--text-primary));
     margin-bottom: 1.25rem;
     letter-spacing: 0.025em;
     text-transform: uppercase;
@@ -86,14 +87,14 @@ import { siteConfig } from "../config/site";
   }
 
   .footer-links a {
-    color: var(--text-secondary);
+    color: var(--footer-link, var(--text-secondary));
     text-decoration: none;
     font-size: 0.9375rem;
     transition: color 0.2s ease;
   }
 
   .footer-links a:hover {
-    color: var(--accent-primary);
+    color: var(--footer-link-hover, var(--accent-primary));
   }
 
   .social-links {
@@ -110,13 +111,13 @@ import { siteConfig } from "../config/site";
     height: 40px;
     border-radius: 8px;
     background: var(--bg-card);
-    color: var(--text-secondary);
+    color: var(--footer-text, var(--text-secondary));
     text-decoration: none;
     transition: all 0.2s ease;
   }
 
   .social-icon:hover {
-    background: var(--accent-primary);
+    background: var(--footer-link-hover, var(--accent-primary));
     color: #ffffff;
     transform: translateY(-2px);
   }
@@ -132,7 +133,7 @@ import { siteConfig } from "../config/site";
     font-family: var(--font-sans);
     font-weight: bold;
     font-size: 18px;
-    color: var(--text-secondary);
+    color: var(--footer-text, var(--text-secondary));
   }
 
   @media (max-width: 768px) {
