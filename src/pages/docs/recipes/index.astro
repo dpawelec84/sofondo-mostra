@@ -1,0 +1,374 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+---
+
+<Layout title="Recipes - Sofondo Mostra">
+  <SubNav variant="simple">
+    <a href="/docs/">Getting Started</a>
+    <a href="/docs/configuration/">Configuration</a>
+    <a href="/docs/components/">Components</a>
+    <a href="/docs/customization/">Customization</a>
+    <a href="/docs/recipes/" class="active">Recipes</a>
+  </SubNav>
+
+  <section class="page-content" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <div class="page-header">
+          <h1 class="page-title">Recipes</h1>
+          <p class="page-description intro">
+            Initialize your project with a pre-built theme from the showcase examples.
+          </p>
+        </div>
+      </FadeInOnScroll>
+
+      <div class="docs-content">
+        <FadeInOnScroll delay={0}>
+          <section class="docs-section">
+            <h2>What are Recipes?</h2>
+            <p>
+              Recipes let you quickly start a new project based on one of the showcase examples.
+              When you apply a recipe, it transforms the showcase example into your homepage and
+              applies its theme colors across the entire site.
+            </p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <section class="docs-section">
+            <h2>Usage</h2>
+            <p>List all available recipes:</p>
+            <div class="code-block">
+              <pre><code>npm run init -- --list</code></pre>
+            </div>
+            <p>Apply a recipe to your project:</p>
+            <div class="code-block">
+              <pre><code>npm run init -- --recipe=corporate</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <section class="docs-section">
+            <h2>Available Recipes</h2>
+            <div class="recipes-grid">
+              <div class="recipe-card recipe-card--corporate">
+                <div class="recipe-preview"></div>
+                <div class="recipe-info">
+                  <h3>corporate</h3>
+                  <p class="recipe-name">Nexus Corp</p>
+                  <p>Professional business consulting with elegant navy and gold palette.</p>
+                  <code>--recipe=corporate</code>
+                </div>
+              </div>
+
+              <div class="recipe-card recipe-card--agency">
+                <div class="recipe-preview"></div>
+                <div class="recipe-info">
+                  <h3>agency</h3>
+                  <p class="recipe-name">Pixel Flow Agency</p>
+                  <p>Bold creative agency with vibrant gradients and modern typography.</p>
+                  <code>--recipe=agency</code>
+                </div>
+              </div>
+
+              <div class="recipe-card recipe-card--startup">
+                <div class="recipe-preview"></div>
+                <div class="recipe-info">
+                  <h3>startup</h3>
+                  <p class="recipe-name">Velocity Tech</p>
+                  <p>Clean tech startup with modern blue and green accents.</p>
+                  <code>--recipe=startup</code>
+                </div>
+              </div>
+
+              <div class="recipe-card recipe-card--product-launch">
+                <div class="recipe-preview"></div>
+                <div class="recipe-info">
+                  <h3>product-launch</h3>
+                  <p class="recipe-name">Spark Product Launch</p>
+                  <p>Eye-catching product launch with vibrant orange and dark theme.</p>
+                  <code>--recipe=product-launch</code>
+                </div>
+              </div>
+
+              <div class="recipe-card recipe-card--app-download">
+                <div class="recipe-preview"></div>
+                <div class="recipe-info">
+                  <h3>app-download</h3>
+                  <p class="recipe-name">Zenith App</p>
+                  <p>Modern app landing page with purple gradient theme.</p>
+                  <code>--recipe=app-download</code>
+                </div>
+              </div>
+
+              <div class="recipe-card recipe-card--newsletter">
+                <div class="recipe-preview"></div>
+                <div class="recipe-info">
+                  <h3>newsletter</h3>
+                  <p class="recipe-name">Weekly Spark Newsletter</p>
+                  <p>Clean newsletter signup with warm amber accents.</p>
+                  <code>--recipe=newsletter</code>
+                </div>
+              </div>
+
+              <div class="recipe-card recipe-card--nonprofit">
+                <div class="recipe-preview"></div>
+                <div class="recipe-info">
+                  <h3>nonprofit</h3>
+                  <p class="recipe-name">Ocean Guardians</p>
+                  <p>Non-profit with calming ocean blues and eco-friendly greens.</p>
+                  <code>--recipe=nonprofit</code>
+                </div>
+              </div>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <section class="docs-section">
+            <h2>What Gets Changed</h2>
+            <p>When you apply a recipe, the init script:</p>
+            <ul class="feature-list">
+              <li><strong>Homepage</strong> - Transforms the showcase example into your new homepage using the main Layout with header and footer</li>
+              <li><strong>Theme Variables</strong> - Updates <code>src/styles/global.css</code> with the recipe's color palette</li>
+              <li><strong>Site Name</strong> - Updates <code>src/config/site.ts</code> with the recipe's name and description</li>
+              <li><strong>Fonts</strong> - Adds Google Fonts links to the layout if the recipe uses different fonts</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <section class="docs-section">
+            <h2>Backups</h2>
+            <p>The init script creates backups of modified files before making changes:</p>
+            <ul class="feature-list">
+              <li><code>src/pages/index.astro.backup</code></li>
+              <li><code>src/styles/global.css.backup</code></li>
+              <li><code>src/config/site.ts.backup</code></li>
+            </ul>
+            <p>To revert, simply copy the backup files back to their original locations.</p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={500}>
+          <section class="docs-section">
+            <h2>Creating Custom Recipes</h2>
+            <p>You can create your own recipes by adding entries to <code>src/recipes/index.ts</code>:</p>
+            <div class="code-block">
+              <pre><code>myrecipe: {'{'}
+  name: 'My Custom Theme',
+  description: 'A description of your theme',
+  category: 'marketing',
+  source: 'my-example', // folder in showcase/examples/
+  theme: {'{'}
+    '--bg-light': '#fafafa',
+    '--bg-card': '#ffffff',
+    '--text-primary': '#1c1917',
+    '--accent-primary': '#3b82f6',
+    // ... other CSS variables
+  {'}'},
+  fonts: {'{'}
+    google: 'https://fonts.googleapis.com/...',
+  {'}'},
+{'}'}</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .docs-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .docs-section {
+    margin-bottom: 3rem;
+  }
+
+  .docs-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .docs-section p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .docs-section code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+    color: #cdd6f4;
+    line-height: 1.6;
+    background: transparent;
+    padding: 0;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .feature-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .feature-list li:last-child {
+    border-bottom: none;
+  }
+
+  .feature-list strong {
+    color: var(--text-primary);
+  }
+
+  .feature-list code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.8125rem;
+  }
+
+  /* Recipe cards */
+  .recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .recipe-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+  }
+
+  .recipe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .recipe-preview {
+    height: 80px;
+  }
+
+  .recipe-card--corporate .recipe-preview {
+    background: linear-gradient(135deg, #1e3a5f, #152a45);
+  }
+
+  .recipe-card--agency .recipe-preview {
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+  }
+
+  .recipe-card--startup .recipe-preview {
+    background: linear-gradient(135deg, #2563eb, #10b981);
+  }
+
+  .recipe-card--product-launch .recipe-preview {
+    background: linear-gradient(135deg, #f97316, #fbbf24);
+  }
+
+  .recipe-card--app-download .recipe-preview {
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  }
+
+  .recipe-card--newsletter .recipe-preview {
+    background: linear-gradient(135deg, #d97706, #f59e0b);
+  }
+
+  .recipe-card--nonprofit .recipe-preview {
+    background: linear-gradient(135deg, #0d9488, #14b8a6);
+  }
+
+  .recipe-info {
+    padding: 1.25rem;
+  }
+
+  .recipe-info h3 {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .recipe-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent-primary);
+    margin-bottom: 0.5rem !important;
+  }
+
+  .recipe-info p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .recipe-info code {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    color: var(--text-primary);
+  }
+</style>
