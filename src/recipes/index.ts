@@ -48,6 +48,7 @@ export interface RecipeFonts {
 export interface Recipe {
   name: string;
   description: string;
+  tagline: string; // Footer tagline
   category: 'marketing' | 'landing' | 'nonprofit';
   source: string;
   theme: RecipeTheme;
@@ -58,6 +59,7 @@ export const recipes: Record<string, Recipe> = {
   corporate: {
     name: 'Nexus Corp',
     description: 'Professional business consulting with elegant navy and gold palette',
+    tagline: 'Transforming businesses through strategic excellence and innovative solutions since 1999.',
     category: 'marketing',
     source: 'corporate',
     theme: {
@@ -93,6 +95,7 @@ export const recipes: Record<string, Recipe> = {
   agency: {
     name: 'Pixel Flow Agency',
     description: 'Bold creative agency with vibrant gradients and modern typography',
+    tagline: 'We craft digital experiences that captivate, engage, and convert.',
     category: 'marketing',
     source: 'agency',
     theme: {
@@ -128,6 +131,7 @@ export const recipes: Record<string, Recipe> = {
   startup: {
     name: 'Velocity Tech',
     description: 'Clean tech startup with modern blue and green accents',
+    tagline: 'Building the future of work, one innovation at a time.',
     category: 'marketing',
     source: 'startup',
     theme: {
@@ -150,6 +154,7 @@ export const recipes: Record<string, Recipe> = {
   'product-launch': {
     name: 'Spark Product Launch',
     description: 'Eye-catching product launch with vibrant orange and dark theme',
+    tagline: 'Ignite your next big idea with tools designed for creators.',
     category: 'landing',
     source: 'product-launch',
     theme: {
@@ -172,6 +177,7 @@ export const recipes: Record<string, Recipe> = {
   'app-download': {
     name: 'Zenith App',
     description: 'Modern app landing page with purple gradient theme',
+    tagline: 'Your personal productivity companion, available everywhere.',
     category: 'landing',
     source: 'app-download',
     theme: {
@@ -194,6 +200,7 @@ export const recipes: Record<string, Recipe> = {
   newsletter: {
     name: 'Weekly Spark Newsletter',
     description: 'Clean newsletter signup with warm amber accents',
+    tagline: 'Curated insights and inspiration delivered to your inbox every week.',
     category: 'landing',
     source: 'newsletter',
     theme: {
@@ -216,6 +223,7 @@ export const recipes: Record<string, Recipe> = {
   nonprofit: {
     name: 'Ocean Guardians',
     description: 'Non-profit with calming ocean blues and eco-friendly greens',
+    tagline: 'Protecting our oceans and marine life for generations to come.',
     category: 'nonprofit',
     source: 'nonprofit',
     theme: {

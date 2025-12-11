@@ -60,6 +60,7 @@ function parseRecipes() {
     recipes[id] = {
       name: extractField(recipeContent, 'name'),
       description: extractField(recipeContent, 'description'),
+      tagline: extractField(recipeContent, 'tagline'),
       category: extractField(recipeContent, 'category'),
       source: extractField(recipeContent, 'source'),
       theme: extractTheme(recipeContent),
@@ -325,8 +326,22 @@ siteConfig = siteConfig.replace(
   `description: "${recipe.description}"`
 );
 
+// Update footer tagline if available
+if (recipe.tagline) {
+  siteConfig = siteConfig.replace(
+    /tagline:\s*"[^"]+"/,
+    `tagline: "${recipe.tagline}"`
+  );
+}
+
+// Update footer copyright to use recipe name
+siteConfig = siteConfig.replace(
+  /copyright:\s*"[^"]+"/,
+  `copyright: "${recipe.name}"`
+);
+
 fs.writeFileSync(siteConfigPath, siteConfig);
-console.log('✓ Updated site.ts with recipe name');
+console.log('✓ Updated site.ts with recipe name and tagline');
 
 // 4. Add font imports if needed
 if (recipe.fonts?.google) {

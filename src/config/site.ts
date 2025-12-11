@@ -142,6 +142,7 @@ export const siteConfig = {
   // Footer
   footer: {
     copyright: "Sofondo Mostra",
+    tagline: "A modern Astro template for marketing sites and landing pages.",
     links: [
       { label: "GitHub", href: "https://github.com" },
       { label: "Documentation", href: "/docs/" },
