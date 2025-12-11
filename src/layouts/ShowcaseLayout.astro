@@ -3,6 +3,7 @@
  * ShowcaseLayout - A special layout for showcase demo sites
  * Includes a floating close button to return to the parent showcase page
  * Uses native scrolling for simplicity and compatibility
+ * Includes page entrance fade-in animation
  */
 
 interface Props {
@@ -21,7 +22,7 @@ const { title, returnUrl = '/showcase/' } = Astro.props;
     <title>{title}</title>
     <slot name="head" />
   </head>
-  <body>
+  <body class="showcase-page-enter">
     <a href={returnUrl} class="showcase-close-btn" title="Close preview and return to Showcase">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -46,6 +47,20 @@ const { title, returnUrl = '/showcase/' } = Astro.props;
   /* Ensure smooth scrolling on showcase pages */
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Page entrance animation */
+  @keyframes showcasePageFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .showcase-page-enter {
+    animation: showcasePageFadeIn 0.5s ease-out forwards;
   }
 
   .showcase-close-btn {
