@@ -4,54 +4,32 @@ import SubNav from "../../../components/SubNav.astro";
 import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 ---
 
-<Layout title="Landing Pages - Sofondo Mostra">
+<Layout title="Non-profit Sites - Sofondo Mostra">
   <SubNav variant="simple">
     <a href="/showcase/">All Projects</a>
     <a href="/showcase/marketing/">Marketing Sites</a>
-    <a href="/showcase/landing/" class="active">Landing Pages</a>
-    <a href="/showcase/nonprofit/">Non-profit</a>
+    <a href="/showcase/landing/">Landing Pages</a>
+    <a href="/showcase/nonprofit/" class="active">Non-profit</a>
   </SubNav>
 
   <section class="page-content" data-bg-theme="light">
     <div class="container">
       <FadeInOnScroll>
         <div class="page-header">
-          <h1 class="page-title">Landing Page Examples</h1>
+          <h1 class="page-title">Non-profit Examples</h1>
           <p class="page-description intro">
-            High-converting landing pages for products and services.
+            Websites for charities, foundations, and mission-driven organizations.
           </p>
         </div>
       </FadeInOnScroll>
 
       <div class="showcase-grid">
         <FadeInOnScroll delay={0}>
-          <a href="/showcase/examples/product-launch/" class="showcase-card">
-            <div class="showcase-image showcase-image--orange"></div>
+          <a href="/showcase/examples/nonprofit/" class="showcase-card">
+            <div class="showcase-image showcase-image--ocean"></div>
             <div class="showcase-content">
-              <h3>Product Launch</h3>
-              <p>Eye-catching product launch page with features and pricing.</p>
-              <span class="showcase-link">View Demo &rarr;</span>
-            </div>
-          </a>
-        </FadeInOnScroll>
-
-        <FadeInOnScroll delay={100}>
-          <a href="/showcase/examples/app-download/" class="showcase-card">
-            <div class="showcase-image showcase-image--purple"></div>
-            <div class="showcase-content">
-              <h3>App Download</h3>
-              <p>Mobile app landing page with download links and screenshots.</p>
-              <span class="showcase-link">View Demo &rarr;</span>
-            </div>
-          </a>
-        </FadeInOnScroll>
-
-        <FadeInOnScroll delay={200}>
-          <a href="/showcase/examples/newsletter/" class="showcase-card">
-            <div class="showcase-image showcase-image--teal"></div>
-            <div class="showcase-content">
-              <h3>Newsletter Signup</h3>
-              <p>Simple landing page focused on email capture and conversion.</p>
+              <h3>Ocean Conservation</h3>
+              <p>Non-profit site with donation forms, impact stories, and volunteer signup.</p>
               <span class="showcase-link">View Demo &rarr;</span>
             </div>
           </a>
@@ -112,16 +90,8 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     background-position: center;
   }
 
-  .showcase-image--orange {
-    background: linear-gradient(135deg, #f59e0b, #f97316);
-  }
-
-  .showcase-image--purple {
-    background: linear-gradient(135deg, #8b5cf6, #a855f7);
-  }
-
-  .showcase-image--teal {
-    background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  .showcase-image--ocean {
+    background: linear-gradient(135deg, #0369a1, #0284c7);
   }
 
   .showcase-content {

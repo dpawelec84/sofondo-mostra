@@ -9,6 +9,7 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     <a href="/showcase/" class="active">All Projects</a>
     <a href="/showcase/marketing/">Marketing Sites</a>
     <a href="/showcase/landing/">Landing Pages</a>
+    <a href="/showcase/nonprofit/">Non-profit</a>
   </SubNav>
 
   <section class="page-content" data-bg-theme="light">
@@ -96,6 +97,19 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
             </div>
           </a>
         </FadeInOnScroll>
+
+        <!-- Non-profit -->
+        <FadeInOnScroll delay={600}>
+          <a href="/showcase/examples/nonprofit/" class="showcase-card">
+            <div class="showcase-image showcase-image--ocean"></div>
+            <div class="showcase-content">
+              <span class="showcase-tag">Non-profit</span>
+              <h3>Ocean Conservation</h3>
+              <p>Non-profit site with donation forms, impact stories, and volunteer signup.</p>
+              <span class="showcase-link">View Demo &rarr;</span>
+            </div>
+          </a>
+        </FadeInOnScroll>
       </div>
     </div>
   </section>
@@ -174,6 +188,10 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
 
   .showcase-image--cyan {
     background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  }
+
+  .showcase-image--ocean {
+    background: linear-gradient(135deg, #0369a1, #0284c7);
   }
 
   .showcase-content {
