@@ -374,6 +374,37 @@ for (const pattern of conflictingCSSPatterns) {
 sourceContent = sourceContent.replace(/\s*\/\*\s*Header\s*\*\/\s*/g, '');
 sourceContent = sourceContent.replace(/\s*\/\*\s*Footer\s*\*\/\s*/g, '');
 
+// Transform hero section CSS to extend under the fixed header
+// This adds negative margin and extra padding to create the "hero under header" effect
+const heroExtendPattern = /\.hero\s*\{([^}]*)(padding:\s*([^;]+);)/;
+const heroMatch = sourceContent.match(heroExtendPattern);
+if (heroMatch) {
+  const headerHeight = recipe.theme['--header-height'] || '72px';
+  // Parse existing padding to add header height to top
+  const existingPadding = heroMatch[3].trim();
+  // Check if it's shorthand or specific padding values
+  const paddingParts = existingPadding.split(/\s+/);
+  let newPadding;
+  if (paddingParts.length === 1) {
+    // Single value: add header height to top
+    newPadding = `calc(var(--header-height, ${headerHeight}) + ${paddingParts[0]}) ${paddingParts[0]} ${paddingParts[0]}`;
+  } else if (paddingParts.length === 2) {
+    // vertical horizontal: add to vertical for top
+    newPadding = `calc(var(--header-height, ${headerHeight}) + ${paddingParts[0]}) ${paddingParts[1]} ${paddingParts[0]}`;
+  } else if (paddingParts.length === 3 || paddingParts.length === 4) {
+    // top horizontal bottom OR top right bottom left: add to top
+    newPadding = `calc(var(--header-height, ${headerHeight}) + ${paddingParts[0]}) ${paddingParts.slice(1).join(' ')}`;
+  }
+
+  if (newPadding) {
+    sourceContent = sourceContent.replace(
+      heroExtendPattern,
+      `.hero {$1padding: ${newPadding};\n        margin-top: calc(-1 * var(--header-height, ${headerHeight}));`
+    );
+    console.log('✓ Transformed hero section to extend under header');
+  }
+}
+
 fs.writeFileSync(targetPath, sourceContent);
 console.log(`✓ Created new homepage from ${recipe.source} example`);
 
