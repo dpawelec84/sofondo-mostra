@@ -570,7 +570,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
   /* Hero */
   .hero {
     position: relative;
-    padding: 10rem 0 6rem;
+    padding: calc(var(--header-height, 64px) + 4rem) 0 6rem;
     text-align: center;
     overflow: hidden;
   }
@@ -1131,7 +1131,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     }
 
     .hero {
-      padding: 8rem 0 4rem;
+      padding: calc(var(--header-height, 64px) + 3rem) 0 4rem;
     }
 
     .hero-stats {

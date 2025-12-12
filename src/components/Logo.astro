@@ -12,13 +12,19 @@ const hasEmoji = siteConfig.logo.emoji && siteConfig.logo.emoji.trim() !== "";
 const hasLogo = !hasEmoji && siteConfig.logo.src && siteConfig.logo.src.trim() !== "";
 const hasTemplateName = siteConfig.templateName && siteConfig.templateName.trim() !== "";
 const nameAccent = 'nameAccent' in siteConfig ? (siteConfig as any).nameAccent : '';
+const logoMark = 'logoMark' in siteConfig ? (siteConfig as any).logoMark : 'icon-text';
+const logoChar = 'char' in siteConfig.logo ? (siteConfig.logo as any).char : siteConfig.name.charAt(0);
+const isGradientBox = logoMark === 'gradient-box';
 ---
 
 <div class="logo-container" style={`color: ${color};`}>
-  {hasEmoji && (
+  {isGradientBox && (
+    <span class="logo-icon">{logoChar}</span>
+  )}
+  {!isGradientBox && hasEmoji && (
     <span class="logo-emoji">{siteConfig.logo.emoji}</span>
   )}
-  {hasLogo && (
+  {!isGradientBox && hasLogo && (
     <img
       src={siteConfig.logo.src}
       alt={siteConfig.logo.alt}
@@ -47,6 +53,22 @@ const nameAccent = 'nameAccent' in siteConfig ? (siteConfig as any).nameAccent :
     flex-shrink: 0;
   }
 
+  /* Gradient box logo icon (startup/SaaS style) */
+  .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--logo-icon-gradient, linear-gradient(135deg, #a855f7, #6366f1));
+    border-radius: 8px;
+    font-family: var(--header-logo-font, var(--font-serif));
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+
   .logo-mark {
     display: block;
     flex-shrink: 0;
@@ -66,7 +88,7 @@ const nameAccent = 'nameAccent' in siteConfig ? (siteConfig as any).nameAccent :
 
   .logo-name {
     font-family: var(--header-logo-font, var(--font-sans));
-    font-weight: 700;
+    font-weight: var(--header-logo-weight, 600);
     font-size: var(--header-logo-size, 1.25rem);
     letter-spacing: var(--header-logo-letter-spacing, 0);
     color: var(--header-logo-color, var(--text-primary));
