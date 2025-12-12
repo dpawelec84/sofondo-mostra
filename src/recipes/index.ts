@@ -52,6 +52,7 @@ export interface RecipeTheme {
   '--footer-heading'?: string;
   '--footer-link'?: string;
   '--footer-link-hover'?: string;
+  '--footer-max-width'?: string;
 }
 
 export interface RecipeFonts {
@@ -296,6 +297,7 @@ export const recipes: Record<string, Recipe> = {
       '--header-logo-size': '1.75rem',
       '--header-logo-color': '#ffffff',
       '--header-logo-accent': '#a855f7',
+      '--header-logo-weight': '400',
       // Footer: dark background
       '--footer-bg': '#0a0a0a',
       '--footer-text': '#a3a3a3',
@@ -586,6 +588,7 @@ export const recipes: Record<string, Recipe> = {
       '--footer-heading': '#1a1a1a',
       '--footer-link': '#666666',
       '--footer-link-hover': '#059669',
+      '--footer-max-width': '1000px',
     },
     fonts: {
       google: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap',

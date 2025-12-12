@@ -160,6 +160,11 @@ const getInitials = (platform: string): string => {
             <p class="footer-copyright">&copy; {new Date().getFullYear()} {siteConfig.footer.copyright}. All rights reserved.{copyrightSuffix && ` ${copyrightSuffix}`}</p>
           </div>
         )}
+        {showTemplateCredit && (
+          <p class="footer-template-credit footer-template-credit-sections">
+            {siteConfig.templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
+          </p>
+        )}
       </>
     )}
 
@@ -208,7 +213,7 @@ const getInitials = (platform: string): string => {
   }
 
   .container {
-    max-width: 1200px;
+    max-width: var(--footer-max-width, 1200px);
     margin: 0 auto;
     padding: 0 2rem;
   }
@@ -464,6 +469,13 @@ const getInitials = (platform: string): string => {
     text-align: center;
     margin-top: 2rem;
     padding-top: 1.5rem;
+    border-top: 1px solid var(--footer-border, rgba(255, 255, 255, 0.1));
+  }
+
+  .footer-template-credit-sections {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
     border-top: 1px solid var(--footer-border, rgba(255, 255, 255, 0.1));
   }
 
