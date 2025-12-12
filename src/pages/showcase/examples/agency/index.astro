@@ -47,6 +47,10 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
         padding: 0 1.5rem;
       }
 
+      .hero .container {
+        padding: 0 12rem;
+      }
+
       /* Header */
       .header {
         position: fixed;
@@ -115,10 +119,10 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
 
       /* Hero */
       .hero {
-        min-height: 100vh;
+        min-height: calc(100vh - var(--header-height, 80px));
         display: flex;
         align-items: center;
-        padding: 8rem 0 4rem;
+        padding: 2rem 0 4rem;
         position: relative;
         overflow: hidden;
       }
