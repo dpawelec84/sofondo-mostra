@@ -165,13 +165,19 @@ function extractArray(content, fieldName) {
   try {
     // Convert TypeScript-style to JSON-style (single quotes to double, etc.)
     let jsonStr = arrayContent
+      // Remove comments
+      .replace(/\/\/.*$/gm, '')
+      // Replace single quotes with double quotes (but avoid replacing inside strings)
       .replace(/'/g, '"')
-      .replace(/(\w+):/g, '"$1":')
-      .replace(/,\s*}/g, '}')
-      .replace(/,\s*]/g, ']');
+      // Add quotes around unquoted property names (handles word: and hyphen-word:)
+      .replace(/([{,]\s*)(\w[\w-]*)(\s*:)/g, '$1"$2"$3')
+      // Fix any double-quoted keys that got double-double-quoted
+      .replace(/""/g, '"')
+      // Remove trailing commas before closing brackets
+      .replace(/,(\s*[}\]])/g, '$1');
     return JSON.parse(jsonStr);
   } catch (e) {
-    // If JSON parsing fails, return the raw array content for debugging
+    // If JSON parsing fails, return undefined
     return undefined;
   }
 }
@@ -573,9 +579,9 @@ if (recipe.linkGroups && recipe.linkGroups.length > 0) {
     .replace(/'(\w+)':/g, '$1:')
     .replace(/\n/g, '\n    ');
 
-  // Replace the linkGroups array
+  // Replace the linkGroups array - use greedy match to capture multiple groups
   siteConfig = siteConfig.replace(
-    /linkGroups:\s*\[\s*\{[\s\S]*?\}\s*\]\s*as FooterLinkGroup\[\]/,
+    /linkGroups:\s*\[[\s\S]*?\]\s*as FooterLinkGroup\[\]/,
     `linkGroups: ${linkGroupsStr} as FooterLinkGroup[]`
   );
   console.log(`✓ Updated footer link groups (${recipe.linkGroups.length} groups)`);
