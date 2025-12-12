@@ -39,8 +39,11 @@ export interface RecipeTheme {
 
   // Logo styling
   '--header-logo-font'?: string;
+  '--header-logo-size'?: string; // Logo text size (e.g., '1.5rem', '24px')
   '--header-logo-color'?: string;
   '--header-logo-accent'?: string;
+  '--header-logo-accent-color'?: string; // Accent color for two-part logo names
+  '--footer-logo-accent'?: string; // Accent color for footer logo
 
   // Footer styling
   '--footer-bg'?: string;
@@ -136,6 +139,7 @@ export interface LegalLink {
 
 export interface Recipe {
   name: string;
+  nameAccent?: string; // Second part of name in accent color (e.g., "Corp" in "NexusCorp")
   description: string;
   tagline: string; // Footer tagline
   category: 'marketing' | 'landing' | 'nonprofit';
@@ -155,11 +159,14 @@ export interface Recipe {
   linkGroups?: FooterLinkGroupConfig[]; // Footer link columns
   legalLinks?: LegalLink[]; // Privacy/Terms links
   legalInBottomRow?: boolean; // Show legal links in separate row
+  showLegalLinks?: boolean; // Show legal links
+  showTemplateCredit?: boolean; // Show template credit line
 }
 
 export const recipes: Record<string, Recipe> = {
   corporate: {
-    name: 'Nexus Corp',
+    name: 'Nexus',
+    nameAccent: 'Corp',
     description: 'Professional business consulting with elegant navy and gold palette',
     tagline: 'Transforming businesses through strategic excellence and innovative solutions since 1999.',
     category: 'marketing',
@@ -185,12 +192,15 @@ export const recipes: Record<string, Recipe> = {
       '--header-cta-hover-bg': '#152a45',
       '--header-cta-padding': '0.625rem 1.25rem',
       '--header-cta-radius': '6px',
-      '--header-cta-font-size': '0.875rem',
-      '--header-cta-font-weight': '600',
+      '--header-cta-font-size': '0.9375rem',
+      '--header-cta-font-weight': '500',
       // Logo styling
       '--header-logo-font': 'var(--font-serif)',
+      '--header-logo-size': '1.5rem',
       '--header-logo-color': '#1e3a5f',
       '--header-logo-accent': '#c9a227',
+      '--header-logo-accent-color': '#c9a227',
+      '--footer-logo-accent': '#c9a227',
       // Footer: dark navy background
       '--footer-bg': '#152a45',
       '--footer-text': 'rgba(255, 255, 255, 0.7)',
@@ -244,11 +254,10 @@ export const recipes: Record<string, Recipe> = {
         ],
       },
     ],
-    legalLinks: [
-      { label: 'Privacy Policy', href: '/privacy/' },
-      { label: 'Terms of Service', href: '/terms/' },
-    ],
+    legalLinks: [],
     legalInBottomRow: false,
+    showLegalLinks: false,
+    showTemplateCredit: true,
   },
 
   agency: {

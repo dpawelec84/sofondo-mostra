@@ -29,6 +29,8 @@
   --header-logo-font: var(--font-sans);
   --header-logo-color: var(--text-primary);
   --header-logo-accent: var(--text-primary);
+  --header-logo-accent-color: var(--accent-primary);
+  --footer-logo-accent: var(--accent-primary);
 
   /* Footer styling - overridden by recipes */
   --footer-bg: var(--bg-light);
@@ -147,6 +149,7 @@ h6 {
 .NavigationMenuList {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: transparent;
   padding: 4px;
   border-radius: 6px;
@@ -242,8 +245,9 @@ h6 {
   font-size: var(--header-cta-font-size, 0.875rem);
   margin-left: 8px;
   transition: background-color 0.2s ease, transform 0.2s ease;
-  font-weight: 600;
+  font-weight: var(--header-cta-font-weight, 600);
   white-space: nowrap;
+  line-height: 1.5;
 }
 
 .NavigationCTAButton:hover {

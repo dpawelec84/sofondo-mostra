@@ -198,7 +198,6 @@ const getInitials = (platform: string): string => {
     padding: 4rem 0 2rem;
     background: var(--footer-bg, var(--bg-light));
     color: var(--footer-text, var(--text-secondary));
-    margin-top: 4rem;
   }
 
   .container {
@@ -240,6 +239,7 @@ const getInitials = (platform: string): string => {
     /* Override Logo component's header colors for footer context */
     --header-logo-color: var(--footer-heading, #ffffff);
     --header-logo-accent: var(--footer-link-hover, var(--accent-secondary));
+    --header-logo-accent-color: var(--footer-logo-accent, var(--accent-secondary));
   }
 
   .footer-tagline {
@@ -250,11 +250,12 @@ const getInitials = (platform: string): string => {
   }
 
   .footer-heading {
-    font-size: 0.875rem;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.9375rem;
     font-weight: 600;
     color: var(--footer-heading, var(--text-primary));
-    margin-bottom: 1.25rem;
-    letter-spacing: 0.025em;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
@@ -347,8 +348,9 @@ const getInitials = (platform: string): string => {
 
   .footer-bottom-content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
     margin-bottom: 1rem;
   }
 

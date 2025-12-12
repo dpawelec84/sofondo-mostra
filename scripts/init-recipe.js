@@ -59,6 +59,7 @@ function parseRecipes() {
 
     recipes[id] = {
       name: extractField(recipeContent, 'name'),
+      nameAccent: extractField(recipeContent, 'nameAccent'),
       description: extractField(recipeContent, 'description'),
       tagline: extractField(recipeContent, 'tagline'),
       category: extractField(recipeContent, 'category'),
@@ -77,6 +78,8 @@ function parseRecipes() {
       linkGroups: extractArray(recipeContent, 'linkGroups'),
       legalLinks: extractArray(recipeContent, 'legalLinks'),
       legalInBottomRow: extractBoolean(recipeContent, 'legalInBottomRow'),
+      showLegalLinks: extractBoolean(recipeContent, 'showLegalLinks'),
+      showTemplateCredit: extractBoolean(recipeContent, 'showTemplateCredit'),
     };
   }
 
@@ -410,6 +413,15 @@ siteConfig = siteConfig.replace(
   `name: "${recipe.name}"`
 );
 
+// Update nameAccent if provided
+if (recipe.nameAccent) {
+  siteConfig = siteConfig.replace(
+    /nameAccent:\s*"[^"]*"/,
+    `nameAccent: "${recipe.nameAccent}"`
+  );
+  console.log(`✓ Updated nameAccent to "${recipe.nameAccent}"`);
+}
+
 // Update description if available
 siteConfig = siteConfig.replace(
   /description:\s*"[^"]+"/,
@@ -560,6 +572,24 @@ if (recipe.legalInBottomRow !== undefined) {
     `legalInBottomRow: ${recipe.legalInBottomRow}`
   );
   console.log(`✓ Updated legalInBottomRow to ${recipe.legalInBottomRow}`);
+}
+
+// Update showLegalLinks if provided
+if (recipe.showLegalLinks !== undefined) {
+  siteConfig = siteConfig.replace(
+    /showLegalLinks:\s*(true|false)/,
+    `showLegalLinks: ${recipe.showLegalLinks}`
+  );
+  console.log(`✓ Updated showLegalLinks to ${recipe.showLegalLinks}`);
+}
+
+// Update showTemplateCredit if provided
+if (recipe.showTemplateCredit !== undefined) {
+  siteConfig = siteConfig.replace(
+    /showTemplateCredit:\s*(true|false)/,
+    `showTemplateCredit: ${recipe.showTemplateCredit}`
+  );
+  console.log(`✓ Updated showTemplateCredit to ${recipe.showTemplateCredit}`);
 }
 
 fs.writeFileSync(siteConfigPath, siteConfig);

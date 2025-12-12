@@ -93,6 +93,7 @@ export type SocialLink = {
 export const siteConfig = {
   // Site metadata - "Sofondo" is the brand, "Mostra" is the template name
   name: "Sofondo",
+  nameAccent: "", // Optional second part of name in accent color (e.g., "Corp" in "NexusCorp")
   templateName: "Mostra",
   description: "A modern Astro template for marketing sites and landing pages",
 
