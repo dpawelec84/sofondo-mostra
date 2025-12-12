@@ -138,7 +138,7 @@ h6 {
 
 /* Centered layout: nav center, CTA separate (at the end of grid) */
 .NavigationMenuRoot[data-layout="centered"] {
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 /* Minimal layout: only CTA, right-aligned */
@@ -155,7 +155,7 @@ h6 {
   border-radius: 6px;
   list-style: none;
   margin: 0;
-  gap: 4px;
+  gap: 1.5rem;
 }
 
 /* Standard layout: nav list right-aligned */
