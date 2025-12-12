@@ -27,6 +27,7 @@
   --header-cta-padding: 8px 20px;
   --header-cta-radius: 8px;
   --header-logo-font: var(--font-sans);
+  --header-logo-size: 1.25rem;
   --header-logo-color: var(--text-primary);
   --header-logo-accent: var(--text-primary);
   --header-logo-accent-color: var(--accent-primary);

@@ -212,7 +212,7 @@ export const recipes: Record<string, Recipe> = {
       google: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap',
     },
     logo: {
-      src: '/logos/corporate-logo.svg',
+      src: '', // Empty for text-only logo
       alt: 'Nexus Corp Logo',
       width: 32,
       height: 32,
@@ -451,7 +451,7 @@ export const recipes: Record<string, Recipe> = {
       google: 'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:wght@400;500;600;700&display=swap',
     },
     logo: {
-      src: '/logos/product-launch-logo.svg',
+      src: '', // Empty for text-only logo
       alt: 'Spark Logo',
       width: 32,
       height: 32,
