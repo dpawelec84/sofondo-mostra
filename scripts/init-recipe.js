@@ -623,6 +623,13 @@ if (recipe.showTemplateCredit !== undefined) {
   console.log(`✓ Updated showTemplateCredit to ${recipe.showTemplateCredit}`);
 }
 
+// Disable custom scrollbar for recipe sites (showcase examples use native scrollbar)
+siteConfig = siteConfig.replace(
+  /customScrollbar:\s*true/,
+  `customScrollbar: false`
+);
+console.log('✓ Disabled custom scrollbar (using native browser scrollbar)');
+
 fs.writeFileSync(siteConfigPath, siteConfig);
 console.log('✓ Updated site.ts with recipe configuration');
 

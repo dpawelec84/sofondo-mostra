@@ -291,6 +291,7 @@ export const recipes: Record<string, Recipe> = {
       '--header-cta-font-weight': '600',
       // Logo styling
       '--header-logo-font': 'var(--font-serif)',
+      '--header-logo-size': '1.75rem',
       '--header-logo-color': '#ffffff',
       '--header-logo-accent': '#a855f7',
       // Footer: dark background
@@ -349,6 +350,7 @@ export const recipes: Record<string, Recipe> = {
       '--header-cta-font-weight': '500',
       // Logo styling
       '--header-logo-font': 'var(--font-serif)',
+      '--header-logo-size': '1.25rem',
       '--header-logo-color': '#fafafa',
       '--header-logo-accent': '#6366f1',
       // Footer: dark background
@@ -435,6 +437,7 @@ export const recipes: Record<string, Recipe> = {
       '--header-cta-font-weight': '600',
       // Logo styling
       '--header-logo-font': 'var(--font-serif)',
+      '--header-logo-size': '1.75rem',
       '--header-logo-color': '#1a1a1a',
       '--header-logo-accent': '#f97316',
       // Footer: dark background
@@ -493,6 +496,7 @@ export const recipes: Record<string, Recipe> = {
       '--header-cta-font-weight': '600',
       // Logo styling
       '--header-logo-font': 'var(--font-sans)',
+      '--header-logo-size': '1.5rem',
       '--header-logo-color': '#2d2a26',
       '--header-logo-accent': '#7c3aed',
       // Footer: dark background
@@ -551,6 +555,7 @@ export const recipes: Record<string, Recipe> = {
       '--header-cta-font-weight': '600',
       // Logo styling - uses DM Sans, not serif
       '--header-logo-font': 'var(--font-sans)',
+      '--header-logo-size': '1.25rem',
       '--header-logo-color': '#1a1a1a',
       '--header-logo-accent': '#059669',
       // Footer: inherits from page background (transparent)
@@ -609,6 +614,7 @@ export const recipes: Record<string, Recipe> = {
       '--header-cta-font-weight': '600',
       // Logo styling
       '--header-logo-font': 'var(--font-serif)',
+      '--header-logo-size': '1.25rem',
       '--header-logo-color': '#0369a1',
       '--header-logo-accent': '#0369a1',
       // Footer: dark blue background
