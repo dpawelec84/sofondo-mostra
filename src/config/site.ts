@@ -117,6 +117,9 @@ export const siteConfig = {
     ctaShape: "rounded" as CTAShape,
   },
 
+  // Dark theme flag - affects scrollbar and sub-nav colors
+  isDark: false,
+
   // Footer layout: 'grid-4col' | 'flex-row' | 'flex-sections'
   footerLayout: "grid-4col" as const,
 

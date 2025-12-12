@@ -79,7 +79,10 @@ function parseRecipes() {
       legalLinks: extractArray(recipeContent, 'legalLinks'),
       legalInBottomRow: extractBoolean(recipeContent, 'legalInBottomRow'),
       showLegalLinks: extractBoolean(recipeContent, 'showLegalLinks'),
+      showCopyright: extractBoolean(recipeContent, 'showCopyright'),
       showTemplateCredit: extractBoolean(recipeContent, 'showTemplateCredit'),
+      isDark: extractBoolean(recipeContent, 'isDark'),
+      copyrightSuffix: extractField(recipeContent, 'copyrightSuffix'),
     };
   }
 
@@ -165,8 +168,10 @@ function extractArray(content, fieldName) {
   try {
     // Convert TypeScript-style to JSON-style (single quotes to double, etc.)
     let jsonStr = arrayContent
-      // Remove comments
-      .replace(/\/\/.*$/gm, '')
+      // Remove comments - but only when // is NOT inside a string
+      // This regex matches // only when preceded by whitespace at start of line or after a comma/closing bracket
+      .replace(/^\s*\/\/.*$/gm, '') // Remove full-line comments
+      .replace(/,\s*\/\/.*$/gm, ',') // Remove trailing comments after commas
       // Replace single quotes with double quotes (but avoid replacing inside strings)
       .replace(/'/g, '"')
       // Add quotes around unquoted property names (handles word: and hyphen-word:)
@@ -380,36 +385,9 @@ for (const pattern of conflictingCSSPatterns) {
 sourceContent = sourceContent.replace(/\s*\/\*\s*Header\s*\*\/\s*/g, '');
 sourceContent = sourceContent.replace(/\s*\/\*\s*Footer\s*\*\/\s*/g, '');
 
-// Transform hero section CSS to extend under the fixed header
-// This adds negative margin and extra padding to create the "hero under header" effect
-const heroExtendPattern = /\.hero\s*\{([^}]*)(padding:\s*([^;]+);)/;
-const heroMatch = sourceContent.match(heroExtendPattern);
-if (heroMatch) {
-  const headerHeight = recipe.theme['--header-height'] || '72px';
-  // Parse existing padding to add header height to top
-  const existingPadding = heroMatch[3].trim();
-  // Check if it's shorthand or specific padding values
-  const paddingParts = existingPadding.split(/\s+/);
-  let newPadding;
-  if (paddingParts.length === 1) {
-    // Single value: add header height to top
-    newPadding = `calc(var(--header-height, ${headerHeight}) + ${paddingParts[0]}) ${paddingParts[0]} ${paddingParts[0]}`;
-  } else if (paddingParts.length === 2) {
-    // vertical horizontal: add to vertical for top
-    newPadding = `calc(var(--header-height, ${headerHeight}) + ${paddingParts[0]}) ${paddingParts[1]} ${paddingParts[0]}`;
-  } else if (paddingParts.length === 3 || paddingParts.length === 4) {
-    // top horizontal bottom OR top right bottom left: add to top
-    newPadding = `calc(var(--header-height, ${headerHeight}) + ${paddingParts[0]}) ${paddingParts.slice(1).join(' ')}`;
-  }
-
-  if (newPadding) {
-    sourceContent = sourceContent.replace(
-      heroExtendPattern,
-      `.hero {$1padding: ${newPadding};\n        margin-top: calc(-1 * var(--header-height, ${headerHeight}));`
-    );
-    console.log('✓ Transformed hero section to extend under header');
-  }
-}
+// NOTE: Hero transform disabled - showcase examples already have correct padding
+// The examples are designed to work with fixed headers and their padding accounts for this
+// Adding extra header-height padding was causing too much space above hero text
 
 fs.writeFileSync(targetPath, sourceContent);
 console.log(`✓ Created new homepage from ${recipe.source} example`);
@@ -539,6 +517,24 @@ if (recipe.ctaShape) {
   console.log(`✓ Updated CTA shape to "${recipe.ctaShape}"`);
 }
 
+// Update isDark flag if provided
+if (recipe.isDark !== undefined && recipe.isDark !== null) {
+  siteConfig = siteConfig.replace(
+    /isDark:\s*(true|false)/,
+    `isDark: ${recipe.isDark}`
+  );
+  console.log(`✓ Updated isDark to ${recipe.isDark}`);
+}
+
+// Update copyrightSuffix if provided
+if (recipe.copyrightSuffix) {
+  siteConfig = siteConfig.replace(
+    /copyrightSuffix:\s*"[^"]*"/,
+    `copyrightSuffix: "${recipe.copyrightSuffix}"`
+  );
+  console.log(`✓ Updated copyrightSuffix to "${recipe.copyrightSuffix}"`);
+}
+
 // Update footer social configuration
 if (recipe.socialStyle) {
   siteConfig = siteConfig.replace(
@@ -579,12 +575,25 @@ if (recipe.linkGroups && recipe.linkGroups.length > 0) {
     .replace(/'(\w+)':/g, '$1:')
     .replace(/\n/g, '\n    ');
 
-  // Replace the linkGroups array - use greedy match to capture multiple groups
-  siteConfig = siteConfig.replace(
-    /linkGroups:\s*\[[\s\S]*?\]\s*as FooterLinkGroup\[\]/,
-    `linkGroups: ${linkGroupsStr} as FooterLinkGroup[]`
-  );
-  console.log(`✓ Updated footer link groups (${recipe.linkGroups.length} groups)`);
+  // Find the start of linkGroups array and use bracket matching to find the end
+  const linkGroupsMatch = siteConfig.match(/linkGroups:\s*\[/);
+  if (linkGroupsMatch) {
+    const startPos = siteConfig.indexOf(linkGroupsMatch[0]);
+    const bracketStart = startPos + linkGroupsMatch[0].length - 1;
+    const bracketEnd = findMatchingBracket(siteConfig, bracketStart);
+    if (bracketEnd !== -1) {
+      // Find where the type annotation ends (as FooterLinkGroup[])
+      const afterBracket = siteConfig.substring(bracketEnd + 1);
+      const typeMatch = afterBracket.match(/^\s*as FooterLinkGroup\[\]/);
+      const endPos = typeMatch ? bracketEnd + 1 + typeMatch[0].length : bracketEnd + 1;
+
+      // Replace the entire linkGroups declaration
+      siteConfig = siteConfig.substring(0, startPos) +
+        `linkGroups: ${linkGroupsStr} as FooterLinkGroup[]` +
+        siteConfig.substring(endPos);
+      console.log(`✓ Updated footer link groups (${recipe.linkGroups.length} groups)`);
+    }
+  }
 }
 
 // Update legal links if provided
@@ -618,6 +627,15 @@ if (recipe.showLegalLinks !== undefined) {
     `showLegalLinks: ${recipe.showLegalLinks}`
   );
   console.log(`✓ Updated showLegalLinks to ${recipe.showLegalLinks}`);
+}
+
+// Update showCopyright if provided
+if (recipe.showCopyright !== undefined) {
+  siteConfig = siteConfig.replace(
+    /showCopyright:\s*(true|false)/,
+    `showCopyright: ${recipe.showCopyright}`
+  );
+  console.log(`✓ Updated showCopyright to ${recipe.showCopyright}`);
 }
 
 // Update showTemplateCredit if provided

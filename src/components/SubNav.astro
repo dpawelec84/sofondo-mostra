@@ -72,7 +72,7 @@ const { variant = 'grouped', gap = '1.5rem' } = Astro.props;
   }
 
   :global(html.sub-nav-stuck) .sub-nav-container::before {
-    background: rgba(246, 247, 249, 0.85);
+    background: var(--sub-nav-stuck-bg, rgba(246, 247, 249, 0.85));
   }
 
   .sub-nav {

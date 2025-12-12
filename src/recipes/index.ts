@@ -63,6 +63,7 @@ export interface RecipeLogo {
   alt: string;
   width: number;
   height: number;
+  emoji?: string; // Emoji to display as logo icon
 }
 
 /**
@@ -162,6 +163,8 @@ export interface Recipe {
   showLegalLinks?: boolean; // Show legal links
   showCopyright?: boolean; // Show copyright line
   showTemplateCredit?: boolean; // Show template credit line
+  isDark?: boolean; // True if this is a dark-themed recipe (affects scrollbar, sub-nav colors)
+  copyrightSuffix?: string; // Custom suffix after copyright (e.g., "Made with ☕ in Brooklyn.")
 }
 
 export const recipes: Record<string, Recipe> = {
@@ -258,7 +261,7 @@ export const recipes: Record<string, Recipe> = {
   },
 
   agency: {
-    name: 'Pixel Flow Agency',
+    name: 'Prism',
     description: 'Bold creative agency with vibrant gradients and modern typography',
     tagline: 'We craft digital experiences that captivate, engage, and convert.',
     category: 'marketing',
@@ -303,7 +306,7 @@ export const recipes: Record<string, Recipe> = {
     },
     logo: {
       src: '/logos/agency-logo.svg',
-      alt: 'Pixel Flow Logo',
+      alt: 'Prism Logo',
       width: 32,
       height: 32,
     },
@@ -314,10 +317,13 @@ export const recipes: Record<string, Recipe> = {
     ctaShape: 'pill',
     // Footer: minimal (flex-row uses simple links, no social column)
     socialStyle: 'none',
+    showCopyright: true,
+    showTemplateCredit: true,
+    isDark: true, // Dark themed recipe
   },
 
   startup: {
-    name: 'Velocity Tech',
+    name: 'Quantum',
     description: 'Clean tech startup with modern blue and green accents',
     tagline: 'Building the future of work, one innovation at a time.',
     category: 'marketing',
@@ -362,11 +368,12 @@ export const recipes: Record<string, Recipe> = {
     },
     logo: {
       src: '/logos/startup-logo.svg',
-      alt: 'Velocity Tech Logo',
+      alt: 'Quantum Logo',
       width: 32,
       height: 32,
+      emoji: 'Q',
     },
-    logoMark: 'icon-text', // Startup uses gradient icon + text
+    logoMark: 'icon-text', // Startup uses "Q" letter icon + text
     footerLayout: 'grid-4col', // Multi-column grid footer
     // Header: standard layout with rounded CTA
     headerLayout: 'standard',
@@ -396,12 +403,19 @@ export const recipes: Record<string, Recipe> = {
         ],
       },
     ],
-    legalLinks: [],
+    legalLinks: [
+      { label: 'Privacy', href: '/privacy/' },
+      { label: 'Terms', href: '/terms/' },
+    ],
+    showLegalLinks: true,
+    showCopyright: true,
+    showTemplateCredit: true,
     legalInBottomRow: false,
+    isDark: true, // Dark themed recipe
   },
 
   'product-launch': {
-    name: 'Spark Product Launch',
+    name: 'aura',
     description: 'Eye-catching product launch with vibrant orange and dark theme',
     tagline: 'Ignite your next big idea with tools designed for creators.',
     category: 'landing',
@@ -446,21 +460,23 @@ export const recipes: Record<string, Recipe> = {
     },
     logo: {
       src: '', // Empty for text-only logo
-      alt: 'Spark Logo',
+      alt: 'aura Logo',
       width: 32,
       height: 32,
     },
     logoMark: 'text-only', // Product launch uses serif text only
     footerLayout: 'flex-sections', // Two sections: brand left, links right
-    // Header: standard layout with pill CTA
-    headerLayout: 'standard',
+    // Header: centered layout with pill CTA
+    headerLayout: 'centered',
     ctaShape: 'pill',
     // Footer: minimal (flex-sections uses simple links)
     socialStyle: 'none',
+    showCopyright: true,
+    showTemplateCredit: true,
   },
 
   'app-download': {
-    name: 'Zenith App',
+    name: 'zenith',
     description: 'Modern app landing page with purple gradient theme',
     tagline: 'Your personal productivity companion, available everywhere.',
     category: 'landing',
@@ -504,22 +520,31 @@ export const recipes: Record<string, Recipe> = {
       google: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&display=swap',
     },
     logo: {
-      src: '/logos/app-download-logo.svg',
-      alt: 'Zenith App Logo',
+      src: '',
+      alt: 'zenith Logo',
       width: 32,
       height: 32,
+      emoji: '🧘',
     },
     logoMark: 'icon-text', // App uses emoji icon + text
     footerLayout: 'flex-sections', // Two sections: brand left, links right
-    // Header: standard layout with rounded CTA
-    headerLayout: 'standard',
+    // Header: centered layout with rounded CTA
+    headerLayout: 'centered',
     ctaShape: 'rounded',
-    // Footer: minimal (flex-sections uses simple links)
+    // Footer: minimal with legal links
     socialStyle: 'none',
+    legalLinks: [
+      { label: 'Privacy', href: '/privacy/' },
+      { label: 'Terms', href: '/terms/' },
+      { label: 'Support', href: '/support/' },
+    ],
+    showLegalLinks: true,
+    showCopyright: true,
+    showTemplateCredit: true,
   },
 
   newsletter: {
-    name: 'Weekly Spark Newsletter',
+    name: 'The Weekly Spark',
     description: 'Clean newsletter signup with warm amber accents',
     tagline: 'Curated insights and inspiration delivered to your inbox every week.',
     category: 'landing',
@@ -563,18 +588,22 @@ export const recipes: Record<string, Recipe> = {
       google: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap',
     },
     logo: {
-      src: '/logos/newsletter-logo.svg',
-      alt: 'Weekly Spark Logo',
+      src: '',
+      alt: 'The Weekly Spark Logo',
       width: 32,
       height: 32,
+      emoji: '✦',
     },
-    logoMark: 'icon-text', // Newsletter uses spark icon + text
+    logoMark: 'icon-text', // Newsletter uses spark symbol + text
     footerLayout: 'flex-sections', // Two sections: brand left, links right
     // Header: minimal layout (just logo + CTA) with rounded CTA
     headerLayout: 'minimal',
     ctaShape: 'rounded',
     // Footer: minimal (flex-sections uses simple links)
     socialStyle: 'none',
+    showCopyright: true,
+    showTemplateCredit: true,
+    copyrightSuffix: 'Made with ☕ in Brooklyn.',
   },
 
   nonprofit: {
@@ -622,10 +651,11 @@ export const recipes: Record<string, Recipe> = {
       google: 'https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap',
     },
     logo: {
-      src: '/logos/nonprofit-logo.svg',
+      src: '',
       alt: 'Ocean Guardians Logo',
       width: 32,
       height: 32,
+      emoji: '🌊',
     },
     logoMark: 'icon-text', // Nonprofit uses emoji icon + text
     footerLayout: 'grid-4col', // Multi-column grid footer with social icons
@@ -659,9 +689,14 @@ export const recipes: Record<string, Recipe> = {
         ],
       },
     ],
-    legalLinks: [],
+    legalLinks: [
+      { label: 'Privacy Policy', href: '/privacy/' },
+      { label: 'Terms of Use', href: '/terms/' },
+    ],
+    showLegalLinks: true,
+    showCopyright: true,
+    showTemplateCredit: true,
     legalInBottomRow: false, // Legal links inline in footer bottom
-    showTemplateCredit: false, // Hide template credit for cleaner nonprofit look
   },
 };
 

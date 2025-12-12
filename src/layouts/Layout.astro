@@ -13,10 +13,13 @@ const { title } = Astro.props;
 
 // Feature flags from config
 const { smoothScrolling, customScrollbar, viewTransitions } = siteConfig.features;
+
+// Dark theme flag for scrollbar and sub-nav styling
+const isDark = siteConfig.isDark || false;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme={isDark ? "dark" : undefined}>
   <head>
     <meta charset="UTF-8" />
     <meta
