@@ -40,6 +40,7 @@ export interface RecipeTheme {
   // Logo styling
   '--header-logo-font'?: string;
   '--header-logo-size'?: string; // Logo text size (e.g., '1.5rem', '24px')
+  '--header-logo-weight'?: string; // Logo text weight (e.g., '600')
   '--header-logo-color'?: string;
   '--header-logo-accent'?: string;
   '--header-logo-accent-color'?: string; // Accent color for two-part logo names
@@ -64,6 +65,7 @@ export interface RecipeLogo {
   width: number;
   height: number;
   emoji?: string; // Emoji to display as logo icon
+  char?: string; // Character to display in gradient-box style logo
 }
 
 /**
@@ -350,12 +352,13 @@ export const recipes: Record<string, Recipe> = {
       '--header-cta-padding': '0.5rem 1rem',
       '--header-cta-radius': '6px',
       '--header-cta-font-size': '0.9375rem',
-      '--header-cta-font-weight': '500',
+      '--header-cta-font-weight': '400',
       // Logo styling
       '--header-logo-font': 'var(--font-serif)',
       '--header-logo-size': '1.25rem',
       '--header-logo-color': '#fafafa',
       '--header-logo-accent': '#6366f1',
+      '--header-logo-weight': '600',
       // Footer: dark background
       '--footer-bg': '#09090b',
       '--footer-text': '#71717a',
@@ -367,13 +370,13 @@ export const recipes: Record<string, Recipe> = {
       google: 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap',
     },
     logo: {
-      src: '/logos/startup-logo.svg',
+      src: '', // Empty for gradient-box style
       alt: 'Quantum Logo',
       width: 32,
       height: 32,
-      emoji: 'Q',
+      char: 'Q', // Character displayed in gradient-box
     },
-    logoMark: 'icon-text', // Startup uses "Q" letter icon + text
+    logoMark: 'gradient-box', // Startup uses gradient box with letter
     footerLayout: 'grid-4col', // Multi-column grid footer
     // Header: standard layout with rounded CTA
     headerLayout: 'standard',
