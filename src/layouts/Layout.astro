@@ -12,7 +12,8 @@ interface Props {
 const { title } = Astro.props;
 
 // Feature flags from config
-const { smoothScrolling, customScrollbar, viewTransitions } = siteConfig.features;
+const { smoothScrolling, customScrollbar, viewTransitions } =
+  siteConfig.features;
 
 // Dark theme flag for scrollbar and sub-nav styling
 const isDark = siteConfig.isDark || false;
@@ -22,12 +23,9 @@ const isDark = siteConfig.isDark || false;
 <html lang="en" data-theme={isDark ? "dark" : undefined}>
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content={siteConfig.description}
-    />
+    <meta name="description" content={siteConfig.description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     {viewTransitions && <ClientRouter />}
@@ -49,23 +47,33 @@ const isDark = siteConfig.isDark || false;
     <style>
       /* Self-hosted fonts */
       @font-face {
-        font-family: 'Fraunces';
+        font-family: "Fraunces";
         font-style: normal;
         font-weight: 400 700;
         font-display: swap;
-        src: url('/fonts/fraunces-latin.woff2') format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        src: url("/fonts/fraunces-latin.woff2") format("woff2");
+        unicode-range:
+          U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
       }
       @font-face {
-        font-family: 'Outfit';
+        font-family: "Outfit";
         font-style: normal;
         font-weight: 300 700;
         font-display: swap;
-        src: url('/fonts/outfit-latin.woff2') format('woff2');
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        src: url("/fonts/outfit-latin.woff2") format("woff2");
+        unicode-range:
+          U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+          U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
       }
     </style>
-    {siteConfig.logo.src && siteConfig.logo.src.trim() !== "" && <link rel="preload" href={siteConfig.logo.src} as="image" />}
+    {
+      siteConfig.logo.src && siteConfig.logo.src.trim() !== "" && (
+        <link rel="preload" href={siteConfig.logo.src} as="image" />
+      )
+    }
   </head>
   <body>
     <Header />
@@ -75,22 +83,23 @@ const isDark = siteConfig.isDark || false;
     <Footer />
 
     {/* Custom Scrollbar Structure - conditionally rendered */}
-    {customScrollbar && (
-      <div class="custom-scrollbar">
-        <div class="scroll-arrow scroll-arrow-up" aria-hidden="true"></div>
-        <div class="scroll-track">
-          <div class="custom-thumb"></div>
+    {
+      customScrollbar && (
+        <div class="custom-scrollbar">
+          <div class="scroll-arrow scroll-arrow-up" aria-hidden="true" />
+          <div class="scroll-track">
+            <div class="custom-thumb" />
+          </div>
+          <div class="scroll-arrow scroll-arrow-down" aria-hidden="true"></div>
         </div>
-        <div class="scroll-arrow scroll-arrow-down" aria-hidden="true">
-        </div>
-      </div>
-    )}
+      )
+    }
 
     <script define:vars={{ smoothScrolling, customScrollbar }}>
       // Store feature flags globally for the initialization script
       window.__featureFlags = {
         smoothScrolling,
-        customScrollbar
+        customScrollbar,
       };
     </script>
 
@@ -114,7 +123,14 @@ const isDark = siteConfig.isDark || false;
           ".scroll-arrow-down",
         ) as HTMLElement;
 
-        if (!flags.customScrollbar || !scrollbar || !track || !thumb || !arrowUp || !arrowDown) {
+        if (
+          !flags.customScrollbar ||
+          !scrollbar ||
+          !track ||
+          !thumb ||
+          !arrowUp ||
+          !arrowDown
+        ) {
           // If no custom scrollbar but smooth scrolling is enabled, still init Lenis
           if (flags.smoothScrolling) {
             const lenis = new Lenis({
@@ -402,7 +418,10 @@ const isDark = siteConfig.isDark || false;
           return null;
         }
 
-        function getThemeAtScreenY(screenY: number, checkHeader: boolean = false): string | null {
+        function getThemeAtScreenY(
+          screenY: number,
+          checkHeader: boolean = false,
+        ): string | null {
           // Check if the header is covering this position (header is fixed/sticky at top)
           if (checkHeader) {
             const header = document.querySelector("header");
@@ -415,10 +434,13 @@ const isDark = siteConfig.isDark || false;
                 if (headerTheme) return headerTheme;
                 // Most headers are light-colored, so return "light" to use dark scrollbar
                 // Check computed background color to be more accurate
-                const headerBg = window.getComputedStyle(header).backgroundColor;
+                const headerBg =
+                  window.getComputedStyle(header).backgroundColor;
                 if (headerBg) {
                   // Parse RGB and check luminance
-                  const match = headerBg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+                  const match = headerBg.match(
+                    /rgba?\((\d+),\s*(\d+),\s*(\d+)/,
+                  );
                   if (match) {
                     const r = parseInt(match[1]);
                     const g = parseInt(match[2]);
@@ -664,16 +686,19 @@ const isDark = siteConfig.isDark || false;
     width: 10px;
   }
 
-  .custom-scrollbar[data-theme="dark"] .custom-thumb:not([data-theme]).dragging {
+  .custom-scrollbar[data-theme="dark"]
+    .custom-thumb:not([data-theme]).dragging {
     background: rgba(255, 255, 255, 0.6);
     width: 10px;
   }
 
-  .custom-scrollbar[data-theme="dark"] .scroll-arrow-up:not([data-theme])::after {
+  .custom-scrollbar[data-theme="dark"]
+    .scroll-arrow-up:not([data-theme])::after {
     border-bottom: 4px solid rgba(255, 255, 255, 0.8);
   }
 
-  .custom-scrollbar[data-theme="dark"] .scroll-arrow-down:not([data-theme])::after {
+  .custom-scrollbar[data-theme="dark"]
+    .scroll-arrow-down:not([data-theme])::after {
     border-top: 4px solid rgba(255, 255, 255, 0.8);
   }
 
