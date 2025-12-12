@@ -243,12 +243,12 @@ h6 {
   color: var(--header-cta-text, #ffffff) !important;
   border-radius: var(--header-cta-radius, 6px);
   padding: var(--header-cta-padding, 0.625rem 1.25rem);
-  font-size: var(--header-cta-font-size, 0.875rem);
+  font-size: var(--header-cta-font-size, 0.9375rem);
   margin-left: 8px;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-  font-weight: var(--header-cta-font-weight, 600);
+  transition: background 0.2s !important;
+  font-weight: var(--header-cta-font-weight, 500);
   white-space: nowrap;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .NavigationCTAButton:hover {

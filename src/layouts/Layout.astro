@@ -371,46 +371,122 @@ const { smoothScrolling, customScrollbar, viewTransitions } = siteConfig.feature
 
         requestAnimationFrame(raf);
 
-        // Context-Aware Scrollbar: Use scroll position to determine theme
+        // Context-Aware Scrollbar: Independent theme detection for thumb and arrows
         const sections = document.querySelectorAll("[data-bg-theme]");
+
+        function getThemeAtPosition(pageY: number): string | null {
+          if (sections.length === 0) return null;
+
+          for (let i = 0; i < sections.length; i++) {
+            const section = sections[i];
+            const rect = section.getBoundingClientRect();
+            const sectionTop = window.scrollY + rect.top;
+            const sectionBottom = sectionTop + rect.height;
+
+            if (pageY >= sectionTop && pageY < sectionBottom) {
+              return section.getAttribute("data-bg-theme");
+            }
+          }
+
+          // If past all sections, use last section's theme
+          const lastSection = sections[sections.length - 1];
+          const lastRect = lastSection.getBoundingClientRect();
+          const lastBottom = window.scrollY + lastRect.top + lastRect.height;
+          if (pageY >= lastBottom) {
+            return lastSection.getAttribute("data-bg-theme");
+          }
+
+          return null;
+        }
+
+        function getThemeAtScreenY(screenY: number, checkHeader: boolean = false): string | null {
+          // Check if the header is covering this position (header is fixed/sticky at top)
+          if (checkHeader) {
+            const header = document.querySelector("header");
+            if (header) {
+              const headerRect = header.getBoundingClientRect();
+              if (screenY >= headerRect.top && screenY < headerRect.bottom) {
+                // Header is visible at this Y position
+                // Check if header has a data-bg-theme, otherwise infer from CSS
+                const headerTheme = header.getAttribute("data-bg-theme");
+                if (headerTheme) return headerTheme;
+                // Most headers are light-colored, so return "light" to use dark scrollbar
+                // Check computed background color to be more accurate
+                const headerBg = window.getComputedStyle(header).backgroundColor;
+                if (headerBg) {
+                  // Parse RGB and check luminance
+                  const match = headerBg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+                  if (match) {
+                    const r = parseInt(match[1]);
+                    const g = parseInt(match[2]);
+                    const b = parseInt(match[3]);
+                    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+                    return luminance > 0.5 ? "light" : "dark";
+                  }
+                }
+                return "light"; // Default header to light
+              }
+            }
+          }
+
+          // Find which section is at this screen Y position
+          for (let i = 0; i < sections.length; i++) {
+            const section = sections[i];
+            const rect = section.getBoundingClientRect();
+            if (screenY >= rect.top && screenY < rect.bottom) {
+              return section.getAttribute("data-bg-theme");
+            }
+          }
+          return null;
+        }
 
         function updateScrollbarTheme() {
           if (sections.length === 0) return;
 
           const scrollY = window.scrollY;
           const windowHeight = window.innerHeight;
-          const scrollCenter = scrollY + windowHeight / 2;
-          const docHeight = document.documentElement.scrollHeight;
-          const atBottom = scrollY + windowHeight >= docHeight - 300;
 
-          // Find which section contains the scroll center point
-          let activeSection = null;
+          // Get thumb's screen position (where it visually appears)
+          const thumbRect = thumb.getBoundingClientRect();
+          const thumbCenterY = thumbRect.top + thumbRect.height / 2;
 
-          if (atBottom) {
-            activeSection = sections[sections.length - 1];
-          } else {
-            sections.forEach((section) => {
-              const rect = section.getBoundingClientRect();
-              const sectionTop = scrollY + rect.top;
-              const sectionBottom = sectionTop + rect.height;
-
-              if (scrollCenter >= sectionTop && scrollCenter < sectionBottom) {
-                activeSection = section;
-              }
-            });
+          // Get theme for thumb based on what section it's visually over on screen
+          // Also check header for thumb since it may overlap
+          const thumbTheme = getThemeAtScreenY(thumbCenterY, true);
+          const currentThumbTheme = thumb.getAttribute("data-theme");
+          if (thumbTheme && thumbTheme !== currentThumbTheme) {
+            thumb.setAttribute("data-theme", thumbTheme);
+          } else if (!thumbTheme && currentThumbTheme) {
+            thumb.removeAttribute("data-theme");
           }
 
-          if (activeSection) {
-            const theme = activeSection.getAttribute("data-bg-theme");
-            const currentTheme = scrollbar.getAttribute("data-theme");
+          // Up arrow is at top of screen - check header first, then sections
+          const upArrowRect = arrowUp.getBoundingClientRect();
+          const upArrowCenterY = upArrowRect.top + upArrowRect.height / 2;
+          const upArrowTheme = getThemeAtScreenY(upArrowCenterY, true);
+          const currentUpTheme = arrowUp.getAttribute("data-theme");
+          if (upArrowTheme && upArrowTheme !== currentUpTheme) {
+            arrowUp.setAttribute("data-theme", upArrowTheme);
+          } else if (!upArrowTheme && currentUpTheme) {
+            arrowUp.removeAttribute("data-theme");
+          }
 
-            if (theme && theme !== currentTheme) {
-              scrollbar.setAttribute("data-theme", theme);
-            }
+          // Down arrow is at bottom of screen - check what section is at bottom of viewport
+          const downArrowRect = arrowDown.getBoundingClientRect();
+          const downArrowCenterY = downArrowRect.top + downArrowRect.height / 2;
+          const downArrowTheme = getThemeAtScreenY(downArrowCenterY, false);
+          const currentDownTheme = arrowDown.getAttribute("data-theme");
+          if (downArrowTheme && downArrowTheme !== currentDownTheme) {
+            arrowDown.setAttribute("data-theme", downArrowTheme);
+          } else if (!downArrowTheme && currentDownTheme) {
+            arrowDown.removeAttribute("data-theme");
           }
         }
 
         window.addEventListener("scroll", updateScrollbarTheme);
+
+        // Also update theme when scrollbar updates (for thumb position changes)
+        lenis.on("scroll", updateScrollbarTheme);
 
         // Initial update
         updateScrollbarTheme();
@@ -550,27 +626,51 @@ const { smoothScrolling, customScrollbar, viewTransitions } = siteConfig.feature
     width: 10px;
   }
 
-  /* Theme-Aware Scrollbar Styles */
+  /* Theme-Aware Scrollbar Styles - Independent per element */
   /* Dark backgrounds - use light thumb */
-  .custom-scrollbar[data-theme="dark"] .custom-thumb {
+  .custom-thumb[data-theme="dark"] {
     background: rgba(255, 255, 255, 0.3);
   }
 
-  .custom-scrollbar[data-theme="dark"] .custom-thumb:hover {
+  .custom-thumb[data-theme="dark"]:hover {
     background: rgba(255, 255, 255, 0.5);
     width: 10px;
   }
 
-  .custom-scrollbar[data-theme="dark"] .custom-thumb.dragging {
+  .custom-thumb[data-theme="dark"].dragging {
     background: rgba(255, 255, 255, 0.6);
     width: 10px;
   }
 
-  .custom-scrollbar[data-theme="dark"] .scroll-arrow-up::after {
+  /* Independent arrow theming */
+  .scroll-arrow-up[data-theme="dark"]::after {
     border-bottom: 4px solid rgba(255, 255, 255, 0.8);
   }
 
-  .custom-scrollbar[data-theme="dark"] .scroll-arrow-down::after {
+  .scroll-arrow-down[data-theme="dark"]::after {
+    border-top: 4px solid rgba(255, 255, 255, 0.8);
+  }
+
+  /* Legacy support: scrollbar container with data-theme */
+  .custom-scrollbar[data-theme="dark"] .custom-thumb:not([data-theme]) {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .custom-scrollbar[data-theme="dark"] .custom-thumb:not([data-theme]):hover {
+    background: rgba(255, 255, 255, 0.5);
+    width: 10px;
+  }
+
+  .custom-scrollbar[data-theme="dark"] .custom-thumb:not([data-theme]).dragging {
+    background: rgba(255, 255, 255, 0.6);
+    width: 10px;
+  }
+
+  .custom-scrollbar[data-theme="dark"] .scroll-arrow-up:not([data-theme])::after {
+    border-bottom: 4px solid rgba(255, 255, 255, 0.8);
+  }
+
+  .custom-scrollbar[data-theme="dark"] .scroll-arrow-down:not([data-theme])::after {
     border-top: 4px solid rgba(255, 255, 255, 0.8);
   }
 

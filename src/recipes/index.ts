@@ -160,6 +160,7 @@ export interface Recipe {
   legalLinks?: LegalLink[]; // Privacy/Terms links
   legalInBottomRow?: boolean; // Show legal links in separate row
   showLegalLinks?: boolean; // Show legal links
+  showCopyright?: boolean; // Show copyright line
   showTemplateCredit?: boolean; // Show template credit line
 }
 
@@ -227,21 +228,17 @@ export const recipes: Record<string, Recipe> = {
     socialPosition: 'column', // Not used since socialStyle is 'none'
     linkGroups: [
       {
-        heading: 'Services',
+        heading: 'Explore',
         links: [
-          { label: 'Strategic Planning', href: '/services/strategic-planning/' },
-          { label: 'M&A Advisory', href: '/services/ma-advisory/' },
-          { label: 'Performance', href: '/services/performance/' },
-          { label: 'Risk Management', href: '/services/risk-management/' },
+          { label: 'Features', href: '/features/' },
+          { label: 'Showcase', href: '/showcase/' },
         ],
       },
       {
-        heading: 'Company',
+        heading: 'Docs',
         links: [
-          { label: 'About Us', href: '/about/' },
-          { label: 'Leadership', href: '/leadership/' },
-          { label: 'Careers', href: '/careers/' },
-          { label: 'Contact', href: '/contact/' },
+          { label: 'Documentation', href: '/docs/' },
+          { label: 'Get Started', href: '/get-started/' },
         ],
       },
       {
@@ -249,14 +246,14 @@ export const recipes: Record<string, Recipe> = {
         links: [
           { label: 'LinkedIn', href: 'https://linkedin.com' },
           { label: 'Twitter', href: 'https://twitter.com' },
-          { label: 'Newsletter', href: '/newsletter/' },
-          { label: 'Press', href: '/press/' },
+          { label: 'GitHub', href: 'https://github.com' },
         ],
       },
     ],
     legalLinks: [],
     legalInBottomRow: false,
     showLegalLinks: false,
+    showCopyright: true,
     showTemplateCredit: true,
   },
 
@@ -386,23 +383,20 @@ export const recipes: Record<string, Recipe> = {
         heading: 'Product',
         links: [
           { label: 'Features', href: '/features/' },
-          { label: 'Pricing', href: '/pricing/' },
-          { label: 'Changelog', href: '/changelog/' },
+          { label: 'Showcase', href: '/showcase/' },
+          { label: 'Documentation', href: '/docs/' },
         ],
       },
       {
-        heading: 'Resources',
+        heading: 'Connect',
         links: [
-          { label: 'Documentation', href: '/docs/' },
-          { label: 'Blog', href: '/blog/' },
-          { label: 'API', href: '/api/' },
+          { label: 'GitHub', href: 'https://github.com' },
+          { label: 'Twitter', href: 'https://twitter.com' },
+          { label: 'LinkedIn', href: 'https://linkedin.com' },
         ],
       },
     ],
-    legalLinks: [
-      { label: 'Privacy', href: '/privacy/' },
-      { label: 'Terms', href: '/terms/' },
-    ],
+    legalLinks: [],
     legalInBottomRow: false,
   },
 
@@ -649,37 +643,23 @@ export const recipes: Record<string, Recipe> = {
     ],
     linkGroups: [
       {
-        heading: 'Organization',
+        heading: 'Explore',
         links: [
-          { label: 'About Us', href: '/about/' },
-          { label: 'Our Team', href: '/team/' },
-          { label: 'Financials', href: '/financials/' },
-          { label: 'Careers', href: '/careers/' },
+          { label: 'Features', href: '/features/' },
+          { label: 'Showcase', href: '/showcase/' },
+          { label: 'Documentation', href: '/docs/' },
         ],
       },
       {
-        heading: 'Get Involved',
+        heading: 'Connect',
         links: [
-          { label: 'Donate', href: '/donate/' },
-          { label: 'Volunteer', href: '/volunteer/' },
-          { label: 'Partner With Us', href: '/partner/' },
-          { label: 'Events', href: '/events/' },
-        ],
-      },
-      {
-        heading: 'Resources',
-        links: [
-          { label: 'News & Blog', href: '/news/' },
-          { label: 'Research', href: '/research/' },
-          { label: 'Educational Materials', href: '/education/' },
-          { label: 'Contact Us', href: '/contact/' },
+          { label: 'Facebook', href: 'https://facebook.com' },
+          { label: 'Twitter', href: 'https://twitter.com' },
+          { label: 'Instagram', href: 'https://instagram.com' },
         ],
       },
     ],
-    legalLinks: [
-      { label: 'Privacy Policy', href: '/privacy/' },
-      { label: 'Terms of Use', href: '/terms/' },
-    ],
+    legalLinks: [],
     legalInBottomRow: false, // Legal links inline in footer bottom
     showTemplateCredit: false, // Hide template credit for cleaner nonprofit look
   },
