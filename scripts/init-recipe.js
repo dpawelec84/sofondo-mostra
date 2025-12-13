@@ -554,10 +554,11 @@ if (recipe.logo) {
     /(logo:\s*\{[^}]*?)emoji:\s*"[^"]*"/,
     `$1emoji: "${recipe.logo.emoji || ''}"`
   );
-  // Update logo svgIcon
+  // Update logo svgIcon - use backticks to avoid quote escaping issues in SVG
+  const svgIconValue = (recipe.logo.svgIcon || '').replace(/\\/g, '\\\\').replace(/`/g, '\\`');
   siteConfig = siteConfig.replace(
-    /(logo:\s*\{[^}]*?)svgIcon:\s*"[^"]*"/,
-    `$1svgIcon: "${recipe.logo.svgIcon || ''}"`
+    /(logo:\s*\{[^}]*?)svgIcon:\s*(?:"[^"]*"|'[^']*'|`[^`]*`)/,
+    `$1svgIcon: \`${svgIconValue}\``
   );
   // Update logo char
   siteConfig = siteConfig.replace(
