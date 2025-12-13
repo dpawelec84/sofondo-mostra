@@ -1,683 +1,843 @@
 ---
 import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
-import Header from "../../../../components/Header.astro";
-import Footer from "../../../../components/Footer.astro";
+
+const recipe = "nonprofit";
+
+// Custom nav for nonprofit
+const navItems = [
+  { label: "Our Work", href: "#programs" },
+  { label: "Stories", href: "#stories" },
+  { label: "Get Involved", href: "#get-involved" },
+];
 ---
 
-<ShowcaseLayout title="Ocean Guardians - Protecting Marine Life" returnUrl="/showcase/" recipe="nonprofit">
-  <div class="nonprofit-site">
-    <Header />
-
-    <!-- Hero Section -->
-    <section class="hero" data-bg-theme="dark">
-      <div class="hero-bg">
-        <div class="hero-overlay"></div>
-        <div class="hero-waves">
-          <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-            <path fill="rgba(255,255,255,0.1)" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+<ShowcaseLayout
+  title="Ocean Guardians - Protecting Marine Life"
+  description="Dedicated to preserving our oceans through conservation, education, and community action."
+  recipe={recipe}
+>
+  <!-- Custom Nonprofit Header - Warm & Trustworthy -->
+  <header class="nonprofit-header">
+    <div class="header-inner">
+      <a href="#" class="header-logo">
+        <div class="logo-wave">
+          <svg viewBox="0 0 32 32" width="32" height="32">
+            <path fill="currentColor" d="M2 20c4-4 8-4 12 0s8 4 12 0c2-2 4-3 6-3v6c-2 0-4 1-6 3-4 4-8 4-12 0s-8-4-12 0v-6z"/>
+            <path fill="currentColor" opacity="0.6" d="M2 14c4-4 8-4 12 0s8 4 12 0c2-2 4-3 6-3v6c-2 0-4 1-6 3-4 4-8 4-12 0s-8-4-12 0v-6z"/>
           </svg>
         </div>
-      </div>
-      <div class="container">
-        <div class="hero-content fade-in">
-          <span class="hero-tagline">Together for the oceans</span>
-          <h1 class="hero-title">
-            Protecting marine life<br>for future generations
-          </h1>
-          <p class="hero-subtitle">
-            Ocean Guardians is dedicated to preserving our oceans through
-            conservation, education, and community action. Join us in the
-            fight to protect marine ecosystems worldwide.
-          </p>
-          <div class="hero-actions">
-            <a href="#donate" class="btn btn-primary btn-large">
-              Make a Donation
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
-            </a>
-            <a href="#about" class="btn btn-outline-light">Learn More</a>
-          </div>
-        </div>
-      </div>
-    </section>
+        <span class="logo-text">Ocean Guardians</span>
+      </a>
+      <nav class="header-nav">
+        {navItems.map((item) => (
+          <a href={item.href} class="nav-link">{item.label}</a>
+        ))}
+      </nav>
+      <a href="#donate" class="header-cta">Donate</a>
+    </div>
+  </header>
 
-    <!-- Impact Stats -->
-    <section class="impact-stats" data-bg-theme="light">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-item fade-in">
-            <span class="stat-number">2.5M+</span>
-            <span class="stat-label">Marine animals protected</span>
-          </div>
-          <div class="stat-item fade-in fade-in-delay-1">
-            <span class="stat-number">150+</span>
-            <span class="stat-label">Conservation projects</span>
-          </div>
-          <div class="stat-item fade-in fade-in-delay-2">
-            <span class="stat-number">45</span>
-            <span class="stat-label">Countries reached</span>
-          </div>
-          <div class="stat-item fade-in fade-in-delay-3">
-            <span class="stat-number">$12M</span>
-            <span class="stat-label">Invested in ocean health</span>
-          </div>
-        </div>
+  <!-- Hero: Full-Bleed Ocean Photography Aesthetic -->
+  <section class="hero-section">
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-pattern"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>2.5M+ marine animals protected</span>
       </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about" data-bg-theme="light">
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-content fade-in">
-            <span class="section-label">Our Mission</span>
-            <h2>Safeguarding the blue heart of our planet</h2>
-            <p>
-              Founded in 2015, Ocean Guardians has grown from a small group of marine
-              biologists into a global movement. We believe that healthy oceans are
-              essential for all life on Earth—and that everyone can play a part in
-              protecting them.
-            </p>
-            <p>
-              Through scientific research, policy advocacy, and grassroots education,
-              we're working to address the biggest threats facing our oceans: plastic
-              pollution, overfishing, climate change, and habitat destruction.
-            </p>
-            <div class="about-highlights">
-              <div class="highlight">
-                <span class="highlight-icon">🔬</span>
-                <span>Science-driven approach</span>
-              </div>
-              <div class="highlight">
-                <span class="highlight-icon">🤝</span>
-                <span>Community partnerships</span>
-              </div>
-              <div class="highlight">
-                <span class="highlight-icon">🌍</span>
-                <span>Global reach, local action</span>
-              </div>
-            </div>
-          </div>
-          <div class="about-image fade-in fade-in-delay-2">
-            <div class="image-placeholder">
-              <span class="placeholder-icon">🐋</span>
-              <span class="placeholder-text">Marine Conservation</span>
-            </div>
-          </div>
-        </div>
+      <h1>Every wave carries life.<br/><span class="hero-accent">Let's protect it together.</span></h1>
+      <p class="hero-description">
+        Ocean Guardians is a global community dedicated to marine conservation.
+        From coral reefs to coastlines, we're working to ensure healthy oceans
+        for generations to come.
+      </p>
+      <div class="hero-actions">
+        <a href="#donate" class="btn-primary">Make a Difference</a>
+        <a href="#programs" class="btn-secondary">See Our Work</a>
       </div>
-    </section>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="stat-value">150+</span>
+        <span class="stat-label">Conservation Projects</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-value">45</span>
+        <span class="stat-label">Countries Reached</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-value">$12M</span>
+        <span class="stat-label">Invested in Ocean Health</span>
+      </div>
+    </div>
+  </section>
 
-    <!-- Programs Section -->
-    <section class="programs" id="programs" data-bg-theme="light">
-      <div class="container">
-        <div class="section-header fade-in">
-          <span class="section-label">What We Do</span>
-          <h2>Our Programs</h2>
-          <p>From local beach cleanups to international policy work, we're tackling ocean conservation from every angle.</p>
+  <!-- Mission Statement with Supporting Imagery -->
+  <section class="mission-section">
+    <div class="mission-content">
+      <p class="mission-label">Our Mission</p>
+      <h2>Safeguarding the blue heart of our planet</h2>
+      <p class="mission-text">
+        Founded in 2015, Ocean Guardians has grown from a small group of marine
+        biologists into a global movement. We believe that healthy oceans are
+        essential for all life on Earth—and that everyone can play a part in
+        protecting them.
+      </p>
+      <div class="mission-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <span>Science-driven approach</span>
         </div>
-
-        <div class="programs-grid">
-          <div class="program-card fade-in">
-            <div class="program-icon">🐢</div>
-            <h3>Species Protection</h3>
-            <p>Protecting endangered marine species through habitat restoration, rescue operations, and breeding programs.</p>
-            <a href="#" class="program-link">Learn more →</a>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
           </div>
-          <div class="program-card fade-in fade-in-delay-1">
-            <div class="program-icon">🏖️</div>
-            <h3>Clean Coasts</h3>
-            <p>Organizing beach cleanups and working with communities to reduce plastic waste entering our oceans.</p>
-            <a href="#" class="program-link">Learn more →</a>
+          <span>Community partnerships</span>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
           </div>
-          <div class="program-card fade-in fade-in-delay-2">
-            <div class="program-icon">📚</div>
-            <h3>Ocean Education</h3>
-            <p>Teaching the next generation about marine ecosystems through school programs and interactive workshops.</p>
-            <a href="#" class="program-link">Learn more →</a>
-          </div>
-          <div class="program-card fade-in fade-in-delay-3">
-            <div class="program-icon">🏛️</div>
-            <h3>Policy Advocacy</h3>
-            <p>Working with governments to establish marine protected areas and strengthen environmental regulations.</p>
-            <a href="#" class="program-link">Learn more →</a>
-          </div>
+          <span>Global reach, local action</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Impact Stories -->
-    <section class="stories" id="impact" data-bg-theme="light">
-      <div class="container">
-        <div class="section-header fade-in">
-          <span class="section-label">Making a Difference</span>
-          <h2>Impact Stories</h2>
+  <!-- Programs: Featured Spotlight + Grid -->
+  <section class="programs-section" id="programs">
+    <div class="programs-header">
+      <p class="section-label">What We Do</p>
+      <h2>Our Programs</h2>
+      <p class="section-desc">From local beach cleanups to international policy work, we're tackling ocean conservation from every angle.</p>
+    </div>
+    <div class="programs-grid">
+      <article class="program-featured">
+        <div class="program-image program-image--species"></div>
+        <div class="program-content">
+          <h3>Species Protection</h3>
+          <p>Protecting endangered marine species through habitat restoration, rescue operations, and breeding programs. Our team works directly with sea turtles, dolphins, and coral ecosystems.</p>
+          <a href="#" class="program-link">Learn about our work</a>
+        </div>
+      </article>
+      <article class="program-card">
+        <div class="program-icon">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 21h18M3 7h18M6 21V7M18 21V7M9 21V7M15 21V7M6 7l6-4 6 4"/>
+          </svg>
+        </div>
+        <h3>Clean Coasts</h3>
+        <p>Organizing beach cleanups and working with communities to reduce plastic waste entering our oceans.</p>
+        <a href="#" class="program-link">Learn more</a>
+      </article>
+      <article class="program-card">
+        <div class="program-icon">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <h3>Ocean Education</h3>
+        <p>Teaching the next generation about marine ecosystems through school programs and interactive workshops.</p>
+        <a href="#" class="program-link">Learn more</a>
+      </article>
+      <article class="program-card">
+        <div class="program-icon">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3>Policy Advocacy</h3>
+        <p>Working with governments to establish marine protected areas and strengthen environmental regulations.</p>
+        <a href="#" class="program-link">Learn more</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Impact Stories: Full-Width Cards with Photography -->
+  <section class="stories-section" id="stories">
+    <div class="stories-header">
+      <p class="section-label">Making a Difference</p>
+      <h2>Impact Stories</h2>
+    </div>
+    <div class="stories-container">
+      <article class="story-featured">
+        <div class="story-image story-image--coral">
+          <div class="story-overlay"></div>
+          <div class="story-content">
+            <span class="story-tag">Success Story</span>
+            <h3>Coral Reef Restoration in the Philippines</h3>
+            <p>How our team helped restore 15 hectares of damaged coral reef, bringing back biodiversity to a once-devastated ecosystem. In just three years, fish populations have increased by 340%.</p>
+            <a href="#" class="story-link">Read the full story</a>
+          </div>
+        </div>
+      </article>
+      <div class="stories-grid">
+        <article class="story-card">
+          <div class="story-card-image story-card-image--turtle"></div>
+          <div class="story-card-content">
+            <h4>Sea Turtle Rescue Program</h4>
+            <p>Our rehabilitation center has released over 500 sea turtles back into the wild since 2018.</p>
+            <a href="#" class="story-link">Read more</a>
+          </div>
+        </article>
+        <article class="story-card">
+          <div class="story-card-image story-card-image--cleanup"></div>
+          <div class="story-card-content">
+            <h4>1 Million Pounds Removed</h4>
+            <p>Our Clean Coasts program hit a major milestone in ocean plastic removal this year.</p>
+            <a href="#" class="story-link">Read more</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Involved: Clear Action Hierarchy -->
+  <section class="involve-section" id="get-involved">
+    <div class="involve-header">
+      <p class="section-label">Take Action</p>
+      <h2>Ways to Get Involved</h2>
+      <p class="section-desc">Every action counts. Here's how you can help protect our oceans.</p>
+    </div>
+    <div class="involve-grid">
+      <div class="involve-primary">
+        <div class="involve-icon involve-icon--heart">
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <h3>Donate</h3>
+        <p>Your contribution directly funds conservation projects, research, and education programs worldwide.</p>
+        <a href="#donate" class="btn-primary">Give Now</a>
+      </div>
+      <div class="involve-secondary">
+        <div class="involve-icon">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>Volunteer</h3>
+        <p>Join beach cleanups, assist with research, or help at local events in your community.</p>
+        <a href="#" class="btn-outline">Sign Up</a>
+      </div>
+      <div class="involve-secondary">
+        <div class="involve-icon">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+        </div>
+        <h3>Spread the Word</h3>
+        <p>Follow us on social media and share our mission with friends and family.</p>
+        <a href="#" class="btn-outline">Follow Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Donation Calculator -->
+  <section class="donate-section" id="donate">
+    <div class="donate-container">
+      <div class="donate-content">
+        <p class="section-label section-label--light">Support Our Work</p>
+        <h2>Your Impact Calculator</h2>
+        <p class="donate-intro">See exactly how your donation makes a difference. 100% goes directly to ocean conservation.</p>
+
+        <div class="donation-selector">
+          <button class="amount-btn" data-amount="25">$25</button>
+          <button class="amount-btn active" data-amount="50">$50</button>
+          <button class="amount-btn" data-amount="100">$100</button>
+          <button class="amount-btn" data-amount="250">$250</button>
         </div>
 
-        <div class="stories-grid">
-          <div class="story-card story-card--featured fade-in">
-            <div class="story-image story-image--coral"></div>
-            <div class="story-content">
-              <span class="story-tag">Success Story</span>
-              <h3>Coral Reef Restoration in the Philippines</h3>
-              <p>How our team helped restore 15 hectares of damaged coral reef, bringing back biodiversity to a once-devastated ecosystem.</p>
-              <a href="#" class="story-link">Read the full story →</a>
-            </div>
+        <div class="impact-display">
+          <div class="impact-item active" data-for="25">
+            <span class="impact-amount">$25</span>
+            <span class="impact-equals">=</span>
+            <span class="impact-result">50 baby sea turtles safely reach the ocean</span>
           </div>
-          <div class="story-card fade-in fade-in-delay-1">
-            <div class="story-image story-image--turtle"></div>
-            <div class="story-content">
-              <h3>Sea Turtle Rescue Program</h3>
-              <p>Our rehabilitation center has released over 500 sea turtles back into the wild.</p>
-              <a href="#" class="story-link">Read more →</a>
-            </div>
+          <div class="impact-item" data-for="50">
+            <span class="impact-amount">$50</span>
+            <span class="impact-equals">=</span>
+            <span class="impact-result">1 acre of ocean habitat protected for a year</span>
           </div>
-          <div class="story-card fade-in fade-in-delay-2">
-            <div class="story-image story-image--cleanup"></div>
-            <div class="story-content">
-              <h3>1 Million Pounds Removed</h3>
-              <p>Our Clean Coasts program hit a major milestone in ocean plastic removal.</p>
-              <a href="#" class="story-link">Read more →</a>
-            </div>
+          <div class="impact-item" data-for="100">
+            <span class="impact-amount">$100</span>
+            <span class="impact-equals">=</span>
+            <span class="impact-result">100 lbs of plastic removed from coastlines</span>
           </div>
+          <div class="impact-item" data-for="250">
+            <span class="impact-amount">$250</span>
+            <span class="impact-equals">=</span>
+            <span class="impact-result">Full coral restoration for 10 square meters</span>
+          </div>
+        </div>
+
+        <a href="#" class="donate-btn">
+          Donate <span class="donate-amount">$50</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14m-7-7 7 7-7 7"/>
+          </svg>
+        </a>
+
+        <p class="donate-note">Secure payment via Stripe. Tax-deductible as a 501(c)(3) nonprofit.</p>
+      </div>
+      <div class="donate-visual">
+        <div class="visual-ocean">
+          <div class="wave wave-1"></div>
+          <div class="wave wave-2"></div>
+          <div class="wave wave-3"></div>
+          <div class="visual-turtle"></div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Get Involved -->
-    <section class="get-involved" id="get-involved" data-bg-theme="light">
-      <div class="container">
-        <div class="section-header fade-in">
-          <span class="section-label">Take Action</span>
-          <h2>Ways to Get Involved</h2>
-          <p>Every action counts. Here's how you can help protect our oceans.</p>
+  <!-- Partners -->
+  <section class="partners-section">
+    <p class="partners-label">Proudly supported by</p>
+    <div class="partners-grid">
+      <span class="partner">National Geographic</span>
+      <span class="partner">WWF</span>
+      <span class="partner">NOAA</span>
+      <span class="partner">The Ocean Foundation</span>
+    </div>
+  </section>
+
+  <!-- Custom Nonprofit Footer -->
+  <footer class="nonprofit-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-wave">
+            <svg viewBox="0 0 32 32" width="28" height="28">
+              <path fill="currentColor" d="M2 20c4-4 8-4 12 0s8 4 12 0c2-2 4-3 6-3v6c-2 0-4 1-6 3-4 4-8 4-12 0s-8-4-12 0v-6z"/>
+              <path fill="currentColor" opacity="0.6" d="M2 14c4-4 8-4 12 0s8 4 12 0c2-2 4-3 6-3v6c-2 0-4 1-6 3-4 4-8 4-12 0s-8-4-12 0v-6z"/>
+            </svg>
+          </div>
+          <span>Ocean Guardians</span>
         </div>
-
-        <div class="involve-grid">
-          <div class="involve-card fade-in">
-            <div class="involve-icon">💙</div>
-            <h3>Donate</h3>
-            <p>Your contribution directly funds conservation projects, research, and education programs.</p>
-            <a href="#donate" class="btn btn-primary">Give Now</a>
-          </div>
-          <div class="involve-card fade-in fade-in-delay-1">
-            <div class="involve-icon">🙋</div>
-            <h3>Volunteer</h3>
-            <p>Join beach cleanups, assist with research, or help at local events in your community.</p>
-            <a href="#" class="btn btn-outline">Sign Up</a>
-          </div>
-          <div class="involve-card fade-in fade-in-delay-2">
-            <div class="involve-icon">📢</div>
-            <h3>Spread the Word</h3>
-            <p>Follow us on social media and share our mission with friends and family.</p>
-            <a href="#" class="btn btn-outline">Follow Us</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Donate Section -->
-    <section class="donate" id="donate" data-bg-theme="light">
-      <div class="container">
-        <div class="donate-card fade-in">
-          <div class="donate-content">
-            <span class="section-label section-label--light">Support Our Work</span>
-            <h2>Make a Donation Today</h2>
-            <p>100% of your donation goes directly to ocean conservation. We're a registered 501(c)(3) nonprofit and your gift is tax-deductible.</p>
-
-            <div class="donation-amounts">
-              <button class="amount-btn">$25</button>
-              <button class="amount-btn amount-btn--active">$50</button>
-              <button class="amount-btn">$100</button>
-              <button class="amount-btn">$250</button>
-              <button class="amount-btn amount-btn--custom">Other</button>
-            </div>
-
-            <div class="donation-impact">
-              <span class="impact-icon">🐠</span>
-              <p><strong>$50</strong> can protect 1 acre of ocean habitat for a year</p>
-            </div>
-
-            <a href="#" class="btn btn-primary btn-large btn-full">
-              Donate $50
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
-            </a>
-
-            <p class="donate-note">Secure payment powered by Stripe. You can also donate by check or bank transfer.</p>
-          </div>
-          <div class="donate-image">
-            <div class="image-placeholder image-placeholder--large">
-              <span class="placeholder-icon">🦈</span>
-              <span class="placeholder-text">Your Impact</span>
-            </div>
-          </div>
+        <p class="footer-tagline">Protecting marine life for future generations.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link">FB</a>
+          <a href="#" class="social-link">TW</a>
+          <a href="#" class="social-link">IG</a>
+          <a href="#" class="social-link">YT</a>
         </div>
       </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter" data-bg-theme="light">
-      <div class="container">
-        <div class="newsletter-content fade-in">
-          <h3>Stay Connected</h3>
-          <p>Get monthly updates on our conservation work and ways you can help.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Enter your email" required>
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </form>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Our Work</h4>
+          <a href="#">Species Protection</a>
+          <a href="#">Clean Coasts</a>
+          <a href="#">Ocean Education</a>
+          <a href="#">Policy Advocacy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Get Involved</h4>
+          <a href="#">Donate</a>
+          <a href="#">Volunteer</a>
+          <a href="#">Partner</a>
+          <a href="#">Careers</a>
+        </div>
+        <div class="footer-col">
+          <h4>About</h4>
+          <a href="#">Our Story</a>
+          <a href="#">Team</a>
+          <a href="#">Financials</a>
+          <a href="#">Contact</a>
         </div>
       </div>
-    </section>
-
-    <!-- Partners -->
-    <section class="partners" data-bg-theme="light">
-      <div class="container">
-        <p class="partners-label">Proudly supported by</p>
-        <div class="partners-grid">
-          <span class="partner">National Geographic</span>
-          <span class="partner">WWF</span>
-          <span class="partner">NOAA</span>
-          <span class="partner">The Ocean Foundation</span>
-        </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Ocean Guardians. Registered 501(c)(3) nonprofit. EIN: 12-3456789</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
       </div>
-    </section>
-
-    <Footer />
-  </div>
+    </div>
+  </footer>
 </ShowcaseLayout>
 
 <style>
-  /* Reset & Base */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  /* ==========================================================================
+     Nonprofit Recipe - Story-Driven & Emotional Impact
+     ========================================================================== */
+
+  :root {
+    --np-bg: #FFFFFF;
+    --np-bg-warm: #F8FAFB;
+    --np-text: #1A2E3B;
+    --np-text-muted: #5F7A8A;
+    --np-primary: #0369A1;
+    --np-primary-light: #0284C7;
+    --np-primary-dark: #075985;
+    --np-accent: #0D9488;
+    --np-sand: #F5EFE6;
+    --np-border: #E2E8F0;
+    --np-serif: 'Merriweather', Georgia, serif;
+    --np-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  .nonprofit-site {
-    font-family: 'Source Sans 3', -apple-system, sans-serif;
-    background: #ffffff;
-    color: #1a2e3b;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+  /* ==========================================================================
+     Custom Header
+     ========================================================================== */
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-
-  /* Typography */
-  h1, h2, h3, h4 {
-    font-family: 'Merriweather', Georgia, serif;
-    font-weight: 700;
-    line-height: 1.3;
-  }
-
-  /* Buttons */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.75rem;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.9375rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border: none;
-    cursor: pointer;
-  }
-
-  .btn-primary {
-    background: #0369a1;
-    color: white;
-  }
-
-  .btn-primary:hover {
-    background: #0284c7;
-    transform: translateY(-2px);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: #0369a1;
-    border: 2px solid #0369a1;
-  }
-
-  .btn-outline:hover {
-    background: #0369a1;
-    color: white;
-  }
-
-  .btn-outline-light {
-    background: transparent;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-  }
-
-  .btn-outline-light:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: white;
-  }
-
-  .btn-small {
-    padding: 0.625rem 1.25rem;
-    font-size: 0.875rem;
-  }
-
-  .btn-large {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-  }
-
-  .btn-full {
-    width: 100%;
-  }
-
-  /* Header */
-  .header {
+  .nonprofit-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    padding: 1rem 0;
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--np-border);
   }
 
-  .header .container {
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Merriweather', Georgia, serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #0369a1;
-    text-decoration: none;
-  }
-
-  .logo-icon {
-    font-size: 1.5rem;
-  }
-
-  .nav {
-    display: flex;
     gap: 2rem;
   }
 
-  .nav a {
-    color: #475569;
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
     text-decoration: none;
+    color: var(--np-primary);
+  }
+
+  .logo-wave {
+    display: flex;
+    align-items: center;
+    color: var(--np-primary);
+  }
+
+  .logo-text {
+    font-family: var(--np-serif);
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-family: var(--np-sans);
     font-size: 0.9375rem;
     font-weight: 500;
-    transition: color 0.2s;
+    color: var(--np-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
   }
 
-  .nav a:hover {
-    color: #0369a1;
+  .nav-link:hover {
+    color: var(--np-text);
   }
 
-  /* Hero */
-  .hero {
-    position: relative;
-    padding: 12rem 0 8rem;
-    background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0284c7 100%);
+  .header-cta {
+    font-family: var(--np-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.625rem 1.25rem;
+    background: var(--np-primary);
     color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+  }
+
+  .header-cta:hover {
+    background: var(--np-primary-light);
+  }
+
+  @media (max-width: 768px) {
+    .header-nav {
+      display: none;
+    }
+  }
+
+  /* ==========================================================================
+     Hero Section
+     ========================================================================== */
+
+  .hero-section {
+    position: relative;
+    padding: calc(80px + 5rem) 2rem 4rem;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     overflow: hidden;
   }
 
   .hero-bg {
     position: absolute;
     inset: 0;
-    pointer-events: none;
+    z-index: -1;
   }
 
-  .hero-overlay {
+  .hero-gradient {
     position: absolute;
     inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background: linear-gradient(135deg, #0C4A6E 0%, #0369A1 40%, #0284C7 70%, #0D9488 100%);
   }
 
-  .hero-waves {
+  .hero-pattern {
     position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 150px;
-  }
-
-  .hero-waves svg {
-    width: 100%;
-    height: 100%;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
   .hero-content {
-    position: relative;
-    max-width: 700px;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+    color: white;
   }
 
-  .hero-tagline {
-    display: inline-block;
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    font-family: var(--np-sans);
     font-size: 0.875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
   }
 
-  .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 1.5rem;
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background: #10B981;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.2); }
+  }
+
+  .hero-section h1 {
+    font-family: var(--np-serif);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
     line-height: 1.2;
+    margin-bottom: 1.5rem;
   }
 
-  .hero-subtitle {
+  .hero-accent {
+    color: #7DD3FC;
+  }
+
+  .hero-description {
+    font-family: var(--np-sans);
     font-size: 1.25rem;
+    line-height: 1.7;
     opacity: 0.9;
     margin-bottom: 2.5rem;
-    line-height: 1.7;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-actions {
     display: flex;
     gap: 1rem;
+    justify-content: center;
     flex-wrap: wrap;
   }
 
-  /* Impact Stats */
-  .impact-stats {
-    padding: 4rem 0;
-    background: #f8fafc;
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--np-primary);
+    font-family: var(--np-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
   }
 
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   }
 
-  .stat-item {
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: transparent;
+    color: white;
+    font-family: var(--np-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: white;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .hero-stat {
     text-align: center;
+    color: white;
   }
 
-  .stat-number {
+  .stat-value {
     display: block;
-    font-family: 'Merriweather', Georgia, serif;
-    font-size: 2.5rem;
+    font-family: var(--np-serif);
+    font-size: 2rem;
     font-weight: 700;
-    color: #0369a1;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
   .stat-label {
-    font-size: 0.9375rem;
-    color: #64748b;
+    font-family: var(--np-sans);
+    font-size: 0.875rem;
+    opacity: 0.8;
   }
 
-  /* Section Styles */
-  .section-label {
-    display: inline-block;
+  @media (max-width: 640px) {
+    .hero-stats {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+
+  /* ==========================================================================
+     Mission Section
+     ========================================================================== */
+
+  .mission-section {
+    padding: 6rem 2rem;
+    background: var(--np-bg-warm);
+  }
+
+  .mission-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mission-label {
+    font-family: var(--np-sans);
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #0369a1;
+    color: var(--np-primary);
     margin-bottom: 0.75rem;
   }
 
-  .section-label--light {
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .section-header h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #1a2e3b;
-  }
-
-  .section-header p {
-    font-size: 1.125rem;
-    color: #64748b;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  /* About Section */
-  .about {
-    padding: 6rem 0;
-  }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  .about-content h2 {
+  .mission-section h2 {
+    font-family: var(--np-serif);
     font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--np-text);
     margin-bottom: 1.5rem;
-    color: #1a2e3b;
   }
 
-  .about-content p {
-    font-size: 1.0625rem;
-    color: #475569;
-    margin-bottom: 1rem;
-    line-height: 1.7;
+  .mission-text {
+    font-family: var(--np-sans);
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--np-text-muted);
+    margin-bottom: 2.5rem;
   }
 
-  .about-highlights {
+  .mission-pillars {
     display: flex;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    justify-content: center;
+    gap: 2rem;
     flex-wrap: wrap;
   }
 
-  .highlight {
+  .pillar {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    color: #1a2e3b;
+    gap: 0.75rem;
   }
 
-  .highlight-icon {
-    font-size: 1.25rem;
-  }
-
-  .about-image {
-    display: flex;
-    justify-content: center;
-  }
-
-  .image-placeholder {
-    width: 100%;
-    height: 400px;
-    background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  .placeholder-icon {
-    font-size: 4rem;
-  }
-
-  .placeholder-text {
-    font-size: 1rem;
-    font-weight: 600;
-    color: white;
-    opacity: 0.8;
-  }
-
-  /* Programs Section */
-  .programs {
-    padding: 6rem 0;
-    background: #f8fafc;
-  }
-
-  .programs-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-  }
-
-  .program-card {
+  .pillar-icon {
+    width: 40px;
+    height: 40px;
     background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--np-primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
 
-  .program-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  }
-
-  .program-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .program-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: #1a2e3b;
-  }
-
-  .program-card p {
+  .pillar span {
+    font-family: var(--np-sans);
     font-size: 0.9375rem;
-    color: #64748b;
+    font-weight: 600;
+    color: var(--np-text);
+  }
+
+  /* ==========================================================================
+     Programs Section
+     ========================================================================== */
+
+  .programs-section {
+    padding: 6rem 2rem;
+    background: var(--np-bg);
+  }
+
+  .section-label {
+    font-family: var(--np-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--np-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-label--light {
+    color: rgba(255,255,255,0.7);
+  }
+
+  .programs-header,
+  .stories-header,
+  .involve-header {
+    max-width: 600px;
+    margin: 0 auto 4rem;
+    text-align: center;
+  }
+
+  .programs-header h2,
+  .stories-header h2,
+  .involve-header h2 {
+    font-family: var(--np-serif);
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--np-text);
     margin-bottom: 1rem;
+  }
+
+  .section-desc {
+    font-family: var(--np-sans);
+    font-size: 1.0625rem;
+    color: var(--np-text-muted);
     line-height: 1.6;
   }
 
+  .programs-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .program-featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .program-image {
+    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .program-image--species {
+    background: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);
+  }
+
+  .program-content {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .program-featured h3 {
+    font-family: var(--np-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--np-text);
+    margin-bottom: 1rem;
+  }
+
+  .program-featured p {
+    font-family: var(--np-sans);
+    font-size: 1rem;
+    color: var(--np-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
   .program-link {
-    font-size: 0.875rem;
+    font-family: var(--np-sans);
+    font-size: 0.9375rem;
     font-weight: 600;
-    color: #0369a1;
+    color: var(--np-primary);
     text-decoration: none;
   }
 
@@ -685,15 +845,145 @@ import Footer from "../../../../components/Footer.astro";
     text-decoration: underline;
   }
 
-  /* Stories Section */
-  .stories {
-    padding: 6rem 0;
+  .program-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .program-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  }
+
+  .program-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--np-bg-warm);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--np-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .program-card h3 {
+    font-family: var(--np-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--np-text);
+    margin-bottom: 0.75rem;
+  }
+
+  .program-card p {
+    font-family: var(--np-sans);
+    font-size: 0.9375rem;
+    color: var(--np-text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .programs-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .program-featured {
+      grid-template-columns: 1fr;
+    }
+
+    .program-image {
+      min-height: 200px;
+    }
+  }
+
+  /* ==========================================================================
+     Stories Section
+     ========================================================================== */
+
+  .stories-section {
+    padding: 6rem 2rem;
+    background: var(--np-bg-warm);
+  }
+
+  .stories-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .story-featured {
+    margin-bottom: 2rem;
+  }
+
+  .story-image {
+    position: relative;
+    min-height: 450px;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .story-image--coral {
+    background: linear-gradient(135deg, #0D9488 0%, #0891B2 100%);
+  }
+
+  .story-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent 30%, rgba(0,0,0,0.7) 100%);
+  }
+
+  .story-content {
+    position: relative;
+    padding: 3rem;
+    color: white;
+    max-width: 600px;
+  }
+
+  .story-tag {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    background: rgba(255,255,255,0.2);
+    border-radius: 100px;
+    font-family: var(--np-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .story-content h3 {
+    font-family: var(--np-serif);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .story-content p {
+    font-family: var(--np-sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-link {
+    font-family: var(--np-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   .stories-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
 
@@ -701,153 +991,218 @@ import Footer from "../../../../components/Footer.astro";
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .story-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
   }
 
-  .story-card--featured {
-    grid-row: span 2;
-    display: flex;
-    flex-direction: column;
+  .story-card-image {
+    height: 180px;
   }
 
-  .story-image {
-    height: 200px;
+  .story-card-image--turtle {
+    background: linear-gradient(135deg, #059669 0%, #10B981 100%);
   }
 
-  .story-card--featured .story-image {
-    flex: 1;
-    min-height: 300px;
+  .story-card-image--cleanup {
+    background: linear-gradient(135deg, #0369A1 0%, #0284C7 100%);
   }
 
-  .story-image--coral {
-    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
-  }
-
-  .story-image--turtle {
-    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-  }
-
-  .story-image--cleanup {
-    background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
-  }
-
-  .story-content {
+  .story-card-content {
     padding: 1.5rem;
   }
 
-  .story-tag {
-    display: inline-block;
-    font-size: 0.6875rem;
+  .story-card-content h4 {
+    font-family: var(--np-serif);
+    font-size: 1.125rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #0369a1;
-    background: #e0f2fe;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    margin-bottom: 0.75rem;
+    color: var(--np-text);
+    margin-bottom: 0.5rem;
   }
 
-  .story-content h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: #1a2e3b;
-  }
-
-  .story-card--featured .story-content h3 {
-    font-size: 1.5rem;
-  }
-
-  .story-content p {
+  .story-card-content p {
+    font-family: var(--np-sans);
     font-size: 0.9375rem;
-    color: #64748b;
+    color: var(--np-text-muted);
     line-height: 1.6;
     margin-bottom: 1rem;
   }
 
-  .story-link {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #0369a1;
-    text-decoration: none;
+  @media (max-width: 640px) {
+    .stories-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .story-image {
+      min-height: 350px;
+    }
   }
 
-  .story-link:hover {
-    text-decoration: underline;
-  }
+  /* ==========================================================================
+     Get Involved Section
+     ========================================================================== */
 
-  /* Get Involved */
-  .get-involved {
-    padding: 6rem 0;
-    background: #f8fafc;
+  .involve-section {
+    padding: 6rem 2rem;
+    background: var(--np-bg);
   }
 
   .involve-grid {
+    max-width: 1000px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1.5fr 1fr 1fr;
     gap: 2rem;
+    align-items: start;
   }
 
-  .involve-card {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 12px;
+  .involve-primary {
+    background: linear-gradient(135deg, var(--np-primary) 0%, var(--np-primary-light) 100%);
+    padding: 3rem;
+    border-radius: 16px;
+    color: white;
     text-align: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
   .involve-icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    width: 64px;
+    height: 64px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
   }
 
-  .involve-card h3 {
+  .involve-icon--heart {
+    background: rgba(255,255,255,0.2);
+  }
+
+  .involve-primary h3 {
+    font-family: var(--np-serif);
     font-size: 1.5rem;
+    font-weight: 700;
     margin-bottom: 1rem;
-    color: #1a2e3b;
   }
 
-  .involve-card p {
-    font-size: 0.9375rem;
-    color: #64748b;
-    margin-bottom: 1.5rem;
+  .involve-primary p {
+    font-family: var(--np-sans);
+    font-size: 1rem;
+    opacity: 0.9;
     line-height: 1.6;
+    margin-bottom: 2rem;
   }
 
-  /* Donate Section */
-  .donate {
-    padding: 6rem 0;
+  .involve-primary .btn-primary {
+    width: 100%;
+    justify-content: center;
   }
 
-  .donate-card {
+  .involve-secondary {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .involve-secondary .involve-icon {
+    background: var(--np-bg-warm);
+    color: var(--np-primary);
+  }
+
+  .involve-secondary h3 {
+    font-family: var(--np-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--np-text);
+    margin-bottom: 0.75rem;
+  }
+
+  .involve-secondary p {
+    font-family: var(--np-sans);
+    font-size: 0.9375rem;
+    color: var(--np-text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: var(--np-primary);
+    font-family: var(--np-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--np-primary);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+
+  .btn-outline:hover {
+    background: var(--np-primary);
+    color: white;
+  }
+
+  @media (max-width: 900px) {
+    .involve-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .involve-primary {
+      order: -1;
+    }
+  }
+
+  /* ==========================================================================
+     Donate Section - Interactive Calculator
+     ========================================================================== */
+
+  .donate-section {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, #0C4A6E 0%, #0369A1 100%);
+  }
+
+  .donate-container {
+    max-width: 1000px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 100%);
-    border-radius: 24px;
-    padding: 4rem;
+    align-items: center;
+  }
+
+  .donate-content {
     color: white;
   }
 
   .donate-content h2 {
-    font-size: 2.25rem;
+    font-family: var(--np-serif);
+    font-size: 2rem;
+    font-weight: 700;
     margin-bottom: 1rem;
   }
 
-  .donate-content > p {
+  .donate-intro {
+    font-family: var(--np-sans);
     font-size: 1.0625rem;
     opacity: 0.9;
-    margin-bottom: 2rem;
     line-height: 1.7;
+    margin-bottom: 2rem;
   }
 
-  .donation-amounts {
+  .donation-selector {
     display: flex;
     gap: 0.75rem;
     margin-bottom: 1.5rem;
@@ -855,119 +1210,206 @@ import Footer from "../../../../components/Footer.astro";
   }
 
   .amount-btn {
-    padding: 0.75rem 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 0.875rem 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.3);
     border-radius: 8px;
     color: white;
+    font-family: var(--np-sans);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
   }
 
   .amount-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255,255,255,0.2);
   }
 
-  .amount-btn--active {
+  .amount-btn.active {
     background: white;
     border-color: white;
-    color: #0369a1;
+    color: var(--np-primary);
   }
 
-  .donation-impact {
-    display: flex;
+  .impact-display {
+    margin-bottom: 2rem;
+  }
+
+  .impact-item {
+    display: none;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
+    padding: 1.25rem 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+  }
+
+  .impact-item.active {
+    display: flex;
+  }
+
+  .impact-amount {
+    font-family: var(--np-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .impact-equals {
+    font-size: 1.25rem;
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+
+  .impact-result {
+    font-family: var(--np-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .donate-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1.125rem 2rem;
+    background: white;
+    color: var(--np-primary);
+    font-family: var(--np-sans);
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
     border-radius: 8px;
-    margin-bottom: 1.5rem;
+    transition: all 0.2s ease;
   }
 
-  .impact-icon {
-    font-size: 2rem;
+  .donate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   }
 
-  .donation-impact p {
-    font-size: 0.9375rem;
+  .donate-amount {
+    /* Will be updated by JS */
   }
 
   .donate-note {
+    font-family: var(--np-sans);
     font-size: 0.8125rem;
     opacity: 0.7;
-    margin-top: 1rem;
     text-align: center;
+    margin-top: 1rem;
   }
 
-  .donate-image {
+  .donate-visual {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .image-placeholder--large {
-    width: 100%;
+  .visual-ocean {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .wave {
+    position: absolute;
+    left: -50%;
+    width: 200%;
     height: 100%;
-    min-height: 300px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
+    border-radius: 40%;
+    animation: wave 8s linear infinite;
   }
 
-  /* Newsletter */
-  .newsletter {
-    padding: 4rem 0;
-    background: #f8fafc;
+  .wave-1 {
+    bottom: 20%;
+    background: rgba(125, 211, 252, 0.3);
+    animation-duration: 8s;
   }
 
-  .newsletter-content {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
+  .wave-2 {
+    bottom: 25%;
+    background: rgba(56, 189, 248, 0.25);
+    animation-duration: 10s;
+    animation-delay: -2s;
   }
 
-  .newsletter-content h3 {
-    font-size: 1.75rem;
-    margin-bottom: 0.75rem;
-    color: #1a2e3b;
+  .wave-3 {
+    bottom: 30%;
+    background: rgba(14, 165, 233, 0.2);
+    animation-duration: 12s;
+    animation-delay: -4s;
   }
 
-  .newsletter-content p {
-    color: #64748b;
-    margin-bottom: 1.5rem;
+  @keyframes wave {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
-  .newsletter-form {
-    display: flex;
-    gap: 0.75rem;
-    max-width: 450px;
-    margin: 0 auto;
+  .visual-turtle {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 50px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50% 50% 40% 40%;
+    animation: float 4s ease-in-out infinite;
   }
 
-  .newsletter-form input {
-    flex: 1;
-    padding: 0.875rem 1rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-family: inherit;
+  .visual-turtle::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 15px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
   }
 
-  .newsletter-form input:focus {
-    outline: none;
-    border-color: #0369a1;
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
   }
 
-  /* Partners */
-  .partners {
-    padding: 4rem 0;
+  @media (max-width: 900px) {
+    .donate-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .donate-visual {
+      order: -1;
+    }
+
+    .visual-ocean {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  /* ==========================================================================
+     Partners Section
+     ========================================================================== */
+
+  .partners-section {
+    padding: 4rem 2rem;
+    background: var(--np-bg);
     text-align: center;
   }
 
   .partners-label {
+    font-family: var(--np-sans);
     font-size: 0.8125rem;
-    color: #94a3b8;
+    color: var(--np-text-muted);
     margin-bottom: 1.5rem;
   }
 
@@ -979,87 +1421,123 @@ import Footer from "../../../../components/Footer.astro";
   }
 
   .partner {
-    font-size: 1.25rem;
+    font-family: var(--np-sans);
+    font-size: 1.125rem;
     font-weight: 700;
-    color: #cbd5e1;
+    color: #CBD5E1;
   }
 
-  /* Footer */
-  .footer {
-    padding: 4rem 0 2rem;
-    background: #0f172a;
+  /* ==========================================================================
+     Custom Footer
+     ========================================================================== */
+
+  .nonprofit-footer {
+    background: #0F172A;
     color: white;
+    padding: 4rem 2rem 2rem;
   }
 
-  .footer-grid {
+  .footer-main {
+    max-width: 1100px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 2fr 3fr;
+    gap: 4rem;
     margin-bottom: 3rem;
   }
 
-  .footer .logo {
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
     color: white;
     margin-bottom: 1rem;
   }
 
-  .footer-brand p {
-    color: #94a3b8;
+  .footer-logo .logo-wave {
+    color: #38BDF8;
+  }
+
+  .footer-logo span {
+    font-family: var(--np-serif);
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .footer-tagline {
+    font-family: var(--np-sans);
     font-size: 0.9375rem;
+    color: #94A3B8;
     margin-bottom: 1.5rem;
   }
 
   .footer-social {
     display: flex;
-    gap: 1rem;
+    gap: 0.75rem;
   }
 
-  .footer-social a {
+  .social-link {
     width: 36px;
     height: 36px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+    font-family: var(--np-sans);
     font-size: 0.75rem;
     font-weight: 600;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: background 0.2s ease;
   }
 
-  .footer-social a:hover {
-    background: #0369a1;
+  .social-link:hover {
+    background: var(--np-primary);
   }
 
-  .footer-links h4 {
-    font-size: 0.9375rem;
-    margin-bottom: 1rem;
-    color: white;
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
 
-  .footer-links a {
-    display: block;
-    color: #94a3b8;
-    text-decoration: none;
+  .footer-col h4 {
+    font-family: var(--np-sans);
     font-size: 0.875rem;
-    padding: 0.375rem 0;
-    transition: color 0.2s;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
   }
 
-  .footer-links a:hover {
+  .footer-col a {
+    display: block;
+    font-family: var(--np-sans);
+    font-size: 0.875rem;
+    color: #94A3B8;
+    text-decoration: none;
+    padding: 0.375rem 0;
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover {
     color: white;
   }
 
   .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-bottom p {
+    font-family: var(--np-sans);
     font-size: 0.8125rem;
-    color: #64748b;
+    color: #64748B;
   }
 
   .footer-legal {
@@ -1068,76 +1546,25 @@ import Footer from "../../../../components/Footer.astro";
   }
 
   .footer-legal a {
-    color: #64748b;
+    font-family: var(--np-sans);
+    font-size: 0.8125rem;
+    color: #64748B;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.2s ease;
   }
 
   .footer-legal a:hover {
     color: white;
   }
 
-  /* Responsive */
-  @media (max-width: 1024px) {
-    .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .programs-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .stories-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .story-card--featured {
-      grid-row: auto;
-    }
-  }
-
   @media (max-width: 768px) {
-    .nav,
-    .header .btn {
-      display: none;
-    }
-
-    .hero {
-      padding: 10rem 0 6rem;
-    }
-
-    .about-grid {
+    .footer-main {
       grid-template-columns: 1fr;
+      gap: 3rem;
     }
 
-    .about-image {
-      order: -1;
-    }
-
-    .image-placeholder {
-      height: 250px;
-    }
-
-    .programs-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .involve-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .donate-card {
-      grid-template-columns: 1fr;
-      padding: 2.5rem;
-    }
-
-    .donate-image {
-      display: none;
-    }
-
-    .footer-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+    .footer-links {
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .footer-bottom {
@@ -1146,65 +1573,33 @@ import Footer from "../../../../components/Footer.astro";
       text-align: center;
     }
   }
-
-  @media (max-width: 480px) {
-    .stats-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .newsletter-form {
-      flex-direction: column;
-    }
-
-    .footer-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .donation-amounts {
-      justify-content: center;
-    }
-  }
-
-  /* Fade In On Scroll Animations */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .fade-in-delay-1 { transition-delay: 0.1s; }
-  .fade-in-delay-2 { transition-delay: 0.2s; }
-  .fade-in-delay-3 { transition-delay: 0.3s; }
-  .fade-in-delay-4 { transition-delay: 0.4s; }
 </style>
 
 <script>
-  // Simple Fade-In on Scroll Animation
-  function initFadeInOnScroll() {
-    const fadeElements = document.querySelectorAll('.fade-in');
+  // Interactive donation amount selector
+  document.addEventListener('DOMContentLoaded', () => {
+    const amountBtns = document.querySelectorAll('.amount-btn');
+    const impactItems = document.querySelectorAll('.impact-item');
+    const donateBtn = document.querySelector('.donate-btn');
+    const donateAmount = donateBtn?.querySelector('.donate-amount');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    amountBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        amountBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Update impact display
+        const amount = btn.dataset.amount;
+        impactItems.forEach(item => {
+          item.classList.toggle('active', item.dataset.for === amount);
+        });
+
+        // Update donate button text
+        if (donateAmount) {
+          donateAmount.textContent = `$${amount}`;
         }
       });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
     });
-
-    fadeElements.forEach(el => observer.observe(el));
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFadeInOnScroll);
-  } else {
-    initFadeInOnScroll();
-  }
+  });
 </script>

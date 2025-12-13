@@ -11,133 +11,231 @@ const recipe = recipes.startup;
   <Header />
 
   <div class="startup-site">
-    <!-- Hero Section -->
+    <!-- Hero Section with Dashboard Preview -->
     <section class="hero">
       <div class="hero-bg">
         <div class="hero-gradient"></div>
-        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
       </div>
       <div class="container">
-        <div class="hero-badge fade-in">
-          <span class="badge-dot"></span>
-          Now in Public Beta
-        </div>
-        <h1 class="hero-title fade-in fade-in-delay-1">
-          Analytics that <span class="text-gradient">think ahead</span>
-        </h1>
-        <p class="hero-subtitle fade-in fade-in-delay-2">
-          Quantum uses advanced AI to predict trends, identify opportunities,
-          and automate insights—so you can make smarter decisions faster.
-        </p>
-        <div class="hero-actions fade-in fade-in-delay-3">
-          <a href="#" class="btn btn-primary">
-            Start Free Trial
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
-          </a>
-          <a href="#" class="btn btn-secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
-            Watch Demo
-          </a>
-        </div>
-        <div class="hero-stats fade-in fade-in-delay-4">
-          <div class="stat">
-            <span class="stat-value">10K+</span>
-            <span class="stat-label">Active Users</span>
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>Now in Public Beta</span>
           </div>
-          <div class="stat">
-            <span class="stat-value">99.9%</span>
-            <span class="stat-label">Uptime</span>
-          </div>
-          <div class="stat">
-            <span class="stat-value">50M+</span>
-            <span class="stat-label">Data Points</span>
+          <h1>Analytics that<br><span class="text-gradient">think ahead</span></h1>
+          <p class="hero-subtitle">Quantum uses advanced AI to predict trends, identify opportunities, and automate insights—so you can make smarter decisions faster.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary">
+              Start Free Trial
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+            </a>
+            <a href="#" class="btn btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>
+              Watch Demo
+            </a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Logos Section -->
-    <section class="logos">
-      <div class="container">
-        <p class="logos-label">Trusted by innovative teams</p>
-        <div class="logos-grid">
-          <div class="logo-item">TechCorp</div>
-          <div class="logo-item">DataFlow</div>
-          <div class="logo-item">CloudNine</div>
-          <div class="logo-item">Nexus AI</div>
-          <div class="logo-item">Velocity</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-      <div class="container">
-        <div class="section-header fade-in">
-          <span class="section-tag">Features</span>
-          <h2 class="section-title">Everything you need to <span class="text-gradient">understand your data</span></h2>
-          <p class="section-subtitle">Powerful tools that work together seamlessly to give you complete visibility.</p>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-card feature-card--large fade-in">
-            <div class="feature-visual">
-              <div class="feature-chart">
-                <div class="chart-bar" style="--height: 40%"></div>
-                <div class="chart-bar" style="--height: 65%"></div>
-                <div class="chart-bar" style="--height: 45%"></div>
-                <div class="chart-bar chart-bar--highlight" style="--height: 90%"></div>
-                <div class="chart-bar" style="--height: 70%"></div>
-                <div class="chart-bar" style="--height: 55%"></div>
+        <!-- Dashboard Preview -->
+        <div class="dashboard-preview">
+          <div class="dashboard-window">
+            <div class="window-header">
+              <div class="window-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="window-title">Quantum Dashboard</div>
+              <div class="window-actions"></div>
+            </div>
+            <div class="window-content">
+              <div class="dashboard-sidebar">
+                <div class="sidebar-item active">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                </div>
+                <div class="sidebar-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                </div>
+                <div class="sidebar-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </div>
+              </div>
+              <div class="dashboard-main">
+                <div class="metric-cards">
+                  <div class="metric-card">
+                    <span class="metric-label">Revenue</span>
+                    <span class="metric-value">$124.5k</span>
+                    <span class="metric-change positive">+12.3%</span>
+                  </div>
+                  <div class="metric-card">
+                    <span class="metric-label">Users</span>
+                    <span class="metric-value">8,420</span>
+                    <span class="metric-change positive">+5.2%</span>
+                  </div>
+                  <div class="metric-card">
+                    <span class="metric-label">Conversion</span>
+                    <span class="metric-value">3.24%</span>
+                    <span class="metric-change negative">-0.8%</span>
+                  </div>
+                </div>
+                <div class="chart-area">
+                  <div class="chart-header">
+                    <span>Performance Overview</span>
+                    <div class="chart-tabs">
+                      <span class="active">7D</span>
+                      <span>30D</span>
+                      <span>90D</span>
+                    </div>
+                  </div>
+                  <div class="chart-graph">
+                    <svg viewBox="0 0 400 100" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" style="stop-color:rgba(168,85,247,0.3)"/>
+                          <stop offset="100%" style="stop-color:rgba(168,85,247,0)"/>
+                        </linearGradient>
+                      </defs>
+                      <path class="chart-fill" d="M0,80 C50,70 80,30 120,40 C160,50 200,20 240,35 C280,50 320,25 360,30 C380,32 400,28 400,28 L400,100 L0,100 Z" fill="url(#chartGradient)"/>
+                      <path class="chart-line" d="M0,80 C50,70 80,30 120,40 C160,50 200,20 240,35 C280,50 320,25 360,30 C380,32 400,28 400,28" fill="none" stroke="var(--accent-primary)" stroke-width="2"/>
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="feature-content">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+      <div class="container">
+        <div class="proof-content">
+          <div class="proof-stats">
+            <div class="proof-stat">
+              <span class="proof-value">10K+</span>
+              <span class="proof-label">Active Users</span>
+            </div>
+            <div class="proof-divider"></div>
+            <div class="proof-stat">
+              <span class="proof-value">99.9%</span>
+              <span class="proof-label">Uptime</span>
+            </div>
+            <div class="proof-divider"></div>
+            <div class="proof-stat">
+              <span class="proof-value">50M+</span>
+              <span class="proof-label">Data Points/Day</span>
+            </div>
+          </div>
+          <div class="proof-logos">
+            <span class="proof-logos-label">Trusted by</span>
+            <div class="logos-row">
+              <span class="logo-text">TechCorp</span>
+              <span class="logo-text">DataFlow</span>
+              <span class="logo-text">CloudNine</span>
+              <span class="logo-text">Nexus AI</span>
+              <span class="logo-text">Velocity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features - Bento Grid -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Features</span>
+          <h2>Everything you need to understand your data</h2>
+          <p>Powerful tools that work together seamlessly.</p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Large Feature -->
+          <div class="bento-item bento-large">
+            <div class="bento-content">
               <div class="feature-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
               </div>
               <h3>Predictive Analytics</h3>
-              <p>Our AI models analyze historical data and current trends to forecast future outcomes with remarkable accuracy.</p>
+              <p>Our AI models analyze historical data and current trends to forecast future outcomes with remarkable accuracy. Get ahead of market shifts before they happen.</p>
+            </div>
+            <div class="bento-visual">
+              <div class="prediction-viz">
+                <div class="pred-bar" style="--h: 40%"><span>Q1</span></div>
+                <div class="pred-bar" style="--h: 55%"><span>Q2</span></div>
+                <div class="pred-bar" style="--h: 70%"><span>Q3</span></div>
+                <div class="pred-bar predicted" style="--h: 85%"><span>Q4</span></div>
+              </div>
             </div>
           </div>
 
-          <div class="feature-card fade-in fade-in-delay-1">
+          <!-- Medium Feature -->
+          <div class="bento-item bento-medium">
             <div class="feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
             <h3>Real-time Updates</h3>
             <p>See your metrics update instantly as new data flows in, with sub-second latency.</p>
+            <div class="realtime-indicator">
+              <span class="pulse-dot"></span>
+              <span>Live</span>
+            </div>
           </div>
 
-          <div class="feature-card fade-in fade-in-delay-2">
+          <!-- Small Features -->
+          <div class="bento-item bento-small">
             <div class="feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
             </div>
             <h3>Custom Dashboards</h3>
-            <p>Build dashboards that tell your story with drag-and-drop widgets and templates.</p>
+            <p>Drag-and-drop widgets and templates.</p>
           </div>
 
-          <div class="feature-card fade-in fade-in-delay-3">
+          <div class="bento-item bento-small">
             <div class="feature-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <h3>Enterprise Security</h3>
-            <p>SOC 2 certified with end-to-end encryption, SSO, and role-based access control.</p>
+            <p>SOC 2 certified, end-to-end encryption.</p>
           </div>
 
-          <div class="feature-card fade-in fade-in-delay-4">
-            <div class="feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <!-- Wide Feature -->
+          <div class="bento-item bento-wide">
+            <div class="bento-content">
+              <div class="feature-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <h3>Smart Alerts</h3>
+              <p>Get notified about anomalies and opportunities via email, Slack, or webhooks. Set custom thresholds and never miss an important signal.</p>
             </div>
-            <h3>Smart Alerts</h3>
-            <p>Get notified about anomalies and opportunities via email, Slack, or webhooks.</p>
+            <div class="alert-preview">
+              <div class="alert-card">
+                <div class="alert-icon success">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <div class="alert-text">
+                  <strong>Revenue target reached</strong>
+                  <span>$100k milestone achieved</span>
+                </div>
+              </div>
+              <div class="alert-card">
+                <div class="alert-icon warning">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <div class="alert-text">
+                  <strong>Anomaly detected</strong>
+                  <span>Traffic spike on /checkout</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="feature-card fade-in fade-in-delay-5">
+          <div class="bento-item bento-small">
             <div class="feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             </div>
             <h3>API Access</h3>
-            <p>Integrate with your existing tools using our comprehensive REST and GraphQL APIs.</p>
+            <p>REST and GraphQL APIs included.</p>
           </div>
         </div>
       </div>
@@ -146,50 +244,87 @@ const recipe = recipes.startup;
     <!-- How It Works -->
     <section class="how-it-works">
       <div class="container">
-        <div class="section-header fade-in">
+        <div class="section-header">
           <span class="section-tag">How It Works</span>
-          <h2 class="section-title">Up and running in minutes</h2>
-          <p class="section-subtitle">Getting started with Quantum is simple and straightforward.</p>
+          <h2>Up and running in minutes</h2>
         </div>
 
-        <div class="steps-grid">
-          <div class="step fade-in fade-in-delay-1">
-            <div class="step-number">01</div>
-            <h3>Connect Your Data</h3>
-            <p>Integrate with 100+ data sources including databases, APIs, spreadsheets, and cloud services.</p>
+        <div class="process-flow">
+          <div class="process-step">
+            <div class="step-visual">
+              <div class="step-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
+              <div class="step-number">01</div>
+            </div>
+            <div class="step-content">
+              <h3>Connect Your Data</h3>
+              <p>Integrate with 100+ data sources including databases, APIs, spreadsheets, and cloud services.</p>
+              <div class="integrations">
+                <span class="integration">PostgreSQL</span>
+                <span class="integration">MongoDB</span>
+                <span class="integration">+98 more</span>
+              </div>
+            </div>
           </div>
-          <div class="step fade-in fade-in-delay-2">
-            <div class="step-number">02</div>
-            <h3>Configure Metrics</h3>
-            <p>Define the KPIs that matter to your business using our intuitive query builder or SQL.</p>
+
+          <div class="process-connector"></div>
+
+          <div class="process-step">
+            <div class="step-visual">
+              <div class="step-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+              </div>
+              <div class="step-number">02</div>
+            </div>
+            <div class="step-content">
+              <h3>Configure Metrics</h3>
+              <p>Define the KPIs that matter to your business using our intuitive query builder or SQL.</p>
+              <div class="code-preview">
+                <code>SELECT revenue, date FROM sales</code>
+              </div>
+            </div>
           </div>
-          <div class="step fade-in fade-in-delay-3">
-            <div class="step-number">03</div>
-            <h3>Get Insights</h3>
-            <p>Let our AI analyze your data and surface actionable insights automatically.</p>
+
+          <div class="process-connector"></div>
+
+          <div class="process-step">
+            <div class="step-visual">
+              <div class="step-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              </div>
+              <div class="step-number">03</div>
+            </div>
+            <div class="step-content">
+              <h3>Get Insights</h3>
+              <p>Let our AI analyze your data and surface actionable insights automatically.</p>
+              <div class="insight-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                AI-powered recommendations
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Pricing -->
     <section class="pricing" id="pricing">
       <div class="container">
-        <div class="section-header fade-in">
+        <div class="section-header">
           <span class="section-tag">Pricing</span>
-          <h2 class="section-title">Simple, transparent pricing</h2>
-          <p class="section-subtitle">No hidden fees. No surprises. Cancel anytime.</p>
+          <h2>Simple, transparent pricing</h2>
+          <p>No hidden fees. Cancel anytime.</p>
         </div>
 
-        <div class="pricing-grid">
-          <div class="pricing-card fade-in fade-in-delay-1">
+        <div class="pricing-layout">
+          <div class="pricing-card">
             <div class="pricing-header">
               <h3>Starter</h3>
-              <p class="pricing-desc">For individuals and small teams</p>
+              <p>For individuals and small teams</p>
             </div>
             <div class="pricing-price">
-              <span class="price-currency">$</span>
-              <span class="price-amount">29</span>
+              <span class="price-amount">$29</span>
               <span class="price-period">/month</span>
             </div>
             <ul class="pricing-features">
@@ -197,49 +332,44 @@ const recipe = recipes.startup;
               <li>10 data sources</li>
               <li>Basic analytics</li>
               <li>Email support</li>
-              <li>7-day data retention</li>
             </ul>
             <a href="#" class="btn btn-outline">Get Started</a>
           </div>
 
-          <div class="pricing-card pricing-card--popular fade-in fade-in-delay-2">
-            <div class="popular-badge">Most Popular</div>
+          <div class="pricing-card pricing-featured">
+            <div class="pricing-badge">Most Popular</div>
             <div class="pricing-header">
               <h3>Pro</h3>
-              <p class="pricing-desc">For growing businesses</p>
+              <p>For growing businesses</p>
             </div>
             <div class="pricing-price">
-              <span class="price-currency">$</span>
-              <span class="price-amount">99</span>
+              <span class="price-amount">$99</span>
               <span class="price-period">/month</span>
             </div>
             <ul class="pricing-features">
+              <li><strong>Everything in Starter, plus:</strong></li>
               <li>Up to 20 team members</li>
               <li>Unlimited data sources</li>
               <li>Advanced AI analytics</li>
               <li>Priority support</li>
-              <li>30-day data retention</li>
-              <li>Custom dashboards</li>
               <li>API access</li>
             </ul>
             <a href="#" class="btn btn-primary">Get Started</a>
           </div>
 
-          <div class="pricing-card fade-in fade-in-delay-3">
+          <div class="pricing-card">
             <div class="pricing-header">
               <h3>Enterprise</h3>
-              <p class="pricing-desc">For large organizations</p>
+              <p>For large organizations</p>
             </div>
             <div class="pricing-price">
               <span class="price-amount">Custom</span>
             </div>
             <ul class="pricing-features">
+              <li><strong>Everything in Pro, plus:</strong></li>
               <li>Unlimited team members</li>
-              <li>Unlimited data sources</li>
               <li>Custom AI models</li>
               <li>Dedicated support</li>
-              <li>Unlimited data retention</li>
-              <li>White-label options</li>
               <li>SLA guarantee</li>
               <li>On-premise deployment</li>
             </ul>
@@ -252,15 +382,15 @@ const recipe = recipes.startup;
     <!-- Testimonials -->
     <section class="testimonials">
       <div class="container">
-        <div class="section-header fade-in">
+        <div class="section-header">
           <span class="section-tag">Testimonials</span>
-          <h2 class="section-title">Loved by data teams everywhere</h2>
+          <h2>Loved by data teams everywhere</h2>
         </div>
 
-        <div class="testimonials-grid">
-          <div class="testimonial-card fade-in fade-in-delay-1">
+        <div class="testimonials-masonry">
+          <div class="testimonial-card testimonial-large">
             <div class="testimonial-content">
-              <p>"Quantum has transformed how we approach data analysis. The AI predictions have helped us identify trends weeks before our competitors."</p>
+              <p>"Quantum has transformed how we approach data analysis. The AI predictions have helped us identify trends weeks before our competitors. It's not just analytics—it's a competitive advantage."</p>
             </div>
             <div class="testimonial-author">
               <div class="author-avatar">SM</div>
@@ -271,9 +401,9 @@ const recipe = recipes.startup;
             </div>
           </div>
 
-          <div class="testimonial-card fade-in fade-in-delay-2">
+          <div class="testimonial-card">
             <div class="testimonial-content">
-              <p>"The setup was incredibly smooth. We had our first dashboard running within an hour of signing up. The real-time updates are game-changing."</p>
+              <p>"The setup was incredibly smooth. We had our first dashboard running within an hour."</p>
             </div>
             <div class="testimonial-author">
               <div class="author-avatar">JC</div>
@@ -284,7 +414,7 @@ const recipe = recipes.startup;
             </div>
           </div>
 
-          <div class="testimonial-card fade-in fade-in-delay-3">
+          <div class="testimonial-card">
             <div class="testimonial-content">
               <p>"Finally, an analytics platform that doesn't require a PhD to use. Our entire team can now access and understand our metrics."</p>
             </div>
@@ -296,16 +426,31 @@ const recipe = recipes.startup;
               </div>
             </div>
           </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"The real-time alerts have saved us from two potential outages this quarter alone."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">MR</div>
+              <div class="author-info">
+                <strong>Mike Rodriguez</strong>
+                <span>CTO, CloudNine</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA -->
     <section class="cta-section">
       <div class="container">
-        <div class="cta-content fade-in">
-          <h2>Ready to unlock your data's potential?</h2>
-          <p>Start your 14-day free trial today. No credit card required.</p>
+        <div class="cta-card">
+          <div class="cta-content">
+            <h2>Ready to unlock your data's potential?</h2>
+            <p>Start your 14-day free trial today. No credit card required.</p>
+          </div>
           <div class="cta-actions">
             <a href="#" class="btn btn-primary btn-large">
               Start Free Trial
@@ -321,34 +466,8 @@ const recipe = recipes.startup;
   <Footer />
 </ShowcaseLayout>
 
-<script>
-  // Simple Fade-In on Scroll Animation
-  function initFadeInOnScroll() {
-    const fadeElements = document.querySelectorAll('.fade-in');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
-    fadeElements.forEach(el => observer.observe(el));
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFadeInOnScroll);
-  } else {
-    initFadeInOnScroll();
-  }
-</script>
-
 <style>
-  /* Reset & Base - using CSS variables from recipe theme */
+  /* Base */
   * {
     margin: 0;
     padding: 0;
@@ -369,7 +488,6 @@ const recipe = recipes.startup;
     padding: 0 1.5rem;
   }
 
-  /* Typography */
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
     font-weight: 600;
@@ -381,6 +499,36 @@ const recipe = recipes.startup;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  /* Section Header */
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-tag {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-header p {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
   }
 
   /* Buttons */
@@ -421,12 +569,12 @@ const recipe = recipes.startup;
   .btn-outline {
     background: transparent;
     color: var(--text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--border-color);
   }
 
   .btn-outline:hover {
     background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: var(--accent-primary);
   }
 
   .btn-ghost {
@@ -446,8 +594,7 @@ const recipe = recipes.startup;
   /* Hero */
   .hero {
     position: relative;
-    padding: calc(var(--header-height, 64px) + 4rem) 0 6rem;
-    text-align: center;
+    padding: calc(var(--header-height, 64px) + 3rem) 0 2rem;
     overflow: hidden;
   }
 
@@ -459,22 +606,27 @@ const recipe = recipes.startup;
 
   .hero-gradient {
     position: absolute;
-    top: -50%;
+    top: -30%;
     left: 50%;
     transform: translateX(-50%);
-    width: 150%;
-    height: 100%;
-    background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+    width: 120%;
+    height: 80%;
+    background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.12) 0%, transparent 70%);
   }
 
-  .hero-grid {
+  .hero-glow {
     position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    top: 20%;
+    right: 10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
   }
 
   .hero-badge {
@@ -485,37 +637,35 @@ const recipe = recipes.startup;
     background: rgba(168, 85, 247, 0.1);
     border: 1px solid rgba(168, 85, 247, 0.3);
     border-radius: 100px;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--accent-primary);
     margin-bottom: 1.5rem;
   }
 
   .badge-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     background: var(--accent-primary);
     border-radius: 50%;
     animation: pulse 2s infinite;
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
   }
 
-  .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    margin-bottom: 1.5rem;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
   }
 
   .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: var(--text-secondary);
-    max-width: 600px;
-    margin: 0 auto 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
   }
 
   .hero-actions {
@@ -523,123 +673,287 @@ const recipe = recipes.startup;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 4rem;
   }
 
-  .hero-stats {
+  /* Dashboard Preview */
+  .dashboard-preview {
+    max-width: 900px;
+    margin: 0 auto;
+    perspective: 1000px;
+  }
+
+  .dashboard-window {
+    background: rgba(15, 15, 20, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transform: rotateX(2deg);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+  }
+
+  .window-header {
     display: flex;
-    gap: 4rem;
-    justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  .stat {
+  .window-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .window-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .window-dots span:nth-child(1) { background: #ff5f57; }
+  .window-dots span:nth-child(2) { background: #ffbd2e; }
+  .window-dots span:nth-child(3) { background: #28ca41; }
+
+  .window-title {
+    flex: 1;
     text-align: center;
-  }
-
-  .stat-value {
-    display: block;
-    font-family: var(--font-serif);
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .stat-label {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     color: var(--text-secondary);
   }
 
-  /* Logos */
-  .logos {
-    padding: 4rem 0;
+  .window-content {
+    display: flex;
+    min-height: 300px;
+  }
+
+  .dashboard-sidebar {
+    width: 48px;
+    background: rgba(255, 255, 255, 0.02);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sidebar-item {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+  }
+
+  .sidebar-item.active {
+    background: rgba(168, 85, 247, 0.2);
+    color: var(--accent-primary);
+  }
+
+  .dashboard-main {
+    flex: 1;
+    padding: 1rem;
+  }
+
+  .metric-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .metric-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.75rem;
+  }
+
+  .metric-label {
+    display: block;
+    font-size: 0.6875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+  }
+
+  .metric-value {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .metric-change {
+    font-size: 0.6875rem;
+    font-weight: 500;
+  }
+
+  .metric-change.positive { color: #22c55e; }
+  .metric-change.negative { color: #ef4444; }
+
+  .chart-area {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .chart-tabs {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .chart-tabs span {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  .chart-tabs span.active {
+    background: rgba(168, 85, 247, 0.2);
+    color: var(--accent-primary);
+  }
+
+  .chart-graph {
+    height: 100px;
+  }
+
+  .chart-graph svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .chart-line {
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    animation: draw-line 2s ease forwards;
+  }
+
+  @keyframes draw-line {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Social Proof */
+  .social-proof {
+    padding: 3rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  .logos-label {
-    text-align: center;
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-  }
-
-  .logos-grid {
+  .proof-content {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 4rem;
+    gap: 3rem;
     flex-wrap: wrap;
   }
 
-  .logo-item {
+  .proof-stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .proof-stat {
+    text-align: center;
+  }
+
+  .proof-value {
+    display: block;
     font-family: var(--font-serif);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .proof-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .proof-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border-color);
+  }
+
+  .proof-logos {
+    flex: 1;
+    text-align: right;
+  }
+
+  .proof-logos-label {
+    display: block;
+    font-size: 0.6875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .logos-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .logo-text {
+    font-family: var(--font-serif);
+    font-size: 1rem;
     font-weight: 600;
     color: var(--border-color);
   }
 
-  /* Section Styles */
-  .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .section-tag {
-    display: inline-block;
-    padding: 0.375rem 0.75rem;
-    background: rgba(168, 85, 247, 0.1);
-    border: 1px solid rgba(168, 85, 247, 0.2);
-    border-radius: 100px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--accent-primary);
-    margin-bottom: 1rem;
-  }
-
-  .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 1rem;
-  }
-
-  .section-subtitle {
-    font-size: 1.125rem;
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  /* Features */
+  /* Bento Grid Features */
   .features {
     padding: 6rem 0;
   }
 
-  .features-grid {
+  .bento-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
   }
 
-  .feature-card {
+  .bento-item {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
-    padding: 2rem;
+    padding: 1.5rem;
     transition: all 0.3s;
   }
 
-  .feature-card:hover {
+  .bento-item:hover {
     background: rgba(255, 255, 255, 0.04);
     border-color: rgba(168, 85, 247, 0.2);
-    transform: translateY(-4px);
   }
 
-  .feature-card--large {
+  .bento-large {
+    grid-column: span 2;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .bento-medium {
+    grid-column: span 2;
+  }
+
+  .bento-wide {
     grid-column: span 3;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -647,54 +961,146 @@ const recipe = recipes.startup;
     align-items: center;
   }
 
-  .feature-visual {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 12px;
-    padding: 2rem;
-    height: 200px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-  }
-
-  .feature-chart {
-    display: flex;
-    gap: 0.75rem;
-    align-items: flex-end;
-    height: 100%;
-  }
-
-  .chart-bar {
-    width: 32px;
-    height: var(--height);
-    background: linear-gradient(180deg, rgba(168, 85, 247, 0.6), rgba(99, 102, 241, 0.3));
-    border-radius: 4px 4px 0 0;
-  }
-
-  .chart-bar--highlight {
-    background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+  .bento-small {
+    grid-column: span 1;
   }
 
   .feature-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     background: rgba(168, 85, 247, 0.1);
-    border-radius: 12px;
+    border-radius: 10px;
     color: var(--accent-primary);
     margin-bottom: 1rem;
   }
 
-  .feature-card h3 {
-    font-size: 1.25rem;
+  .bento-item h3 {
+    font-size: 1.125rem;
     margin-bottom: 0.5rem;
   }
 
-  .feature-card p {
+  .bento-item p {
     color: var(--text-secondary);
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .bento-large .bento-content {
+    flex: 1;
+  }
+
+  .bento-large h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .bento-large p {
+    font-size: 1rem;
+  }
+
+  .bento-visual {
+    padding-top: 1rem;
+  }
+
+  /* Prediction Visualization */
+  .prediction-viz {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    height: 140px;
+  }
+
+  .pred-bar {
+    flex: 1;
+    height: var(--h);
+    background: linear-gradient(180deg, rgba(168, 85, 247, 0.5), rgba(99, 102, 241, 0.2));
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    position: relative;
+  }
+
+  .pred-bar span {
+    font-size: 0.6875rem;
+    color: var(--text-secondary);
+    position: absolute;
+    bottom: -20px;
+  }
+
+  .pred-bar.predicted {
+    background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+  }
+
+  /* Real-time Indicator */
+  .realtime-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: #22c55e;
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  /* Alert Preview */
+  .alert-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .alert-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.75rem;
+  }
+
+  .alert-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .alert-icon.success {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+  }
+
+  .alert-icon.warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+  }
+
+  .alert-text strong {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .alert-text span {
+    font-size: 0.6875rem;
+    color: var(--text-secondary);
   }
 
   /* How It Works */
@@ -703,36 +1109,109 @@ const recipe = recipes.startup;
     background: rgba(255, 255, 255, 0.02);
   }
 
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+  .process-flow {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
   }
 
-  .step {
+  .process-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding: 2rem;
+  }
+
+  .step-visual {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .step-icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-primary);
   }
 
   .step-number {
-    font-family: var(--font-serif);
-    font-size: 3rem;
-    font-weight: 700;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 1rem;
+    border-radius: 6px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .step h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
+  .step-content h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
   }
 
-  .step p {
+  .step-content p {
+    font-size: 0.875rem;
     color: var(--text-secondary);
-    font-size: 0.9375rem;
+    margin-bottom: 1rem;
+    max-width: 280px;
+  }
+
+  .process-connector {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--border-color), var(--accent-primary), var(--border-color));
+    margin-top: 32px;
+    flex-shrink: 0;
+  }
+
+  .integrations {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .integration {
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    color: var(--text-secondary);
+  }
+
+  .code-preview {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    display: inline-block;
+  }
+
+  .code-preview code {
+    font-family: 'SF Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent-primary);
+  }
+
+  .insight-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    background: rgba(168, 85, 247, 0.1);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    color: var(--accent-primary);
   }
 
   /* Pricing */
@@ -740,7 +1219,7 @@ const recipe = recipes.startup;
     padding: 6rem 0;
   }
 
-  .pricing-grid {
+  .pricing-layout {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
@@ -755,31 +1234,31 @@ const recipe = recipes.startup;
     position: relative;
   }
 
-  .pricing-card--popular {
+  .pricing-featured {
     background: rgba(168, 85, 247, 0.05);
     border-color: rgba(168, 85, 247, 0.3);
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 
-  .popular-badge {
+  .pricing-badge {
     position: absolute;
-    top: -12px;
+    top: -10px;
     left: 50%;
     transform: translateX(-50%);
     padding: 0.375rem 1rem;
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     border-radius: 100px;
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 600;
     white-space: nowrap;
   }
 
   .pricing-header h3 {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     margin-bottom: 0.25rem;
   }
 
-  .pricing-desc {
+  .pricing-header p {
     color: var(--text-secondary);
     font-size: 0.875rem;
     margin-bottom: 1.5rem;
@@ -789,21 +1268,15 @@ const recipe = recipes.startup;
     margin-bottom: 1.5rem;
   }
 
-  .price-currency {
-    font-size: 1.5rem;
-    color: var(--text-secondary);
-    vertical-align: top;
-  }
-
   .price-amount {
     font-family: var(--font-serif);
-    font-size: 3.5rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 600;
   }
 
   .price-period {
     color: var(--text-secondary);
-    font-size: 1rem;
+    font-size: 0.9375rem;
   }
 
   .pricing-features {
@@ -813,8 +1286,8 @@ const recipe = recipes.startup;
 
   .pricing-features li {
     padding: 0.5rem 0;
+    font-size: 0.875rem;
     color: var(--text-secondary);
-    font-size: 0.9375rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -824,6 +1297,14 @@ const recipe = recipes.startup;
     content: "✓";
     color: var(--accent-primary);
     font-weight: 600;
+  }
+
+  .pricing-features li strong {
+    color: var(--text-primary);
+  }
+
+  .pricing-features li strong::before {
+    content: none;
   }
 
   .pricing-card .btn {
@@ -837,51 +1318,64 @@ const recipe = recipes.startup;
     background: rgba(255, 255, 255, 0.02);
   }
 
-  .testimonials-grid {
+  .testimonials-masonry {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 1rem;
   }
 
   .testimonial-card {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
+    padding: 1.5rem;
+  }
+
+  .testimonial-large {
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 2rem;
   }
 
   .testimonial-content p {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     color: var(--text-secondary);
-    margin-bottom: 1.5rem;
     line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-large .testimonial-content p {
+    font-size: 1.125rem;
+    font-style: italic;
   }
 
   .testimonial-author {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
   }
 
   .author-avatar {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
   }
 
   .author-info strong {
     display: block;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
   }
 
   .author-info span {
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     color: var(--text-secondary);
   }
 
@@ -890,98 +1384,124 @@ const recipe = recipes.startup;
     padding: 6rem 0;
   }
 
-  .cta-content {
-    text-align: center;
-    padding: 4rem;
+  .cta-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem;
     background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(99, 102, 241, 0.1));
     border: 1px solid rgba(168, 85, 247, 0.2);
     border-radius: 24px;
   }
 
   .cta-content h2 {
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 0.5rem;
   }
 
   .cta-content p {
     color: var(--text-secondary);
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
+    font-size: 1rem;
   }
 
   .cta-actions {
     display: flex;
     gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-shrink: 0;
   }
 
   /* Responsive */
   @media (max-width: 1024px) {
-    .features-grid {
+    .bento-grid {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .feature-card--large {
+    .bento-large {
       grid-column: span 2;
     }
 
-    .pricing-grid,
-    .testimonials-grid {
+    .bento-wide {
+      grid-column: span 2;
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-layout {
       grid-template-columns: 1fr;
       max-width: 400px;
       margin: 0 auto;
     }
 
-    .pricing-card--popular {
+    .pricing-featured {
       transform: none;
+    }
+
+    .testimonials-masonry {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonial-large {
+      grid-row: auto;
+    }
+
+    .cta-card {
+      flex-direction: column;
+      text-align: center;
     }
   }
 
   @media (max-width: 768px) {
-    .hero {
-      padding: calc(var(--header-height, 64px) + 3rem) 0 4rem;
+    .dashboard-window {
+      transform: none;
     }
 
-    .hero-stats {
-      gap: 2rem;
-    }
-
-    .features-grid {
+    .metric-cards {
       grid-template-columns: 1fr;
     }
 
-    .feature-card--large {
+    .proof-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .proof-logos {
+      text-align: center;
+    }
+
+    .logos-row {
+      justify-content: center;
+    }
+
+    .bento-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .bento-large,
+    .bento-medium,
+    .bento-wide {
       grid-column: span 1;
-      grid-template-columns: 1fr;
     }
 
-    .steps-grid {
-      grid-template-columns: 1fr;
+    .process-flow {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .process-connector {
+      width: 2px;
+      height: 40px;
+      margin: 0;
     }
   }
 
   @media (max-width: 480px) {
-    .logos-grid {
-      gap: 2rem;
+    .proof-stats {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .proof-divider {
+      display: none;
     }
   }
-
-  /* Fade In On Scroll Animations */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .fade-in-delay-1 { transition-delay: 0.1s; }
-  .fade-in-delay-2 { transition-delay: 0.2s; }
-  .fade-in-delay-3 { transition-delay: 0.3s; }
-  .fade-in-delay-4 { transition-delay: 0.4s; }
-  .fade-in-delay-5 { transition-delay: 0.5s; }
 </style>

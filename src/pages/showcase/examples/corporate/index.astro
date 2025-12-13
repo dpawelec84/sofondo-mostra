@@ -10,139 +10,167 @@ const recipe = recipes.corporate;
 <ShowcaseLayout title="Nexus Corp - Business Consulting" returnUrl="/showcase/marketing/" recipe="corporate">
   <Header />
 
-  <!-- Hero -->
+  <!-- Hero - Split Layout -->
   <section class="hero">
-    <div class="container">
-      <h1 class="fade-in">Strategic Solutions for<br>Business Excellence</h1>
-      <p class="fade-in fade-in-delay-1">We help organizations transform challenges into opportunities through innovative consulting and strategic advisory services.</p>
-      <div class="hero-buttons fade-in fade-in-delay-2">
-        <a href="#contact" class="btn btn-primary">Schedule Consultation</a>
-        <a href="#services" class="btn btn-secondary">Our Services</a>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="hero-label">Business Advisory</span>
+        <h1>We transform<br><em>complexity</em> into<br>competitive advantage</h1>
+        <p>Strategic consulting for organizations navigating growth, transformation, and market evolution.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">
+            Schedule Consultation
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#services" class="btn btn-ghost">Explore Services</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="data-viz">
+          <div class="viz-ring viz-ring-1"></div>
+          <div class="viz-ring viz-ring-2"></div>
+          <div class="viz-ring viz-ring-3"></div>
+          <div class="viz-center">
+            <span class="viz-number">98%</span>
+            <span class="viz-label">Success Rate</span>
+          </div>
+          <div class="viz-dot viz-dot-1"></div>
+          <div class="viz-dot viz-dot-2"></div>
+          <div class="viz-dot viz-dot-3"></div>
+          <div class="viz-line viz-line-1"></div>
+          <div class="viz-line viz-line-2"></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Stats -->
+  <!-- Stats - Refined with visual elements -->
   <section class="stats">
-    <div class="container stats-grid">
-      <div class="stat-item fade-in">
-        <h3>25<span>+</span></h3>
-        <p>Years of Experience</p>
-      </div>
-      <div class="stat-item fade-in fade-in-delay-1">
-        <h3>500<span>+</span></h3>
-        <p>Clients Worldwide</p>
-      </div>
-      <div class="stat-item fade-in fade-in-delay-2">
-        <h3>98<span>%</span></h3>
-        <p>Client Satisfaction</p>
-      </div>
-      <div class="stat-item fade-in fade-in-delay-3">
-        <h3>$2.5<span>B</span></h3>
-        <p>Revenue Generated</p>
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="25">25</div>
+          <div class="stat-suffix">+</div>
+          <p class="stat-label">Years of<br>Experience</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="500">500</div>
+          <div class="stat-suffix">+</div>
+          <p class="stat-label">Global<br>Clients</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number">$2.5</div>
+          <div class="stat-suffix">B</div>
+          <p class="stat-label">Revenue<br>Generated</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="40">40</div>
+          <div class="stat-suffix">+</div>
+          <p class="stat-label">Industry<br>Awards</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- Services - Asymmetric Layout -->
   <section class="services" id="services">
     <div class="container">
-      <div class="section-header fade-in">
-        <h2>Our Expertise</h2>
-        <p>Comprehensive business solutions tailored to drive growth and maximize value for your organization.</p>
+      <div class="section-intro">
+        <span class="section-label">Our Expertise</span>
+        <h2>Strategic services that<br>drive measurable results</h2>
       </div>
-      <div class="services-grid">
-        <div class="service-card fade-in">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
+
+      <div class="services-layout">
+        <!-- Featured Service -->
+        <div class="service-featured">
+          <div class="service-featured-content">
+            <span class="service-number">01</span>
+            <h3>Strategic Planning & Advisory</h3>
+            <p>Comprehensive strategy development that aligns organizational vision with market opportunity. We work alongside leadership teams to identify growth pathways, optimize resource allocation, and build sustainable competitive advantages.</p>
+            <ul class="service-highlights">
+              <li>Market positioning analysis</li>
+              <li>Growth strategy development</li>
+              <li>Executive decision support</li>
+            </ul>
           </div>
-          <h3>Strategic Planning</h3>
-          <p>Develop comprehensive strategies that align with your vision and drive sustainable growth in competitive markets.</p>
+          <div class="service-featured-visual">
+            <div class="visual-bars">
+              <div class="bar bar-1"></div>
+              <div class="bar bar-2"></div>
+              <div class="bar bar-3"></div>
+              <div class="bar bar-4"></div>
+              <div class="bar bar-5"></div>
+            </div>
+          </div>
         </div>
-        <div class="service-card fade-in fade-in-delay-1">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
+
+        <!-- Service Grid -->
+        <div class="services-grid">
+          <div class="service-card">
+            <span class="service-number">02</span>
+            <h3>Mergers & Acquisitions</h3>
+            <p>End-to-end M&A advisory from target identification through post-merger integration.</p>
           </div>
-          <h3>Mergers & Acquisitions</h3>
-          <p>Expert guidance through complex M&A transactions, from due diligence to post-merger integration.</p>
-        </div>
-        <div class="service-card fade-in fade-in-delay-2">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-            </svg>
+          <div class="service-card">
+            <span class="service-number">03</span>
+            <h3>Performance Optimization</h3>
+            <p>Operational efficiency programs that enhance profitability and organizational agility.</p>
           </div>
-          <h3>Performance Optimization</h3>
-          <p>Identify inefficiencies and implement solutions that enhance operational performance and profitability.</p>
-        </div>
-        <div class="service-card fade-in fade-in-delay-3">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
+          <div class="service-card service-card-accent">
+            <span class="service-number">04</span>
+            <h3>Digital Transformation</h3>
+            <p>Technology-enabled business model evolution for the modern enterprise.</p>
           </div>
-          <h3>Leadership Development</h3>
-          <p>Build high-performing leadership teams equipped to navigate change and drive organizational success.</p>
-        </div>
-        <div class="service-card fade-in fade-in-delay-4">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
+          <div class="service-card">
+            <span class="service-number">05</span>
+            <h3>Risk & Compliance</h3>
+            <p>Proactive risk frameworks that protect value while enabling strategic flexibility.</p>
           </div>
-          <h3>Risk Management</h3>
-          <p>Proactively identify, assess, and mitigate risks to protect your business and ensure continuity.</p>
-        </div>
-        <div class="service-card fade-in fade-in-delay-5">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h3>Global Expansion</h3>
-          <p>Navigate international markets with confidence through our global network and local expertise.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About -->
+  <!-- About - Timeline Style -->
   <section class="about" id="about">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-image fade-in"></div>
-        <div class="about-content">
-          <h2 class="fade-in">A Legacy of Excellence</h2>
-          <p class="fade-in fade-in-delay-1">For over two decades, Nexus Corp has been at the forefront of business transformation. Our team of seasoned consultants brings deep industry expertise and a proven track record of delivering results.</p>
-          <p class="fade-in fade-in-delay-2">We partner with organizations across industries to unlock potential, drive innovation, and create lasting value. Our approach combines rigorous analysis with creative problem-solving to address your most complex challenges.</p>
-          <div class="about-features fade-in fade-in-delay-3">
-            <div class="about-feature">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Fortune 500 Experience</span>
+      <div class="about-layout">
+        <div class="about-intro">
+          <span class="section-label">Our Story</span>
+          <h2>A legacy built on trust and transformation</h2>
+          <p class="about-lead">For over two decades, Nexus Corp has partnered with industry leaders to navigate complexity and unlock value. Our approach combines analytical rigor with creative problem-solving.</p>
+        </div>
+
+        <div class="milestones">
+          <div class="milestone">
+            <span class="milestone-year">1999</span>
+            <div class="milestone-content">
+              <h4>Founded</h4>
+              <p>Established with a vision to redefine strategic consulting</p>
             </div>
-            <div class="about-feature">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Global Network</span>
+          </div>
+          <div class="milestone">
+            <span class="milestone-year">2008</span>
+            <div class="milestone-content">
+              <h4>Global Expansion</h4>
+              <p>Opened offices across 12 countries to serve multinational clients</p>
             </div>
-            <div class="about-feature">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Industry Specialists</span>
+          </div>
+          <div class="milestone">
+            <span class="milestone-year">2016</span>
+            <div class="milestone-content">
+              <h4>Digital Practice</h4>
+              <p>Launched dedicated technology transformation advisory</p>
             </div>
-            <div class="about-feature">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Proven Methodology</span>
+          </div>
+          <div class="milestone milestone-current">
+            <span class="milestone-year">Today</span>
+            <div class="milestone-content">
+              <h4>Industry Leader</h4>
+              <p>Recognized as a top-tier advisory firm across all major markets</p>
             </div>
           </div>
         </div>
@@ -150,66 +178,90 @@ const recipe = recipes.corporate;
     </div>
   </section>
 
-  <!-- Testimonials -->
+  <!-- Testimonials - Multi-card Layout -->
   <section class="testimonials" id="testimonials">
     <div class="container">
-      <div class="section-header">
-        <h2 class="fade-in">Client Success Stories</h2>
-        <p class="fade-in fade-in-delay-1">Hear from leaders who have transformed their organizations with our guidance.</p>
+      <div class="testimonials-header">
+        <span class="section-label section-label-light">Client Perspectives</span>
+        <h2>Trusted by leaders across industries</h2>
       </div>
-      <div class="testimonial-card fade-in fade-in-delay-2">
-        <p class="testimonial-quote">"Nexus Corp's strategic insights were instrumental in our successful market expansion. Their team's expertise and dedication exceeded our expectations, delivering measurable results within six months."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">JM</div>
-          <div class="testimonial-info">
-            <h4>James Mitchell</h4>
-            <p>CEO, Horizon Technologies</p>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card testimonial-featured">
+          <blockquote>
+            <p>"Nexus Corp's strategic insights were instrumental in our successful market expansion. Their team's expertise and dedication exceeded our expectations, delivering measurable results within six months."</p>
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">JM</div>
+            <div class="author-info">
+              <strong>James Mitchell</strong>
+              <span>CEO, Horizon Technologies</span>
+            </div>
           </div>
+        </div>
+
+        <div class="testimonial-card">
+          <blockquote>
+            <p>"Their M&A advisory team guided us through a complex acquisition with precision and care. Exceptional partners."</p>
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">SR</div>
+            <div class="author-info">
+              <strong>Sarah Reynolds</strong>
+              <span>CFO, Meridian Group</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <blockquote>
+            <p>"Nexus helped us identify $40M in operational efficiencies while maintaining our commitment to quality."</p>
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">DK</div>
+            <div class="author-info">
+              <strong>David Kim</strong>
+              <span>COO, Atlas Industries</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="client-logos">
+        <span class="logos-label">Trusted by</span>
+        <div class="logos-row">
+          <span class="logo-placeholder">Horizon Tech</span>
+          <span class="logo-placeholder">Meridian</span>
+          <span class="logo-placeholder">Atlas Industries</span>
+          <span class="logo-placeholder">Vertex Capital</span>
+          <span class="logo-placeholder">Pinnacle Group</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- CTA - Full Width -->
   <section class="cta" id="contact">
     <div class="container">
-      <h2 class="fade-in">Ready to Transform Your Business?</h2>
-      <p class="fade-in fade-in-delay-1">Schedule a complimentary consultation with our senior advisors to discuss your strategic objectives.</p>
-      <a href="#" class="btn btn-cta fade-in fade-in-delay-2">Request Consultation</a>
+      <div class="cta-content">
+        <h2>Ready to transform your organization?</h2>
+        <p>Schedule a complimentary consultation with our senior advisors to discuss your strategic objectives.</p>
+        <div class="cta-actions">
+          <a href="#" class="btn btn-cta">
+            Request Consultation
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <span class="cta-note">or call <a href="tel:+1-800-555-0199">+1 (800) 555-0199</a></span>
+        </div>
+      </div>
     </div>
   </section>
 
   <Footer />
 </ShowcaseLayout>
 
-<script>
-  // Simple Fade-In on Scroll Animation
-  function initFadeInOnScroll() {
-    const fadeElements = document.querySelectorAll('.fade-in');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
-    fadeElements.forEach(el => observer.observe(el));
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFadeInOnScroll);
-  } else {
-    initFadeInOnScroll();
-  }
-</script>
-
 <style>
-  /* Base styles using CSS variables from recipe theme */
+  /* Base Styles */
   * {
     margin: 0;
     padding: 0;
@@ -229,241 +281,562 @@ const recipe = recipes.corporate;
     padding: 0 1.5rem;
   }
 
-  /* Hero */
-  .hero {
-    margin-top: calc(-1 * var(--header-height, 72px));
-    padding: calc(var(--header-height, 72px) + 5rem) 0 6rem;
-    background: linear-gradient(135deg, var(--accent-primary) 0%, #152a45 100%);
-    color: #ffffff;
-    text-align: center;
-  }
-
-  .hero h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 5vw, 4rem);
+  /* Section Labels */
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
     font-weight: 600;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-  }
-
-  .hero p {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin: 0 auto 2.5rem;
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.875rem 1.75rem;
-    border-radius: 6px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-
-  .btn-primary {
-    background: var(--accent-secondary);
-    color: #152a45;
-  }
-
-  .btn-primary:hover {
-    background: #e6c55a;
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: #ffffff;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-  }
-
-  .btn-secondary:hover {
-    border-color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  /* Stats */
-  .stats {
-    padding: 4rem 0;
-    text-align: center;
-    background: var(--bg-card);
-    border-bottom: 1px solid var(--border-color);
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
-
-  .stat-item h3 {
-    font-family: var(--font-serif);
-    font-size: 3rem;
-    font-weight: 600;
-    color: var(--accent-primary);
-    margin-bottom: 0.5rem;
-  }
-
-  .stat-item h3 span {
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--accent-secondary);
-  }
-
-  .stat-item p {
-    color: var(--text-secondary);
-    font-size: 0.9375rem;
-  }
-
-  /* Services */
-  .services {
-    padding: 6rem 0;
-    background: var(--bg-light);
-  }
-
-  .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .section-header h2 {
-    font-family: var(--font-serif);
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--accent-primary);
     margin-bottom: 1rem;
   }
 
-  .section-header p {
-    color: var(--text-secondary);
-    font-size: 1.125rem;
-    max-width: 600px;
-    margin: 0 auto;
+  .section-label-light {
+    color: rgba(255, 255, 255, 0.6);
   }
 
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .service-card {
-    background: var(--bg-card);
-    padding: 2.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s;
-  }
-
-  .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(30, 58, 95, 0.1);
-  }
-
-  .service-icon {
-    width: 56px;
-    height: 56px;
-    background: linear-gradient(135deg, var(--accent-primary), #152a45);
-    border-radius: 12px;
+  /* Hero - Split Layout */
+  .hero {
+    margin-top: calc(-1 * var(--header-height, 72px));
+    padding: calc(var(--header-height, 72px) + 4rem) 0 4rem;
+    background: var(--accent-primary);
+    color: #ffffff;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
   }
 
-  .service-icon svg {
-    width: 28px;
-    height: 28px;
-    color: #ffffff;
-  }
-
-  .service-card h3 {
-    font-family: var(--font-serif);
-    font-size: 1.375rem;
-    font-weight: 600;
-    color: var(--accent-primary);
-    margin-bottom: 0.75rem;
-  }
-
-  .service-card p {
-    color: var(--text-secondary);
-    font-size: 0.9375rem;
-    line-height: 1.7;
-  }
-
-  /* About */
-  .about {
-    padding: 6rem 0;
-    background: var(--bg-card);
-  }
-
-  .about-grid {
+  .hero-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
   }
 
-  .about-image {
-    aspect-ratio: 4/3;
-    background: linear-gradient(135deg, var(--accent-primary) 0%, #152a45 100%);
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .about-image::after {
-    content: '';
-    position: absolute;
-    bottom: -20%;
-    right: -20%;
-    width: 60%;
-    height: 60%;
-    background: var(--accent-secondary);
-    opacity: 0.2;
-    border-radius: 50%;
-  }
-
-  .about-content h2 {
-    font-family: var(--font-serif);
-    font-size: 2.5rem;
+  .hero-label {
+    display: inline-block;
+    font-size: 0.75rem;
     font-weight: 600;
-    color: var(--accent-primary);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-secondary);
     margin-bottom: 1.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(201, 162, 39, 0.3);
+    border-radius: 2px;
   }
 
-  .about-content p {
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4.5vw, 3.75rem);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent-secondary);
+  }
+
+  .hero-content p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    opacity: 0.85;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: var(--accent-secondary);
+    color: var(--accent-primary);
+  }
+
+  .btn-primary:hover {
+    background: #ddb82e;
+    transform: translateX(4px);
+  }
+
+  .btn-primary svg {
+    transition: transform 0.2s;
+  }
+
+  .btn-primary:hover svg {
+    transform: translateX(4px);
+  }
+
+  .btn-ghost {
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* Hero Visual - Data Visualization */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .data-viz {
+    position: relative;
+    width: 320px;
+    height: 320px;
+  }
+
+  .viz-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .viz-ring-1 {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    animation: pulse-ring 4s ease-in-out infinite;
+  }
+
+  .viz-ring-2 {
+    width: 75%;
+    height: 75%;
+    top: 12.5%;
+    left: 12.5%;
+    border-color: rgba(255, 255, 255, 0.15);
+    animation: pulse-ring 4s ease-in-out infinite 0.5s;
+  }
+
+  .viz-ring-3 {
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+    border-color: rgba(201, 162, 39, 0.3);
+    animation: pulse-ring 4s ease-in-out infinite 1s;
+  }
+
+  .viz-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(201, 162, 39, 0.15);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--accent-secondary);
+  }
+
+  .viz-number {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent-secondary);
+  }
+
+  .viz-label {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    margin-top: 0.25rem;
+  }
+
+  .viz-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-secondary);
+    border-radius: 50%;
+    animation: float-dot 6s ease-in-out infinite;
+  }
+
+  .viz-dot-1 { top: 10%; left: 50%; animation-delay: 0s; }
+  .viz-dot-2 { top: 70%; left: 15%; animation-delay: 2s; }
+  .viz-dot-3 { top: 60%; right: 10%; animation-delay: 4s; }
+
+  .viz-line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-secondary), transparent);
+    opacity: 0.3;
+  }
+
+  .viz-line-1 {
+    width: 60%;
+    top: 35%;
+    left: 20%;
+    transform: rotate(-15deg);
+  }
+
+  .viz-line-2 {
+    width: 40%;
+    bottom: 30%;
+    right: 15%;
+    transform: rotate(25deg);
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.7; }
+  }
+
+  @keyframes float-dot {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Stats Section */
+  .stats {
+    padding: 4rem 0;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .stats-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+  }
+
+  .stat-number {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 500;
+    color: var(--accent-primary);
+    line-height: 1;
+  }
+
+  .stat-suffix {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 500;
+    color: var(--accent-secondary);
+  }
+
+  .stat-label {
+    width: 100%;
+    font-size: 0.8125rem;
     color: var(--text-secondary);
-    font-size: 1.0625rem;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 60px;
+    background: var(--border-color);
+  }
+
+  /* Services Section */
+  .services {
+    padding: 6rem 0;
+    background: var(--bg-light);
+  }
+
+  .section-intro {
+    margin-bottom: 4rem;
+  }
+
+  .section-intro h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 500;
+    color: var(--accent-primary);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .services-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Featured Service */
+  .service-featured {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 3rem;
+    align-items: center;
+  }
+
+  .service-number {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 0.875rem;
+    color: var(--accent-secondary);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .service-featured h3 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .service-featured p {
+    color: var(--text-secondary);
+    font-size: 1rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
   }
 
-  .about-features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 2rem;
+  .service-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
-  .about-feature {
+  .service-highlights li {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    font-size: 0.9375rem;
     color: var(--text-primary);
-    font-weight: 500;
   }
 
-  .about-feature svg {
-    width: 20px;
-    height: 20px;
+  .service-highlights li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent-secondary);
+    border-radius: 50%;
+  }
+
+  /* Visual Bars */
+  .service-featured-visual {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 200px;
+    padding: 1rem;
+  }
+
+  .visual-bars {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    height: 100%;
+  }
+
+  .bar {
+    width: 32px;
+    background: linear-gradient(to top, var(--accent-primary), var(--accent-secondary));
+    border-radius: 4px 4px 0 0;
+    animation: grow-bar 2s ease-out forwards;
+  }
+
+  .bar-1 { height: 45%; animation-delay: 0.1s; }
+  .bar-2 { height: 70%; animation-delay: 0.2s; }
+  .bar-3 { height: 55%; animation-delay: 0.3s; }
+  .bar-4 { height: 85%; animation-delay: 0.4s; }
+  .bar-5 { height: 65%; animation-delay: 0.5s; }
+
+  @keyframes grow-bar {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+  }
+
+  /* Service Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .service-card:hover {
+    border-color: var(--accent-secondary);
+  }
+
+  .service-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--accent-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .service-card p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+
+  .service-card-accent {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+  }
+
+  .service-card-accent .service-number,
+  .service-card-accent h3 {
+    color: #ffffff;
+  }
+
+  .service-card-accent p {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .service-card-accent:hover {
+    border-color: var(--accent-secondary);
+  }
+
+  /* About Section */
+  .about {
+    padding: 6rem 0;
+    background: #ffffff;
+  }
+
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-intro h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 500;
+    color: var(--accent-primary);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-lead {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  /* Milestones */
+  .milestones {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .milestones::before {
+    content: '';
+    position: absolute;
+    left: 50px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border-color);
+  }
+
+  .milestone {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    position: relative;
+  }
+
+  .milestone::after {
+    content: '';
+    position: absolute;
+    left: 46px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 9px;
+    height: 9px;
+    background: #ffffff;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+  }
+
+  .milestone-current::after {
+    background: var(--accent-secondary);
+    border-color: var(--accent-secondary);
+  }
+
+  .milestone-year {
+    font-family: var(--font-serif);
+    font-size: 0.875rem;
+    font-weight: 500;
     color: var(--accent-secondary);
+    width: 50px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .milestone-content {
+    padding-left: 2rem;
+  }
+
+  .milestone-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .milestone-content p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
   }
 
   /* Testimonials */
@@ -473,27 +846,49 @@ const recipe = recipes.corporate;
     color: #ffffff;
   }
 
-  .testimonials .section-header h2 {
-    color: #ffffff;
+  .testimonials-header {
+    margin-bottom: 3rem;
   }
 
-  .testimonials .section-header p {
-    color: rgba(255, 255, 255, 0.7);
+  .testimonials-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
   }
 
   .testimonial-card {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2.5rem;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 2rem;
   }
 
-  .testimonial-quote {
-    font-size: 1.125rem;
+  .testimonial-featured {
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .testimonial-card blockquote p {
+    font-size: 1rem;
     line-height: 1.8;
+    opacity: 0.9;
     margin-bottom: 1.5rem;
+  }
+
+  .testimonial-featured blockquote p {
+    font-size: 1.25rem;
     font-style: italic;
-    opacity: 0.95;
   }
 
   .testimonial-author {
@@ -502,99 +897,233 @@ const recipe = recipes.corporate;
     gap: 1rem;
   }
 
-  .testimonial-avatar {
-    width: 48px;
-    height: 48px;
+  .author-avatar {
+    width: 44px;
+    height: 44px;
     background: var(--accent-secondary);
+    color: var(--accent-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    color: #152a45;
-  }
-
-  .testimonial-info h4 {
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-  }
-
-  .testimonial-info p {
     font-size: 0.875rem;
-    opacity: 0.7;
   }
 
-  /* CTA */
+  .author-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .author-info strong {
+    font-size: 0.9375rem;
+    font-weight: 600;
+  }
+
+  .author-info span {
+    font-size: 0.8125rem;
+    opacity: 0.6;
+  }
+
+  /* Client Logos */
+  .client-logos {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+  }
+
+  .logos-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .logos-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .logo-placeholder {
+    font-size: 0.875rem;
+    font-weight: 600;
+    opacity: 0.4;
+    letter-spacing: 0.05em;
+  }
+
+  /* CTA Section */
   .cta {
     padding: 6rem 0;
-    background: var(--bg-secondary);
-    text-align: center;
+    background: var(--bg-light);
+  }
+
+  .cta-content {
+    max-width: 640px;
   }
 
   .cta h2 {
     font-family: var(--font-serif);
-    font-size: 2.5rem;
-    font-weight: 600;
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 500;
     color: var(--accent-primary);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
     margin-bottom: 1rem;
   }
 
   .cta p {
     color: var(--text-secondary);
     font-size: 1.125rem;
-    max-width: 600px;
-    margin: 0 auto 2rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
   }
 
   .btn-cta {
     background: var(--accent-primary);
     color: #ffffff;
+    padding: 1rem 2rem;
   }
 
   .btn-cta:hover {
     background: #152a45;
   }
 
+  .btn-cta svg {
+    transition: transform 0.2s;
+  }
+
+  .btn-cta:hover svg {
+    transform: translateX(4px);
+  }
+
+  .cta-note {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+  }
+
+  .cta-note a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .cta-note a:hover {
+    text-decoration: underline;
+  }
+
   /* Responsive */
-  @media (max-width: 968px) {
-    .stats-grid {
+  @media (max-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 3rem;
+    }
+
+    .hero-content p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      justify-content: center;
+    }
+
+    .data-viz {
+      width: 260px;
+      height: 260px;
+    }
+
+    .services-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-featured {
+      grid-template-columns: 1fr;
+    }
+
+    .about-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonial-featured {
+      grid-row: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .stat-item {
+      flex: 0 0 calc(50% - 1rem);
+    }
+
+    .stat-divider {
+      display: none;
     }
 
     .services-grid {
       grid-template-columns: 1fr;
     }
 
-    .about-grid {
-      grid-template-columns: 1fr;
+    .milestones::before {
+      left: 0;
+    }
+
+    .milestone {
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .milestone::after {
+      left: -4px;
+    }
+
+    .milestone-year {
+      text-align: left;
+      width: auto;
+    }
+
+    .milestone-content {
+      padding-left: 0;
+    }
+
+    .logos-row {
+      justify-content: center;
     }
   }
 
-  @media (max-width: 640px) {
-    .stats-grid {
-      grid-template-columns: 1fr;
+  @media (max-width: 480px) {
+    .stat-item {
+      flex: 0 0 100%;
     }
 
-    .about-features {
-      grid-template-columns: 1fr;
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
-
-  /* Fade In On Scroll Animations */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .fade-in-delay-1 { transition-delay: 0.1s; }
-  .fade-in-delay-2 { transition-delay: 0.2s; }
-  .fade-in-delay-3 { transition-delay: 0.3s; }
-  .fade-in-delay-4 { transition-delay: 0.4s; }
-  .fade-in-delay-5 { transition-delay: 0.5s; }
 </style>
