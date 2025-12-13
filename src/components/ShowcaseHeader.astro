@@ -1,0 +1,189 @@
+---
+/**
+ * ShowcaseHeader - Header component for showcase demo sites
+ * Accepts recipe config as a prop instead of reading from site.ts
+ * This allows showcases to display headers that match their recipe theme
+ */
+
+import ShowcaseLogo from "./ShowcaseLogo.astro";
+import type { Recipe } from "../recipes/index";
+
+interface Props {
+  recipe: Recipe;
+  nav?: { label: string; href: string }[];
+  cta?: { label: string; href: string };
+}
+
+const { recipe, nav = [], cta } = Astro.props;
+
+const headerLayout = recipe.headerLayout || 'standard';
+const ctaShape = recipe.ctaShape || 'rounded';
+const ctaShapeClass = ctaShape === 'pill' ? 'cta-pill' : 'cta-rounded';
+---
+
+<header class="header" data-layout={headerLayout}>
+  <div class="container header-content" data-layout={headerLayout}>
+    <a href="#" class="logo-link">
+      <ShowcaseLogo recipe={recipe} />
+    </a>
+    {headerLayout === 'centered' && headerLayout !== 'minimal' && nav.length > 0 && (
+      <nav class="nav">
+        {nav.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))}
+      </nav>
+    )}
+    {headerLayout === 'standard' && (
+      <div class="nav-group">
+        {nav.length > 0 && (
+          <nav class="nav">
+            {nav.map((item) => (
+              <a href={item.href}>{item.label}</a>
+            ))}
+          </nav>
+        )}
+        {cta && (
+          <a class={`nav-cta ${ctaShapeClass}`} href={cta.href}>
+            {cta.label}
+          </a>
+        )}
+      </div>
+    )}
+    {headerLayout !== 'standard' && cta && (
+      <a class={`nav-cta ${ctaShapeClass}`} href={cta.href}>
+        {cta.label}
+      </a>
+    )}
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    background: var(--header-bg, var(--bg-light));
+    border-bottom: 1px solid var(--header-border, transparent);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .container {
+    max-width: var(--container-width, 1200px);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Centered layout: logo left, nav center, CTA right */
+  .header-content[data-layout="centered"] {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .header-content[data-layout="centered"] .logo-link {
+    justify-self: start;
+  }
+
+  .header-content[data-layout="centered"] .nav {
+    justify-self: center;
+  }
+
+  .header-content[data-layout="centered"] .nav-cta {
+    justify-self: end;
+  }
+
+  .logo-link {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  /* Nav group wrapper for standard layout - groups nav + CTA together on the right */
+  .nav-group {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav {
+    display: flex;
+    gap: 0;
+    align-items: center;
+  }
+
+  .nav a {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 1;
+    padding: 8px 16px;
+    outline: none;
+    user-select: none;
+    font-weight: 500;
+    border-radius: 20px;
+    color: var(--header-text, var(--text-secondary));
+    transition: all 0.2s;
+    background: none;
+    border: none;
+  }
+
+  .nav a:hover,
+  .nav a:focus {
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+  }
+
+  .nav-cta {
+    background: var(--header-cta-bg) !important;
+    color: var(--header-cta-text) !important;
+    border-radius: var(--header-cta-radius);
+    padding: var(--header-cta-padding);
+    font-size: var(--header-cta-font-size);
+    margin-left: 0.5rem;
+    transition: background 0.2s !important;
+    font-weight: var(--header-cta-font-weight);
+    white-space: nowrap;
+    line-height: 1.6;
+    text-decoration: none;
+  }
+
+  .nav-cta:hover {
+    background: var(--header-cta-hover-bg) !important;
+    color: var(--header-cta-text) !important;
+  }
+
+  .nav-cta.cta-pill {
+    border-radius: 100px !important;
+  }
+
+  .nav-cta.cta-rounded {
+    border-radius: var(--header-cta-radius, 8px) !important;
+  }
+
+  @media (max-width: 968px) {
+    .nav {
+      display: none;
+    }
+  }
+</style>

@@ -81,6 +81,7 @@ function parseRecipes() {
       showLegalLinks: extractBoolean(recipeContent, 'showLegalLinks'),
       showCopyright: extractBoolean(recipeContent, 'showCopyright'),
       showTemplateCredit: extractBoolean(recipeContent, 'showTemplateCredit'),
+      showTemplateName: extractBoolean(recipeContent, 'showTemplateName'),
       isDark: extractBoolean(recipeContent, 'isDark'),
       copyrightSuffix: extractField(recipeContent, 'copyrightSuffix'),
     };
@@ -724,6 +725,15 @@ if (recipe.showCopyright !== undefined) {
     `showCopyright: ${recipe.showCopyright}`
   );
   console.log(`✓ Updated showCopyright to ${recipe.showCopyright}`);
+}
+
+// Update showTemplateName if provided
+if (recipe.showTemplateName !== undefined) {
+  siteConfig = siteConfig.replace(
+    /showTemplateName:\s*(true|false)/,
+    `showTemplateName: ${recipe.showTemplateName}`
+  );
+  console.log(`✓ Updated showTemplateName to ${recipe.showTemplateName}`);
 }
 
 // Update showTemplateCredit if provided

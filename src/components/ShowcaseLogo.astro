@@ -1,0 +1,104 @@
+---
+/**
+ * ShowcaseLogo - Logo component for showcase demo sites
+ * Accepts recipe config as a prop instead of reading from site.ts
+ * This allows showcases to display logos that match their recipe theme
+ */
+
+import type { Recipe } from "../recipes/index";
+
+interface Props {
+  recipe: Recipe;
+}
+
+const { recipe } = Astro.props;
+
+const hasEmoji = recipe.logo?.emoji && recipe.logo.emoji.trim() !== "";
+const hasChar = recipe.logo?.char && recipe.logo.char.trim() !== "";
+const hasLogo = !hasEmoji && !hasChar && recipe.logo?.src && recipe.logo.src.trim() !== "";
+const nameAccent = recipe.nameAccent || '';
+const logoMark = recipe.logoMark || 'icon-text';
+const logoChar = hasChar ? recipe.logo!.char : recipe.name.charAt(0);
+const isGradientBox = logoMark === 'gradient-box';
+---
+
+<div class="logo-container">
+  {isGradientBox && (
+    <span class="logo-icon">{logoChar}</span>
+  )}
+  {!isGradientBox && hasEmoji && (
+    <span class="logo-emoji">{recipe.logo!.emoji}</span>
+  )}
+  {!isGradientBox && hasLogo && (
+    <img
+      src={recipe.logo!.src}
+      alt={recipe.logo!.alt}
+      class="logo-mark"
+      width={recipe.logo!.width}
+      height={recipe.logo!.height}
+      loading="eager"
+    />
+  )}
+  <span class="logo-text">
+    <span class="logo-name">{recipe.name}{nameAccent && <span class="logo-name-accent">{nameAccent}</span>}</span>
+  </span>
+</div>
+
+<style>
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo-emoji {
+    font-size: 1.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  /* Gradient box logo icon (startup/SaaS style) */
+  .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--logo-icon-gradient, linear-gradient(135deg, var(--accent-primary, #a855f7), var(--accent-secondary, #6366f1)));
+    border-radius: 8px;
+    font-family: var(--header-logo-font, var(--font-serif));
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+
+  .logo-mark {
+    display: block;
+    flex-shrink: 0;
+    flex-grow: 0;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  .logo-text {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .logo-name {
+    font-family: var(--header-logo-font, var(--font-serif, var(--font-sans)));
+    font-weight: var(--header-logo-weight, 400);
+    font-size: var(--header-logo-size, 1.5rem);
+    letter-spacing: var(--header-logo-letter-spacing, 0);
+    color: var(--header-logo-color, var(--text-primary));
+  }
+
+  .logo-name-accent {
+    color: var(--header-logo-accent-color, var(--accent-primary));
+  }
+</style>
