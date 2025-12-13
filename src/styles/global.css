@@ -26,8 +26,11 @@
   --header-cta-hover-bg: var(--accent-primary);
   --header-cta-padding: 8px 20px;
   --header-cta-radius: 8px;
+  --header-cta-font-size: 0.9375rem;
+  --header-cta-font-weight: 500;
   --header-logo-font: var(--font-sans);
   --header-logo-size: 1.25rem;
+  --header-logo-weight: 600;
   --header-logo-color: var(--text-primary);
   --header-logo-accent: var(--text-primary);
   --header-logo-accent-color: var(--accent-primary);
@@ -39,6 +42,7 @@
   --footer-heading: var(--text-primary);
   --footer-link: var(--text-secondary);
   --footer-link-hover: var(--accent-primary);
+  --footer-max-width: 1200px;
 
   /* Group colors - used in SubNav and MegaMenu (6 groups available) */
   --group-primary-start: #3b82f6;
@@ -238,21 +242,21 @@ h6 {
 
 /* CTA Button - Solid style */
 .NavigationCTAButton {
-  background: var(--header-cta-bg, var(--accent-primary)) !important;
-  color: var(--header-cta-text, #ffffff) !important;
-  border-radius: var(--header-cta-radius, 6px);
-  padding: var(--header-cta-padding, 0.625rem 1.25rem);
-  font-size: var(--header-cta-font-size, 0.9375rem);
-  margin-left: 8px;
+  background: var(--header-cta-bg) !important;
+  color: var(--header-cta-text) !important;
+  border-radius: var(--header-cta-radius);
+  padding: var(--header-cta-padding);
+  font-size: var(--header-cta-font-size);
+  margin-left: 0.5rem;
   transition: background 0.2s !important;
-  font-weight: var(--header-cta-font-weight, 500);
+  font-weight: var(--header-cta-font-weight);
   white-space: nowrap;
   line-height: 1.6;
 }
 
 .NavigationCTAButton:hover {
-  background: var(--header-cta-hover-bg, #152d4a) !important;
-  color: var(--header-cta-text, #ffffff) !important;
+  background: var(--header-cta-hover-bg) !important;
+  color: var(--header-cta-text) !important;
 }
 
 /* CTA Shape variants */

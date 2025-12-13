@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from "../config/site";
+import type { ComponentConfig } from "../utils/recipe-context";
 
 interface Props {
   width?: number;
@@ -8,12 +9,26 @@ interface Props {
 }
 
 const { width = 140, height = 32, color = "currentColor" } = Astro.props;
-const hasEmoji = siteConfig.logo.emoji && siteConfig.logo.emoji.trim() !== "";
-const hasLogo = !hasEmoji && siteConfig.logo.src && siteConfig.logo.src.trim() !== "";
-const hasTemplateName = siteConfig.templateName && siteConfig.templateName.trim() !== "";
-const nameAccent = 'nameAccent' in siteConfig ? (siteConfig as any).nameAccent : '';
-const logoMark = 'logoMark' in siteConfig ? (siteConfig as any).logoMark : 'icon-text';
-const logoChar = 'char' in siteConfig.logo ? (siteConfig.logo as any).char : siteConfig.name.charAt(0);
+
+// Check if we're in showcase mode (showcaseConfig is set by ShowcaseLayout)
+const showcaseConfig = (Astro.locals as any).showcaseConfig as ComponentConfig | undefined;
+
+// Use showcase config if available, otherwise fall back to siteConfig
+const config = showcaseConfig || {
+  name: siteConfig.name,
+  nameAccent: (siteConfig as any).nameAccent || '',
+  templateName: siteConfig.templateName,
+  logo: siteConfig.logo,
+  logoMark: (siteConfig as any).logoMark || 'icon-text',
+};
+
+const hasEmoji = config.logo.emoji && config.logo.emoji.trim() !== "";
+const hasChar = 'char' in config.logo && (config.logo as any).char && (config.logo as any).char.trim() !== "";
+const hasLogo = !hasEmoji && !hasChar && config.logo.src && config.logo.src.trim() !== "";
+const hasTemplateName = config.templateName && config.templateName.trim() !== "";
+const nameAccent = config.nameAccent || '';
+const logoMark = config.logoMark || 'icon-text';
+const logoChar = hasChar ? (config.logo as any).char : config.name.charAt(0);
 const isGradientBox = logoMark === 'gradient-box';
 ---
 
@@ -22,21 +37,21 @@ const isGradientBox = logoMark === 'gradient-box';
     <span class="logo-icon">{logoChar}</span>
   )}
   {!isGradientBox && hasEmoji && (
-    <span class="logo-emoji">{siteConfig.logo.emoji}</span>
+    <span class="logo-emoji">{config.logo.emoji}</span>
   )}
   {!isGradientBox && hasLogo && (
     <img
-      src={siteConfig.logo.src}
-      alt={siteConfig.logo.alt}
+      src={config.logo.src}
+      alt={config.logo.alt}
       class="logo-mark"
-      width={siteConfig.logo.width}
-      height={siteConfig.logo.height}
+      width={config.logo.width}
+      height={config.logo.height}
       loading="eager"
     />
   )}
   <span class="logo-text">
-    <span class="logo-name">{siteConfig.name}{nameAccent && <span class="logo-name-accent">{nameAccent}</span>}</span>
-    {hasTemplateName && !nameAccent && <span class="logo-template">{siteConfig.templateName}</span>}
+    <span class="logo-name">{config.name}{nameAccent && <span class="logo-name-accent">{nameAccent}</span>}</span>
+    {hasTemplateName && !nameAccent && <span class="logo-template">{config.templateName}</span>}
   </span>
 </div>
 
@@ -60,7 +75,7 @@ const isGradientBox = logoMark === 'gradient-box';
     justify-content: center;
     width: 32px;
     height: 32px;
-    background: var(--logo-icon-gradient, linear-gradient(135deg, #a855f7, #6366f1));
+    background: var(--logo-icon-gradient, linear-gradient(135deg, var(--accent-primary, #a855f7), var(--accent-secondary, #6366f1)));
     border-radius: 8px;
     font-family: var(--header-logo-font, var(--font-serif));
     font-size: 1rem;
@@ -87,9 +102,9 @@ const isGradientBox = logoMark === 'gradient-box';
   }
 
   .logo-name {
-    font-family: var(--header-logo-font, var(--font-sans));
-    font-weight: var(--header-logo-weight, 600);
-    font-size: var(--header-logo-size, 1.25rem);
+    font-family: var(--header-logo-font, var(--font-serif, var(--font-sans)));
+    font-weight: var(--header-logo-weight, 400);
+    font-size: var(--header-logo-size, 1.5rem);
     letter-spacing: var(--header-logo-letter-spacing, 0);
     color: var(--header-logo-color, var(--text-primary));
   }

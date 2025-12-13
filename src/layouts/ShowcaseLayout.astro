@@ -4,23 +4,58 @@
  * Includes a floating close button to return to the parent showcase page
  * Uses native scrolling for simplicity and compatibility
  * Includes page entrance fade-in animation
+ *
+ * When a recipe prop is provided, injects CSS variables from that recipe's theme
  */
+
+import "../styles/global.css";
+import { getRecipe, getThemeCssVars, recipeToConfig } from '../utils/recipe-context';
 
 interface Props {
   title: string;
   returnUrl?: string;
+  recipe?: string; // Recipe name to load theme from
 }
 
-const { title, returnUrl = '/showcase/' } = Astro.props;
+const { title, returnUrl = '/showcase/', recipe: recipeName } = Astro.props;
+
+// Get recipe config if specified
+const recipe = recipeName ? getRecipe(recipeName) : undefined;
+const themeCssVars = recipe ? getThemeCssVars(recipe.theme) : '';
+const config = recipe ? recipeToConfig(recipe) : undefined;
+
+// Expose config for child components via Astro.locals
+if (config) {
+  (Astro.locals as any).showcaseConfig = config;
+}
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme={recipe?.isDark ? 'dark' : 'light'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+
+    {/* Load recipe fonts if specified */}
+    {recipe?.fonts?.google && (
+      <>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href={recipe.fonts.google} rel="stylesheet" />
+      </>
+    )}
+
     <slot name="head" />
+
+    {/* Inject recipe theme variables AFTER global.css with higher specificity */}
+    {themeCssVars && (
+      <style set:html={`
+        html[data-theme="dark"], html[data-theme="light"] {
+          ${themeCssVars}
+        }
+      `} />
+    )}
   </head>
   <body class="showcase-page-enter">
     <a href={returnUrl} class="showcase-close-btn" title="Close preview and return to Showcase">
@@ -29,7 +64,9 @@ const { title, returnUrl = '/showcase/' } = Astro.props;
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     </a>
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
 
@@ -90,5 +127,13 @@ const { title, returnUrl = '/showcase/' } = Astro.props;
   .showcase-close-btn svg {
     width: 20px;
     height: 20px;
+  }
+
+  /* Main content wrapper - matches Layout.astro */
+  main {
+    padding-top: var(--header-height);
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
   }
 </style>

@@ -216,18 +216,20 @@ function extractLogo(content) {
   if (!logoMatch) return undefined;
 
   const logoContent = logoMatch[1];
-  const src = logoContent.match(/src:\s*['"]([^'"]+)['"]/);
+  const src = logoContent.match(/src:\s*['"]([^'"]*)['"]/);
   const alt = logoContent.match(/alt:\s*['"]([^'"]+)['"]/);
   const width = logoContent.match(/width:\s*(\d+)/);
   const height = logoContent.match(/height:\s*(\d+)/);
-
-  if (!src) return undefined;
+  const emoji = logoContent.match(/emoji:\s*['"]([^'"]+)['"]/);
+  const char = logoContent.match(/char:\s*['"]([^'"]+)['"]/);
 
   return {
-    src: src[1],
+    src: src ? src[1] : '',
     alt: alt ? alt[1] : 'Logo',
     width: width ? parseInt(width[1]) : 32,
     height: height ? parseInt(height[1]) : 32,
+    emoji: emoji ? emoji[1] : '',
+    char: char ? char[1] : '',
   };
 }
 
@@ -385,6 +387,25 @@ for (const pattern of conflictingCSSPatterns) {
 sourceContent = sourceContent.replace(/\s*\/\*\s*Header\s*\*\/\s*/g, '');
 sourceContent = sourceContent.replace(/\s*\/\*\s*Footer\s*\*\/\s*/g, '');
 
+// Transform hero padding: keep header-height compensation for heroes that extend under the header
+// Pattern: calc(var(--header-height, XXpx) + Yrem) 0 Zrem -> calc(var(--header-height) + Yrem) 0 Zrem
+sourceContent = sourceContent.replace(
+  /padding:\s*calc\(var\(--header-height,\s*\d+px\)\s*\+\s*(\d+(?:\.\d+)?rem)\)\s+(0|[\d.]+rem)\s+([\d.]+rem)/g,
+  'padding: calc(var(--header-height) + $1) $2 $3'
+);
+
+// Also handle margin-top: calc(-1 * var(--header-height, XXpx)) for heroes that extend under header
+sourceContent = sourceContent.replace(
+  /margin-top:\s*calc\(-1\s*\*\s*var\(--header-height,\s*\d+px\)\)/g,
+  'margin-top: calc(-1 * var(--header-height))'
+);
+
+// Transform padding that compensates for margin-top extension under header
+sourceContent = sourceContent.replace(
+  /padding:\s*calc\(var\(--header-height,\s*\d+px\)\s*\+\s*(\d+(?:\.\d+)?rem)\)/g,
+  'padding: calc(var(--header-height) + $1)'
+);
+
 // NOTE: Hero transform disabled - showcase examples already have correct padding
 // The examples are designed to work with fixed headers and their padding accounts for this
 // Adding extra header-height padding was causing too much space above hero text
@@ -428,13 +449,15 @@ siteConfig = siteConfig.replace(
   `name: "${recipe.name}"`
 );
 
-// Update nameAccent if provided
+// Update nameAccent (always update to ensure it's cleared when not provided)
+siteConfig = siteConfig.replace(
+  /nameAccent:\s*"[^"]*"/,
+  `nameAccent: "${recipe.nameAccent || ''}"`
+);
 if (recipe.nameAccent) {
-  siteConfig = siteConfig.replace(
-    /nameAccent:\s*"[^"]*"/,
-    `nameAccent: "${recipe.nameAccent}"`
-  );
   console.log(`✓ Updated nameAccent to "${recipe.nameAccent}"`);
+} else {
+  console.log('✓ Cleared nameAccent (recipe has no accent)');
 }
 
 // Update description if available
@@ -463,6 +486,16 @@ if (recipe.logo) {
   siteConfig = siteConfig.replace(
     /logo:\s*\{[^}]*src:\s*"[^"]*"/,
     `logo: {\n    src: "${recipe.logo.src}"`
+  );
+  // Update logo emoji
+  siteConfig = siteConfig.replace(
+    /(logo:\s*\{[^}]*?)emoji:\s*"[^"]*"/,
+    `$1emoji: "${recipe.logo.emoji || ''}"`
+  );
+  // Update logo char
+  siteConfig = siteConfig.replace(
+    /(logo:\s*\{[^}]*?)char:\s*"[^"]*"/,
+    `$1char: "${recipe.logo.char || ''}"`
   );
   // Update logo alt
   siteConfig = siteConfig.replace(

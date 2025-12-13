@@ -3,9 +3,13 @@ import { createPortal } from 'react-dom';
 import { ChevronDown, X } from 'lucide-react';
 import { siteConfig, isMegaMenu, type NavItem, type MegaMenuItem, type HeaderLayout, type CTAShape } from '../config/site';
 
-// Get header config with defaults
-const headerLayout = (siteConfig.header?.layout || 'standard') as HeaderLayout;
-const ctaShape = (siteConfig.header?.ctaShape || 'rounded') as CTAShape;
+// Navigation props - allows parent to override nav config
+interface NavigationProps {
+    navItems?: NavItem[];
+    navCta?: { label: string; href: string };
+    headerLayout?: HeaderLayout;
+    ctaShape?: CTAShape;
+}
 
 // Custom menu icon with shorter third bar
 const MenuIcon = ({ size = 24 }: { size?: number }) => (
@@ -29,7 +33,18 @@ import Lenis from '@studio-freight/lenis';
 import '../styles/global.css';
 import '../styles/mobile-menu.css';
 
-const Navigation = () => {
+const Navigation = ({
+    navItems: propNavItems,
+    navCta: propNavCta,
+    headerLayout: propHeaderLayout,
+    ctaShape: propCtaShape
+}: NavigationProps) => {
+    // Use props if provided, otherwise fall back to siteConfig
+    const navItems = propNavItems || siteConfig.nav.items;
+    const navCta = propNavCta || siteConfig.nav.cta;
+    const headerLayout = (propHeaderLayout || siteConfig.header?.layout || 'standard') as HeaderLayout;
+    const ctaShape = (propCtaShape || siteConfig.header?.ctaShape || 'rounded') as CTAShape;
+
     const [activeMenu, setActiveMenu] = React.useState<string | null>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
     const [mounted, setMounted] = React.useState(false);
@@ -244,7 +259,7 @@ const Navigation = () => {
     };
 
     // Get mega menu items for rendering dropdown content
-    const megaMenuItems = siteConfig.nav.items.filter(isMegaMenu) as MegaMenuItem[];
+    const megaMenuItems = navItems.filter(isMegaMenu) as MegaMenuItem[];
 
     return (
         <>
@@ -259,7 +274,7 @@ const Navigation = () => {
                 {/* Desktop Menu List - hidden if minimal layout */}
                 {headerLayout !== 'minimal' && (
                 <ul className="NavigationMenuList" data-layout={headerLayout}>
-                    {siteConfig.nav.items.map((item: NavItem) => (
+                    {navItems.map((item: NavItem) => (
                         isMegaMenu(item) ? (
                             <li
                                 key={item.menuId}
@@ -286,10 +301,10 @@ const Navigation = () => {
                         )
                     ))}
                     {/* CTA inside nav list for standard layout only */}
-                    {headerLayout === 'standard' && siteConfig.nav.cta && (
+                    {headerLayout === 'standard' && navCta && (
                         <li>
-                            <a className={`NavigationMenuLink NavigationCTAButton ${ctaShape === 'pill' ? 'cta-pill' : 'cta-rounded'}`} href={siteConfig.nav.cta.href}>
-                                {siteConfig.nav.cta.label}
+                            <a className={`NavigationMenuLink NavigationCTAButton ${ctaShape === 'pill' ? 'cta-pill' : 'cta-rounded'}`} href={navCta.href}>
+                                {navCta.label}
                             </a>
                         </li>
                     )}
@@ -299,9 +314,9 @@ const Navigation = () => {
                 {/* CTA button for centered layout is now rendered in Header.astro */}
 
                 {/* CTA button for minimal layout (no nav) */}
-                {headerLayout === 'minimal' && siteConfig.nav.cta && (
-                    <a className={`NavigationMenuLink NavigationCTAButton ${ctaShape === 'pill' ? 'cta-pill' : 'cta-rounded'}`} href={siteConfig.nav.cta.href}>
-                        {siteConfig.nav.cta.label}
+                {headerLayout === 'minimal' && navCta && (
+                    <a className={`NavigationMenuLink NavigationCTAButton ${ctaShape === 'pill' ? 'cta-pill' : 'cta-rounded'}`} href={navCta.href}>
+                        {navCta.label}
                     </a>
                 )}
 
@@ -361,7 +376,7 @@ const Navigation = () => {
                         <li>
                             <a className="MobileMenuLink" href="/" onClick={closeMobileMenu}>Home</a>
                         </li>
-                        {siteConfig.nav.items.map((item: NavItem) => (
+                        {navItems.map((item: NavItem) => (
                             isMegaMenu(item) ? (
                                 <li key={item.menuId}>
                                     <details name="mobile-menu-accordion-group" className="MobileMenuDetails">
@@ -400,14 +415,14 @@ const Navigation = () => {
                                 </li>
                             )
                         ))}
-                        {siteConfig.nav.cta && (
+                        {navCta && (
                             <li>
                                 <a
                                     className="MobileMenuLink NavigationCTAButton"
-                                    href={siteConfig.nav.cta.href}
+                                    href={navCta.href}
                                     onClick={closeMobileMenu}
                                 >
-                                    {siteConfig.nav.cta.label}
+                                    {navCta.label}
                                 </a>
                             </li>
                         )}

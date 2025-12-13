@@ -2,21 +2,33 @@
 import { Github, Twitter, Facebook, Instagram, Linkedin, Youtube, Heart } from "lucide-react";
 import { siteConfig, type SocialStyle, type SocialLink, type FooterLinkGroup, type SocialPosition } from "../config/site";
 import Logo from "./Logo.astro";
+import type { ComponentConfig } from "../utils/recipe-context";
+
+// Check if we're in showcase mode (showcaseConfig is set by ShowcaseLayout)
+const showcaseConfig = (Astro.locals as any).showcaseConfig as ComponentConfig | undefined;
 
 type FooterLayout = 'grid-4col' | 'flex-row' | 'flex-sections';
-const footerLayout = (siteConfig.footerLayout || 'grid-4col') as FooterLayout;
 
-// Social configuration with defaults
-const socialStyle = (siteConfig.footer.social?.style || 'icons') as SocialStyle;
-const socialPosition = (siteConfig.footer.social?.position || 'brand') as SocialPosition;
-const socialLinks = (siteConfig.footer.social?.links || []) as SocialLink[];
-const linkGroups = (siteConfig.footer.linkGroups || []) as FooterLinkGroup[];
-const legalLinks = siteConfig.footer.legalLinks || [];
-const legalInBottomRow = siteConfig.footer.legalInBottomRow ?? false;
-const showLegalLinks = siteConfig.footer.showLegalLinks ?? true;
-const showCopyright = siteConfig.footer.showCopyright ?? true;
-const showTemplateCredit = siteConfig.footer.showTemplateCredit ?? true;
-const copyrightSuffix = siteConfig.footer.copyrightSuffix || "";
+// Use showcase config if available, otherwise fall back to siteConfig
+const footerLayout = (showcaseConfig?.footerLayout || siteConfig.footerLayout || 'grid-4col') as FooterLayout;
+
+// Social configuration with defaults - prefer showcaseConfig if available
+const socialStyle = (showcaseConfig?.footer?.social?.style || siteConfig.footer.social?.style || 'icons') as SocialStyle;
+const socialPosition = (showcaseConfig?.footer?.social?.position || siteConfig.footer.social?.position || 'brand') as SocialPosition;
+const socialLinks = (showcaseConfig?.footer?.social?.links || siteConfig.footer.social?.links || []) as SocialLink[];
+const linkGroups = (showcaseConfig?.footer?.linkGroups || siteConfig.footer.linkGroups || []) as FooterLinkGroup[];
+const legalLinks = showcaseConfig?.footer?.legalLinks || siteConfig.footer.legalLinks || [];
+const legalInBottomRow = showcaseConfig?.footer?.legalInBottomRow ?? siteConfig.footer.legalInBottomRow ?? false;
+const showLegalLinks = showcaseConfig?.footer?.showLegalLinks ?? siteConfig.footer.showLegalLinks ?? true;
+const showCopyright = showcaseConfig?.footer?.showCopyright ?? siteConfig.footer.showCopyright ?? true;
+const showTemplateCredit = showcaseConfig?.footer?.showTemplateCredit ?? siteConfig.footer.showTemplateCredit ?? true;
+const copyrightSuffix = showcaseConfig?.footer?.copyrightSuffix || siteConfig.footer.copyrightSuffix || "";
+
+// Get footer content - copyright name and tagline from showcase config if available
+const footerCopyright = showcaseConfig?.footer?.copyright || siteConfig.footer.copyright;
+const footerTagline = showcaseConfig?.footer?.tagline || siteConfig.footer.tagline;
+const footerLinks = showcaseConfig?.footer?.links || siteConfig.footer.links;
+const templateName = showcaseConfig?.templateName || siteConfig.templateName;
 
 // Check if social links should show under brand (not when position is 'column')
 const showSocialUnderBrand = socialPosition === 'brand' && socialStyle !== 'none' && socialLinks.length > 0;
@@ -54,8 +66,8 @@ const getInitials = (platform: string): string => {
           <a href="/" class="footer-logo-link">
             <Logo />
           </a>
-          {siteConfig.footer.tagline && (
-            <p class="footer-tagline">{siteConfig.footer.tagline}</p>
+          {footerTagline && (
+            <p class="footer-tagline">{footerTagline}</p>
           )}
           {/* Social links under brand (nonprofit style) - only when position is 'brand' */}
           {showSocialUnderBrand && (
@@ -98,7 +110,7 @@ const getInitials = (platform: string): string => {
           <div class="footer-column">
             <h3 class="footer-heading">Links</h3>
             <ul class="footer-links">
-              {siteConfig.footer.links.map((link) => (
+              {footerLinks.map((link) => (
                 <li>
                   <a href={link.href}>{link.label}</a>
                 </li>
@@ -118,20 +130,20 @@ const getInitials = (platform: string): string => {
               <Logo />
             </a>
             <nav class="footer-nav">
-              {siteConfig.footer.links.map((link) => (
+              {footerLinks.map((link) => (
                 <a href={link.href}>{link.label}</a>
               ))}
             </nav>
           </div>
           {showCopyright && (
             <div class="footer-right">
-              <p class="footer-copyright">&copy; {new Date().getFullYear()} {siteConfig.footer.copyright}. All rights reserved.{copyrightSuffix && ` ${copyrightSuffix}`}</p>
+              <p class="footer-copyright">&copy; {new Date().getFullYear()} {footerCopyright}. All rights reserved.{copyrightSuffix && ` ${copyrightSuffix}`}</p>
             </div>
           )}
         </div>
         {showTemplateCredit && (
           <p class="footer-template-credit footer-template-credit-flex">
-            {siteConfig.templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
+            {templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
           </p>
         )}
       </>
@@ -145,24 +157,24 @@ const getInitials = (platform: string): string => {
             <a href="/" class="footer-logo-link">
               <Logo />
             </a>
-            {siteConfig.footer.tagline && (
-              <p class="footer-tagline">{siteConfig.footer.tagline}</p>
+            {footerTagline && (
+              <p class="footer-tagline">{footerTagline}</p>
             )}
           </div>
           <nav class="footer-links-section">
-            {siteConfig.footer.links.map((link) => (
+            {footerLinks.map((link) => (
               <a href={link.href}>{link.label}</a>
             ))}
           </nav>
         </div>
         {showCopyright && (
           <div class="footer-bottom-sections">
-            <p class="footer-copyright">&copy; {new Date().getFullYear()} {siteConfig.footer.copyright}. All rights reserved.{copyrightSuffix && ` ${copyrightSuffix}`}</p>
+            <p class="footer-copyright">&copy; {new Date().getFullYear()} {footerCopyright}. All rights reserved.{copyrightSuffix && ` ${copyrightSuffix}`}</p>
           </div>
         )}
         {showTemplateCredit && (
           <p class="footer-template-credit footer-template-credit-sections">
-            {siteConfig.templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
+            {templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
           </p>
         )}
       </>
@@ -173,7 +185,7 @@ const getInitials = (platform: string): string => {
       <div class="footer-bottom">
         <div class="footer-bottom-content">
           {showCopyright && (
-            <p class="footer-copyright">&copy; {new Date().getFullYear()} {siteConfig.footer.copyright}. All rights reserved.{copyrightSuffix && ` ${copyrightSuffix}`}</p>
+            <p class="footer-copyright">&copy; {new Date().getFullYear()} {footerCopyright}. All rights reserved.{copyrightSuffix && ` ${copyrightSuffix}`}</p>
           )}
 
           {/* Legal links - inline or in bottom row based on config */}
@@ -197,7 +209,7 @@ const getInitials = (platform: string): string => {
 
         {showTemplateCredit && (
           <p class="footer-template-credit">
-            {siteConfig.templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
+            {templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
           </p>
         )}
       </div>
@@ -210,6 +222,7 @@ const getInitials = (platform: string): string => {
     padding: 4rem 0 2rem;
     background: var(--footer-bg, var(--bg-light));
     color: var(--footer-text, var(--text-secondary));
+    border-top: 1px solid var(--footer-border, var(--border-color));
   }
 
   .container {

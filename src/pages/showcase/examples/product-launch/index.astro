@@ -518,7 +518,8 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
   /* Hero */
   .hero {
     position: relative;
-    padding: 10rem 0 6rem;
+    margin-top: calc(-1 * var(--header-height, 64px));
+    padding: calc(var(--header-height, 64px) + 4rem) 0 6rem;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -1246,7 +1247,8 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
     }
 
     .hero {
-      padding: 8rem 0 4rem;
+      margin-top: 0;
+      padding: calc(var(--header-height, 64px) + 4rem) 0 4rem;
       min-height: auto;
     }
 

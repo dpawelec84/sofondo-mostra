@@ -1,11 +1,20 @@
 ---
 import Navigation from "./Navigation";
 import Logo from "./Logo.astro";
-import { siteConfig, type HeaderLayout, type CTAShape } from "../config/site";
+import { siteConfig, type HeaderLayout, type CTAShape, type NavItem } from "../config/site";
+import type { ComponentConfig } from "../utils/recipe-context";
 
-const headerLayout = (siteConfig.header?.layout || 'standard') as HeaderLayout;
-const ctaShape = (siteConfig.header?.ctaShape || 'rounded') as CTAShape;
+// Check if we're in showcase mode (showcaseConfig is set by ShowcaseLayout)
+const showcaseConfig = (Astro.locals as any).showcaseConfig as ComponentConfig | undefined;
+
+// Use showcase config if available, otherwise fall back to siteConfig
+const headerLayout = (showcaseConfig?.header?.layout || siteConfig.header?.layout || 'standard') as HeaderLayout;
+const ctaShape = (showcaseConfig?.header?.ctaShape || siteConfig.header?.ctaShape || 'rounded') as CTAShape;
 const ctaShapeClass = ctaShape === 'pill' ? 'cta-pill' : 'cta-rounded';
+
+// Get nav config - use showcase config if available, otherwise siteConfig
+const navItems = (showcaseConfig?.nav?.items || siteConfig.nav.items) as NavItem[];
+const navCta = showcaseConfig?.nav?.cta || siteConfig.nav.cta;
 ---
 
 <header class="header glass" id="main-header" data-layout={headerLayout}>
@@ -14,12 +23,18 @@ const ctaShapeClass = ctaShape === 'pill' ? 'cta-pill' : 'cta-rounded';
       <Logo width={80} height={20} />
     </a>
     <div class="nav-wrapper">
-      <Navigation client:load />
+      <Navigation
+        client:load
+        navItems={navItems}
+        navCta={navCta}
+        headerLayout={headerLayout}
+        ctaShape={ctaShape}
+      />
     </div>
     {/* CTA button as separate element for centered layout - placed in third grid column */}
-    {headerLayout === 'centered' && siteConfig.nav.cta && (
-      <a class={`header-cta NavigationCTAButton ${ctaShapeClass}`} href={siteConfig.nav.cta.href}>
-        {siteConfig.nav.cta.label}
+    {headerLayout === 'centered' && navCta && (
+      <a class={`header-cta NavigationCTAButton ${ctaShapeClass}`} href={navCta.href}>
+        {navCta.label}
       </a>
     )}
   </div>
@@ -223,13 +238,13 @@ const ctaShapeClass = ctaShape === 'pill' ? 'cta-pill' : 'cta-rounded';
 
   /* CTA button styling from recipe */
   :global(.NavigationCTAButton) {
-    background: var(--header-cta-bg, var(--accent-primary)) !important;
-    color: var(--header-cta-text, #ffffff) !important;
+    background: var(--header-cta-bg) !important;
+    color: var(--header-cta-text) !important;
   }
 
   :global(.NavigationCTAButton:hover) {
-    background: var(--header-cta-hover-bg, var(--accent-primary)) !important;
-    color: var(--header-cta-text, #ffffff) !important;
+    background: var(--header-cta-hover-bg) !important;
+    color: var(--header-cta-text) !important;
   }
 
   @media (min-width: 768px) {

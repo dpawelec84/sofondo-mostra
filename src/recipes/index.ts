@@ -141,6 +141,32 @@ export interface LegalLink {
   href: string;
 }
 
+/**
+ * Navigation item - simple link
+ */
+export interface RecipeNavLink {
+  label: string;
+  href: string;
+}
+
+/**
+ * Navigation configuration for recipes
+ */
+export interface RecipeNavConfig {
+  items: RecipeNavLink[];
+  cta: {
+    label: string;
+    href: string;
+  };
+}
+
+/**
+ * Footer links for recipes
+ */
+export interface RecipeFooterLinks {
+  links: { label: string; href: string }[];
+}
+
 export interface Recipe {
   name: string;
   nameAccent?: string; // Second part of name in accent color (e.g., "Corp" in "NexusCorp")
@@ -168,6 +194,10 @@ export interface Recipe {
   showTemplateCredit?: boolean; // Show template credit line
   isDark?: boolean; // True if this is a dark-themed recipe (affects scrollbar, sub-nav colors)
   copyrightSuffix?: string; // Custom suffix after copyright (e.g., "Made with ☕ in Brooklyn.")
+  // Navigation configuration (optional - defaults to template siteConfig)
+  nav?: RecipeNavConfig;
+  // Footer links for flex layouts (optional - defaults to template siteConfig)
+  footerLinks?: { label: string; href: string }[];
 }
 
 export const recipes: Record<string, Recipe> = {
@@ -324,6 +354,22 @@ export const recipes: Record<string, Recipe> = {
     showCopyright: true,
     showTemplateCredit: true,
     isDark: true, // Dark themed recipe
+    // Navigation - simple links for agency
+    nav: {
+      items: [
+        { label: 'Work', href: '#work' },
+        { label: 'Services', href: '#services' },
+        { label: 'About', href: '#about' },
+      ],
+      cta: { label: "Let's Talk", href: '#contact' },
+    },
+    // Footer links - social links for agency style
+    footerLinks: [
+      { label: 'Instagram', href: '#' },
+      { label: 'Dribbble', href: '#' },
+      { label: 'LinkedIn', href: '#' },
+      { label: 'Twitter', href: '#' },
+    ],
   },
 
   startup: {
@@ -343,18 +389,18 @@ export const recipes: Record<string, Recipe> = {
       '--border-color': '#27272a',
       '--font-sans': "'Outfit', system-ui, sans-serif",
       '--font-serif': "'Sora', system-ui, sans-serif",
-      // Header: dark glassmorphism with subtle white CTA - minimal, tech-focused
+      // Header: dark glassmorphism with gradient CTA
       '--header-bg': 'rgba(9, 9, 11, 0.8)',
       '--header-text': '#a1a1aa',
       '--header-border': 'rgba(255, 255, 255, 0.05)',
       '--header-height': '64px',
-      '--header-cta-bg': 'rgba(255, 255, 255, 0.1)',
-      '--header-cta-text': '#ffffff',
-      '--header-cta-hover-bg': 'rgba(255, 255, 255, 0.15)',
+      '--header-cta-bg': 'linear-gradient(135deg, #a855f7, #6366f1)',
+      '--header-cta-text': '#fafafa',
+      '--header-cta-hover-bg': 'linear-gradient(135deg, #9333ea, #4f46e5)',
       '--header-cta-padding': '0.5rem 1rem',
       '--header-cta-radius': '6px',
       '--header-cta-font-size': '0.9375rem',
-      '--header-cta-font-weight': '400',
+      '--header-cta-font-weight': '500',
       // Logo styling
       '--header-logo-font': 'var(--font-serif)',
       '--header-logo-size': '1.25rem',
@@ -588,7 +634,8 @@ export const recipes: Record<string, Recipe> = {
       '--footer-heading': '#1a1a1a',
       '--footer-link': '#666666',
       '--footer-link-hover': '#059669',
-      '--footer-max-width': '1000px',
+      '--footer-max-width': '800px',
+      '--container-width': '800px',
     },
     fonts: {
       google: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap',
