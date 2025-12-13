@@ -222,7 +222,9 @@ function extractLogo(content) {
   const width = logoContent.match(/width:\s*(\d+)/);
   const height = logoContent.match(/height:\s*(\d+)/);
   const emoji = logoContent.match(/emoji:\s*['"]([^'"]+)['"]/);
-  const svgIcon = logoContent.match(/svgIcon:\s*['"]([^'"]+)['"]/);
+  // svgIcon contains quotes, so we match more carefully
+  const svgIconMatch = logoContent.match(/svgIcon:\s*['"](.+?)['"],?\s*\n/);
+  const svgIcon = svgIconMatch;
   const char = logoContent.match(/char:\s*['"]([^'"]+)['"]/);
 
   return {
@@ -404,7 +406,8 @@ const conflictingCSSPatterns = [
   /\s*\.nav-cta:hover\s*\{[^}]*\}/g,
   // Recipe-specific custom header CSS (newsletter-header, nonprofit-header, etc.)
   /\s*\/\*[^*]*Custom\s+Header[^*]*\*\/[\s\S]*?(?=\/\*|\s*\.hero|\s*<\/style>)/gi,
-  /\s*\.[a-z]+-header\s*\{[^}]*\}/g,
+  // Removed: was matching content headers like .involve-header
+  // /\s*\.[a-z]+-header\s*\{[^}]*\}/g,
   /\s*\.header-logo\s*\{[^}]*\}/g,
   /\s*\.header-nav\s*\{[^}]*\}/g,
   /\s*\.header-cta\s*\{[^}]*\}/g,
