@@ -20,6 +20,7 @@ const config = showcaseConfig || {
   templateName: siteConfig.templateName,
   logo: siteConfig.logo,
   logoMark: (siteConfig as any).logoMark || 'icon-text',
+  showTemplateName: (siteConfig as any).showTemplateName,
 };
 
 const hasEmoji = config.logo.emoji && config.logo.emoji.trim() !== "";

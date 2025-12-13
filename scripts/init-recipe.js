@@ -222,6 +222,7 @@ function extractLogo(content) {
   const width = logoContent.match(/width:\s*(\d+)/);
   const height = logoContent.match(/height:\s*(\d+)/);
   const emoji = logoContent.match(/emoji:\s*['"]([^'"]+)['"]/);
+  const svgIcon = logoContent.match(/svgIcon:\s*['"]([^'"]+)['"]/);
   const char = logoContent.match(/char:\s*['"]([^'"]+)['"]/);
 
   return {
@@ -231,6 +232,7 @@ function extractLogo(content) {
     height: height ? parseInt(height[1]) : 32,
     emoji: emoji ? emoji[1] : '',
     char: char ? char[1] : '',
+    svgIcon: svgIcon ? svgIcon[1] : '',
   };
 }
 
@@ -547,6 +549,11 @@ if (recipe.logo) {
   siteConfig = siteConfig.replace(
     /(logo:\s*\{[^}]*?)emoji:\s*"[^"]*"/,
     `$1emoji: "${recipe.logo.emoji || ''}"`
+  );
+  // Update logo svgIcon
+  siteConfig = siteConfig.replace(
+    /(logo:\s*\{[^}]*?)svgIcon:\s*"[^"]*"/,
+    `$1svgIcon: "${recipe.logo.svgIcon || ''}"`
   );
   // Update logo char
   siteConfig = siteConfig.replace(

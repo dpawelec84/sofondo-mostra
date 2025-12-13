@@ -103,6 +103,7 @@ export const siteConfig = {
     src: "", // e.g., "/logo.png" - leave empty if no logo
     emoji: "", // e.g., "🌊" - use emoji instead of image (takes precedence over src)
     char: "", // e.g., "Q" - character for gradient-box style logo
+    svgIcon: "", // Inline SVG markup for custom icon
     alt: "Site Logo",
     width: 32,
     height: 32,
