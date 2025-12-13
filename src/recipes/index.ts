@@ -646,9 +646,13 @@ export const recipes: Record<string, Recipe> = {
     tagline: 'Curated insights and inspiration delivered to your inbox every week.',
     category: 'landing',
     source: 'newsletter',
-    // Navigation - minimal for newsletter (headerLayout: 'minimal' hides nav items)
+    // Navigation - standard layout with nav links visible
     nav: {
-      items: [],
+      items: [
+        { label: 'Archive', href: '#archive' },
+        { label: 'About', href: '#about' },
+        { label: 'FAQ', href: '#faq' },
+      ],
       cta: { label: 'Subscribe', href: '#subscribe' },
     },
     theme: {
@@ -663,21 +667,22 @@ export const recipes: Record<string, Recipe> = {
       '--font-sans': "'DM Sans', system-ui, sans-serif",
       '--font-serif': "'Libre Baskerville', Georgia, serif",
       // Header: warm light with green CTA - minimal clean design
-      '--header-bg': 'rgba(255, 252, 247, 0.95)',
-      '--header-text': '#1a1a1a',
-      '--header-border': 'transparent',
+      '--header-bg': 'rgba(253, 251, 247, 0.95)',
+      '--header-text': '#6B6B6B',
+      '--header-border': '#E8E4DC',
       '--header-height': '56px',
       '--header-cta-bg': '#059669',
       '--header-cta-text': '#ffffff',
       '--header-cta-hover-bg': '#047857',
-      '--header-cta-padding': '0.625rem 1.25rem',
-      '--header-cta-radius': '8px',
+      '--header-cta-padding': '0.5rem 1rem',
+      '--header-cta-radius': '4px',
       '--header-cta-font-size': '0.875rem',
-      '--header-cta-font-weight': '600',
-      // Logo styling - uses DM Sans, not serif
-      '--header-logo-font': 'var(--font-sans)',
-      '--header-logo-size': '1.25rem',
-      '--header-logo-color': '#1a1a1a',
+      '--header-cta-font-weight': '500',
+      // Logo styling - uses serif font like original
+      '--header-logo-font': "'Libre Baskerville', Georgia, serif",
+      '--header-logo-size': '1.125rem',
+      '--header-logo-weight': '600',
+      '--header-logo-color': '#2C2C2C',
       '--header-logo-accent': '#059669',
       // Footer: inherits from page background (transparent)
       '--footer-bg': '#fffcf7',
@@ -701,8 +706,8 @@ export const recipes: Record<string, Recipe> = {
     logoMark: 'icon-text', // Newsletter uses spark symbol + text
     showTemplateName: false, // Don't show "Mostra" after brand name
     footerLayout: 'minimal-centered', // Centered brand, tagline, links, copyright
-    // Header: minimal layout (just logo + CTA) with rounded CTA
-    headerLayout: 'minimal',
+    // Header: standard layout with nav links
+    headerLayout: 'standard',
     ctaShape: 'rounded',
     // Footer: minimal centered layout
     socialStyle: 'none',
