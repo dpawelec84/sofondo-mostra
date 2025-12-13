@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronDown, X } from 'lucide-react';
-import { siteConfig, isMegaMenu, type NavItem, type MegaMenuItem, type HeaderLayout, type CTAShape } from '../config/site';
+import { siteConfig, isMegaMenu, type NavItem, type MegaMenuItem, type HeaderLayout, type CTAShape, type NavSpacing } from '../config/site';
 
 // Navigation props - allows parent to override nav config
 interface NavigationProps {
@@ -9,6 +9,7 @@ interface NavigationProps {
     navCta?: { label: string; href: string };
     headerLayout?: HeaderLayout;
     ctaShape?: CTAShape;
+    navSpacing?: NavSpacing;
 }
 
 // Custom menu icon with shorter third bar
@@ -37,13 +38,15 @@ const Navigation = ({
     navItems: propNavItems,
     navCta: propNavCta,
     headerLayout: propHeaderLayout,
-    ctaShape: propCtaShape
+    ctaShape: propCtaShape,
+    navSpacing: propNavSpacing
 }: NavigationProps) => {
     // Use props if provided, otherwise fall back to siteConfig
     const navItems = propNavItems || siteConfig.nav.items;
     const navCta = propNavCta || siteConfig.nav.cta;
     const headerLayout = (propHeaderLayout || siteConfig.header?.layout || 'standard') as HeaderLayout;
     const ctaShape = (propCtaShape || siteConfig.header?.ctaShape || 'rounded') as CTAShape;
+    const navSpacing = (propNavSpacing || siteConfig.header?.navSpacing || 'normal') as NavSpacing;
 
     const [activeMenu, setActiveMenu] = React.useState<string | null>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
@@ -270,10 +273,10 @@ const Navigation = ({
                 style={{ display: activeMenu ? 'block' : 'none' }}
             />
 
-            <nav className="NavigationMenuRoot" data-layout={headerLayout}>
+            <nav className="NavigationMenuRoot" data-layout={headerLayout} data-spacing={navSpacing}>
                 {/* Desktop Menu List - hidden if minimal layout */}
                 {headerLayout !== 'minimal' && (
-                <ul className="NavigationMenuList" data-layout={headerLayout}>
+                <ul className="NavigationMenuList" data-layout={headerLayout} data-spacing={navSpacing}>
                     {navItems.map((item: NavItem) => (
                         isMegaMenu(item) ? (
                             <li

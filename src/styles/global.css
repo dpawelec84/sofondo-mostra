@@ -176,6 +176,11 @@ h6 {
 }
 
 /* In centered layout, CTA should not be in the nav list */
+/* Compact spacing for short nav labels */
+.NavigationMenuList[data-spacing="compact"] {
+  gap: 0.75rem;
+}
+
 .NavigationMenuList[data-layout="centered"] .NavigationCTAButton {
   display: none;
 }

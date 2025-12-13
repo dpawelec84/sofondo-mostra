@@ -72,6 +72,7 @@ function parseRecipes() {
       footerLayout: extractField(recipeContent, 'footerLayout'),
       headerLayout: extractField(recipeContent, 'headerLayout'),
       ctaShape: extractField(recipeContent, 'ctaShape'),
+      navSpacing: extractField(recipeContent, 'navSpacing'),
       socialStyle: extractField(recipeContent, 'socialStyle'),
       socialPosition: extractField(recipeContent, 'socialPosition'),
       socialLinks: extractArray(recipeContent, 'socialLinks'),
@@ -616,6 +617,15 @@ if (recipe.ctaShape) {
     `ctaShape: "${recipe.ctaShape}" as CTAShape`
   );
   console.log(`✓ Updated CTA shape to "${recipe.ctaShape}"`);
+}
+
+// Update navSpacing if provided
+if (recipe.navSpacing) {
+  siteConfig = siteConfig.replace(
+    /navSpacing: "[^"]+" as NavSpacing/,
+    `navSpacing: "${recipe.navSpacing}" as NavSpacing`
+  );
+  console.log(`✓ Updated nav spacing to "${recipe.navSpacing}"`);
 }
 
 // Update isDark flag if provided

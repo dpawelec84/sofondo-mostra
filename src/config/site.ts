@@ -56,6 +56,12 @@ export type HeaderLayout = 'standard' | 'centered' | 'minimal';
  * - 'pill': Fully rounded pill shape
  */
 export type CTAShape = 'rounded' | 'pill';
+/**
+ * Navigation spacing
+ * - 'normal': Default spacing (1.5rem gap)
+ * - 'compact': Tighter spacing (0.75rem gap) for short nav labels
+ */
+export type NavSpacing = 'normal' | 'compact';
 
 /**
  * Footer social icon style
@@ -118,6 +124,8 @@ export const siteConfig = {
     layout: "standard" as HeaderLayout,
     // CTA button shape: 'rounded' or 'pill'
     ctaShape: "rounded" as CTAShape,
+    // Navigation spacing: 'normal' or 'compact' (tighter for short labels)
+    navSpacing: "normal" as NavSpacing,
   },
 
   // Dark theme flag - affects scrollbar and sub-nav colors

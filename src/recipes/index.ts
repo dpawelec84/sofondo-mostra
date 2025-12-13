@@ -713,6 +713,7 @@ export const recipes: Record<string, Recipe> = {
     footerLayout: 'minimal-centered', // Centered brand, tagline, links, copyright
     // Header: standard layout with nav links
     headerLayout: 'standard',
+    navSpacing: 'compact',
     ctaShape: 'rounded',
     // Footer: minimal centered layout
     socialStyle: 'none',

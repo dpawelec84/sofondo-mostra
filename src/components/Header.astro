@@ -1,7 +1,7 @@
 ---
 import Navigation from "./Navigation";
 import Logo from "./Logo.astro";
-import { siteConfig, type HeaderLayout, type CTAShape, type NavItem } from "../config/site";
+import { siteConfig, type HeaderLayout, type CTAShape, type NavSpacing, type NavItem } from "../config/site";
 import type { ComponentConfig } from "../utils/recipe-context";
 
 // Check if we're in showcase mode (showcaseConfig is set by ShowcaseLayout)
@@ -10,6 +10,7 @@ const showcaseConfig = (Astro.locals as any).showcaseConfig as ComponentConfig |
 // Use showcase config if available, otherwise fall back to siteConfig
 const headerLayout = (showcaseConfig?.header?.layout || siteConfig.header?.layout || 'standard') as HeaderLayout;
 const ctaShape = (showcaseConfig?.header?.ctaShape || siteConfig.header?.ctaShape || 'rounded') as CTAShape;
+const navSpacing = (showcaseConfig?.header?.navSpacing || siteConfig.header?.navSpacing || 'normal') as NavSpacing;
 const ctaShapeClass = ctaShape === 'pill' ? 'cta-pill' : 'cta-rounded';
 
 // Get nav config - use showcase config if available, otherwise siteConfig
@@ -29,6 +30,7 @@ const navCta = showcaseConfig?.nav?.cta || siteConfig.nav.cta;
         navCta={navCta}
         headerLayout={headerLayout}
         ctaShape={ctaShape}
+        navSpacing={navSpacing}
       />
     </div>
     {/* CTA button as separate element for centered layout - placed in third grid column */}
