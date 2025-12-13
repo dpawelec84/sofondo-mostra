@@ -208,6 +208,15 @@ export const recipes: Record<string, Recipe> = {
     tagline: 'Transforming businesses through strategic excellence and innovative solutions since 1999.',
     category: 'marketing',
     source: 'corporate',
+    // Navigation - simple links for corporate
+    nav: {
+      items: [
+        { label: 'Services', href: '#services' },
+        { label: 'About', href: '#about' },
+        { label: 'Testimonials', href: '#testimonials' },
+      ],
+      cta: { label: 'Contact Us', href: '#contact' },
+    },
     theme: {
       '--bg-light': '#fafafa',
       '--bg-card': '#ffffff',
@@ -378,6 +387,15 @@ export const recipes: Record<string, Recipe> = {
     tagline: 'Building the future of work, one innovation at a time.',
     category: 'marketing',
     source: 'startup',
+    // Navigation - simple links for startup
+    nav: {
+      items: [
+        { label: 'Features', href: '#features' },
+        { label: 'Pricing', href: '#pricing' },
+        { label: 'About', href: '#about' },
+      ],
+      cta: { label: 'Get Started', href: '#' },
+    },
     theme: {
       '--bg-light': '#09090b',
       '--bg-card': '#18181b',
@@ -471,6 +489,14 @@ export const recipes: Record<string, Recipe> = {
     tagline: 'Ignite your next big idea with tools designed for creators.',
     category: 'landing',
     source: 'product-launch',
+    // Navigation - simple links for product launch
+    nav: {
+      items: [
+        { label: 'Features', href: '#features' },
+        { label: 'Specs', href: '#specs' },
+      ],
+      cta: { label: 'Pre-order Now', href: '#preorder' },
+    },
     theme: {
       '--bg-light': '#faf9f7',
       '--bg-card': '#ffffff',
@@ -532,6 +558,14 @@ export const recipes: Record<string, Recipe> = {
     tagline: 'Your personal productivity companion, available everywhere.',
     category: 'landing',
     source: 'app-download',
+    // Navigation - simple links for app download
+    nav: {
+      items: [
+        { label: 'Features', href: '#features' },
+        { label: 'Reviews', href: '#reviews' },
+      ],
+      cta: { label: 'Download App', href: '#download' },
+    },
     theme: {
       '--bg-light': '#f8f5f2',
       '--bg-card': '#ffffff',
@@ -600,6 +634,11 @@ export const recipes: Record<string, Recipe> = {
     tagline: 'Curated insights and inspiration delivered to your inbox every week.',
     category: 'landing',
     source: 'newsletter',
+    // Navigation - minimal for newsletter (headerLayout: 'minimal' hides nav items)
+    nav: {
+      items: [],
+      cta: { label: 'Subscribe', href: '#subscribe' },
+    },
     theme: {
       '--bg-light': '#fffcf7',
       '--bg-card': '#ffffff',
@@ -665,6 +704,15 @@ export const recipes: Record<string, Recipe> = {
     tagline: 'Protecting our oceans and marine life for generations to come.',
     category: 'nonprofit',
     source: 'nonprofit',
+    // Navigation - simple links for nonprofit
+    nav: {
+      items: [
+        { label: 'Our Mission', href: '#mission' },
+        { label: 'Programs', href: '#programs' },
+        { label: 'Get Involved', href: '#involve' },
+      ],
+      cta: { label: 'Donate Now', href: '#donate' },
+    },
     theme: {
       '--bg-light': '#f0f7ff',
       '--bg-card': '#ffffff',

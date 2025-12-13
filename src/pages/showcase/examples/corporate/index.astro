@@ -1,20 +1,14 @@
 ---
 import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
-import ShowcaseHeader from "../../../../components/ShowcaseHeader.astro";
-import ShowcaseFooter from "../../../../components/ShowcaseFooter.astro";
+import Header from "../../../../components/Header.astro";
+import Footer from "../../../../components/Footer.astro";
 import { recipes } from "../../../../recipes/index";
 
 const recipe = recipes.corporate;
-const nav = [
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Testimonials", href: "#testimonials" },
-];
-const cta = { label: "Contact Us", href: "#contact" };
 ---
 
 <ShowcaseLayout title="Nexus Corp - Business Consulting" returnUrl="/showcase/marketing/" recipe="corporate">
-  <ShowcaseHeader recipe={recipe} nav={nav} cta={cta} />
+  <Header />
 
   <!-- Hero -->
   <section class="hero">
@@ -185,7 +179,7 @@ const cta = { label: "Contact Us", href: "#contact" };
     </div>
   </section>
 
-  <ShowcaseFooter recipe={recipe} />
+  <Footer />
 </ShowcaseLayout>
 
 <script>

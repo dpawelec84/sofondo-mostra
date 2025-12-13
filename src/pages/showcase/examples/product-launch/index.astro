@@ -1,27 +1,12 @@
 ---
 import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
+import Header from "../../../../components/Header.astro";
+import Footer from "../../../../components/Footer.astro";
 ---
 
-<ShowcaseLayout title="Aura Smart Speaker - Sound Reimagined" returnUrl="/showcase/">
-  <Fragment slot="head">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  </Fragment>
-
+<ShowcaseLayout title="Aura Smart Speaker - Sound Reimagined" returnUrl="/showcase/" recipe="product-launch">
   <div class="product-site">
-    <!-- Header -->
-    <header class="header">
-      <div class="container">
-        <a href="#" class="logo">aura</a>
-        <nav class="nav">
-          <a href="#features">Features</a>
-          <a href="#specs">Specs</a>
-          <a href="#pricing">Buy</a>
-        </nav>
-        <a href="#pricing" class="btn btn-primary btn-small">Pre-order Now</a>
-      </div>
-    </header>
+    <Header />
 
     <!-- Hero Section -->
     <section class="hero">
@@ -337,26 +322,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <a href="#" class="logo">aura</a>
-            <p>Sound reimagined.</p>
-          </div>
-          <div class="footer-links">
-            <a href="#">Support</a>
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">Contact</a>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2025 Aura Audio. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+    <Footer />
   </div>
 </ShowcaseLayout>
 

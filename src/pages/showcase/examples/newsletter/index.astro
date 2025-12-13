@@ -1,25 +1,12 @@
 ---
 import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
+import Header from "../../../../components/Header.astro";
+import Footer from "../../../../components/Footer.astro";
 ---
 
-<ShowcaseLayout title="The Weekly Spark - Creative Inspiration Newsletter" returnUrl="/showcase/">
-  <Fragment slot="head">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  </Fragment>
-
+<ShowcaseLayout title="The Weekly Spark - Creative Inspiration Newsletter" returnUrl="/showcase/" recipe="newsletter">
   <div class="newsletter-site">
-    <!-- Header -->
-    <header class="header">
-      <div class="container">
-        <a href="#" class="logo">
-          <span class="logo-spark">✦</span>
-          The Weekly Spark
-        </a>
-        <a href="#subscribe" class="btn btn-primary btn-small">Subscribe</a>
-      </div>
-    </header>
+    <Header />
 
     <!-- Hero Section -->
     <section class="hero">
@@ -254,23 +241,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <a href="#" class="logo">
-            <span class="logo-spark">✦</span>
-            The Weekly Spark
-          </a>
-          <div class="footer-links">
-            <a href="#">Privacy</a>
-            <a href="#">Archive</a>
-            <a href="#">Contact</a>
-          </div>
-        </div>
-        <p class="footer-copyright">&copy; 2025 The Weekly Spark. Made with ☕ in Brooklyn.</p>
-      </div>
-    </footer>
+    <Footer />
   </div>
 </ShowcaseLayout>
 

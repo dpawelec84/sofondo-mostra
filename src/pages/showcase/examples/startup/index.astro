@@ -1,20 +1,14 @@
 ---
 import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
-import ShowcaseHeader from "../../../../components/ShowcaseHeader.astro";
-import ShowcaseFooter from "../../../../components/ShowcaseFooter.astro";
+import Header from "../../../../components/Header.astro";
+import Footer from "../../../../components/Footer.astro";
 import { recipes } from "../../../../recipes/index";
 
 const recipe = recipes.startup;
-const nav = [
-  { label: "Features", href: "#features" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#about" },
-];
-const cta = { label: "Get Started", href: "#" };
 ---
 
 <ShowcaseLayout title="Quantum - AI-Powered Analytics" returnUrl="/showcase/" recipe="startup">
-  <ShowcaseHeader recipe={recipe} nav={nav} cta={cta} />
+  <Header />
 
   <div class="startup-site">
     <!-- Hero Section -->
@@ -324,7 +318,7 @@ const cta = { label: "Get Started", href: "#" };
     </section>
   </div>
 
-  <ShowcaseFooter recipe={recipe} />
+  <Footer />
 </ShowcaseLayout>
 
 <script>

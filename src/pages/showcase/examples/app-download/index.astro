@@ -1,30 +1,12 @@
 ---
 import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
+import Header from "../../../../components/Header.astro";
+import Footer from "../../../../components/Footer.astro";
 ---
 
-<ShowcaseLayout title="Zenith - Meditation Made Simple" returnUrl="/showcase/">
-  <Fragment slot="head">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-  </Fragment>
-
+<ShowcaseLayout title="Zenith - Meditation Made Simple" returnUrl="/showcase/" recipe="app-download">
   <div class="app-site">
-    <!-- Header -->
-    <header class="header">
-      <div class="container">
-        <a href="#" class="logo">
-          <span class="logo-icon">🧘</span>
-          zenith
-        </a>
-        <nav class="nav">
-          <a href="#features">Features</a>
-          <a href="#how-it-works">How It Works</a>
-          <a href="#reviews">Reviews</a>
-        </nav>
-        <a href="#download" class="btn btn-primary btn-small">Download Free</a>
-      </div>
-    </header>
+    <Header />
 
     <!-- Hero Section -->
     <section class="hero">
@@ -369,29 +351,7 @@ import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <a href="#" class="logo">
-              <span class="logo-icon">🧘</span>
-              zenith
-            </a>
-            <p>Meditation made simple.</p>
-          </div>
-          <div class="footer-links">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">Support</a>
-            <a href="#">Blog</a>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2025 Zenith Wellness Inc. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+    <Footer />
   </div>
 </ShowcaseLayout>
 
