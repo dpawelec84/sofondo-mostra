@@ -272,6 +272,7 @@ export const recipes: Record<string, Recipe> = {
       height: 32,
     },
     logoMark: 'text-only', // Corporate uses serif text only, no icon
+    showTemplateName: false,
     footerLayout: 'grid-4col', // Multi-column grid footer
     // Header: standard layout with rounded CTA
     headerLayout: 'standard',
@@ -363,6 +364,7 @@ export const recipes: Record<string, Recipe> = {
       height: 32,
     },
     logoMark: 'gradient-box', // Agency uses gradient box icon + serif text
+    showTemplateName: false,
     footerLayout: 'flex-row', // Single row: logo + links left, copyright right
     // Header: standard layout with pill CTA
     headerLayout: 'standard',
@@ -453,6 +455,7 @@ export const recipes: Record<string, Recipe> = {
       char: 'Q', // Character displayed in gradient-box
     },
     logoMark: 'gradient-box', // Startup uses gradient box with letter
+    showTemplateName: false,
     footerLayout: 'grid-4col', // Multi-column grid footer
     // Header: standard layout with rounded CTA
     headerLayout: 'standard',
@@ -553,6 +556,7 @@ export const recipes: Record<string, Recipe> = {
       height: 32,
     },
     logoMark: 'text-only', // Product launch uses serif text only
+    showTemplateName: false,
     footerLayout: 'flex-sections', // Two sections: brand left, links right
     // Header: centered layout with pill CTA
     headerLayout: 'centered',
@@ -624,6 +628,7 @@ export const recipes: Record<string, Recipe> = {
       emoji: '🧘',
     },
     logoMark: 'icon-text', // App uses emoji icon + text
+    showTemplateName: false,
     footerLayout: 'flex-sections', // Two sections: brand left, links right
     // Header: centered layout with rounded CTA
     headerLayout: 'centered',
@@ -712,7 +717,7 @@ export const recipes: Record<string, Recipe> = {
     // Footer: minimal centered layout
     socialStyle: 'none',
     showCopyright: true,
-    showTemplateCredit: false, // Newsletter doesn't show template credit
+    showTemplateCredit: true,
     copyrightSuffix: 'Made with intention in Portland.',
     // Footer links for newsletter style
     footerLinks: [
@@ -834,7 +839,7 @@ export const recipes: Record<string, Recipe> = {
     ],
     showLegalLinks: true,
     showCopyright: true,
-    showTemplateCredit: false, // Nonprofit doesn't show template credit
+    showTemplateCredit: true,
     copyrightSuffix: 'Registered 501(c)(3) nonprofit. EIN: 12-3456789',
     legalInBottomRow: false, // Legal links inline in footer bottom
   },
