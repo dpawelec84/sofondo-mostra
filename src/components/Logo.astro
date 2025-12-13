@@ -24,11 +24,14 @@ const config = showcaseConfig || {
 
 const hasEmoji = config.logo.emoji && config.logo.emoji.trim() !== "";
 const hasChar = 'char' in config.logo && (config.logo as any).char && (config.logo as any).char.trim() !== "";
-const hasLogo = !hasEmoji && !hasChar && config.logo.src && config.logo.src.trim() !== "";
-const hasTemplateName = config.templateName && config.templateName.trim() !== "";
+const hasSvgIcon = 'svgIcon' in config.logo && (config.logo as any).svgIcon && (config.logo as any).svgIcon.trim() !== "";
+const hasLogo = !hasEmoji && !hasChar && !hasSvgIcon && config.logo.src && config.logo.src.trim() !== "";
+const showTemplateName = 'showTemplateName' in config ? config.showTemplateName !== false : true;
+const hasTemplateName = showTemplateName && config.templateName && config.templateName.trim() !== "";
 const nameAccent = config.nameAccent || '';
 const logoMark = config.logoMark || 'icon-text';
 const logoChar = hasChar ? (config.logo as any).char : config.name.charAt(0);
+const svgIcon = hasSvgIcon ? (config.logo as any).svgIcon : '';
 const isGradientBox = logoMark === 'gradient-box';
 ---
 
@@ -36,10 +39,13 @@ const isGradientBox = logoMark === 'gradient-box';
   {isGradientBox && (
     <span class="logo-icon">{logoChar}</span>
   )}
-  {!isGradientBox && hasEmoji && (
+  {!isGradientBox && hasSvgIcon && (
+    <span class="logo-svg" set:html={svgIcon} />
+  )}
+  {!isGradientBox && !hasSvgIcon && hasEmoji && (
     <span class="logo-emoji">{config.logo.emoji}</span>
   )}
-  {!isGradientBox && hasLogo && (
+  {!isGradientBox && !hasSvgIcon && hasLogo && (
     <img
       src={config.logo.src}
       alt={config.logo.alt}
@@ -66,6 +72,19 @@ const isGradientBox = logoMark === 'gradient-box';
     font-size: 1.5rem;
     line-height: 1;
     flex-shrink: 0;
+  }
+
+  .logo-svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--header-logo-color, var(--accent-primary));
+  }
+
+  .logo-svg :global(svg) {
+    width: 32px;
+    height: 32px;
   }
 
   /* Gradient box logo icon (startup/SaaS style) */

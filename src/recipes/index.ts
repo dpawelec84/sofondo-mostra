@@ -67,6 +67,7 @@ export interface RecipeLogo {
   height: number;
   emoji?: string; // Emoji to display as logo icon
   char?: string; // Character to display in gradient-box style logo
+  svgIcon?: string; // Inline SVG markup for custom icon (e.g., wave icon for nonprofit)
 }
 
 /**
@@ -78,12 +79,18 @@ export interface RecipeLogo {
 export type LogoMarkType = 'text-only' | 'icon-text' | 'gradient-box';
 
 /**
+ * Whether to show the template name next to the brand in the logo
+ * Default is true for most recipes, but false for nonprofit/newsletter style
+ */
+
+/**
  * Footer layout type
  * - 'grid-4col': Multi-column grid (corporate, startup, nonprofit style)
  * - 'flex-row': Single row with logo+links left, copyright right (agency style)
- * - 'flex-sections': Two sections - brand left, links right (product, app, newsletter style)
+ * - 'flex-sections': Two sections - brand left, links right (product, app style)
+ * - 'minimal-centered': Centered brand, tagline, links, copyright (newsletter style)
  */
-export type FooterLayoutType = 'grid-4col' | 'flex-row' | 'flex-sections';
+export type FooterLayoutType = 'grid-4col' | 'flex-row' | 'flex-sections' | 'minimal-centered';
 
 /**
  * Header layout type
@@ -249,6 +256,7 @@ export const recipes: Record<string, Recipe> = {
       '--footer-logo-accent': '#c9a227',
       // Footer: dark navy background
       '--footer-bg': '#152a45',
+      '--footer-border': 'rgba(255, 255, 255, 0.1)',
       '--footer-text': 'rgba(255, 255, 255, 0.7)',
       '--footer-heading': '#ffffff',
       '--footer-link': 'rgba(255, 255, 255, 0.7)',
@@ -339,6 +347,7 @@ export const recipes: Record<string, Recipe> = {
       '--header-logo-weight': '400',
       // Footer: dark background
       '--footer-bg': '#0a0a0a',
+      '--footer-border': 'rgba(255, 255, 255, 0.1)',
       '--footer-text': '#a3a3a3',
       '--footer-heading': '#ffffff',
       '--footer-link': '#a3a3a3',
@@ -427,6 +436,7 @@ export const recipes: Record<string, Recipe> = {
       '--header-logo-weight': '600',
       // Footer: dark background
       '--footer-bg': '#09090b',
+      '--footer-border': 'rgba(255, 255, 255, 0.1)',
       '--footer-text': '#71717a',
       '--footer-heading': '#fafafa',
       '--footer-link': '#71717a',
@@ -527,6 +537,7 @@ export const recipes: Record<string, Recipe> = {
       '--header-logo-accent': '#f97316',
       // Footer: dark background
       '--footer-bg': '#1a1a1a',
+      '--footer-border': 'rgba(255, 255, 255, 0.1)',
       '--footer-text': '#666666',
       '--footer-heading': '#ffffff',
       '--footer-link': '#999999',
@@ -596,6 +607,7 @@ export const recipes: Record<string, Recipe> = {
       '--header-logo-accent': '#7c3aed',
       // Footer: dark background
       '--footer-bg': '#1a1a1a',
+      '--footer-border': 'rgba(255, 255, 255, 0.1)',
       '--footer-text': '#ffffff',
       '--footer-heading': '#ffffff',
       '--footer-link': '#999999',
@@ -687,15 +699,23 @@ export const recipes: Record<string, Recipe> = {
       emoji: '✦',
     },
     logoMark: 'icon-text', // Newsletter uses spark symbol + text
-    footerLayout: 'flex-sections', // Two sections: brand left, links right
+    showTemplateName: false, // Don't show "Mostra" after brand name
+    footerLayout: 'minimal-centered', // Centered brand, tagline, links, copyright
     // Header: minimal layout (just logo + CTA) with rounded CTA
     headerLayout: 'minimal',
     ctaShape: 'rounded',
-    // Footer: minimal (flex-sections uses simple links)
+    // Footer: minimal centered layout
     socialStyle: 'none',
     showCopyright: true,
-    showTemplateCredit: true,
-    copyrightSuffix: 'Made with ☕ in Brooklyn.',
+    showTemplateCredit: false, // Newsletter doesn't show template credit
+    copyrightSuffix: 'Made with intention in Portland.',
+    // Footer links for newsletter style
+    footerLinks: [
+      { label: 'Archive', href: '#archive' },
+      { label: 'About', href: '#about' },
+      { label: 'Privacy', href: '/privacy/' },
+      { label: 'Unsubscribe', href: '#unsubscribe' },
+    ],
   },
 
   nonprofit: {
@@ -743,6 +763,7 @@ export const recipes: Record<string, Recipe> = {
       '--header-logo-accent': '#0369a1',
       // Footer: dark blue background
       '--footer-bg': '#0f172a',
+      '--footer-border': 'rgba(255, 255, 255, 0.1)',
       '--footer-text': '#94a3b8',
       '--footer-heading': '#ffffff',
       '--footer-link': '#94a3b8',
@@ -756,9 +777,10 @@ export const recipes: Record<string, Recipe> = {
       alt: 'Ocean Guardians Logo',
       width: 32,
       height: 32,
-      emoji: '🌊',
+      svgIcon: '<svg viewBox="0 0 32 32" width="32" height="32"><path fill="currentColor" d="M2 20c4-4 8-4 12 0s8 4 12 0c2-2 4-3 6-3v6c-2 0-4 1-6 3-4 4-8 4-12 0s-8-4-12 0v-6z"/><path fill="currentColor" opacity="0.6" d="M2 14c4-4 8-4 12 0s8 4 12 0c2-2 4-3 6-3v6c-2 0-4 1-6 3-4 4-8 4-12 0s-8-4-12 0v-6z"/></svg>',
     },
-    logoMark: 'icon-text', // Nonprofit uses emoji icon + text
+    logoMark: 'icon-text', // Nonprofit uses SVG wave icon + text
+    showTemplateName: false, // Don't show "Mostra" after brand name
     footerLayout: 'grid-4col', // Multi-column grid footer with social icons
     // Header: centered layout (logo left, nav center, CTA right) with rounded CTA
     headerLayout: 'centered',
@@ -774,19 +796,30 @@ export const recipes: Record<string, Recipe> = {
     ],
     linkGroups: [
       {
-        heading: 'Explore',
+        heading: 'Our Work',
         links: [
-          { label: 'Features', href: '/features/' },
-          { label: 'Showcase', href: '/showcase/' },
-          { label: 'Documentation', href: '/docs/' },
+          { label: 'Species Protection', href: '#' },
+          { label: 'Clean Coasts', href: '#' },
+          { label: 'Ocean Education', href: '#' },
+          { label: 'Policy Advocacy', href: '#' },
         ],
       },
       {
-        heading: 'Connect',
+        heading: 'Get Involved',
         links: [
-          { label: 'Facebook', href: 'https://facebook.com' },
-          { label: 'Twitter', href: 'https://twitter.com' },
-          { label: 'Instagram', href: 'https://instagram.com' },
+          { label: 'Donate', href: '#' },
+          { label: 'Volunteer', href: '#' },
+          { label: 'Partner', href: '#' },
+          { label: 'Careers', href: '#' },
+        ],
+      },
+      {
+        heading: 'About',
+        links: [
+          { label: 'Our Story', href: '#' },
+          { label: 'Team', href: '#' },
+          { label: 'Financials', href: '#' },
+          { label: 'Contact', href: '#' },
         ],
       },
     ],
@@ -796,7 +829,8 @@ export const recipes: Record<string, Recipe> = {
     ],
     showLegalLinks: true,
     showCopyright: true,
-    showTemplateCredit: true,
+    showTemplateCredit: false, // Nonprofit doesn't show template credit
+    copyrightSuffix: 'Registered 501(c)(3) nonprofit. EIN: 12-3456789',
     legalInBottomRow: false, // Legal links inline in footer bottom
   },
 };

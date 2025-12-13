@@ -1,14 +1,9 @@
 ---
 import ShowcaseLayout from "../../../../layouts/ShowcaseLayout.astro";
+import Header from "../../../../components/Header.astro";
+import Footer from "../../../../components/Footer.astro";
 
 const recipe = "newsletter";
-
-// Custom nav for newsletter - minimal editorial style
-const navItems = [
-  { label: "Archive", href: "#archive" },
-  { label: "About", href: "#about" },
-  { label: "FAQ", href: "#faq" },
-];
 ---
 
 <ShowcaseLayout
@@ -16,21 +11,7 @@ const navItems = [
   description="A curated newsletter delivering actionable insights on creativity, productivity, and personal growth every Wednesday."
   recipe={recipe}
 >
-  <!-- Custom Newsletter Header - Editorial Style -->
-  <header class="newsletter-header">
-    <div class="header-inner">
-      <a href="#" class="header-logo">
-        <span class="spark-icon">&#9733;</span>
-        <span class="logo-text">The Weekly Spark</span>
-      </a>
-      <nav class="header-nav">
-        {navItems.map((item) => (
-          <a href={item.href} class="nav-link">{item.label}</a>
-        ))}
-      </nav>
-      <a href="#subscribe" class="header-cta">Subscribe Free</a>
-    </div>
-  </header>
+  <Header />
 
   <!-- Hero: Sample Issue Preview Above Fold -->
   <section class="hero-section">
@@ -361,23 +342,7 @@ const navItems = [
     </div>
   </section>
 
-  <!-- Custom Newsletter Footer - Minimal Editorial -->
-  <footer class="newsletter-footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="spark-icon small">&#9733;</span>
-        <span class="footer-name">The Weekly Spark</span>
-      </div>
-      <p class="footer-tagline">Ideas that ignite, delivered weekly.</p>
-      <div class="footer-links">
-        <a href="#">Archive</a>
-        <a href="#">About</a>
-        <a href="#">Privacy</a>
-        <a href="#">Unsubscribe</a>
-      </div>
-      <p class="footer-copyright">&copy; 2024 The Weekly Spark. Made with intention in Portland.</p>
-    </div>
-  </footer>
+  <Footer />
 </ShowcaseLayout>
 
 <style>
@@ -1298,67 +1263,4 @@ const navItems = [
     }
   }
 
-  /* ==========================================================================
-     Custom Footer
-     ========================================================================== */
-
-  .newsletter-footer {
-    padding: 3rem 2rem;
-    background: var(--nl-bg-warm);
-    border-top: 1px solid var(--nl-border);
-  }
-
-  .footer-inner {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .footer-brand {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .footer-name {
-    font-family: var(--nl-serif);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--nl-text);
-  }
-
-  .footer-tagline {
-    font-family: var(--nl-sans);
-    font-size: 0.875rem;
-    color: var(--nl-text-muted);
-    margin-bottom: 1.5rem;
-  }
-
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .footer-links a {
-    font-family: var(--nl-sans);
-    font-size: 0.8125rem;
-    color: var(--nl-text-muted);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .footer-links a:hover {
-    color: var(--nl-text);
-  }
-
-  .footer-copyright {
-    font-family: var(--nl-sans);
-    font-size: 0.75rem;
-    color: var(--nl-text-muted);
-    opacity: 0.8;
-  }
 </style>

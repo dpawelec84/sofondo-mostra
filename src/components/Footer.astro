@@ -7,7 +7,7 @@ import type { ComponentConfig } from "../utils/recipe-context";
 // Check if we're in showcase mode (showcaseConfig is set by ShowcaseLayout)
 const showcaseConfig = (Astro.locals as any).showcaseConfig as ComponentConfig | undefined;
 
-type FooterLayout = 'grid-4col' | 'flex-row' | 'flex-sections';
+type FooterLayout = 'grid-4col' | 'flex-row' | 'flex-sections' | 'minimal-centered';
 
 // Use showcase config if available, otherwise fall back to siteConfig
 const footerLayout = (showcaseConfig?.footerLayout || siteConfig.footerLayout || 'grid-4col') as FooterLayout;
@@ -149,7 +149,7 @@ const getInitials = (platform: string): string => {
       </>
     )}
 
-    {/* Flex Sections Layout (product, app, newsletter style) - brand left, links right */}
+    {/* Flex Sections Layout (product, app style) - brand left, links right */}
     {footerLayout === 'flex-sections' && (
       <>
         <div class="footer-content">
@@ -178,6 +178,31 @@ const getInitials = (platform: string): string => {
           </p>
         )}
       </>
+    )}
+
+    {/* Minimal Centered Layout (newsletter style) - everything centered */}
+    {footerLayout === 'minimal-centered' && (
+      <div class="footer-centered">
+        <a href="/" class="footer-logo-link footer-logo-centered">
+          <Logo />
+        </a>
+        {footerTagline && (
+          <p class="footer-tagline footer-tagline-centered">{footerTagline}</p>
+        )}
+        <nav class="footer-links-centered">
+          {footerLinks.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+        </nav>
+        {showCopyright && (
+          <p class="footer-copyright footer-copyright-centered">&copy; {new Date().getFullYear()} {footerCopyright}.{copyrightSuffix && ` ${copyrightSuffix}`}</p>
+        )}
+        {showTemplateCredit && (
+          <p class="footer-template-credit footer-template-credit-centered">
+            {templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
+          </p>
+        )}
+      </div>
     )}
 
     {/* Bottom bar for grid layout */}
@@ -590,5 +615,53 @@ const getInitials = (platform: string): string => {
       flex-wrap: wrap;
       gap: 1rem;
     }
+  }
+
+  /* ========================================
+     Minimal Centered Layout (newsletter style)
+     ======================================== */
+  .footer-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .footer-logo-centered {
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-tagline-centered {
+    margin-bottom: 1rem;
+  }
+
+  .footer-links-centered {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-links-centered a {
+    color: var(--footer-link, var(--text-secondary));
+    text-decoration: none;
+    font-size: 0.8125rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links-centered a:hover {
+    color: var(--footer-link-hover, var(--accent-primary));
+  }
+
+  .footer-copyright-centered {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .footer-template-credit-centered {
+    margin-top: 0.5rem;
   }
 </style>

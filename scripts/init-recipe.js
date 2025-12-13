@@ -319,6 +319,14 @@ sourceContent = sourceContent.replace(
   'import Layout from "../layouts/Layout.astro";'
 );
 
+// Remove Header and Footer imports (Layout.astro provides these)
+sourceContent = sourceContent.replace(/import Header from .+?;\n?/g, '');
+sourceContent = sourceContent.replace(/import Footer from .+?;\n?/g, '');
+
+// Remove the recipes import (not needed in production)
+sourceContent = sourceContent.replace(/import \{ recipes \} from .+?;\n?/g, '');
+sourceContent = sourceContent.replace(/const recipe = recipes\.\w+;\n?/g, '');
+
 // Remove returnUrl prop and update the layout wrapper
 sourceContent = sourceContent.replace(
   /<ShowcaseLayout[^>]*title="([^"]+)"[^>]*>/g,
@@ -327,24 +335,45 @@ sourceContent = sourceContent.replace(
 sourceContent = sourceContent.replace(/<\/ShowcaseLayout>/g, '</Layout>');
 
 // Strip the example's header element (Layout.astro provides its own Header component)
+// Match: <Header /> component usage
+sourceContent = sourceContent.replace(/\s*<Header\s*\/>\s*/g, '\n');
 // Match: <!-- Header --> comment (optional) + <header ...>...</header>
 sourceContent = sourceContent.replace(
   /\s*<!--\s*Header\s*-->\s*<header[^>]*>[\s\S]*?<\/header>/gi,
   ''
 );
-// Also try without comment
+// Match any <header> element with any class (newsletter-header, nonprofit-header, etc.)
+// Use non-greedy match to avoid swallowing too much content
+sourceContent = sourceContent.replace(
+  /\s*<!--[^>]*Custom[^>]*Header[^>]*-->\s*<header[^>]*>[\s\S]*?<\/header>/gi,
+  ''
+);
+sourceContent = sourceContent.replace(
+  /\s*<header\s+class="[^"]*-header"[^>]*>[\s\S]*?<\/header>/gi,
+  ''
+);
 sourceContent = sourceContent.replace(
   /\s*<header\s+class="header"[^>]*>[\s\S]*?<\/header>/gi,
   ''
 );
 
 // Strip the example's footer element (Layout.astro provides its own Footer component)
+// Match: <Footer /> component usage
+sourceContent = sourceContent.replace(/\s*<Footer\s*\/>\s*/g, '\n');
 // Match: <!-- Footer --> comment (optional) + <footer ...>...</footer>
 sourceContent = sourceContent.replace(
   /\s*<!--\s*Footer\s*-->\s*<footer[^>]*>[\s\S]*?<\/footer>/gi,
   ''
 );
-// Also try without comment
+// Match any <footer> element with any class (newsletter-footer, nonprofit-footer, etc.)
+sourceContent = sourceContent.replace(
+  /\s*<!--[^>]*Custom[^>]*Footer[^>]*-->\s*<footer[^>]*>[\s\S]*?<\/footer>/gi,
+  ''
+);
+sourceContent = sourceContent.replace(
+  /\s*<footer\s+class="[^"]*-footer"[^>]*>[\s\S]*?<\/footer>/gi,
+  ''
+);
 sourceContent = sourceContent.replace(
   /\s*<footer\s+class="footer"[^>]*>[\s\S]*?<\/footer>/gi,
   ''
@@ -370,6 +399,19 @@ const conflictingCSSPatterns = [
   /\s*\.nav\s+a:hover\s*\{[^}]*\}/g,
   /\s*\.nav-cta\s*\{[^}]*\}/g,
   /\s*\.nav-cta:hover\s*\{[^}]*\}/g,
+  // Recipe-specific custom header CSS (newsletter-header, nonprofit-header, etc.)
+  /\s*\/\*[^*]*Custom\s+Header[^*]*\*\/[\s\S]*?(?=\/\*|\s*\.hero|\s*<\/style>)/gi,
+  /\s*\.[a-z]+-header\s*\{[^}]*\}/g,
+  /\s*\.header-logo\s*\{[^}]*\}/g,
+  /\s*\.header-nav\s*\{[^}]*\}/g,
+  /\s*\.header-cta\s*\{[^}]*\}/g,
+  /\s*\.header-cta:hover\s*\{[^}]*\}/g,
+  /\s*\.logo-text\s*\{[^}]*\}/g,
+  /\s*\.logo-wave\s*\{[^}]*\}/g,
+  /\s*\.spark-icon\s*\{[^}]*\}/g,
+  /\s*\.spark-icon\.small\s*\{[^}]*\}/g,
+  /\s*\.nav-link\s*\{[^}]*\}/g,
+  /\s*\.nav-link:hover\s*\{[^}]*\}/g,
   // Footer CSS (no longer needed since we use Layout's Footer)
   /\s*\/\*\s*Footer\s*\*\/[\s\S]*?(?=\/\*|\s*@media|\s*\.fade-in|\s*<\/style>)/g,
   /\s*\.footer\s*\{[^}]*\}/g,
@@ -377,6 +419,19 @@ const conflictingCSSPatterns = [
   /\s*\.footer-brand[^{]*\{[^}]*\}/g,
   /\s*\.footer-links[^{]*\{[^}]*\}/g,
   /\s*\.footer-bottom\s*\{[^}]*\}/g,
+  // Recipe-specific custom footer CSS (newsletter-footer, nonprofit-footer, etc.)
+  /\s*\/\*[^*]*Custom\s+Footer[^*]*\*\/[\s\S]*?(?=\/\*|\s*@media|\s*<\/style>)/gi,
+  /\s*\.[a-z]+-footer\s*\{[^}]*\}/g,
+  /\s*\.footer-inner\s*\{[^}]*\}/g,
+  /\s*\.footer-name\s*\{[^}]*\}/g,
+  /\s*\.footer-tagline\s*\{[^}]*\}/g,
+  /\s*\.footer-copyright\s*\{[^}]*\}/g,
+  /\s*\.footer-main\s*\{[^}]*\}/g,
+  /\s*\.footer-logo[^{]*\{[^}]*\}/g,
+  /\s*\.footer-social\s*\{[^}]*\}/g,
+  /\s*\.footer-col[^{]*\{[^}]*\}/g,
+  /\s*\.footer-legal[^{]*\{[^}]*\}/g,
+  /\s*\.social-link[^{]*\{[^}]*\}/g,
 ];
 
 for (const pattern of conflictingCSSPatterns) {

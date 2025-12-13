@@ -18,6 +18,7 @@ export interface ComponentConfig {
   name: string;
   nameAccent?: string;
   templateName: string;
+  showTemplateName: boolean;
   description: string;
 
   // Logo
@@ -28,6 +29,7 @@ export interface ComponentConfig {
     height: number;
     emoji?: string;
     char?: string;
+    svgIcon?: string;
   };
   logoMark: 'text-only' | 'icon-text' | 'gradient-box';
 
@@ -95,6 +97,7 @@ export function recipeToConfig(recipe: Recipe): ComponentConfig {
     name: recipe.name,
     nameAccent: recipe.nameAccent,
     templateName: 'Mostra',
+    showTemplateName: recipe.showTemplateName ?? true,
     description: recipe.description,
 
     logo: {
@@ -104,6 +107,7 @@ export function recipeToConfig(recipe: Recipe): ComponentConfig {
       height: recipe.logo?.height || 32,
       emoji: recipe.logo?.emoji,
       char: recipe.logo?.char,
+      svgIcon: recipe.logo?.svgIcon,
     },
     logoMark: recipe.logoMark || 'icon-text',
 
@@ -153,6 +157,7 @@ export function siteConfigToConfig(): ComponentConfig {
     name: siteConfig.name,
     nameAccent: (siteConfig as any).nameAccent,
     templateName: siteConfig.templateName,
+    showTemplateName: (siteConfig as any).showTemplateName ?? true,
     description: siteConfig.description,
 
     logo: {
@@ -162,6 +167,7 @@ export function siteConfigToConfig(): ComponentConfig {
       height: siteConfig.logo.height,
       emoji: siteConfig.logo.emoji,
       char: (siteConfig.logo as any).char,
+      svgIcon: (siteConfig.logo as any).svgIcon,
     },
     logoMark: (siteConfig as any).logoMark || 'icon-text',
 
