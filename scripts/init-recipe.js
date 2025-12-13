@@ -223,7 +223,8 @@ function extractLogo(content) {
   const height = logoContent.match(/height:\s*(\d+)/);
   const emoji = logoContent.match(/emoji:\s*['"]([^'"]+)['"]/);
   // svgIcon contains quotes, so we match more carefully
-  const svgIconMatch = logoContent.match(/svgIcon:\s*['"](.+?)['"],?\s*\n/);
+  // svgIcon may contain quotes, so we match until </svg> closing tag
+  const svgIconMatch = logoContent.match(/svgIcon:\s*['"](<svg[\s\S]*?<\/svg>)['"]/);
   const svgIcon = svgIconMatch;
   const char = logoContent.match(/char:\s*['"]([^'"]+)['"]/);
 
