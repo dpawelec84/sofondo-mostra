@@ -95,7 +95,7 @@ export const siteConfig = {
   name: "Sofondo",
   nameAccent: "", // Optional second part of name in accent color (e.g., "Corp" in "NexusCorp")
   templateName: "Mostra",
-  showTemplateName: false, // Set to true to show template name after brand name in logo
+  showTemplateName: true, // Set to true to show template name after brand name in logo
   description: "A modern Astro template for marketing sites and landing pages",
 
   // Branding - leave src empty for no logo mark
