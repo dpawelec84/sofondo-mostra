@@ -301,7 +301,7 @@ export const recipes: Record<string, Recipe> = {
         links: [
           { label: 'LinkedIn', href: 'https://linkedin.com' },
           { label: 'Twitter', href: 'https://twitter.com' },
-          { label: 'GitHub', href: 'https://github.com' },
+          { label: 'GitHub', href: 'https://github.com/dpawelec84/sofondo-mostra' },
         ],
       },
     ],
@@ -465,7 +465,7 @@ export const recipes: Record<string, Recipe> = {
     // Footer: icons style with tech-focused links
     socialStyle: 'icons',
     socialLinks: [
-      { platform: 'github', label: 'GitHub', href: 'https://github.com' },
+      { platform: 'github', label: 'GitHub', href: 'https://github.com/dpawelec84/sofondo-mostra' },
       { platform: 'twitter', label: 'Twitter', href: 'https://twitter.com' },
       { platform: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com' },
     ],
@@ -481,7 +481,7 @@ export const recipes: Record<string, Recipe> = {
       {
         heading: 'Connect',
         links: [
-          { label: 'GitHub', href: 'https://github.com' },
+          { label: 'GitHub', href: 'https://github.com/dpawelec84/sofondo-mostra' },
           { label: 'Twitter', href: 'https://twitter.com' },
           { label: 'LinkedIn', href: 'https://linkedin.com' },
         ],

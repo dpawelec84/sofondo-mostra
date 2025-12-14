@@ -252,7 +252,7 @@ export const siteConfig = {
     tagline: "A modern Astro template for marketing sites and landing pages.",
     // Simple links for flex layouts
     links: [
-      { label: "GitHub", href: "https://github.com" },
+      { label: "GitHub", href: "https://github.com/dpawelec84/sofondo-mostra" },
       { label: "Documentation", href: "/docs/" },
     ],
     // Link groups for grid layout (optional - if not provided, uses simple links)
@@ -275,7 +275,7 @@ export const siteConfig = {
       {
         heading: "Connect",
         links: [
-          { label: "GitHub", href: "https://github.com" },
+          { label: "GitHub", href: "https://github.com/dpawelec84/sofondo-mostra" },
         ],
       },
     ] as FooterLinkGroup[],

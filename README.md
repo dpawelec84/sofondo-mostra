@@ -203,7 +203,7 @@ footer: {
     style: "icons",           // 'icons' | 'initials' | 'text' | 'none'
     position: "brand",        // 'brand' (under logo) | 'column' (in linkGroups)
     links: [
-      { platform: "github", label: "GitHub", href: "https://github.com" },
+      { platform: "github", label: "GitHub", href: "https://github.com/dpawelec84/sofondo-mostra" },
       { platform: "twitter", label: "Twitter", href: "https://twitter.com" },
     ],
   },
