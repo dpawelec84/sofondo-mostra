@@ -777,7 +777,30 @@ console.log(`✓ Updated scrollbarThumbStyle to "full"`);
 fs.writeFileSync(siteConfigPath, siteConfig);
 console.log('✓ Updated site.ts with recipe configuration');
 
-// 4. Add font imports if needed
+// 4. Update tailwind.css based on tailwind feature setting
+// If tailwind: false in site.ts, make tailwind.css empty (placeholder only)
+// If tailwind: true, ensure it has the @import "tailwindcss" directive
+const tailwindCssPath = path.join(ROOT, 'src/styles/tailwind.css');
+const tailwindEnabled = !siteConfig.includes('tailwind: false');
+
+if (tailwindEnabled) {
+  const tailwindCssContent = `/* Tailwind CSS import - conditionally loaded based on siteConfig.features.tailwind */
+@import "tailwindcss";
+`;
+  fs.writeFileSync(tailwindCssPath, tailwindCssContent);
+  console.log('✓ Updated tailwind.css with Tailwind import (tailwind: true)');
+} else {
+  const tailwindCssContent = `/*
+ * Tailwind CSS is disabled for this site (tailwind: false in site.ts)
+ * This empty file is a placeholder to prevent import errors.
+ * When Tailwind is enabled, this file should contain: @import "tailwindcss";
+ */
+`;
+  fs.writeFileSync(tailwindCssPath, tailwindCssContent);
+  console.log('✓ Updated tailwind.css as placeholder (tailwind: false)');
+}
+
+// 5. Add font imports if needed
 if (recipe.fonts?.google) {
   const layoutPath = path.join(ROOT, 'src/layouts/Layout.astro');
   let layoutContent = fs.readFileSync(layoutPath, 'utf-8');

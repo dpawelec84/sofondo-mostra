@@ -1,4 +1,218 @@
-/* Tailwind CSS is conditionally imported in Layout.astro based on siteConfig.features.tailwind */
+/*
+ * Base Styles - Always loaded regardless of Tailwind setting
+ *
+ * These base styles ensure consistent rendering across browsers whether
+ * Tailwind is enabled or disabled. Includes essential resets from Tailwind's
+ * Preflight so components look identical in both modes.
+ *
+ * IMPORTANT: The @layer base wrapper ensures these rules have the same
+ * specificity as Tailwind's base layer, allowing utility classes to override.
+ */
+
+@layer base {
+  /* ============================================
+     CSS Reset / Normalize (Tailwind Preflight equivalent)
+     ============================================ */
+
+  *,
+  ::before,
+  ::after,
+  ::backdrop {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: currentColor;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    -webkit-tap-highlight-color: transparent;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+  }
+
+  body {
+    margin: 0;
+    line-height: inherit;
+  }
+
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+
+  /* Make heading elements inherit from parent - enables recipe customization */
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  /* Links inherit color by default */
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  /* Bold elements are bolder */
+  b, strong {
+    font-weight: bolder;
+  }
+
+  /* Monospace elements use system font stack */
+  code, kbd, samp, pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 1em;
+  }
+
+  small {
+    font-size: 80%;
+  }
+
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  /* Table reset */
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+
+  /* Form element resets */
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font: inherit;
+    font-size: 100%;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    opacity: 1;
+    letter-spacing: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  ::placeholder {
+    opacity: 1;
+    color: currentColor;
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    ::placeholder {
+      color: color-mix(in oklab, currentColor 50%, transparent);
+    }
+  }
+
+  button,
+  select {
+    text-transform: none;
+  }
+
+  button,
+  [type='button'],
+  [type='reset'],
+  [type='submit'] {
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+  }
+
+  :-moz-focusring {
+    outline: auto;
+  }
+
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+
+  progress {
+    vertical-align: baseline;
+  }
+
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    height: auto;
+  }
+
+  [type='search'] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+  }
+
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+
+  ::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+  }
+
+  summary {
+    display: list-item;
+  }
+
+  /* Remove default list styles */
+  ol, ul, menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Make replaced elements block-level */
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+    display: block;
+    vertical-align: middle;
+  }
+
+  /* Constrain images/videos to their containers */
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Ensure hidden elements stay hidden */
+  [hidden] {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   Design System Variables
+   ============================================ */
 
 :root {
   --bg-light: #fafafa;
@@ -66,11 +280,9 @@
   --group-senary-solid: #0aadde;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ============================================
+   Site-specific Base Styles
+   ============================================ */
 
 html {
   overflow-y: scroll;
@@ -83,14 +295,9 @@ body {
   color: var(--text-primary);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  line-height: 1.5;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
+/* Default heading styles - can be overridden by recipes */
 h1,
 h2,
 h3,
