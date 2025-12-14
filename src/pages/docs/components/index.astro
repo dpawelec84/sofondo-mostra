@@ -48,16 +48,95 @@ import Layout from "../layouts/Layout.astro";
           <section class="content-section">
             <h2>Header</h2>
             <p>
-              Responsive header with logo, navigation, and mobile menu.
-              Automatically pulls configuration from <code>site.ts</code>.
+              Responsive header with multiple layout options, mega menu navigation,
+              and mobile menu. Configuration is pulled from <code>site.ts</code>.
             </p>
             <div class="code-block">
               <pre><code>&lt;Header /&gt;</code></pre>
             </div>
+            <p>Features:</p>
+            <ul class="feature-list">
+              <li><strong>3 layouts</strong> - Standard, centered, or minimal navigation</li>
+              <li><strong>Mega menus</strong> - Multi-column dropdown navigation with sections</li>
+              <li><strong>Mobile responsive</strong> - Hamburger menu with slide-in navigation</li>
+              <li><strong>CTA button</strong> - Configurable shape (rounded or pill)</li>
+              <li><strong>Nav spacing</strong> - Normal or compact spacing for navigation items</li>
+            </ul>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={200}>
+          <section class="content-section">
+            <h2>Navigation (React)</h2>
+            <p>
+              React-based navigation component with Radix UI primitives for
+              accessible mega menus with hover interactions.
+            </p>
+            <div class="code-block">
+              <pre><code>&lt;Navigation
+  items={'{'}navItems{'}'}
+  headerLayout="standard"
+  navSpacing="normal"
+  client:load
+/&gt;</code></pre>
+            </div>
+            <p>Props:</p>
+            <ul class="feature-list">
+              <li><strong>items</strong> - Array of NavItem (simple links or mega menus)</li>
+              <li><strong>headerLayout</strong> - 'standard' | 'centered' | 'minimal'</li>
+              <li><strong>navSpacing</strong> - 'normal' | 'compact'</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <section class="content-section">
+            <h2>Logo</h2>
+            <p>
+              Flexible logo component supporting multiple styles: text-only,
+              icon with text, gradient box, emoji, or custom SVG icons.
+            </p>
+            <div class="code-block">
+              <pre><code>&lt;!-- Uses siteConfig settings --&gt;
+&lt;Logo /&gt;
+
+&lt;!-- With custom props --&gt;
+&lt;Logo width={'{'}140{'}'} height={'{'}32{'}'} /&gt;
+
+&lt;!-- In ShowcaseLayout with config override --&gt;
+&lt;Logo config={'{'}showcaseConfig{'}'} /&gt;</code></pre>
+            </div>
+            <p>Logo mark types:</p>
+            <ul class="feature-list">
+              <li><strong>text-only</strong> - Just the brand name, no icon</li>
+              <li><strong>icon-text</strong> - Icon/image followed by brand name</li>
+              <li><strong>gradient-box</strong> - Single character in a gradient background box</li>
+            </ul>
+            <p>Icon sources (in priority order): <code>emoji</code> → <code>svgIcon</code> → <code>src</code></p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <section class="content-section">
+            <h2>Footer</h2>
+            <p>
+              Footer component with multiple layout options, social links,
+              and legal link configurations.
+            </p>
+            <div class="code-block">
+              <pre><code>&lt;Footer /&gt;</code></pre>
+            </div>
+            <p>Layout options:</p>
+            <ul class="feature-list">
+              <li><strong>grid-4col</strong> - 4-column grid with brand, link groups, and social</li>
+              <li><strong>flex-row</strong> - Single row with brand and inline links</li>
+              <li><strong>flex-sections</strong> - Flexible sections with grouped links</li>
+              <li><strong>minimal-centered</strong> - Minimal centered footer with basic info</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={500}>
           <section class="content-section">
             <h2>SubNav</h2>
             <p>
@@ -91,13 +170,10 @@ import Layout from "../layouts/Layout.astro";
               <li><strong>sub-nav-group-quinary</strong> - Pink gradient</li>
               <li><strong>sub-nav-group-senary</strong> - Cyan gradient</li>
             </ul>
-            <p>
-              Colors are configurable via CSS variables. Need more groups? Follow the pattern in <code>global.css</code>.
-            </p>
           </section>
         </FadeInOnScroll>
 
-        <FadeInOnScroll delay={300}>
+        <FadeInOnScroll delay={600}>
           <section class="content-section">
             <h2>FadeInOnScroll</h2>
             <p>
@@ -118,29 +194,31 @@ import Layout from "../layouts/Layout.astro";
           </section>
         </FadeInOnScroll>
 
-        <FadeInOnScroll delay={400}>
+        <FadeInOnScroll delay={700}>
           <section class="content-section">
-            <h2>Logo</h2>
+            <h2>ShowcaseLayout</h2>
             <p>
-              Displays the site logo and name. Supports optional logo image
-              and template name suffix.
+              Special layout for recipe showcase pages. Allows overriding
+              site configuration for individual pages to demonstrate different recipes.
             </p>
             <div class="code-block">
-              <pre><code>&lt;Logo width={'{'}140{'}'} height={'{'}32{'}'} color="currentColor" /&gt;</code></pre>
-            </div>
-          </section>
-        </FadeInOnScroll>
+              <pre><code>---
+import ShowcaseLayout from "../../layouts/ShowcaseLayout.astro";
+import {'{'} newsletterRecipe {'}'} from "../../recipes";
+---
 
-        <FadeInOnScroll delay={500}>
-          <section class="content-section">
-            <h2>Footer</h2>
-            <p>
-              Simple footer with copyright and links.
-              Configuration pulled from <code>site.ts</code>.
-            </p>
-            <div class="code-block">
-              <pre><code>&lt;Footer /&gt;</code></pre>
+&lt;ShowcaseLayout
+  title="Newsletter Example"
+  recipe={'{'}newsletterRecipe{'}'}
+&gt;
+  &lt;!-- Page content with recipe styling --&gt;
+&lt;/ShowcaseLayout&gt;</code></pre>
             </div>
+            <p>Props:</p>
+            <ul class="feature-list">
+              <li><strong>title</strong> - Page title</li>
+              <li><strong>recipe</strong> - Recipe object to use for styling</li>
+            </ul>
           </section>
         </FadeInOnScroll>
       </div>

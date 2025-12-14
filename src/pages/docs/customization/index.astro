@@ -19,7 +19,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
         <div class="page-header">
           <h1 class="page-title">Customization</h1>
           <p class="page-description intro">
-            Make the template your own with custom styles and themes.
+            Make the template your own with custom styles, themes, and branding.
           </p>
         </div>
       </FadeInOnScroll>
@@ -27,10 +27,11 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
       <div class="content">
         <FadeInOnScroll delay={0}>
           <section class="content-section">
-            <h2>CSS Variables</h2>
+            <h2>Theme Variables</h2>
             <p>
-              Customize colors and styling by editing CSS variables in
-              <code>src/styles/global.css</code>:
+              All colors and styling are controlled through CSS variables in
+              <code>src/styles/global.css</code>. These are updated automatically
+              when you apply a recipe.
             </p>
             <div class="code-block">
               <pre><code>:root {'{'}
@@ -59,9 +60,37 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 
         <FadeInOnScroll delay={100}>
           <section class="content-section">
+            <h2>Dark Theme</h2>
+            <p>
+              Enable dark mode by setting <code>isDark: true</code> in <code>site.ts</code>.
+              This adjusts the scrollbar colors and component styling for dark backgrounds.
+            </p>
+            <div class="code-block">
+              <pre><code>// src/config/site.ts
+export const siteConfig = {'{'}
+  isDark: true,
+  // ...
+{'}'}</code></pre>
+            </div>
+            <p>Dark theme CSS variables:</p>
+            <div class="code-block">
+              <pre><code>:root {'{'}
+  --bg-light: #0a0a0a;
+  --bg-card: #171717;
+  --bg-secondary: #262626;
+  --text-primary: #fafafa;
+  --text-secondary: #a3a3a3;
+  --border-color: #404040;
+{'}'}</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <section class="content-section">
             <h2>Typography</h2>
             <p>
-              The template uses self-hosted fonts. Replace font files in
+              The template uses self-hosted fonts for performance. Replace font files in
               <code>public/fonts/</code> and update the <code>@font-face</code>
               declarations in Layout.astro.
             </p>
@@ -76,14 +105,70 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
               <li><strong>Outfit</strong> - Sans-serif for body text and UI</li>
               <li><strong>Fraunces</strong> - Serif for headings and display text</li>
             </ul>
+            <p>Recipes can include Google Fonts links for alternative typography.</p>
           </section>
         </FadeInOnScroll>
 
-        <FadeInOnScroll delay={200}>
+        <FadeInOnScroll delay={300}>
+          <section class="content-section">
+            <h2>SubNav Group Colors</h2>
+            <p>
+              Customize the colored indicators for SubNav groups in <code>global.css</code>.
+              Up to 6 groups are supported:
+            </p>
+            <div class="code-block">
+              <pre><code>.sub-nav-group-primary::before {'{'}
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+{'}'}
+
+.sub-nav-group-secondary::before {'{'}
+  background: linear-gradient(135deg, #10b981, #059669);
+{'}'}
+
+.sub-nav-group-tertiary::before {'{'}
+  background: linear-gradient(135deg, #f97316, #ea580c);
+{'}'}
+
+/* ... and more */</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <section class="content-section">
+            <h2>Custom Scrollbar</h2>
+            <p>
+              The custom scrollbar automatically adapts to light/dark themes.
+              Customize in <code>global.css</code>:
+            </p>
+            <div class="code-block">
+              <pre><code>.custom-scrollbar {'{'}
+  --scrollbar-width: 8px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.3);
+{'}'}
+
+/* Dark theme scrollbar */
+.custom-scrollbar[data-theme="dark"] {'{'}
+  --scrollbar-thumb: rgba(255, 255, 255, 0.2);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.3);
+{'}'}</code></pre>
+            </div>
+            <p>Disable the custom scrollbar in <code>site.ts</code>:</p>
+            <div class="code-block">
+              <pre><code>features: {'{'}
+  customScrollbar: false,
+{'}'}</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={500}>
           <section class="content-section">
             <h2>Tailwind CSS</h2>
             <p>
-              This template includes Tailwind CSS v4. You can use utility classes
+              This template includes Tailwind CSS v4. Use utility classes
               alongside the custom CSS:
             </p>
             <div class="code-block">
@@ -95,24 +180,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
           </section>
         </FadeInOnScroll>
 
-        <FadeInOnScroll delay={300}>
-          <section class="content-section">
-            <h2>Custom Scrollbar</h2>
-            <p>
-              Customize the scrollbar appearance in <code>global.css</code>:
-            </p>
-            <div class="code-block">
-              <pre><code>.custom-scrollbar {'{'}
-  --scrollbar-width: 8px;
-  --scrollbar-track: transparent;
-  --scrollbar-thumb: rgba(0, 0, 0, 0.2);
-  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.3);
-{'}'}</code></pre>
-            </div>
-          </section>
-        </FadeInOnScroll>
-
-        <FadeInOnScroll delay={400}>
+        <FadeInOnScroll delay={600}>
           <section class="content-section">
             <h2>Adding Pages</h2>
             <p>
@@ -121,15 +189,15 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
               creates URLs:
             </p>
             <ul class="feature-list">
-              <li><strong>pages/index.astro</strong> - /</li>
-              <li><strong>pages/about.astro</strong> - /about/</li>
-              <li><strong>pages/blog/index.astro</strong> - /blog/</li>
-              <li><strong>pages/blog/[slug].astro</strong> - Dynamic routes</li>
+              <li><strong>pages/index.astro</strong> → /</li>
+              <li><strong>pages/about.astro</strong> → /about/</li>
+              <li><strong>pages/blog/index.astro</strong> → /blog/</li>
+              <li><strong>pages/blog/[slug].astro</strong> → Dynamic routes</li>
             </ul>
           </section>
         </FadeInOnScroll>
 
-        <FadeInOnScroll delay={500}>
+        <FadeInOnScroll delay={700}>
           <section class="content-section">
             <h2>Creating Components</h2>
             <p>
@@ -137,7 +205,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
               for static content or React components for interactivity:
             </p>
             <div class="code-block">
-              <pre><code>&lt;!-- Astro component --&gt;
+              <pre><code>&lt;!-- Astro component (Card.astro) --&gt;
 ---
 const {'{'} title {'}'} = Astro.props;
 ---
@@ -148,6 +216,46 @@ const {'{'} title {'}'} = Astro.props;
 
 &lt;!-- React component with interactivity --&gt;
 &lt;Counter client:load /&gt;</code></pre>
+            </div>
+            <p>React components need a client directive for hydration:</p>
+            <ul class="feature-list">
+              <li><strong>client:load</strong> - Hydrate on page load</li>
+              <li><strong>client:visible</strong> - Hydrate when visible</li>
+              <li><strong>client:idle</strong> - Hydrate when browser is idle</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={800}>
+          <section class="content-section">
+            <h2>Logo Customization</h2>
+            <p>
+              The Logo component supports multiple styles. Configure in <code>site.ts</code>:
+            </p>
+            <div class="code-block">
+              <pre><code>// Text-only logo
+logoMark: "text-only",
+logo: {'{'}
+  src: "",
+{'}'},
+
+// Icon with text
+logoMark: "icon-text",
+logo: {'{'}
+  emoji: "🚀",  // or src: "/logo.png"
+{'}'},
+
+// Gradient box with character
+logoMark: "gradient-box",
+logo: {'{'}
+  char: "N",
+{'}'},
+
+// Custom SVG icon
+logoMark: "icon-text",
+logo: {'{'}
+  svgIcon: `&lt;svg viewBox="0 0 32 32"&gt;...&lt;/svg&gt;`,
+{'}'}</code></pre>
             </div>
           </section>
         </FadeInOnScroll>

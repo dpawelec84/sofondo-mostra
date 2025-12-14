@@ -19,7 +19,7 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
         <div class="page-header">
           <h1 class="page-title">Documentation</h1>
           <p class="page-description intro">
-            Everything you need to get started with this template.
+            Everything you need to build beautiful marketing sites with Mostra.
           </p>
         </div>
       </FadeInOnScroll>
@@ -30,82 +30,96 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
             <h2>Quick Start</h2>
             <p>Clone the repository and install dependencies:</p>
             <div class="code-block">
-              <pre><code>git clone https://github.com/your-repo/sofondo-marketing-astro-template.git
-cd sofondo-marketing-astro-template
+              <pre><code>git clone https://github.com/sofondo/mostra.git my-project
+cd my-project
 npm install
 npm run dev</code></pre>
             </div>
+            <p>Your site will be running at <code>http://localhost:4321</code></p>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={100}>
           <section class="docs-section">
-            <h2>Project Structure</h2>
+            <h2>Using a Recipe</h2>
+            <p>Instantly transform the template with pre-configured themes:</p>
             <div class="code-block">
-              <pre><code>src/
-├── components/      # Reusable components
-│   ├── Header.astro
-│   ├── Footer.astro
-│   ├── SubNav.astro
-│   ├── FadeInOnScroll.astro
-│   └── Navigation.tsx
-├── config/
-│   └── site.ts      # Site configuration
-├── layouts/
-│   └── Layout.astro # Main layout
-├── pages/           # Page routes
-└── styles/
-    └── global.css   # Global styles</code></pre>
+              <pre><code># Initialize with a specific recipe
+npm run init:recipe -- --recipe=corporate
+
+# Available recipes:
+# corporate, agency, startup, product-launch,
+# app-download, newsletter, nonprofit</code></pre>
             </div>
+            <p>See the <a href="/docs/recipes/">Recipes documentation</a> for detailed descriptions of each recipe.</p>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={200}>
           <section class="docs-section">
-            <h2>Configuration</h2>
-            <p>Customize the template by editing <code>src/config/site.ts</code>:</p>
+            <h2>Project Structure</h2>
             <div class="code-block">
-              <pre><code>export const siteConfig = {'{'}
-  name: "Your Site Name",
-  description: "Your site description",
-
-  logo: {'{'}
-    src: "/logo.png",
-    alt: "Logo",
-    width: 32,
-    height: 32,
-  {'}'},
-
-  nav: {'{'}
-    links: [
-      {'{'} label: "Features", href: "/features/" {'}'},
-      {'{'} label: "Showcase", href: "/showcase/" {'}'},
-    ],
-    cta: {'{'}
-      label: "Get Started",
-      href: "/get-started/",
-    {'}'},
-  {'}'},
-
-  features: {'{'}
-    smoothScrolling: true,
-    customScrollbar: true,
-    viewTransitions: true,
-  {'}'},
-{'}'}</code></pre>
+              <pre><code>src/
+├── components/          # Reusable components
+│   ├── Header.astro     # Site header with navigation
+│   ├── Footer.astro     # Site footer (multiple layouts)
+│   ├── Logo.astro       # Logo (multiple styles)
+│   ├── SubNav.astro     # Sticky sub-navigation
+│   ├── FadeInOnScroll.astro
+│   └── Navigation.tsx   # React mega menu navigation
+├── config/
+│   └── site.ts          # All site configuration
+├── layouts/
+│   ├── Layout.astro     # Main layout
+│   └── ShowcaseLayout.astro  # Recipe showcase layout
+├── recipes/
+│   └── index.ts         # Recipe definitions
+├── pages/               # Page routes
+└── styles/
+    ├── global.css       # Global styles & CSS variables
+    └── mobile-menu.css  # Mobile menu styles</code></pre>
             </div>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={300}>
           <section class="docs-section">
-            <h2>Feature Flags</h2>
-            <p>Toggle features on or off in the configuration:</p>
+            <h2>Key Features</h2>
             <ul class="feature-list">
-              <li><strong>smoothScrolling</strong> - Enable Lenis smooth scrolling</li>
-              <li><strong>customScrollbar</strong> - Enable custom scrollbar</li>
-              <li><strong>viewTransitions</strong> - Enable page transitions</li>
+              <li><strong>Recipe System</strong> - Pre-configured themes for different use cases</li>
+              <li><strong>Multiple Header Layouts</strong> - Standard, centered, or minimal navigation</li>
+              <li><strong>Logo Options</strong> - Text-only, icon+text, gradient-box, emoji, or SVG icons</li>
+              <li><strong>Mega Menu Navigation</strong> - Multi-column dropdowns with sections</li>
+              <li><strong>Multiple Footer Layouts</strong> - Grid, flex-row, flex-sections, or minimal</li>
+              <li><strong>Smooth Scrolling</strong> - Lenis-powered smooth scroll (opt-in)</li>
+              <li><strong>Custom Scrollbar</strong> - Theme-aware custom scrollbar (opt-in)</li>
+              <li><strong>View Transitions</strong> - Smooth page transitions (opt-in)</li>
+              <li><strong>Dark Theme Support</strong> - Full dark mode with themed components</li>
             </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <section class="docs-section">
+            <h2>Documentation Sections</h2>
+            <div class="doc-links">
+              <a href="/docs/configuration/" class="doc-link">
+                <h3>Configuration</h3>
+                <p>Learn about all available configuration options in site.ts</p>
+              </a>
+              <a href="/docs/components/" class="doc-link">
+                <h3>Components</h3>
+                <p>Explore the reusable components and how to use them</p>
+              </a>
+              <a href="/docs/customization/" class="doc-link">
+                <h3>Customization</h3>
+                <p>Customize colors, fonts, and styling to match your brand</p>
+              </a>
+              <a href="/docs/recipes/" class="doc-link">
+                <h3>Recipes</h3>
+                <p>Pre-configured themes for different use cases</p>
+              </a>
+            </div>
           </section>
         </FadeInOnScroll>
       </div>
@@ -160,6 +174,11 @@ npm run dev</code></pre>
     margin-bottom: 1rem;
   }
 
+  .docs-section p a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+  }
+
   .docs-section code {
     font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
     background: var(--bg-secondary);
@@ -208,7 +227,39 @@ npm run dev</code></pre>
 
   .feature-list strong {
     color: var(--text-primary);
-    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  }
+
+  .doc-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .doc-link {
+    display: block;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .doc-link:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .doc-link h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .doc-link p {
     font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
   }
 </style>

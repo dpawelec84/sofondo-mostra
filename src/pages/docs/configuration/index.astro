@@ -19,7 +19,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
         <div class="page-header">
           <h1 class="page-title">Configuration</h1>
           <p class="page-description intro">
-            Customize your site through the configuration file.
+            All configuration options available in <code>src/config/site.ts</code>.
           </p>
         </div>
       </FadeInOnScroll>
@@ -27,52 +27,105 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
       <div class="content">
         <FadeInOnScroll delay={0}>
           <section class="content-section">
-            <h2>Site Configuration</h2>
-            <p>
-              All site settings are managed in <code>src/config/site.ts</code>.
-              This single file controls your site's metadata, navigation, and features.
-            </p>
+            <h2>Site Metadata</h2>
+            <p>Basic site information and branding settings:</p>
+            <div class="code-block">
+              <pre><code>export const siteConfig = {'{'}
+  name: "Your Brand",           // Primary brand name
+  nameAccent: "Corp",           // Optional accent-colored suffix
+  templateName: "Mostra",       // Template name for branding
+  showTemplateName: false,      // Show template name in logo
+  description: "Your site description",
+  isDark: false,                // Enable dark theme
+{'}'}</code></pre>
+            </div>
+            <ul class="option-list">
+              <li><strong>name</strong> - Primary brand name displayed in the logo</li>
+              <li><strong>nameAccent</strong> - Optional second part in accent color (e.g., "Corp" in "NexusCorp")</li>
+              <li><strong>showTemplateName</strong> - When true, shows template name after brand name</li>
+              <li><strong>isDark</strong> - Enables dark theme with themed scrollbar and components</li>
+            </ul>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={100}>
           <section class="content-section">
-            <h2>Site Metadata</h2>
-            <p>Set your site's basic information:</p>
+            <h2>Logo Configuration</h2>
+            <p>Multiple logo styles are supported. The <code>logoMark</code> setting determines the display style:</p>
             <div class="code-block">
-              <pre><code>export const siteConfig = {'{'}
-  name: "Your Site Name",
-  templateName: "Template",  // Optional template name
-  description: "Your site description",
-{'}'}</code></pre>
+              <pre><code>logo: {'{'}
+  src: "",           // Image path: "/logo.png"
+  emoji: "",         // Emoji: "🚀" (takes precedence over src)
+  char: "",          // Character for gradient-box: "Q"
+  svgIcon: "",       // Inline SVG markup for custom icons
+  alt: "Site Logo",
+  width: 32,
+  height: 32,
+{'}'},
+
+// Logo mark type: 'text-only' | 'icon-text' | 'gradient-box'
+logoMark: "icon-text" as const,</code></pre>
             </div>
+            <ul class="option-list">
+              <li><strong>text-only</strong> - Just the brand name, no icon</li>
+              <li><strong>icon-text</strong> - Icon/image followed by brand name</li>
+              <li><strong>gradient-box</strong> - Single character in a gradient background box</li>
+            </ul>
+            <p>For icons, priority order is: <code>emoji</code> &gt; <code>svgIcon</code> &gt; <code>src</code></p>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={200}>
           <section class="content-section">
-            <h2>Logo Configuration</h2>
-            <p>Configure your logo. Leave <code>src</code> empty for text-only branding:</p>
+            <h2>Header Configuration</h2>
+            <p>Control header layout, CTA button style, and navigation spacing:</p>
             <div class="code-block">
-              <pre><code>logo: {'{'}
-  src: "/logo.png",  // Leave empty for no logo image
-  alt: "Logo",
-  width: 32,
-  height: 32,
+              <pre><code>header: {'{'}
+  // Layout: 'standard' | 'centered' | 'minimal'
+  layout: "standard" as HeaderLayout,
+
+  // CTA button shape: 'rounded' | 'pill'
+  ctaShape: "rounded" as CTAShape,
+
+  // Navigation spacing: 'normal' | 'compact'
+  navSpacing: "normal" as NavSpacing,
 {'}'}</code></pre>
             </div>
+            <ul class="option-list">
+              <li><strong>standard</strong> - Logo left, navigation right, CTA right</li>
+              <li><strong>centered</strong> - Logo left, navigation center, CTA right</li>
+              <li><strong>minimal</strong> - Logo left, CTA right only (no navigation)</li>
+              <li><strong>compact</strong> - Tighter navigation spacing for short labels</li>
+            </ul>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={300}>
           <section class="content-section">
-            <h2>Navigation</h2>
-            <p>Configure your navigation links and CTA button:</p>
+            <h2>Navigation with Mega Menus</h2>
+            <p>Navigation supports both simple links and multi-column mega menus:</p>
             <div class="code-block">
               <pre><code>nav: {'{'}
-  links: [
-    {'{'} label: "Features", href: "/features/" {'}'},
-    {'{'} label: "Showcase", href: "/showcase/" {'}'},
+  items: [
+    // Mega menu with sections
+    {'{'}
+      label: "Features",
+      menuId: "features",
+      sections: [
+        {'{'}
+          title: "Core Features",
+          titleStyle: "primary",  // primary, secondary, tertiary, etc.
+          links: [
+            {'{'}
+              title: "Smooth Scrolling",
+              description: "Buttery smooth scrolling",
+              href: "/features/scrolling/",
+            {'}'},
+          ],
+        {'}'},
+      ],
+    {'}'},
+    // Simple link (no mega menu)
     {'{'} label: "Documentation", href: "/docs/" {'}'},
   ],
   cta: {'{'}
@@ -81,26 +134,81 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
   {'}'},
 {'}'}</code></pre>
             </div>
+            <p>Mega menu sections can have different title styles: <code>primary</code>, <code>secondary</code>, <code>tertiary</code>, <code>quaternary</code>, <code>quinary</code>, <code>senary</code>, <code>neutral</code></p>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={400}>
           <section class="content-section">
-            <h2>Footer</h2>
-            <p>Configure footer copyright and links:</p>
+            <h2>Footer Configuration</h2>
+            <p>Multiple footer layouts with flexible link and social configurations:</p>
             <div class="code-block">
-              <pre><code>footer: {'{'}
-  copyright: "Your Site Name",
-  links: [
-    {'{'} label: "GitHub", href: "https://github.com" {'}'},
-    {'{'} label: "Documentation", href: "/docs/" {'}'},
+              <pre><code>// Footer layout options:
+// 'grid-4col' | 'flex-row' | 'flex-sections' | 'minimal-centered'
+footerLayout: "grid-4col" as const,
+
+footer: {'{'}
+  copyright: "Your Company",
+  copyrightSuffix: "",        // e.g., "A 501(c)(3) nonprofit."
+  tagline: "Your tagline here.",
+
+  // Link groups for grid layout
+  linkGroups: [
+    {'{'}
+      heading: "Company",
+      links: [
+        {'{'} label: "About", href: "/about/" {'}'},
+        {'{'} label: "Careers", href: "/careers/" {'}'},
+      ],
+    {'}'},
   ],
+
+  // Social links
+  social: {'{'}
+    style: "icons",    // 'icons' | 'initials' | 'text' | 'none'
+    position: "brand", // 'brand' (under logo) | 'column' (in linkGroups)
+    links: [
+      {'{'} platform: "github", label: "GitHub", href: "..." {'}'},
+      {'{'} platform: "twitter", label: "Twitter", href: "..." {'}'},
+    ],
+  {'}'},
+
+  // Legal links
+  legalLinks: [
+    {'{'} label: "Privacy Policy", href: "/privacy/" {'}'},
+    {'{'} label: "Terms", href: "/terms/" {'}'},
+  ],
+  showLegalLinks: true,
+  legalInBottomRow: false,
+
+  // Display options
+  showCopyright: true,
+  showTemplateCredit: true,
 {'}'}</code></pre>
             </div>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={500}>
+          <section class="content-section">
+            <h2>Footer Layout Options</h2>
+            <ul class="option-list">
+              <li><strong>grid-4col</strong> - 4-column grid with brand, link groups, and social</li>
+              <li><strong>flex-row</strong> - Single row with brand and inline links</li>
+              <li><strong>flex-sections</strong> - Flexible sections with grouped links</li>
+              <li><strong>minimal-centered</strong> - Minimal centered footer with basic info</li>
+            </ul>
+            <h3>Social Icon Styles</h3>
+            <ul class="option-list">
+              <li><strong>icons</strong> - Lucide icons (GitHub, Twitter, Instagram, etc.)</li>
+              <li><strong>initials</strong> - Circular badges with initials (FB, TW, IG)</li>
+              <li><strong>text</strong> - Plain text links</li>
+              <li><strong>none</strong> - No social links displayed</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={600}>
           <section class="content-section">
             <h2>Feature Flags</h2>
             <p>Toggle optional features on or off:</p>
@@ -111,10 +219,10 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
   viewTransitions: true,  // Page transitions
 {'}'}</code></pre>
             </div>
-            <ul class="feature-list">
-              <li><strong>smoothScrolling</strong> - Enables Lenis for buttery smooth scrolling</li>
-              <li><strong>customScrollbar</strong> - Replaces native scrollbar with themed version</li>
-              <li><strong>viewTransitions</strong> - Enables smooth page transitions</li>
+            <ul class="option-list">
+              <li><strong>smoothScrolling</strong> - Enables Lenis for buttery smooth scrolling experience</li>
+              <li><strong>customScrollbar</strong> - Replaces native scrollbar with theme-aware styled version</li>
+              <li><strong>viewTransitions</strong> - Enables smooth page transitions using Astro View Transitions</li>
             </ul>
           </section>
         </FadeInOnScroll>
@@ -147,6 +255,14 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     margin: 0 auto;
   }
 
+  .page-description code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
   .content {
     max-width: 800px;
     margin: 0 auto;
@@ -160,6 +276,13 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .content-section h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem;
     color: var(--text-primary);
   }
 
@@ -199,24 +322,24 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     padding: 0;
   }
 
-  .feature-list {
+  .option-list {
     list-style: none;
     padding: 0;
-    margin: 1rem 0 0;
+    margin: 1rem 0;
   }
 
-  .feature-list li {
+  .option-list li {
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--border-color);
     font-size: 1rem;
     color: var(--text-secondary);
   }
 
-  .feature-list li:last-child {
+  .option-list li:last-child {
     border-bottom: none;
   }
 
-  .feature-list strong {
+  .option-list strong {
     color: var(--text-primary);
     font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
     font-size: 0.875rem;

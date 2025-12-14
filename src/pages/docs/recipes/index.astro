@@ -19,7 +19,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
         <div class="page-header">
           <h1 class="page-title">Recipes</h1>
           <p class="page-description intro">
-            Initialize your project with a pre-built theme from the showcase examples.
+            Pre-configured themes that instantly transform your site for specific use cases.
           </p>
         </div>
       </FadeInOnScroll>
@@ -29,9 +29,9 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
           <section class="docs-section">
             <h2>What are Recipes?</h2>
             <p>
-              Recipes let you quickly start a new project based on one of the showcase examples.
-              When you apply a recipe, it transforms the showcase example into your homepage and
-              applies its theme colors across the entire site.
+              Recipes are complete site configurations that apply a cohesive theme across
+              your entire site. Each recipe includes customized header layout, footer layout,
+              logo style, color palette, navigation structure, and more.
             </p>
           </section>
         </FadeInOnScroll>
@@ -39,14 +39,16 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
         <FadeInOnScroll delay={100}>
           <section class="docs-section">
             <h2>Usage</h2>
-            <p>List all available recipes:</p>
+            <p>Apply a recipe when initializing a cloned project:</p>
             <div class="code-block">
-              <pre><code>npm run init -- --list</code></pre>
+              <pre><code># Clone the template
+git clone https://github.com/sofondo/mostra.git my-project
+cd my-project
+
+# Apply a recipe
+npm run init:recipe -- --recipe=corporate</code></pre>
             </div>
-            <p>Apply a recipe to your project:</p>
-            <div class="code-block">
-              <pre><code>npm run init -- --recipe=corporate</code></pre>
-            </div>
+            <p>This will update your <code>site.ts</code> configuration, <code>global.css</code> theme variables, and homepage content to match the selected recipe.</p>
           </section>
         </FadeInOnScroll>
 
@@ -59,7 +61,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
                 <div class="recipe-info">
                   <h3>corporate</h3>
                   <p class="recipe-name">Nexus Corp</p>
-                  <p>Professional business consulting with elegant navy and gold palette.</p>
+                  <p>Professional business site with gradient-box logo, standard header, and 4-column grid footer.</p>
                   <code>--recipe=corporate</code>
                 </div>
               </div>
@@ -69,7 +71,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
                 <div class="recipe-info">
                   <h3>agency</h3>
                   <p class="recipe-name">Pixel Flow Agency</p>
-                  <p>Bold creative agency with vibrant gradients and modern typography.</p>
+                  <p>Creative agency with centered header layout and flex-sections footer.</p>
                   <code>--recipe=agency</code>
                 </div>
               </div>
@@ -79,7 +81,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
                 <div class="recipe-info">
                   <h3>startup</h3>
                   <p class="recipe-name">Velocity Tech</p>
-                  <p>Clean tech startup with modern blue and green accents.</p>
+                  <p>Tech startup with text-only logo, standard header, and flex-row footer.</p>
                   <code>--recipe=startup</code>
                 </div>
               </div>
@@ -89,7 +91,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
                 <div class="recipe-info">
                   <h3>product-launch</h3>
                   <p class="recipe-name">Spark Product Launch</p>
-                  <p>Eye-catching product launch with vibrant orange and dark theme.</p>
+                  <p>Product launch page with emoji logo and minimal centered footer.</p>
                   <code>--recipe=product-launch</code>
                 </div>
               </div>
@@ -99,7 +101,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
                 <div class="recipe-info">
                   <h3>app-download</h3>
                   <p class="recipe-name">Zenith App</p>
-                  <p>Modern app landing page with purple gradient theme.</p>
+                  <p>App landing page with emoji logo and minimal centered footer.</p>
                   <code>--recipe=app-download</code>
                 </div>
               </div>
@@ -109,7 +111,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
                 <div class="recipe-info">
                   <h3>newsletter</h3>
                   <p class="recipe-name">Weekly Spark Newsletter</p>
-                  <p>Clean newsletter signup with warm amber accents.</p>
+                  <p>Newsletter signup with compact navigation spacing and minimal footer.</p>
                   <code>--recipe=newsletter</code>
                 </div>
               </div>
@@ -119,7 +121,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
                 <div class="recipe-info">
                   <h3>nonprofit</h3>
                   <p class="recipe-name">Ocean Guardians</p>
-                  <p>Non-profit with calming ocean blues and eco-friendly greens.</p>
+                  <p>Non-profit with SVG logo, centered header, and 4-column grid footer with legal links.</p>
                   <code>--recipe=nonprofit</code>
                 </div>
               </div>
@@ -129,40 +131,103 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 
         <FadeInOnScroll delay={300}>
           <section class="docs-section">
-            <h2>What Gets Changed</h2>
-            <p>When you apply a recipe, the init script:</p>
+            <h2>What Gets Configured</h2>
+            <p>Each recipe configures the following options:</p>
             <ul class="feature-list">
-              <li><strong>Homepage</strong> - Transforms the showcase example into your new homepage using the main Layout with header and footer</li>
-              <li><strong>Theme Variables</strong> - Updates <code>src/styles/global.css</code> with the recipe's color palette</li>
-              <li><strong>Site Name</strong> - Updates <code>src/config/site.ts</code> with the recipe's name and description</li>
-              <li><strong>Fonts</strong> - Adds Google Fonts links to the layout if the recipe uses different fonts</li>
+              <li><strong>Site Name & Branding</strong> - Site name, name accent, tagline, and description</li>
+              <li><strong>Logo Style</strong> - Logo mark type (text-only, icon-text, gradient-box) with optional emoji, SVG, or image</li>
+              <li><strong>Header Layout</strong> - Standard, centered, or minimal navigation layout</li>
+              <li><strong>Navigation Spacing</strong> - Normal or compact spacing for navigation items</li>
+              <li><strong>CTA Button Shape</strong> - Rounded or pill-shaped call-to-action button</li>
+              <li><strong>Footer Layout</strong> - Grid columns, flex row, flex sections, or minimal centered</li>
+              <li><strong>Social Links</strong> - Social icons, initials, or text with configurable positioning</li>
+              <li><strong>Legal Links</strong> - Privacy policy and terms links with optional bottom row display</li>
+              <li><strong>Theme Variables</strong> - Complete color palette via CSS custom properties</li>
+              <li><strong>Dark Mode</strong> - Optional dark theme with themed scrollbar</li>
             </ul>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={400}>
           <section class="docs-section">
-            <h2>Backups</h2>
-            <p>The init script creates backups of modified files before making changes:</p>
-            <ul class="feature-list">
-              <li><code>src/pages/index.astro.backup</code></li>
-              <li><code>src/styles/global.css.backup</code></li>
-              <li><code>src/config/site.ts.backup</code></li>
-            </ul>
-            <p>To revert, simply copy the backup files back to their original locations.</p>
+            <h2>Recipe Comparison</h2>
+            <div class="comparison-table-wrapper">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Recipe</th>
+                    <th>Header</th>
+                    <th>Footer</th>
+                    <th>Logo Style</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>corporate</td>
+                    <td>Standard</td>
+                    <td>Grid 4-col</td>
+                    <td>Gradient box</td>
+                  </tr>
+                  <tr>
+                    <td>agency</td>
+                    <td>Centered</td>
+                    <td>Flex sections</td>
+                    <td>Icon + text</td>
+                  </tr>
+                  <tr>
+                    <td>startup</td>
+                    <td>Standard</td>
+                    <td>Flex row</td>
+                    <td>Text only</td>
+                  </tr>
+                  <tr>
+                    <td>product-launch</td>
+                    <td>Standard</td>
+                    <td>Minimal centered</td>
+                    <td>Emoji</td>
+                  </tr>
+                  <tr>
+                    <td>app-download</td>
+                    <td>Standard</td>
+                    <td>Minimal centered</td>
+                    <td>Emoji</td>
+                  </tr>
+                  <tr>
+                    <td>newsletter</td>
+                    <td>Standard (compact)</td>
+                    <td>Minimal centered</td>
+                    <td>Icon + text</td>
+                  </tr>
+                  <tr>
+                    <td>nonprofit</td>
+                    <td>Centered</td>
+                    <td>Grid 4-col</td>
+                    <td>SVG icon</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={500}>
           <section class="docs-section">
             <h2>Creating Custom Recipes</h2>
-            <p>You can create your own recipes by adding entries to <code>src/recipes/index.ts</code>:</p>
+            <p>Add your own recipes in <code>src/recipes/index.ts</code>:</p>
             <div class="code-block">
-              <pre><code>myrecipe: {'{'}
+              <pre><code>export const myRecipe: Recipe = {'{'}
   name: 'My Custom Theme',
-  description: 'A description of your theme',
-  category: 'marketing',
-  source: 'my-example', // folder in showcase/examples/
+  description: 'Description of my theme',
+  siteName: 'My Site',
+  siteNameAccent: 'Pro',
+  tagline: 'Site tagline',
+
+  headerLayout: 'centered',
+  footerLayout: 'flex-row',
+  logoMark: 'text-only',
+  ctaShape: 'pill',
+  navSpacing: 'normal',
+
   theme: {'{'}
     '--bg-light': '#fafafa',
     '--bg-card': '#ffffff',
@@ -170,11 +235,19 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     '--accent-primary': '#3b82f6',
     // ... other CSS variables
   {'}'},
-  fonts: {'{'}
-    google: 'https://fonts.googleapis.com/...',
-  {'}'},
 {'}'}</code></pre>
             </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={600}>
+          <section class="docs-section">
+            <h2>Preview Recipes</h2>
+            <p>
+              Before applying a recipe, you can preview it in the
+              <a href="/showcase/">Showcase section</a>. Each showcase example
+              demonstrates how the recipe will look when applied to your site.
+            </p>
           </section>
         </FadeInOnScroll>
       </div>
@@ -227,6 +300,11 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 1rem;
+  }
+
+  .docs-section p a {
+    color: var(--accent-primary);
+    text-decoration: underline;
   }
 
   .docs-section code {
@@ -369,6 +447,40 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     padding: 0.25rem 0.5rem;
     background: var(--bg-secondary);
     border-radius: 4px;
+    color: var(--text-primary);
+  }
+
+  /* Comparison table */
+  .comparison-table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .comparison-table th {
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+  }
+
+  .comparison-table td {
+    color: var(--text-secondary);
+  }
+
+  .comparison-table td:first-child {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
     color: var(--text-primary);
   }
 </style>
