@@ -37,6 +37,7 @@ export interface ComponentConfig {
   header: {
     layout: 'standard' | 'centered' | 'minimal';
     ctaShape: 'rounded' | 'pill';
+    navSpacing?: 'normal' | 'compact';
   };
 
   // Navigation
@@ -114,6 +115,7 @@ export function recipeToConfig(recipe: Recipe): ComponentConfig {
     header: {
       layout: recipe.headerLayout || 'standard',
       ctaShape: recipe.ctaShape || 'rounded',
+      navSpacing: recipe.navSpacing || 'normal',
     },
 
     // Use recipe nav if available, otherwise fall back to siteConfig
@@ -174,6 +176,7 @@ export function siteConfigToConfig(): ComponentConfig {
     header: {
       layout: siteConfig.header?.layout || 'standard',
       ctaShape: siteConfig.header?.ctaShape || 'rounded',
+      navSpacing: siteConfig.header?.navSpacing || 'normal',
     },
 
     nav: {
