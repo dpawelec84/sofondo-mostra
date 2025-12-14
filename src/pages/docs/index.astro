@@ -65,13 +65,14 @@ npm run init:recipe -- --recipe=corporate
 │   ├── Header.astro     # Site header with navigation
 │   ├── Footer.astro     # Site footer (multiple layouts)
 │   ├── Logo.astro       # Logo (multiple styles)
+│   ├── SEO.astro        # SEO meta tags, OG, Twitter Cards
 │   ├── SubNav.astro     # Sticky sub-navigation
 │   ├── FadeInOnScroll.astro
 │   └── Navigation.tsx   # React mega menu navigation
 ├── config/
 │   └── site.ts          # All site configuration
 ├── layouts/
-│   ├── Layout.astro     # Main layout
+│   ├── Layout.astro     # Main layout (includes SEO)
 │   └── ShowcaseLayout.astro  # Recipe showcase layout
 ├── recipes/
 │   └── index.ts         # Recipe definitions

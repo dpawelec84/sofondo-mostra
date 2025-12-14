@@ -40,6 +40,16 @@ User-agent: *
 Allow: /
 
 Sitemap: https://yourdomain.com/sitemap-index.xml`,
+  seoComponent: `// In your custom layout or page
+import SEO from "../components/SEO.astro";
+
+// In &lt;head&gt;:
+&lt;SEO
+  title="My Page"
+  description="Page description"
+  image="/og-image.png"
+  type="website"
+/&gt;`,
 };
 ---
 
@@ -88,7 +98,15 @@ Sitemap: https://yourdomain.com/sitemap-index.xml`,
           <section class="docs-section">
             <h2>Basic Usage</h2>
             <p>
-              The Layout component automatically handles SEO. Just pass a title and optionally
+              There are two ways to use SEO in Mostra:
+            </p>
+            <ul class="feature-list">
+              <li><strong>Via Layout</strong> - The Layout component includes SEO automatically. Just pass SEO props to Layout.</li>
+              <li><strong>Via SEO Component</strong> - Use <code>SEO.astro</code> directly for more control or custom layouts.</li>
+            </ul>
+            <h3>Option 1: Via Layout (Recommended)</h3>
+            <p>
+              The Layout component handles SEO automatically. Just pass a title and optionally
               a description:
             </p>
             <div class="code-block">
@@ -98,13 +116,23 @@ Sitemap: https://yourdomain.com/sitemap-index.xml`,
               If no description is provided, it falls back to the site-wide description
               from <code>site.ts</code>.
             </p>
+            <h3>Option 2: SEO Component Directly</h3>
+            <p>
+              For custom layouts or more control, import and use the <code>SEO.astro</code> component directly in your page's <code>&lt;head&gt;</code>:
+            </p>
+            <div class="code-block">
+              <pre><code set:html={codeExamples.seoComponent} /></pre>
+            </div>
+            <p>
+              This is useful when building custom layouts that don't use the default Layout component.
+            </p>
           </section>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={200}>
           <section class="docs-section">
             <h2>Available Props</h2>
-            <p>The Layout component accepts these SEO-related props:</p>
+            <p>Both Layout and SEO components accept these props:</p>
             <div class="props-table">
               <div class="prop-row">
                 <div class="prop-name"><code>title</code></div>
