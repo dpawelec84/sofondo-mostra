@@ -262,6 +262,14 @@ export const siteConfig = {
         links: [
           { label: "Features", href: "/features/" },
           { label: "Documentation", href: "/docs/" },
+          { label: "Premium", href: "/premium/" },
+        ],
+      },
+      {
+        heading: "Support",
+        links: [
+          { label: "Ko-fi", href: "https://ko-fi.com/sofondo" },
+          { label: "GitHub Sponsors", href: "https://github.com/sponsors/sofondo" },
         ],
       },
       {

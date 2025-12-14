@@ -143,7 +143,7 @@ const getInitials = (platform: string): string => {
         </div>
         {showTemplateCredit && (
           <p class="footer-template-credit footer-template-credit-flex">
-            {templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
+            {templateName} Astro template built with <Heart size={12} className="heart-icon" /> by <a href="https://sofondo.com" target="_blank" rel="noopener">Sofondo</a>
           </p>
         )}
       </>
@@ -174,7 +174,7 @@ const getInitials = (platform: string): string => {
         )}
         {showTemplateCredit && (
           <p class="footer-template-credit footer-template-credit-sections">
-            {templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
+            {templateName} Astro template built with <Heart size={12} className="heart-icon" /> by <a href="https://sofondo.com" target="_blank" rel="noopener">Sofondo</a>
           </p>
         )}
       </>
@@ -199,7 +199,7 @@ const getInitials = (platform: string): string => {
         )}
         {showTemplateCredit && (
           <p class="footer-template-credit footer-template-credit-centered">
-            {templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
+            {templateName} Astro template built with <Heart size={12} className="heart-icon" /> by <a href="https://sofondo.com" target="_blank" rel="noopener">Sofondo</a>
           </p>
         )}
       </div>
@@ -234,7 +234,7 @@ const getInitials = (platform: string): string => {
 
         {showTemplateCredit && (
           <p class="footer-template-credit">
-            {templateName} Astro template built with <Heart size={12} className="heart-icon" /> by Sofondo
+            {templateName} Astro template built with <Heart size={12} className="heart-icon" /> by <a href="https://sofondo.com" target="_blank" rel="noopener">Sofondo</a>
           </p>
         )}
       </div>
@@ -461,6 +461,17 @@ const getInitials = (platform: string): string => {
     color: #e11d48;
     display: inline-block;
     vertical-align: middle;
+  }
+
+  .footer-template-credit a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .footer-template-credit a:hover {
+    opacity: 1;
+    text-decoration: underline;
   }
 
   /* ========================================

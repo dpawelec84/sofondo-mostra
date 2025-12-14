@@ -5,7 +5,7 @@ If you find Mostra valuable, please consider supporting its development!
 ## Ways to Support
 
 ### One-time Donation
-[Buy me a coffee on Ko-fi](https://ko-fi.com/sofondo)
+[Support on Ko-fi](https://ko-fi.com/sofondo)
 
 ### Recurring Sponsorship
 [Become a GitHub Sponsor](https://github.com/sponsors/sofondo)
