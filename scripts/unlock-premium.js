@@ -66,7 +66,7 @@ function displaySupportMessage(recipeName = null) {
     '',
     `${colors.dim}─────────────────────────────────────────────────────────────${colors.reset}`,
     '',
-    `Press ${colors.green}Enter${colors.reset} to continue, or ${colors.yellow}'s'${colors.reset} to skip this next time...`,
+    `Press ${colors.green}Enter${colors.reset} to unlock premium, or ${colors.yellow}'s'${colors.reset} to skip...`,
     '',
   ];
 
@@ -140,14 +140,16 @@ async function main() {
 
   const key = await waitForInput();
 
-  if (key === 's') {
+  if (key === 's' || key === 'q' || key === '\x1b') {
+    // 's', 'q', or Escape to skip
+    console.log(`\n${colors.dim}Skipped. Run again anytime to unlock premium.${colors.reset}\n`);
+  } else {
+    // Enter or any other key to unlock
     const success = unlockPremium();
     if (success) {
       console.log(`\n${colors.green}✓${colors.reset} Premium unlocked! You won't see this prompt again.`);
       console.log(`${colors.dim}  (You can still support us anytime at the links above)${colors.reset}\n`);
     }
-  } else {
-    console.log(`\n${colors.green}✓${colors.reset} Continuing...\n`);
   }
 }
 
