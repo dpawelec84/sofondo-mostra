@@ -1,2 +1,2 @@
-/* Tailwind CSS import - conditionally loaded based on siteConfig.features.tailwind */
+/* Tailwind CSS - includes Preflight reset */
 @import "tailwindcss";

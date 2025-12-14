@@ -778,26 +778,23 @@ fs.writeFileSync(siteConfigPath, siteConfig);
 console.log('✓ Updated site.ts with recipe configuration');
 
 // 4. Update tailwind.css based on tailwind feature setting
-// If tailwind: false in site.ts, make tailwind.css empty (placeholder only)
-// If tailwind: true, ensure it has the @import "tailwindcss" directive
+// If tailwind: false, import base-reset.css (provides Tailwind Preflight equivalent)
+// If tailwind: true, import tailwindcss (which includes its own Preflight)
 const tailwindCssPath = path.join(ROOT, 'src/styles/tailwind.css');
 const tailwindEnabled = !siteConfig.includes('tailwind: false');
 
 if (tailwindEnabled) {
-  const tailwindCssContent = `/* Tailwind CSS import - conditionally loaded based on siteConfig.features.tailwind */
+  const tailwindCssContent = `/* Tailwind CSS - includes Preflight reset */
 @import "tailwindcss";
 `;
   fs.writeFileSync(tailwindCssPath, tailwindCssContent);
   console.log('✓ Updated tailwind.css with Tailwind import (tailwind: true)');
 } else {
-  const tailwindCssContent = `/*
- * Tailwind CSS is disabled for this site (tailwind: false in site.ts)
- * This empty file is a placeholder to prevent import errors.
- * When Tailwind is enabled, this file should contain: @import "tailwindcss";
- */
+  const tailwindCssContent = `/* Base reset styles - Tailwind Preflight equivalent */
+@import "./base-reset.css";
 `;
   fs.writeFileSync(tailwindCssPath, tailwindCssContent);
-  console.log('✓ Updated tailwind.css as placeholder (tailwind: false)');
+  console.log('✓ Updated tailwind.css with base-reset import (tailwind: false)');
 }
 
 // 5. Add font imports if needed
