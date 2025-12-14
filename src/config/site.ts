@@ -264,6 +264,13 @@ export const siteConfig = {
   // Feature flags - enable/disable optional features
   features: {
     /**
+     * Tailwind CSS
+     * Include Tailwind CSS utility classes
+     * Set to false to exclude Tailwind for smaller bundle size
+     */
+    tailwind: true,
+
+    /**
      * Lenis smooth scrolling
      * Provides buttery smooth scrolling experience
      * Set to false for native browser scrolling

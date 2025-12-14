@@ -5,6 +5,11 @@ import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import { siteConfig } from "../config/site";
 
+// Conditionally import Tailwind CSS
+if (siteConfig.features.tailwind) {
+  await import("../styles/tailwind.css");
+}
+
 interface Props {
   title: string;
 }
@@ -12,7 +17,7 @@ interface Props {
 const { title } = Astro.props;
 
 // Feature flags from config
-const { smoothScrolling, customScrollbar, viewTransitions, scrollbarThumbStyle } =
+const { smoothScrolling, customScrollbar, viewTransitions, scrollbarThumbStyle, tailwind } =
   siteConfig.features;
 
 // Dark theme flag for scrollbar and sub-nav styling

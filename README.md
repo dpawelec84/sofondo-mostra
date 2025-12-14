@@ -226,12 +226,15 @@ footer: {
 
 ```typescript
 features: {
+  tailwind: true,                  // Include Tailwind CSS utilities
   smoothScrolling: true,           // Lenis smooth scrolling
   customScrollbar: true,           // Chrome-style custom scrollbar
   scrollbarThumbStyle: "full",     // "auto" (thin, expands on hover) or "full" (always full width)
   viewTransitions: true,           // Astro View Transitions
 },
 ```
+
+Set `tailwind: false` to exclude Tailwind CSS for a smaller bundle size. The template's core styles work without Tailwind.
 
 ## Components
 

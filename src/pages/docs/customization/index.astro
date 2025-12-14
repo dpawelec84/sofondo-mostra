@@ -159,7 +159,7 @@ export const siteConfig = {'{'}
           <section class="content-section">
             <h2>Tailwind CSS</h2>
             <p>
-              This template includes Tailwind CSS v4. Use utility classes
+              Tailwind CSS v4 is included by default. Use utility classes
               alongside the custom CSS:
             </p>
             <div class="code-block">
@@ -168,6 +168,15 @@ export const siteConfig = {'{'}
   &lt;p class="text-gray-600"&gt;Description&lt;/p&gt;
 &lt;/div&gt;</code></pre>
             </div>
+            <p>
+              Tailwind is optional and can be disabled in <code>site.ts</code> for smaller bundle size:
+            </p>
+            <div class="code-block">
+              <pre><code>features: {'{'}
+  tailwind: false,  // Disable Tailwind CSS
+{'}'}</code></pre>
+            </div>
+            <p>The template's core styles work without Tailwind - all components use custom CSS classes.</p>
           </section>
         </FadeInOnScroll>
 

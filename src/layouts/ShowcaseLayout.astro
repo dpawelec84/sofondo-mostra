@@ -9,7 +9,13 @@
  */
 
 import "../styles/global.css";
+import { siteConfig } from "../config/site";
 import { getRecipe, getThemeCssVars, recipeToConfig } from '../utils/recipe-context';
+
+// Conditionally import Tailwind CSS
+if (siteConfig.features.tailwind) {
+  await import("../styles/tailwind.css");
+}
 
 interface Props {
   title: string;

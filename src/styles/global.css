@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* Tailwind CSS is conditionally imported in Layout.astro based on siteConfig.features.tailwind */
 
 :root {
   --bg-light: #fafafa;
