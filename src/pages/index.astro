@@ -120,6 +120,19 @@ import { siteConfig } from "../config/site";
             <p>Scroll-triggered fade-in animations for content.</p>
           </div>
         </FadeInOnScroll>
+        <FadeInOnScroll delay={600}>
+          <div class="feature-card feature-card--highlight">
+            <div class="feature-icon feature-icon--indigo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+            </div>
+            <h3>SEO Suite</h3>
+            <p>Meta tags, Open Graph, Twitter Cards, structured data, and auto-generated sitemap.</p>
+          </div>
+        </FadeInOnScroll>
+
       </div>
     </div>
   </section>
@@ -331,6 +344,7 @@ export const siteConfig = {'{'}
     background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(244, 114, 182, 0.15));
     color: #ec4899;
   }
+.feature-icon--indigo {    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(129, 140, 248, 0.15));    color: #6366f1;  }  .feature-card--highlight {    border-color: rgba(99, 102, 241, 0.3);    background: linear-gradient(135deg, rgba(99, 102, 241, 0.03), rgba(129, 140, 248, 0.03));  }  .feature-card--highlight:hover {    border-color: rgba(99, 102, 241, 0.5);  }
 
   .code-block {
     background: #1e1e2e;
