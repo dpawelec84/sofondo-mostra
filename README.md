@@ -22,7 +22,7 @@ A modern, feature-rich Astro template for building marketing sites and landing p
 
 ```bash
 # Clone the repository
-git clone https://github.com/sofondo/mostra.git my-project
+git clone https://github.com/dpawelec84/sofondo-mostra.git my-project
 cd my-project
 
 # Install dependencies
