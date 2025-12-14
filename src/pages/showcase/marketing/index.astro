@@ -5,13 +5,19 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 ---
 
 <Layout title="Marketing Sites - Sofondo Mostra">
-  <SubNav variant="simple">
-    <a href="/showcase/">All</a>
-    <a href="/showcase/free/">Free</a>
-    <a href="/showcase/premium/">Premium</a>
-    <a href="/showcase/marketing/" class="active">Marketing</a>
-    <a href="/showcase/landing/">Landing</a>
-    <a href="/showcase/nonprofit/">Non-profit</a>
+  <SubNav variant="grouped">
+    <div class="sub-nav-group sub-nav-group-primary">
+      <a href="/showcase/">All</a>
+    </div>
+    <div class="sub-nav-group sub-nav-group-secondary">
+      <a href="/showcase/free/">Free</a>
+      <a href="/showcase/premium/">Premium</a>
+    </div>
+    <div class="sub-nav-group sub-nav-group-tertiary">
+      <a href="/showcase/marketing/" class="active">Marketing</a>
+      <a href="/showcase/landing/">Landing</a>
+      <a href="/showcase/nonprofit/">Non-profit</a>
+    </div>
   </SubNav>
 
   <section class="page-content" data-bg-theme="light">
