@@ -226,9 +226,10 @@ footer: {
 
 ```typescript
 features: {
-  smoothScrolling: true,    // Lenis smooth scrolling
-  customScrollbar: true,    // Chrome-style custom scrollbar
-  viewTransitions: true,    // Astro View Transitions
+  smoothScrolling: true,           // Lenis smooth scrolling
+  customScrollbar: true,           // Chrome-style custom scrollbar
+  scrollbarThumbStyle: "full",     // "auto" (thin, expands on hover) or "full" (always full width)
+  viewTransitions: true,           // Astro View Transitions
 },
 ```
 

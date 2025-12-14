@@ -236,14 +236,18 @@ export const siteConfig = {
           { label: "Documentation", href: "/docs/" },
         ],
       },
+      {
+        heading: "Connect",
+        links: [
+          { label: "GitHub", href: "https://github.com" },
+        ],
+      },
     ] as FooterLinkGroup[],
     // Social links configuration
     social: {
-      style: "icons" as SocialStyle,  // 'icons' | 'initials' | 'text' | 'none'
+      style: "none" as SocialStyle,  // 'icons' | 'initials' | 'text' | 'none'
       position: "brand" as SocialPosition, // 'brand' (under logo) | 'column' (in linkGroups)
-      links: [
-        { platform: "github", label: "GitHub", href: "https://github.com" },
-      ] as SocialLink[],
+      links: [] as SocialLink[],
     },
     // Legal links (Privacy, Terms) - shown in bottom bar
     legalLinks: [] as { label: string; href: string }[],
@@ -272,6 +276,13 @@ export const siteConfig = {
      * Set to false to use native browser scrollbar
      */
     customScrollbar: true,
+
+    /**
+     * Custom scrollbar thumb style
+     * - 'auto': Thin by default, expands on hover (Chrome-like)
+     * - 'full': Full width always (more visible)
+     */
+    scrollbarThumbStyle: "full" as "auto" | "full",
 
     /**
      * View transitions

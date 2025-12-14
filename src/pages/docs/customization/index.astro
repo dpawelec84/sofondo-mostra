@@ -139,28 +139,19 @@ export const siteConfig = {'{'}
             <h2>Custom Scrollbar</h2>
             <p>
               The custom scrollbar automatically adapts to light/dark themes.
-              Customize in <code>global.css</code>:
+              Configure the thumb style in <code>site.ts</code>:
             </p>
             <div class="code-block">
-              <pre><code>.custom-scrollbar {'{'}
-  --scrollbar-width: 8px;
-  --scrollbar-track: transparent;
-  --scrollbar-thumb: rgba(0, 0, 0, 0.2);
-  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.3);
-{'}'}
-
-/* Dark theme scrollbar */
-.custom-scrollbar[data-theme="dark"] {'{'}
-  --scrollbar-thumb: rgba(255, 255, 255, 0.2);
-  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.3);
-{'}'}</code></pre>
-            </div>
-            <p>Disable the custom scrollbar in <code>site.ts</code>:</p>
-            <div class="code-block">
               <pre><code>features: {'{'}
-  customScrollbar: false,
+  customScrollbar: true,
+  scrollbarThumbStyle: "full",  // "auto" or "full"
 {'}'}</code></pre>
             </div>
+            <ul class="feature-list">
+              <li><strong>auto</strong> - Thin thumb (8px) that expands on hover (Chrome-like)</li>
+              <li><strong>full</strong> - Always full width thumb (10px) for better visibility</li>
+            </ul>
+            <p>The scrollbar colors adapt automatically to dark themes. Set <code>customScrollbar: false</code> to use native browser scrollbar.</p>
           </section>
         </FadeInOnScroll>
 

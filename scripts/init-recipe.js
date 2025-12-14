@@ -767,6 +767,13 @@ if (recipe.showTemplateCredit !== undefined) {
   console.log(`✓ Updated showTemplateCredit to ${recipe.showTemplateCredit}`);
 }
 
+// Always set scrollbarThumbStyle to "full" for all recipe sites
+siteConfig = siteConfig.replace(
+  /scrollbarThumbStyle:\s*"[^"]+"\s*as\s*"auto"\s*\|\s*"full"/,
+  `scrollbarThumbStyle: "full" as "auto" | "full"`
+);
+console.log(`✓ Updated scrollbarThumbStyle to "full"`);
+
 fs.writeFileSync(siteConfigPath, siteConfig);
 console.log('✓ Updated site.ts with recipe configuration');
 

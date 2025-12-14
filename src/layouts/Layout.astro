@@ -12,11 +12,14 @@ interface Props {
 const { title } = Astro.props;
 
 // Feature flags from config
-const { smoothScrolling, customScrollbar, viewTransitions } =
+const { smoothScrolling, customScrollbar, viewTransitions, scrollbarThumbStyle } =
   siteConfig.features;
 
 // Dark theme flag for scrollbar and sub-nav styling
 const isDark = siteConfig.isDark || false;
+
+// Scrollbar thumb style - 'auto' (thin, expands on hover) or 'full' (always full width)
+const thumbStyle = scrollbarThumbStyle || 'auto';
 ---
 
 <!doctype html>
@@ -88,7 +91,7 @@ const isDark = siteConfig.isDark || false;
     {/* Custom Scrollbar Structure - conditionally rendered */}
     {
       customScrollbar && (
-        <div class="custom-scrollbar">
+        <div class="custom-scrollbar" data-thumb-style={thumbStyle}>
           <div class="scroll-arrow scroll-arrow-up" aria-hidden="true" />
           <div class="scroll-track">
             <div class="custom-thumb" />
@@ -651,6 +654,16 @@ const isDark = siteConfig.isDark || false;
 
   .custom-thumb.dragging {
     background: rgba(0, 0, 0, 0.6);
+    width: 10px;
+  }
+
+  /* Full-width thumb style - always 10px, no expand on hover */
+  .custom-scrollbar[data-thumb-style="full"] .custom-thumb {
+    width: 10px;
+  }
+
+  .custom-scrollbar[data-thumb-style="full"] .custom-thumb:hover,
+  .custom-scrollbar[data-thumb-style="full"] .custom-thumb.dragging {
     width: 10px;
   }
 

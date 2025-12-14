@@ -214,14 +214,16 @@ footer: {'{'}
             <p>Toggle optional features on or off:</p>
             <div class="code-block">
               <pre><code>features: {'{'}
-  smoothScrolling: true,  // Lenis smooth scrolling
-  customScrollbar: true,  // Chrome-style scrollbar
-  viewTransitions: true,  // Page transitions
+  smoothScrolling: true,       // Lenis smooth scrolling
+  customScrollbar: true,       // Chrome-style scrollbar
+  scrollbarThumbStyle: "full", // "auto" or "full"
+  viewTransitions: true,       // Page transitions
 {'}'}</code></pre>
             </div>
             <ul class="option-list">
               <li><strong>smoothScrolling</strong> - Enables Lenis for buttery smooth scrolling experience</li>
               <li><strong>customScrollbar</strong> - Replaces native scrollbar with theme-aware styled version</li>
+              <li><strong>scrollbarThumbStyle</strong> - <code>"auto"</code> (thin, expands on hover) or <code>"full"</code> (always full width)</li>
               <li><strong>viewTransitions</strong> - Enables smooth page transitions using Astro View Transitions</li>
             </ul>
           </section>
