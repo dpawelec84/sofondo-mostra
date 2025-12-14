@@ -104,6 +104,14 @@ export const siteConfig = {
   showTemplateName: true, // Set to true to show template name after brand name in logo
   description: "A modern Astro template for marketing sites and landing pages",
 
+  // SEO configuration
+  seo: {
+    /** Default OG image used when page does not specify one (path from public/) */
+    defaultImage: "/og-image.png",
+    /** Twitter handle for Twitter Cards (with or without @) */
+    twitterHandle: "",
+  },
+
   // Branding - leave src empty for no logo mark
   logo: {
     src: "", // e.g., "/logo.png" - leave empty if no logo

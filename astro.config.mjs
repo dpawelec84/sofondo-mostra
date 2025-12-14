@@ -4,6 +4,7 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 
 // Read site config to check if Tailwind is enabled
 // This is done at build time, not runtime
@@ -28,7 +29,14 @@ if (tailwindEnabled) {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
+  // Site URL - required for sitemap generation and canonical URLs
+  // Update this to your production URL before deploying
+  site: 'https://example.com',
+
+  integrations: [
+    react(),
+    sitemap(),
+  ],
 
   devToolbar: {
     enabled: false
