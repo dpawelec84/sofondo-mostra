@@ -1,0 +1,417 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+
+const codeExamples = {
+  basicUsage: `&lt;Layout
+  title="My Page Title"
+  description="A custom description for this page"
+&gt;
+  &lt;!-- Page content --&gt;
+&lt;/Layout&gt;`,
+  siteConfig: `// src/config/site.ts
+export const siteConfig = {
+  // ...
+  seo: {
+    defaultImage: "/og-image.png",
+    twitterHandle: "@yourusername",
+  },
+};`,
+  imageOverride: `&lt;Layout
+  title="Product Launch"
+  image="/images/product-og.png"
+&gt;`,
+  article: `&lt;Layout
+  title="My Blog Post"
+  type="article"
+&gt;
+  &lt;!-- Post content --&gt;
+&lt;/Layout&gt;`,
+  astroConfig: `// astro.config.mjs
+export default defineConfig({
+  site: 'https://yourdomain.com',
+  integrations: [
+    sitemap(),
+  ],
+});`,
+  robots: `# public/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://yourdomain.com/sitemap-index.xml`,
+};
+---
+
+<Layout title="SEO - Documentation - Sofondo Mostra">
+  <SubNav variant="simple">
+    <a href="/docs/">Getting Started</a>
+    <a href="/docs/configuration/">Configuration</a>
+    <a href="/docs/components/">Components</a>
+    <a href="/docs/seo/" class="active">SEO</a>
+    <a href="/docs/customization/">Customization</a>
+    <a href="/docs/recipes/">Recipes</a>
+  </SubNav>
+
+  <section class="page-content" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <div class="page-header">
+          <h1 class="page-title">SEO</h1>
+          <p class="page-description intro">
+            Built-in SEO features for maximum search engine visibility and social sharing.
+          </p>
+        </div>
+      </FadeInOnScroll>
+
+      <div class="docs-content">
+        <FadeInOnScroll delay={0}>
+          <section class="docs-section">
+            <h2>Overview</h2>
+            <p>
+              Mostra includes a comprehensive SEO suite out of the box, giving you everything
+              needed for search engine optimization and social media sharing without any extra setup.
+            </p>
+            <ul class="feature-list">
+              <li><strong>Meta Tags</strong> - Title, description, and robots directives</li>
+              <li><strong>Open Graph</strong> - Facebook, LinkedIn, and other social platforms</li>
+              <li><strong>Twitter Cards</strong> - Rich previews on Twitter/X</li>
+              <li><strong>Canonical URLs</strong> - Prevent duplicate content issues</li>
+              <li><strong>Structured Data</strong> - JSON-LD for rich search results</li>
+              <li><strong>Sitemap</strong> - Auto-generated XML sitemap</li>
+              <li><strong>robots.txt</strong> - Search engine crawling directives</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <section class="docs-section">
+            <h2>Basic Usage</h2>
+            <p>
+              The Layout component automatically handles SEO. Just pass a title and optionally
+              a description:
+            </p>
+            <div class="code-block">
+              <pre><code set:html={codeExamples.basicUsage} /></pre>
+            </div>
+            <p>
+              If no description is provided, it falls back to the site-wide description
+              from <code>site.ts</code>.
+            </p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <section class="docs-section">
+            <h2>Available Props</h2>
+            <p>The Layout component accepts these SEO-related props:</p>
+            <div class="props-table">
+              <div class="prop-row">
+                <div class="prop-name"><code>title</code></div>
+                <div class="prop-type">string</div>
+                <div class="prop-desc">Page title (required). Automatically formatted as "Title | Site Name"</div>
+              </div>
+              <div class="prop-row">
+                <div class="prop-name"><code>description</code></div>
+                <div class="prop-type">string</div>
+                <div class="prop-desc">Page description for meta tags and social sharing</div>
+              </div>
+              <div class="prop-row">
+                <div class="prop-name"><code>image</code></div>
+                <div class="prop-type">string</div>
+                <div class="prop-desc">OG image URL (absolute URL recommended)</div>
+              </div>
+              <div class="prop-row">
+                <div class="prop-name"><code>type</code></div>
+                <div class="prop-type">"website" | "article" | "product"</div>
+                <div class="prop-desc">Open Graph content type (default: "website")</div>
+              </div>
+              <div class="prop-row">
+                <div class="prop-name"><code>canonical</code></div>
+                <div class="prop-type">string</div>
+                <div class="prop-desc">Override the canonical URL</div>
+              </div>
+              <div class="prop-row">
+                <div class="prop-name"><code>noindex</code></div>
+                <div class="prop-type">boolean</div>
+                <div class="prop-desc">Prevent search engines from indexing this page</div>
+              </div>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <section class="docs-section">
+            <h2>Social Sharing Images</h2>
+            <p>
+              Configure a default Open Graph image in <code>site.ts</code>:
+            </p>
+            <div class="code-block">
+              <pre><code set:html={codeExamples.siteConfig} /></pre>
+            </div>
+            <p>
+              For page-specific images, pass the <code>image</code> prop to Layout:
+            </p>
+            <div class="code-block">
+              <pre><code set:html={codeExamples.imageOverride} /></pre>
+            </div>
+            <p class="tip">
+              <strong>Tip:</strong> OG images should be 1200x630 pixels for optimal display
+              across all platforms.
+            </p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <section class="docs-section">
+            <h2>Blog Posts &amp; Articles</h2>
+            <p>
+              For blog posts or articles, use the <code>type="article"</code> prop to enable
+              article-specific meta tags:
+            </p>
+            <div class="code-block">
+              <pre><code set:html={codeExamples.article} /></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={500}>
+          <section class="docs-section">
+            <h2>Structured Data (JSON-LD)</h2>
+            <p>
+              The SEO component automatically generates JSON-LD structured data for:
+            </p>
+            <ul class="feature-list">
+              <li><strong>Organization</strong> - Your company/brand information</li>
+              <li><strong>WebSite</strong> - Site-level metadata</li>
+              <li><strong>WebPage / Article</strong> - Page-specific information</li>
+            </ul>
+            <p>
+              This helps search engines understand your content and can enable rich
+              results in search listings.
+            </p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={600}>
+          <section class="docs-section">
+            <h2>Sitemap</h2>
+            <p>
+              An XML sitemap is automatically generated at build time using
+              <code>@astrojs/sitemap</code>. Configure the site URL in <code>astro.config.mjs</code>:
+            </p>
+            <div class="code-block">
+              <pre><code set:html={codeExamples.astroConfig} /></pre>
+            </div>
+            <p>
+              After building, your sitemap will be available at <code>/sitemap-index.xml</code>.
+            </p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={700}>
+          <section class="docs-section">
+            <h2>robots.txt</h2>
+            <p>
+              A robots.txt file is included at <code>public/robots.txt</code>. Update it
+              with your production domain:
+            </p>
+            <div class="code-block">
+              <pre><code set:html={codeExamples.robots} /></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={800}>
+          <section class="docs-section">
+            <h2>Deployment Checklist</h2>
+            <p>Before deploying, make sure to:</p>
+            <ul class="checklist">
+              <li>Update <code>site</code> URL in <code>astro.config.mjs</code></li>
+              <li>Update sitemap URL in <code>public/robots.txt</code></li>
+              <li>Add a default OG image at <code>public/og-image.png</code></li>
+              <li>Configure <code>twitterHandle</code> in <code>site.ts</code> (if applicable)</li>
+              <li>Review page titles and descriptions for each page</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .docs-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .docs-section {
+    margin-bottom: 3rem;
+  }
+
+  .docs-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .docs-section p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .docs-section code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+    color: #cdd6f4;
+    line-height: 1.6;
+    background: transparent;
+    padding: 0;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .feature-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .feature-list li:last-child {
+    border-bottom: none;
+  }
+
+  .feature-list strong {
+    color: var(--text-primary);
+  }
+
+  .props-table {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1rem 0;
+  }
+
+  .prop-row {
+    display: grid;
+    grid-template-columns: 140px 180px 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    align-items: start;
+  }
+
+  .prop-row:last-child {
+    border-bottom: none;
+  }
+
+  .prop-row:nth-child(even) {
+    background: var(--bg-secondary);
+  }
+
+  .prop-name code {
+    font-weight: 600;
+    color: var(--accent-primary);
+  }
+
+  .prop-type {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .prop-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .tip {
+    background: var(--accent-secondary);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-primary);
+  }
+
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .checklist li {
+    padding: 0.5rem 0 0.5rem 2rem;
+    position: relative;
+    color: var(--text-secondary);
+  }
+
+  .checklist li::before {
+    content: "[ ]";
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-family: monospace;
+  }
+
+  @media (max-width: 768px) {
+    .prop-row {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+
+    .prop-type {
+      font-size: 0.75rem;
+    }
+  }
+</style>
