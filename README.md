@@ -4,19 +4,16 @@ A modern, feature-rich Astro template for building marketing sites and landing p
 
 ## Features
 
-- **Recipe System** - Pre-configured themes for different use cases (corporate, agency, startup, etc.)
-- **Multiple Header Layouts** - Standard, centered, or minimal navigation layouts
-- **Logo Options** - Text-only, icon+text, gradient-box, emoji, or custom SVG icons
-- **Mega Menu Navigation** - Multi-column dropdown menus with sections and descriptions
-- **Multiple Footer Layouts** - Grid columns, flex rows, flex sections, or minimal centered
-- **Lenis Smooth Scrolling** - Buttery smooth scrolling experience (opt-in)
-- **Custom Scrollbar** - Chrome-style custom scrollbar with theme awareness (opt-in)
-- **View Transitions** - Smooth page transitions using Astro's View Transitions API (opt-in)
-- **SubNav Component** - Sticky navigation with glassmorphism effects and grouped links
-- **FadeIn Animations** - Scroll-triggered fade-in animations for content
-- **Mobile-First** - Responsive design with horizontal scroll on mobile sub-navigation
-- **Dark Theme Support** - Full dark mode with themed scrollbars and components
-- **Fully Configurable** - All features controlled through a single configuration file
+- **Recipe System** - Pre-configured themes for different use cases
+- **Multiple Header Layouts** - Standard, centered, or minimal navigation
+- **Logo Options** - Text-only, icon+text, gradient-box, emoji, or SVG icons
+- **Mega Menu Navigation** - Multi-column dropdowns with sections
+- **Multiple Footer Layouts** - Grid, flex-row, flex-sections, or minimal
+- **Smooth Scrolling** - Lenis-powered smooth scroll (opt-in)
+- **Custom Scrollbar** - Theme-aware custom scrollbar (opt-in)
+- **View Transitions** - Smooth page transitions (opt-in)
+- **Dark Theme Support** - Full dark mode with themed components
+- **SEO Suite** - Meta tags, Open Graph, Twitter Cards, structured data, sitemap
 
 ## Quick Start
 
@@ -37,14 +34,17 @@ npm run build
 
 ### Using a Recipe
 
-Apply a pre-configured theme instantly:
+Instantly transform the template with pre-configured themes:
 
 ```bash
 # Initialize with a specific recipe
 npm run init:recipe -- --recipe=corporate
 
-# Available recipes: corporate, agency, startup, product-launch, app-download, newsletter, nonprofit
+# Free recipes: corporate, startup, nonprofit
+# Premium recipes: agency, product-launch, app-download, newsletter
 ```
+
+Premium recipes are free to use with an optional support prompt.
 
 ## Recipe System
 
@@ -66,29 +66,23 @@ Recipes are pre-configured themes that instantly transform the template for spec
 src/
 ├── components/          # Reusable components
 │   ├── Header.astro     # Site header with navigation
-│   ├── Footer.astro     # Site footer with multiple layouts
+│   ├── Footer.astro     # Site footer (multiple layouts)
+│   ├── Logo.astro       # Logo (multiple styles)
+│   ├── SEO.astro        # SEO meta tags, OG, Twitter Cards
 │   ├── SubNav.astro     # Sticky sub-navigation
-│   ├── FadeInOnScroll.astro  # Scroll animation wrapper
-│   ├── Logo.astro       # Logo component (multiple styles)
-│   └── Navigation.tsx   # React navigation with mega menus
+│   ├── FadeInOnScroll.astro
+│   └── Navigation.tsx   # React mega menu navigation
 ├── config/
-│   └── site.ts          # Site configuration (all options)
+│   └── site.ts          # All site configuration
 ├── layouts/
-│   ├── Layout.astro     # Main layout with optional features
-│   └── ShowcaseLayout.astro  # Layout for recipe showcases
+│   ├── Layout.astro     # Main layout (includes SEO)
+│   └── ShowcaseLayout.astro  # Recipe showcase layout
 ├── recipes/
 │   └── index.ts         # Recipe definitions
-├── pages/
-│   ├── index.astro      # Homepage
-│   ├── features/        # Features pages
-│   ├── showcase/        # Showcase & recipe examples
-│   ├── docs/            # Documentation pages
-│   └── get-started/     # Getting started guide
-├── styles/
-│   ├── global.css       # Global styles & CSS variables
-│   └── mobile-menu.css  # Mobile menu styles
-└── public/
-    └── fonts/           # Self-hosted fonts
+├── pages/               # Page routes
+└── styles/
+    ├── global.css       # Global styles & CSS variables
+    └── mobile-menu.css  # Mobile menu styles
 ```
 
 ## Configuration
