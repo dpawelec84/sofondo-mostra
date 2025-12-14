@@ -4,12 +4,12 @@ import SubNav from "../../../components/SubNav.astro";
 import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 ---
 
-<Layout title="Marketing Sites - Sofondo Mostra">
+<Layout title="Free Recipes - Sofondo Mostra">
   <SubNav variant="simple">
     <a href="/showcase/">All</a>
-    <a href="/showcase/free/">Free</a>
+    <a href="/showcase/free/" class="active">Free</a>
     <a href="/showcase/premium/">Premium</a>
-    <a href="/showcase/marketing/" class="active">Marketing</a>
+    <a href="/showcase/marketing/">Marketing</a>
     <a href="/showcase/landing/">Landing</a>
     <a href="/showcase/nonprofit/">Non-profit</a>
   </SubNav>
@@ -18,9 +18,9 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     <div class="container">
       <FadeInOnScroll>
         <div class="page-header">
-          <h1 class="page-title">Marketing Site Examples</h1>
+          <h1 class="page-title">Free Recipes</h1>
           <p class="page-description intro">
-            Corporate and brand website builds using this template.
+            Get started with these free templates - no strings attached.
           </p>
         </div>
       </FadeInOnScroll>
@@ -32,6 +32,7 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
               <span class="showcase-badge showcase-badge--free">Free</span>
             </div>
             <div class="showcase-content">
+              <span class="showcase-tag">Marketing</span>
               <h3>Corporate Website</h3>
               <p>Professional business site with multiple sections and contact forms.</p>
               <span class="showcase-link">View Demo &rarr;</span>
@@ -40,26 +41,28 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={100}>
-          <a href="/showcase/examples/agency/" class="showcase-card">
-            <div class="showcase-image showcase-image--teal">
-              <span class="showcase-badge showcase-badge--premium">Premium</span>
+          <a href="/showcase/examples/startup/" class="showcase-card">
+            <div class="showcase-image showcase-image--purple">
+              <span class="showcase-badge showcase-badge--free">Free</span>
             </div>
             <div class="showcase-content">
-              <h3>Agency Portfolio</h3>
-              <p>Creative agency site showcasing work and team members.</p>
+              <span class="showcase-tag">Marketing</span>
+              <h3>Tech Startup</h3>
+              <p>Modern startup site with product features and pricing.</p>
               <span class="showcase-link">View Demo &rarr;</span>
             </div>
           </a>
         </FadeInOnScroll>
 
         <FadeInOnScroll delay={200}>
-          <a href="/showcase/examples/startup/" class="showcase-card">
-            <div class="showcase-image showcase-image--purple">
+          <a href="/showcase/examples/nonprofit/" class="showcase-card">
+            <div class="showcase-image showcase-image--ocean">
               <span class="showcase-badge showcase-badge--free">Free</span>
             </div>
             <div class="showcase-content">
-              <h3>Tech Startup</h3>
-              <p>Modern startup site with product features and pricing.</p>
+              <span class="showcase-tag">Non-profit</span>
+              <h3>Ocean Conservation</h3>
+              <p>Non-profit site with donation forms, impact stories, and volunteer signup.</p>
               <span class="showcase-link">View Demo &rarr;</span>
             </div>
           </a>
@@ -148,16 +151,29 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     background: linear-gradient(135deg, #3b82f6, #6366f1);
   }
 
-  .showcase-image--teal {
-    background: linear-gradient(135deg, #14b8a6, #06b6d4);
-  }
-
   .showcase-image--purple {
     background: linear-gradient(135deg, #8b5cf6, #a855f7);
   }
 
+  .showcase-image--ocean {
+    background: linear-gradient(135deg, #0369a1, #0284c7);
+  }
+
   .showcase-content {
     padding: 1.5rem;
+  }
+
+  .showcase-tag {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
   }
 
   .showcase-content h3 {

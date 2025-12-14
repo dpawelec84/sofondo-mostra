@@ -10,10 +10,12 @@
  * 1. Creates a new homepage based on the selected showcase example
  * 2. Updates global.css with the recipe's theme variables
  * 3. Updates site.ts with the recipe's name
+ * 4. Shows premium unlock prompt for premium recipes
  */
 
 import fs from 'fs';
 import path from 'path';
+import readline from 'readline';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -63,6 +65,7 @@ function parseRecipes() {
       description: extractField(recipeContent, 'description'),
       tagline: extractField(recipeContent, 'tagline'),
       category: extractField(recipeContent, 'category'),
+      premium: extractBoolean(recipeContent, 'premium'),
       source: extractField(recipeContent, 'source'),
       theme: extractTheme(recipeContent),
       fonts: extractFonts(recipeContent),
@@ -257,7 +260,8 @@ const recipes = parseRecipes();
 if (flags.list) {
   console.log('\nAvailable recipes:\n');
   for (const [id, recipe] of Object.entries(recipes)) {
-    console.log(`  ${id.padEnd(16)} - ${recipe.name}`);
+    const premiumBadge = recipe.premium ? ' \x1b[35m[premium]\x1b[0m' : '';
+    console.log(`  ${id.padEnd(16)} - ${recipe.name}${premiumBadge}`);
     console.log(`  ${' '.repeat(16)}   ${recipe.description}`);
     console.log();
   }
@@ -298,6 +302,59 @@ if (!recipe) {
   }
   process.exit(1);
 }
+
+// Check if this is a premium recipe and handle unlock prompt
+async function checkPremiumAndContinue() {
+  if (recipe.premium) {
+    // Check if already unlocked
+    const siteConfigPath = path.join(ROOT, 'src/config/site.ts');
+    const siteConfig = fs.readFileSync(siteConfigPath, 'utf-8');
+    const isUnlocked = siteConfig.includes('premiumUnlocked: true');
+
+    if (!isUnlocked) {
+      // Import and run the unlock prompt
+      const { displaySupportMessage, unlockPremium, checkIfUnlocked } = await import('./unlock-premium.js');
+
+      // Show the unlock message
+      displaySupportMessage(recipe.name);
+
+      // Wait for user input
+      const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+      });
+
+      return new Promise((resolve) => {
+        if (process.stdin.isTTY) {
+          process.stdin.setRawMode(true);
+        }
+
+        process.stdin.once('data', (data) => {
+          const key = data.toString().toLowerCase();
+          if (process.stdin.isTTY) {
+            process.stdin.setRawMode(false);
+          }
+          rl.close();
+
+          if (key === 's') {
+            const success = unlockPremium();
+            if (success) {
+              console.log(`\n\x1b[32m✓\x1b[0m Premium unlocked! You won't see this prompt again.`);
+              console.log(`\x1b[2m  (You can still support us anytime at the links above)\x1b[0m\n`);
+            }
+          } else {
+            console.log(`\n\x1b[32m✓\x1b[0m Continuing with recipe installation...\n`);
+          }
+
+          resolve();
+        });
+      });
+    }
+  }
+}
+
+// Run premium check then continue with recipe application
+await checkPremiumAndContinue();
 
 console.log(`\nApplying recipe: ${recipe.name}\n`);
 
@@ -773,6 +830,14 @@ siteConfig = siteConfig.replace(
   `scrollbarThumbStyle: "full" as "auto" | "full"`
 );
 console.log(`✓ Updated scrollbarThumbStyle to "full"`);
+
+// Remove the "Premium" nav item (it's only for the template documentation site)
+// Match the nav item object: { label: "Premium", href: "/premium/", }
+siteConfig = siteConfig.replace(
+  /,?\s*\{\s*label:\s*["']Premium["'],\s*href:\s*["']\/premium\/["'],?\s*\}/,
+  ''
+);
+console.log(`✓ Removed Premium nav item`);
 
 fs.writeFileSync(siteConfigPath, siteConfig);
 console.log('✓ Updated site.ts with recipe configuration');

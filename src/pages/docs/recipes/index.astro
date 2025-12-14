@@ -58,7 +58,9 @@ npm run init:recipe -- --recipe=corporate</code></pre>
             <h2>Available Recipes</h2>
             <div class="recipes-grid">
               <div class="recipe-card recipe-card--corporate">
-                <div class="recipe-preview"></div>
+                <div class="recipe-preview">
+                  <span class="recipe-badge recipe-badge--free">Free</span>
+                </div>
                 <div class="recipe-info">
                   <h3>corporate</h3>
                   <p class="recipe-name">Nexus Corp</p>
@@ -68,7 +70,9 @@ npm run init:recipe -- --recipe=corporate</code></pre>
               </div>
 
               <div class="recipe-card recipe-card--agency">
-                <div class="recipe-preview"></div>
+                <div class="recipe-preview">
+                  <span class="recipe-badge recipe-badge--premium">Premium</span>
+                </div>
                 <div class="recipe-info">
                   <h3>agency</h3>
                   <p class="recipe-name">Pixel Flow Agency</p>
@@ -78,7 +82,9 @@ npm run init:recipe -- --recipe=corporate</code></pre>
               </div>
 
               <div class="recipe-card recipe-card--startup">
-                <div class="recipe-preview"></div>
+                <div class="recipe-preview">
+                  <span class="recipe-badge recipe-badge--free">Free</span>
+                </div>
                 <div class="recipe-info">
                   <h3>startup</h3>
                   <p class="recipe-name">Velocity Tech</p>
@@ -88,7 +94,9 @@ npm run init:recipe -- --recipe=corporate</code></pre>
               </div>
 
               <div class="recipe-card recipe-card--product-launch">
-                <div class="recipe-preview"></div>
+                <div class="recipe-preview">
+                  <span class="recipe-badge recipe-badge--premium">Premium</span>
+                </div>
                 <div class="recipe-info">
                   <h3>product-launch</h3>
                   <p class="recipe-name">Spark Product Launch</p>
@@ -98,7 +106,9 @@ npm run init:recipe -- --recipe=corporate</code></pre>
               </div>
 
               <div class="recipe-card recipe-card--app-download">
-                <div class="recipe-preview"></div>
+                <div class="recipe-preview">
+                  <span class="recipe-badge recipe-badge--premium">Premium</span>
+                </div>
                 <div class="recipe-info">
                   <h3>app-download</h3>
                   <p class="recipe-name">Zenith App</p>
@@ -108,7 +118,9 @@ npm run init:recipe -- --recipe=corporate</code></pre>
               </div>
 
               <div class="recipe-card recipe-card--newsletter">
-                <div class="recipe-preview"></div>
+                <div class="recipe-preview">
+                  <span class="recipe-badge recipe-badge--premium">Premium</span>
+                </div>
                 <div class="recipe-info">
                   <h3>newsletter</h3>
                   <p class="recipe-name">Weekly Spark Newsletter</p>
@@ -118,7 +130,9 @@ npm run init:recipe -- --recipe=corporate</code></pre>
               </div>
 
               <div class="recipe-card recipe-card--nonprofit">
-                <div class="recipe-preview"></div>
+                <div class="recipe-preview">
+                  <span class="recipe-badge recipe-badge--free">Free</span>
+                </div>
                 <div class="recipe-info">
                   <h3>nonprofit</h3>
                   <p class="recipe-name">Ocean Guardians</p>
@@ -157,6 +171,7 @@ npm run init:recipe -- --recipe=corporate</code></pre>
                 <thead>
                   <tr>
                     <th>Recipe</th>
+                    <th>Type</th>
                     <th>Header</th>
                     <th>Footer</th>
                     <th>Logo Style</th>
@@ -165,42 +180,49 @@ npm run init:recipe -- --recipe=corporate</code></pre>
                 <tbody>
                   <tr>
                     <td>corporate</td>
+                    <td><span class="table-badge table-badge--free">Free</span></td>
                     <td>Standard</td>
                     <td>Grid 4-col</td>
                     <td>Gradient box</td>
                   </tr>
                   <tr>
                     <td>agency</td>
+                    <td><span class="table-badge table-badge--premium">Premium</span></td>
                     <td>Centered</td>
                     <td>Flex sections</td>
                     <td>Icon + text</td>
                   </tr>
                   <tr>
                     <td>startup</td>
+                    <td><span class="table-badge table-badge--free">Free</span></td>
                     <td>Standard</td>
                     <td>Flex row</td>
                     <td>Text only</td>
                   </tr>
                   <tr>
                     <td>product-launch</td>
+                    <td><span class="table-badge table-badge--premium">Premium</span></td>
                     <td>Standard</td>
                     <td>Minimal centered</td>
                     <td>Emoji</td>
                   </tr>
                   <tr>
                     <td>app-download</td>
+                    <td><span class="table-badge table-badge--premium">Premium</span></td>
                     <td>Standard</td>
                     <td>Minimal centered</td>
                     <td>Emoji</td>
                   </tr>
                   <tr>
                     <td>newsletter</td>
+                    <td><span class="table-badge table-badge--premium">Premium</span></td>
                     <td>Standard (compact)</td>
                     <td>Minimal centered</td>
                     <td>Icon + text</td>
                   </tr>
                   <tr>
                     <td>nonprofit</td>
+                    <td><span class="table-badge table-badge--free">Free</span></td>
                     <td>Centered</td>
                     <td>Grid 4-col</td>
                     <td>SVG icon</td>
@@ -386,6 +408,30 @@ npm run init:recipe -- --recipe=corporate</code></pre>
 
   .recipe-preview {
     height: 80px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0.5rem;
+  }
+
+  .recipe-badge {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .recipe-badge--free {
+    background: rgba(255, 255, 255, 0.9);
+    color: #059669;
+  }
+
+  .recipe-badge--premium {
+    background: rgba(139, 92, 246, 0.9);
+    color: #ffffff;
   }
 
   .recipe-card--corporate .recipe-preview {
@@ -483,5 +529,24 @@ npm run init:recipe -- --recipe=corporate</code></pre>
   .comparison-table td:first-child {
     font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
     color: var(--text-primary);
+  }
+
+  .table-badge {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+  }
+
+  .table-badge--free {
+    background: #d1fae5;
+    color: #059669;
+  }
+
+  .table-badge--premium {
+    background: #ede9fe;
+    color: #7c3aed;
   }
 </style>

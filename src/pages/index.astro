@@ -162,6 +162,19 @@ export const siteConfig = {'{'}
     </div>
   </section>
 
+  <!-- Premium Banner -->
+  <section class="premium-banner" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <a href="/premium/" class="premium-banner-link">
+          <span class="premium-badge">Premium</span>
+          <span class="premium-text">Explore premium recipes and features</span>
+          <span class="premium-arrow">&rarr;</span>
+        </a>
+      </FadeInOnScroll>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section class="cta-section" data-bg-theme="light">
     <div class="container">
@@ -364,6 +377,56 @@ export const siteConfig = {'{'}
     font-size: 0.875rem;
     color: #cdd6f4;
     line-height: 1.6;
+  }
+
+  .premium-banner {
+    padding: 2rem 0;
+  }
+
+  .premium-banner-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(99, 102, 241, 0.05));
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .premium-banner-link:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(99, 102, 241, 0.08));
+  }
+
+  .premium-badge {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(139, 92, 246, 0.9);
+    color: #ffffff;
+  }
+
+  .premium-text {
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .premium-arrow {
+    color: var(--text-secondary);
+    transition: transform 0.2s ease;
+  }
+
+  .premium-banner-link:hover .premium-arrow {
+    transform: translateX(4px);
   }
 
   .cta-section {

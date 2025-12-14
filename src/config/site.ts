@@ -190,8 +190,24 @@ export const siteConfig = {
         menuId: "showcase",
         sections: [
           {
-            title: "Examples",
+            title: "By Type",
             titleStyle: "tertiary" as const,
+            links: [
+              {
+                title: "Free Recipes",
+                description: "Get started with free templates",
+                href: "/showcase/free/",
+              },
+              {
+                title: "Premium Recipes",
+                description: "Advanced templates with extra polish",
+                href: "/showcase/premium/",
+              },
+            ],
+          },
+          {
+            title: "By Category",
+            titleStyle: "secondary" as const,
             links: [
               {
                 title: "Marketing Sites",
@@ -212,10 +228,14 @@ export const siteConfig = {
           },
         ],
       },
-      // Simple link (no mega menu)
+      // Simple links (no mega menu)
       {
         label: "Documentation",
         href: "/docs/",
+      },
+      {
+        label: "Premium",
+        href: "/premium/",
       },
     ] as NavItem[],
     // CTA button in header
@@ -304,6 +324,7 @@ export const siteConfig = {
      * Smooth page transitions using Astro's View Transitions API
      */
     viewTransitions: true,
+/**     * Premium features unlocked     * Set to true to skip premium feature prompts     * This is automatically set when running `npm run unlock:premium`     */    premiumUnlocked: false,
   },
 } as const;
 

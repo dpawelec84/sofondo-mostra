@@ -180,6 +180,7 @@ export interface Recipe {
   description: string;
   tagline: string; // Footer tagline
   category: 'marketing' | 'landing' | 'nonprofit';
+  premium?: boolean; // True for premium recipes (agency, product-launch, app-download, newsletter)
   source: string;
   theme: RecipeTheme;
   fonts?: RecipeFonts;
@@ -312,6 +313,7 @@ export const recipes: Record<string, Recipe> = {
   },
 
   agency: {
+    premium: true,
     name: 'Prism',
     description: 'Bold creative agency with vibrant gradients and modern typography',
     tagline: 'We craft digital experiences that captivate, engage, and convert.',
@@ -497,6 +499,7 @@ export const recipes: Record<string, Recipe> = {
   },
 
   'product-launch': {
+    premium: true,
     name: 'aura',
     description: 'Eye-catching product launch with vibrant orange and dark theme',
     tagline: 'Ignite your next big idea with tools designed for creators.',
@@ -568,6 +571,7 @@ export const recipes: Record<string, Recipe> = {
   },
 
   'app-download': {
+    premium: true,
     name: 'zenith',
     description: 'Modern app landing page with purple gradient theme',
     tagline: 'Your personal productivity companion, available everywhere.',
@@ -646,6 +650,7 @@ export const recipes: Record<string, Recipe> = {
   },
 
   newsletter: {
+    premium: true,
     name: 'The Weekly Spark',
     description: 'Clean newsletter signup with warm amber accents',
     tagline: 'Curated insights and inspiration delivered to your inbox every week.',

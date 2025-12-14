@@ -6,9 +6,11 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 
 <Layout title="Landing Pages - Sofondo Mostra">
   <SubNav variant="simple">
-    <a href="/showcase/">All Projects</a>
-    <a href="/showcase/marketing/">Marketing Sites</a>
-    <a href="/showcase/landing/" class="active">Landing Pages</a>
+    <a href="/showcase/">All</a>
+    <a href="/showcase/free/">Free</a>
+    <a href="/showcase/premium/">Premium</a>
+    <a href="/showcase/marketing/">Marketing</a>
+    <a href="/showcase/landing/" class="active">Landing</a>
     <a href="/showcase/nonprofit/">Non-profit</a>
   </SubNav>
 
@@ -26,7 +28,9 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
       <div class="showcase-grid">
         <FadeInOnScroll delay={0}>
           <a href="/showcase/examples/product-launch/" class="showcase-card">
-            <div class="showcase-image showcase-image--orange"></div>
+            <div class="showcase-image showcase-image--orange">
+              <span class="showcase-badge showcase-badge--premium">Premium</span>
+            </div>
             <div class="showcase-content">
               <h3>Product Launch</h3>
               <p>Eye-catching product launch page with features and pricing.</p>
@@ -37,7 +41,9 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 
         <FadeInOnScroll delay={100}>
           <a href="/showcase/examples/app-download/" class="showcase-card">
-            <div class="showcase-image showcase-image--purple"></div>
+            <div class="showcase-image showcase-image--purple">
+              <span class="showcase-badge showcase-badge--premium">Premium</span>
+            </div>
             <div class="showcase-content">
               <h3>App Download</h3>
               <p>Mobile app landing page with download links and screenshots.</p>
@@ -48,7 +54,9 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 
         <FadeInOnScroll delay={200}>
           <a href="/showcase/examples/newsletter/" class="showcase-card">
-            <div class="showcase-image showcase-image--teal"></div>
+            <div class="showcase-image showcase-image--teal">
+              <span class="showcase-badge showcase-badge--premium">Premium</span>
+            </div>
             <div class="showcase-content">
               <h3>Newsletter Signup</h3>
               <p>Simple landing page focused on email capture and conversion.</p>
@@ -110,6 +118,30 @@ import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
     height: 180px;
     background-size: cover;
     background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0.75rem;
+  }
+
+  .showcase-badge {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .showcase-badge--free {
+    background: rgba(255, 255, 255, 0.9);
+    color: #059669;
+  }
+
+  .showcase-badge--premium {
+    background: rgba(139, 92, 246, 0.9);
+    color: #ffffff;
   }
 
   .showcase-image--orange {

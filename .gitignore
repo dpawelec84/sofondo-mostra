@@ -23,3 +23,6 @@ pnpm-debug.log*
 # IDE
 .vscode/
 .idea/
+
+# Internal planning docs
+PREMIUM_FEATURE_PLAN.md

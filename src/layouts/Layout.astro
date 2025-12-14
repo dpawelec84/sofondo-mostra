@@ -125,6 +125,22 @@ const thumbStyle = scrollbarThumbStyle || 'auto';
         smoothScrolling,
         customScrollbar,
       };
+
+      // Premium support reminder - shown once per session in dev console
+      if (typeof sessionStorage !== 'undefined' && !sessionStorage.getItem('mostra-support-shown')) {
+        // Check if this is dev mode (localhost or dev environment)
+        const isDev = window.location.hostname === 'localhost' ||
+                      window.location.hostname === '127.0.0.1' ||
+                      window.location.port !== '';
+
+        if (isDev) {
+          console.log('%c✨ Enjoying Mostra?', 'font-size: 14px; font-weight: bold; color: #6366f1;');
+          console.log('%cConsider supporting development:', 'color: #64748b;');
+          console.log('%c  ☕ https://ko-fi.com/sofondo', 'color: #3b82f6;');
+          console.log('%c  💜 https://github.com/sponsors/sofondo', 'color: #8b5cf6;');
+          sessionStorage.setItem('mostra-support-shown', 'true');
+        }
+      }
     </script>
 
     <script>

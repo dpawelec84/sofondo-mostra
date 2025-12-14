@@ -1,14 +1,14 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import SubNav from "../../components/SubNav.astro";
-import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
+import Layout from "../../../layouts/Layout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
 ---
 
-<Layout title="Showcase - Sofondo Mostra">
+<Layout title="Premium Recipes - Sofondo Mostra">
   <SubNav variant="simple">
-    <a href="/showcase/" class="active">All</a>
+    <a href="/showcase/">All</a>
     <a href="/showcase/free/">Free</a>
-    <a href="/showcase/premium/">Premium</a>
+    <a href="/showcase/premium/" class="active">Premium</a>
     <a href="/showcase/marketing/">Marketing</a>
     <a href="/showcase/landing/">Landing</a>
     <a href="/showcase/nonprofit/">Non-profit</a>
@@ -18,30 +18,15 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     <div class="container">
       <FadeInOnScroll>
         <div class="page-header">
-          <h1 class="page-title">Showcase</h1>
+          <h1 class="page-title">Premium Recipes</h1>
           <p class="page-description intro">
-            Examples of what you can build with this template.
+            Advanced templates with extra polish. Free to use, but please consider <a href="/support/">supporting development</a>.
           </p>
         </div>
       </FadeInOnScroll>
 
       <div class="showcase-grid">
-        <!-- Marketing Sites -->
         <FadeInOnScroll delay={0}>
-          <a href="/showcase/examples/corporate/" class="showcase-card">
-            <div class="showcase-image showcase-image--blue">
-              <span class="showcase-badge showcase-badge--free">Free</span>
-            </div>
-            <div class="showcase-content">
-              <span class="showcase-tag">Marketing</span>
-              <h3>Corporate Website</h3>
-              <p>Professional business site with multiple sections and contact forms.</p>
-              <span class="showcase-link">View Demo &rarr;</span>
-            </div>
-          </a>
-        </FadeInOnScroll>
-
-        <FadeInOnScroll delay={100}>
           <a href="/showcase/examples/agency/" class="showcase-card">
             <div class="showcase-image showcase-image--teal">
               <span class="showcase-badge showcase-badge--premium">Premium</span>
@@ -55,22 +40,7 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
           </a>
         </FadeInOnScroll>
 
-        <FadeInOnScroll delay={200}>
-          <a href="/showcase/examples/startup/" class="showcase-card">
-            <div class="showcase-image showcase-image--purple">
-              <span class="showcase-badge showcase-badge--free">Free</span>
-            </div>
-            <div class="showcase-content">
-              <span class="showcase-tag">Marketing</span>
-              <h3>Tech Startup</h3>
-              <p>Modern startup site with product features and pricing.</p>
-              <span class="showcase-link">View Demo &rarr;</span>
-            </div>
-          </a>
-        </FadeInOnScroll>
-
-        <!-- Landing Pages -->
-        <FadeInOnScroll delay={300}>
+        <FadeInOnScroll delay={100}>
           <a href="/showcase/examples/product-launch/" class="showcase-card">
             <div class="showcase-image showcase-image--orange">
               <span class="showcase-badge showcase-badge--premium">Premium</span>
@@ -84,7 +54,7 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
           </a>
         </FadeInOnScroll>
 
-        <FadeInOnScroll delay={400}>
+        <FadeInOnScroll delay={200}>
           <a href="/showcase/examples/app-download/" class="showcase-card">
             <div class="showcase-image showcase-image--pink">
               <span class="showcase-badge showcase-badge--premium">Premium</span>
@@ -98,7 +68,7 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
           </a>
         </FadeInOnScroll>
 
-        <FadeInOnScroll delay={500}>
+        <FadeInOnScroll delay={300}>
           <a href="/showcase/examples/newsletter/" class="showcase-card">
             <div class="showcase-image showcase-image--cyan">
               <span class="showcase-badge showcase-badge--premium">Premium</span>
@@ -111,22 +81,23 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
             </div>
           </a>
         </FadeInOnScroll>
-
-        <!-- Non-profit -->
-        <FadeInOnScroll delay={600}>
-          <a href="/showcase/examples/nonprofit/" class="showcase-card">
-            <div class="showcase-image showcase-image--ocean">
-              <span class="showcase-badge showcase-badge--free">Free</span>
-            </div>
-            <div class="showcase-content">
-              <span class="showcase-tag">Non-profit</span>
-              <h3>Ocean Conservation</h3>
-              <p>Non-profit site with donation forms, impact stories, and volunteer signup.</p>
-              <span class="showcase-link">View Demo &rarr;</span>
-            </div>
-          </a>
-        </FadeInOnScroll>
       </div>
+
+      <FadeInOnScroll delay={400}>
+        <div class="support-cta">
+          <p>Premium recipes are free to use. If you find them valuable, please consider supporting development.</p>
+          <div class="support-links">
+            <a href="https://ko-fi.com/sofondo" class="support-link" target="_blank" rel="noopener">
+              <span class="support-icon">☕</span>
+              Ko-fi
+            </a>
+            <a href="https://github.com/sponsors/sofondo" class="support-link" target="_blank" rel="noopener">
+              <span class="support-icon">💜</span>
+              GitHub Sponsors
+            </a>
+          </div>
+        </div>
+      </FadeInOnScroll>
     </div>
   </section>
 </Layout>
@@ -153,6 +124,11 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
+  }
+
+  .page-description a {
+    color: var(--accent-primary);
+    text-decoration: underline;
   }
 
   .showcase-grid {
@@ -206,16 +182,8 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     color: #ffffff;
   }
 
-  .showcase-image--blue {
-    background: linear-gradient(135deg, #3b82f6, #6366f1);
-  }
-
   .showcase-image--teal {
     background: linear-gradient(135deg, #14b8a6, #06b6d4);
-  }
-
-  .showcase-image--purple {
-    background: linear-gradient(135deg, #8b5cf6, #a855f7);
   }
 
   .showcase-image--orange {
@@ -228,10 +196,6 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
 
   .showcase-image--cyan {
     background: linear-gradient(135deg, #06b6d4, #0ea5e9);
-  }
-
-  .showcase-image--ocean {
-    background: linear-gradient(135deg, #0369a1, #0284c7);
   }
 
   .showcase-content {
@@ -281,5 +245,51 @@ import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
     display: block;
     text-decoration: none;
     color: inherit;
+  }
+
+  .support-cta {
+    max-width: 600px;
+    margin: 3rem auto 0;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(99, 102, 241, 0.05));
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 12px;
+  }
+
+  .support-cta p {
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+  }
+
+  .support-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .support-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .support-link:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .support-icon {
+    font-size: 1.125rem;
   }
 </style>
