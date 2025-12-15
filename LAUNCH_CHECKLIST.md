@@ -49,7 +49,7 @@ This checklist identifies features needed before launching as a premium Astro ma
 
 ### Accessibility Essentials
 - [x] **Skip to main content link** - Add skip link for keyboard users
-- [ ] **Heading hierarchy** - Audit and enforce proper h1-h6 order
+- [x] **Heading hierarchy** - Fixed duplicate h1 and h1→h3 skips
 - [x] **Alt text audit** - All images have meaningful alt text from config
 - [x] **Focus indicators** - Visible focus states on all interactive elements
 - [x] **Color contrast** - Fixed footer credit opacity for WCAG AA compliance
