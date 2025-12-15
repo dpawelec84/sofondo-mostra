@@ -2,6 +2,7 @@
 import Layout from "../../../layouts/Layout.astro";
 import SubNav from "../../../components/SubNav.astro";
 import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+import Badge from "../../../components/Badge.astro";
 ---
 
 <Layout title="Recipes - Sofondo Mostra">
@@ -62,7 +63,7 @@ npm run init:recipe -- --recipe=corporate</code></pre>
             <div class="recipes-grid">
               <div class="recipe-card recipe-card--corporate">
                 <div class="recipe-preview">
-                  <span class="recipe-badge recipe-badge--free">Free</span>
+                  <Badge variant="solid" color="green" size="sm">Free</Badge>
                 </div>
                 <div class="recipe-info">
                   <h3>corporate</h3>
@@ -74,7 +75,7 @@ npm run init:recipe -- --recipe=corporate</code></pre>
 
               <div class="recipe-card recipe-card--agency">
                 <div class="recipe-preview">
-                  <span class="recipe-badge recipe-badge--premium">Premium</span>
+                  <Badge variant="solid" color="purple" size="sm">Premium</Badge>
                 </div>
                 <div class="recipe-info">
                   <h3>agency</h3>
@@ -86,7 +87,7 @@ npm run init:recipe -- --recipe=corporate</code></pre>
 
               <div class="recipe-card recipe-card--startup">
                 <div class="recipe-preview">
-                  <span class="recipe-badge recipe-badge--free">Free</span>
+                  <Badge variant="solid" color="green" size="sm">Free</Badge>
                 </div>
                 <div class="recipe-info">
                   <h3>startup</h3>
@@ -98,7 +99,7 @@ npm run init:recipe -- --recipe=corporate</code></pre>
 
               <div class="recipe-card recipe-card--product-launch">
                 <div class="recipe-preview">
-                  <span class="recipe-badge recipe-badge--premium">Premium</span>
+                  <Badge variant="solid" color="purple" size="sm">Premium</Badge>
                 </div>
                 <div class="recipe-info">
                   <h3>product-launch</h3>
@@ -110,7 +111,7 @@ npm run init:recipe -- --recipe=corporate</code></pre>
 
               <div class="recipe-card recipe-card--app-download">
                 <div class="recipe-preview">
-                  <span class="recipe-badge recipe-badge--premium">Premium</span>
+                  <Badge variant="solid" color="purple" size="sm">Premium</Badge>
                 </div>
                 <div class="recipe-info">
                   <h3>app-download</h3>
@@ -122,7 +123,7 @@ npm run init:recipe -- --recipe=corporate</code></pre>
 
               <div class="recipe-card recipe-card--newsletter">
                 <div class="recipe-preview">
-                  <span class="recipe-badge recipe-badge--premium">Premium</span>
+                  <Badge variant="solid" color="purple" size="sm">Premium</Badge>
                 </div>
                 <div class="recipe-info">
                   <h3>newsletter</h3>
@@ -134,7 +135,7 @@ npm run init:recipe -- --recipe=corporate</code></pre>
 
               <div class="recipe-card recipe-card--nonprofit">
                 <div class="recipe-preview">
-                  <span class="recipe-badge recipe-badge--free">Free</span>
+                  <Badge variant="solid" color="green" size="sm">Free</Badge>
                 </div>
                 <div class="recipe-info">
                   <h3>nonprofit</h3>
@@ -183,49 +184,49 @@ npm run init:recipe -- --recipe=corporate</code></pre>
                 <tbody>
                   <tr>
                     <td>corporate</td>
-                    <td><span class="table-badge table-badge--free">Free</span></td>
+                    <td><Badge color="green" size="sm">Free</Badge></td>
                     <td>Standard</td>
                     <td>Grid 4-col</td>
                     <td>Gradient box</td>
                   </tr>
                   <tr>
                     <td>agency</td>
-                    <td><span class="table-badge table-badge--premium">Premium</span></td>
+                    <td><Badge color="purple" size="sm">Premium</Badge></td>
                     <td>Centered</td>
                     <td>Flex sections</td>
                     <td>Icon + text</td>
                   </tr>
                   <tr>
                     <td>startup</td>
-                    <td><span class="table-badge table-badge--free">Free</span></td>
+                    <td><Badge color="green" size="sm">Free</Badge></td>
                     <td>Standard</td>
                     <td>Flex row</td>
                     <td>Text only</td>
                   </tr>
                   <tr>
                     <td>product-launch</td>
-                    <td><span class="table-badge table-badge--premium">Premium</span></td>
+                    <td><Badge color="purple" size="sm">Premium</Badge></td>
                     <td>Standard</td>
                     <td>Minimal centered</td>
                     <td>Emoji</td>
                   </tr>
                   <tr>
                     <td>app-download</td>
-                    <td><span class="table-badge table-badge--premium">Premium</span></td>
+                    <td><Badge color="purple" size="sm">Premium</Badge></td>
                     <td>Standard</td>
                     <td>Minimal centered</td>
                     <td>Emoji</td>
                   </tr>
                   <tr>
                     <td>newsletter</td>
-                    <td><span class="table-badge table-badge--premium">Premium</span></td>
+                    <td><Badge color="purple" size="sm">Premium</Badge></td>
                     <td>Standard (compact)</td>
                     <td>Minimal centered</td>
                     <td>Icon + text</td>
                   </tr>
                   <tr>
                     <td>nonprofit</td>
-                    <td><span class="table-badge table-badge--free">Free</span></td>
+                    <td><Badge color="green" size="sm">Free</Badge></td>
                     <td>Centered</td>
                     <td>Grid 4-col</td>
                     <td>SVG icon</td>
@@ -418,25 +419,6 @@ npm run init:recipe -- --recipe=corporate</code></pre>
     padding: 0.5rem;
   }
 
-  .recipe-badge {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-  }
-
-  .recipe-badge--free {
-    background: rgba(255, 255, 255, 0.9);
-    color: #059669;
-  }
-
-  .recipe-badge--premium {
-    background: rgba(139, 92, 246, 0.9);
-    color: #ffffff;
-  }
-
   .recipe-card--corporate .recipe-preview {
     background: linear-gradient(135deg, #1e3a5f, #152a45);
   }
@@ -534,22 +516,4 @@ npm run init:recipe -- --recipe=corporate</code></pre>
     color: var(--text-primary);
   }
 
-  .table-badge {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    padding: 0.2rem 0.4rem;
-    border-radius: 4px;
-  }
-
-  .table-badge--free {
-    background: #d1fae5;
-    color: #059669;
-  }
-
-  .table-badge--premium {
-    background: #ede9fe;
-    color: #7c3aed;
-  }
 </style>

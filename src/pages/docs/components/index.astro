@@ -2,6 +2,8 @@
 import Layout from "../../../layouts/Layout.astro";
 import SubNav from "../../../components/SubNav.astro";
 import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+import Card from "../../../components/Card.astro";
+import Badge from "../../../components/Badge.astro";
 ---
 
 <Layout title="Components - Sofondo Mostra">
@@ -246,6 +248,25 @@ import {'{'} newsletterRecipe {'}'} from "../../recipes";
               A flexible card component for displaying content in a contained box.
               Supports multiple variants and optional interactive states.
             </p>
+            <p><strong>Live Examples:</strong></p>
+            <div class="example-grid">
+              <Card variant="default">
+                <h4 class="card-title">Default</h4>
+                <p class="card-text">Standard card with border</p>
+              </Card>
+              <Card variant="elevated">
+                <h4 class="card-title">Elevated</h4>
+                <p class="card-text">Card with shadow</p>
+              </Card>
+              <Card variant="outlined">
+                <h4 class="card-title">Outlined</h4>
+                <p class="card-text">Subtle border, no background</p>
+              </Card>
+              <Card variant="filled">
+                <h4 class="card-title">Filled</h4>
+                <p class="card-text">Solid background color</p>
+              </Card>
+            </div>
             <div class="code-block">
               <pre><code>{`<Card variant="default" padding="md" rounded="md">
   <h3>Card Title</h3>
@@ -274,6 +295,44 @@ import {'{'} newsletterRecipe {'}'} from "../../recipes";
               A small label for status indicators, tags, and categories.
               Available in multiple colors and variants.
             </p>
+            <p><strong>Live Examples:</strong></p>
+            <div class="example-box">
+              <p class="example-label">Default variant:</p>
+              <div class="badge-row">
+                <Badge color="gray">Gray</Badge>
+                <Badge color="blue">Blue</Badge>
+                <Badge color="green">Green</Badge>
+                <Badge color="yellow">Yellow</Badge>
+                <Badge color="red">Red</Badge>
+                <Badge color="purple">Purple</Badge>
+                <Badge color="pink">Pink</Badge>
+              </div>
+              <p class="example-label">Solid variant:</p>
+              <div class="badge-row">
+                <Badge variant="solid" color="gray">Gray</Badge>
+                <Badge variant="solid" color="blue">Blue</Badge>
+                <Badge variant="solid" color="green">Green</Badge>
+                <Badge variant="solid" color="yellow">Yellow</Badge>
+                <Badge variant="solid" color="red">Red</Badge>
+                <Badge variant="solid" color="purple">Purple</Badge>
+                <Badge variant="solid" color="pink">Pink</Badge>
+              </div>
+              <p class="example-label">Outline variant:</p>
+              <div class="badge-row">
+                <Badge variant="outline" color="gray">Gray</Badge>
+                <Badge variant="outline" color="blue">Blue</Badge>
+                <Badge variant="outline" color="green">Green</Badge>
+                <Badge variant="outline" color="red">Red</Badge>
+                <Badge variant="outline" color="purple">Purple</Badge>
+              </div>
+              <p class="example-label">Sizes & Pill:</p>
+              <div class="badge-row">
+                <Badge size="sm" color="blue">Small</Badge>
+                <Badge size="md" color="blue">Medium</Badge>
+                <Badge size="lg" color="blue">Large</Badge>
+                <Badge color="green" pill>Pill</Badge>
+              </div>
+            </div>
             <div class="code-block">
               <pre><code>{`<Badge>Default</Badge>
 <Badge color="blue">Blue</Badge>
@@ -392,5 +451,52 @@ import {'{'} newsletterRecipe {'}'} from "../../recipes";
     color: var(--text-primary);
     font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
     font-size: 0.875rem;
+  }
+
+  /* Example sections */
+  .example-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .card-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .example-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .example-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 0 0.75rem 0;
+  }
+
+  .example-label:not(:first-child) {
+    margin-top: 1.25rem;
+  }
+
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
   }
 </style>

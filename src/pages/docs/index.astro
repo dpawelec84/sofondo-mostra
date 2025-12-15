@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import SubNav from "../../components/SubNav.astro";
 import FadeInOnScroll from "../../components/FadeInOnScroll.astro";
+import Card from "../../components/Card.astro";
 ---
 
 <Layout title="Documentation - Sofondo Mostra">
@@ -108,34 +109,34 @@ npm run init:recipe -- --recipe=corporate
           <section class="docs-section">
             <h2>Documentation Sections</h2>
             <div class="doc-links">
-              <a href="/docs/configuration/" class="doc-link">
+              <Card href="/docs/configuration/" variant="default" class="doc-link">
                 <h3>Configuration</h3>
                 <p>Learn about all available configuration options in site.ts</p>
-              </a>
-              <a href="/docs/components/" class="doc-link">
+              </Card>
+              <Card href="/docs/components/" variant="default" class="doc-link">
                 <h3>Components</h3>
                 <p>Explore the reusable components and how to use them</p>
-              </a>
-              <a href="/docs/seo/" class="doc-link">
+              </Card>
+              <Card href="/docs/seo/" variant="default" class="doc-link">
                 <h3>SEO</h3>
                 <p>Search engine optimization and social sharing features</p>
-              </a>
-              <a href="/docs/customization/" class="doc-link">
+              </Card>
+              <Card href="/docs/customization/" variant="default" class="doc-link">
                 <h3>Customization</h3>
                 <p>Customize colors, fonts, and styling to match your brand</p>
-              </a>
-              <a href="/docs/recipes/" class="doc-link">
+              </Card>
+              <Card href="/docs/recipes/" variant="default" class="doc-link">
                 <h3>Recipes</h3>
                 <p>Pre-configured themes for different use cases</p>
-              </a>
-              <a href="/docs/deployment/" class="doc-link">
+              </Card>
+              <Card href="/docs/deployment/" variant="default" class="doc-link">
                 <h3>Deployment</h3>
                 <p>Deploy to Vercel, Netlify, Cloudflare Pages, and more</p>
-              </a>
-              <a href="/docs/troubleshooting/" class="doc-link">
+              </Card>
+              <Card href="/docs/troubleshooting/" variant="default" class="doc-link">
                 <h3>Troubleshooting</h3>
                 <p>Common issues and how to fix them</p>
-              </a>
+              </Card>
             </div>
           </section>
         </FadeInOnScroll>
@@ -250,21 +251,6 @@ npm run init:recipe -- --recipe=corporate
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
-  }
-
-  .doc-link {
-    display: block;
-    padding: 1.5rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-
-  .doc-link:hover {
-    border-color: var(--accent-primary);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
 
   .doc-link h3 {
