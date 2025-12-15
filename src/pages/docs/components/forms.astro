@@ -382,9 +382,68 @@ import Button from "../components/Button.astro";
 
         <FadeInOnScroll delay={800}>
           <section class="docs-section">
-            <h2>Spam Protection</h2>
-            <p>The Form component includes built-in honeypot spam protection. A hidden field is automatically added that bots will fill out, but humans won't see. If this field is filled, the form silently "succeeds" without actually submitting.</p>
-            <p>For additional protection, consider:</p>
+            <h2>Spam Protection (Honeypot)</h2>
+            <p>The Form component includes built-in honeypot spam protection. Here's how it works:</p>
+            <div class="how-it-works">
+              <div class="step">
+                <span class="step-number">1</span>
+                <div>
+                  <strong>Hidden field added automatically</strong>
+                  <p>A hidden input field is injected into every form, invisible to humans but visible to bots.</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="step-number">2</span>
+                <div>
+                  <strong>Bots fill all fields</strong>
+                  <p>Automated bots typically fill out every field they find, including the hidden one.</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="step-number">3</span>
+                <div>
+                  <strong>Submission blocked silently</strong>
+                  <p>If the hidden field has a value, we know it's a bot. The form shows "success" but nothing is sent.</p>
+                </div>
+              </div>
+            </div>
+            <p style="margin-top: 1.5rem;"><strong>Generated HTML:</strong></p>
+            <div class="code-block">
+              <pre><code>{`<!-- Automatically added to every Form -->
+<div class="form-honeypot" aria-hidden="true">
+  <label for="contact-hp">Don't fill this out</label>
+  <input
+    type="text"
+    name="contact_hp"
+    id="contact-hp"
+    tabindex="-1"
+    autocomplete="off"
+  />
+</div>`}</code></pre>
+            </div>
+            <p><strong>CSS that hides it from humans:</strong></p>
+            <div class="code-block">
+              <pre><code>{`.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}`}</code></pre>
+            </div>
+            <p><strong>JavaScript that checks it:</strong></p>
+            <div class="code-block">
+              <pre><code>{`// If honeypot is filled, it's a bot
+const honeypot = form.querySelector('[name$="_hp"]');
+if (honeypot && honeypot.value) {
+  // Show fake success, but don't actually submit
+  showSuccess();
+  return;
+}`}</code></pre>
+            </div>
+            <p style="margin-top: 1.5rem;">For additional protection, consider:</p>
             <ul>
               <li>Rate limiting on your API endpoint</li>
               <li>CAPTCHA integration (hCaptcha, Turnstile)</li>
@@ -591,5 +650,47 @@ import Button from "../components/Button.astro";
   .inline-form-input {
     flex: 1;
     min-width: 200px;
+  }
+
+  /* How it works steps */
+  .how-it-works {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+  }
+
+  .step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: var(--accent-primary, #3b82f6);
+    color: white;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+  }
+
+  .step strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .step p {
+    margin: 0;
+    font-size: 0.875rem;
   }
 </style>
