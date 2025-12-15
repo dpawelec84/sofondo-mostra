@@ -87,10 +87,10 @@ wrangler pages deploy dist</code></pre>
             <h2>GitHub Pages</h2>
             <p>Add to your <code>astro.config.mjs</code>:</p>
             <div class="code-block">
-              <pre><code>export default defineConfig({
+              <pre><code>{`export default defineConfig({
   site: 'https://username.github.io',
   base: '/repo-name',
-});</code></pre>
+});`}</code></pre>
             </div>
             <p>Then use GitHub Actions or push the <code>dist/</code> folder to a <code>gh-pages</code> branch.</p>
           </section>
