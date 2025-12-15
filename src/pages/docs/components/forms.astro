@@ -1,0 +1,595 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+import Form from "../../../components/Form.astro";
+import Input from "../../../components/Input.astro";
+import Button from "../../../components/Button.astro";
+---
+
+<Layout title="Form Components - Sofondo Mostra">
+  <SubNav variant="simple">
+    <a href="/docs/">Getting Started</a>
+    <a href="/docs/configuration/">Configuration</a>
+    <a href="/docs/components/">Components</a>
+    <a href="/docs/components/forms/" class="active">Forms</a>
+    <a href="/docs/seo/">SEO</a>
+    <a href="/docs/customization/">Customization</a>
+    <a href="/docs/recipes/">Recipes</a>
+  </SubNav>
+
+  <section class="page-content" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <div class="page-header">
+          <h1 class="page-title">Form Components</h1>
+          <p class="page-description intro">
+            Build accessible forms with validation, error states, and spam protection.
+          </p>
+        </div>
+      </FadeInOnScroll>
+
+      <div class="docs-content">
+        <FadeInOnScroll delay={0}>
+          <section class="docs-section">
+            <h2>Overview</h2>
+            <p>The template includes three form-related components:</p>
+            <ul>
+              <li><strong>Form</strong> - Wrapper with validation, honeypot, and status messages</li>
+              <li><strong>Input</strong> - Styled input fields with validation states</li>
+              <li><strong>Button</strong> - Buttons with multiple variants and sizes</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <section class="docs-section">
+            <h2>Basic Newsletter Form</h2>
+            <p>A simple newsletter signup form:</p>
+            <div class="code-block">
+              <pre><code>{`---
+import Form from "../components/Form.astro";
+import Input from "../components/Input.astro";
+import Button from "../components/Button.astro";
+---
+
+<Form
+  action="/api/subscribe"
+  name="newsletter"
+  successMessage="Thanks for subscribing!"
+>
+  <div class="form-fields">
+    <Input
+      type="email"
+      name="email"
+      label="Email address"
+      placeholder="you@example.com"
+      required
+    />
+    <Button type="submit" variant="primary">
+      Subscribe
+    </Button>
+  </div>
+</Form>`}</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <section class="docs-section">
+            <h2>Live Example</h2>
+            <div class="example-box">
+              <Form
+                action="#"
+                name="demo-newsletter"
+                successMessage="Thanks for subscribing! (This is a demo)"
+              >
+                <div class="form-fields inline-form">
+                  <div class="inline-form-input">
+                    <Input
+                      type="email"
+                      name="email"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+                  <Button type="submit" variant="primary">
+                    Subscribe
+                  </Button>
+                </div>
+              </Form>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={250}>
+          <section class="docs-section">
+            <h2>Status Messages</h2>
+            <p>The Form component displays success and error messages automatically after submission. Here's what they look like:</p>
+            <div class="example-box">
+              <p style="font-weight: 500; margin-bottom: 0.75rem; color: var(--text-primary);">Success Message:</p>
+              <div class="form-status-success" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1rem; border-radius: 8px; font-size: 0.875rem; font-weight: 500; background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0;">
+                <svg style="width: 1.25rem; height: 1.25rem; flex-shrink: 0; color: #059669;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="22,4 12,14.01 9,11.01" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Thank you! Your submission has been received.</span>
+              </div>
+            </div>
+            <div class="example-box" style="margin-top: 1rem;">
+              <p style="font-weight: 500; margin-bottom: 0.75rem; color: var(--text-primary);">Error Message:</p>
+              <div class="form-status-error" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1rem; border-radius: 8px; font-size: 0.875rem; font-weight: 500; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca;">
+                <svg style="width: 1.25rem; height: 1.25rem; flex-shrink: 0; color: #dc2626;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="15" y1="9" x2="9" y2="15" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="9" y1="9" x2="15" y2="15" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Something went wrong. Please try again.</span>
+              </div>
+            </div>
+            <p style="margin-top: 1rem;">Customize messages via props:</p>
+            <div class="code-block">
+              <pre><code>{`<Form
+  action="/api/contact"
+  successMessage="We'll be in touch soon!"
+  errorMessage="Failed to send. Please email us directly."
+>
+  <!-- form fields -->
+</Form>`}</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <section class="docs-section">
+            <h2>Form Component Props</h2>
+            <div class="props-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Prop</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>action</code></td>
+                    <td>string</td>
+                    <td><code>""</code></td>
+                    <td>Form submission URL</td>
+                  </tr>
+                  <tr>
+                    <td><code>method</code></td>
+                    <td>"POST" | "GET"</td>
+                    <td><code>"POST"</code></td>
+                    <td>HTTP method</td>
+                  </tr>
+                  <tr>
+                    <td><code>name</code></td>
+                    <td>string</td>
+                    <td><code>"contact"</code></td>
+                    <td>Form name (required for Netlify)</td>
+                  </tr>
+                  <tr>
+                    <td><code>successMessage</code></td>
+                    <td>string</td>
+                    <td><code>"Thank you!..."</code></td>
+                    <td>Message shown on success</td>
+                  </tr>
+                  <tr>
+                    <td><code>errorMessage</code></td>
+                    <td>string</td>
+                    <td><code>"Something went wrong..."</code></td>
+                    <td>Message shown on error</td>
+                  </tr>
+                  <tr>
+                    <td><code>netlify</code></td>
+                    <td>boolean</td>
+                    <td><code>false</code></td>
+                    <td>Enable Netlify Forms</td>
+                  </tr>
+                  <tr>
+                    <td><code>redirectUrl</code></td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>Redirect after success</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <section class="docs-section">
+            <h2>Input Component Props</h2>
+            <div class="props-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Prop</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>type</code></td>
+                    <td>"text" | "email" | "password" | "tel" | "textarea" | ...</td>
+                    <td><code>"text"</code></td>
+                    <td>Input type</td>
+                  </tr>
+                  <tr>
+                    <td><code>name</code></td>
+                    <td>string</td>
+                    <td>required</td>
+                    <td>Field name</td>
+                  </tr>
+                  <tr>
+                    <td><code>label</code></td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>Label text</td>
+                  </tr>
+                  <tr>
+                    <td><code>placeholder</code></td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>Placeholder text</td>
+                  </tr>
+                  <tr>
+                    <td><code>required</code></td>
+                    <td>boolean</td>
+                    <td><code>false</code></td>
+                    <td>Required field</td>
+                  </tr>
+                  <tr>
+                    <td><code>error</code></td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>Error message</td>
+                  </tr>
+                  <tr>
+                    <td><code>helpText</code></td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>Help text below input</td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td>boolean</td>
+                    <td><code>false</code></td>
+                    <td>Disable input</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={500}>
+          <section class="docs-section">
+            <h2>Button Component Props</h2>
+            <div class="props-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Prop</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>variant</code></td>
+                    <td>"primary" | "secondary" | "outline" | "ghost"</td>
+                    <td><code>"primary"</code></td>
+                    <td>Button style</td>
+                  </tr>
+                  <tr>
+                    <td><code>size</code></td>
+                    <td>"sm" | "md" | "lg"</td>
+                    <td><code>"md"</code></td>
+                    <td>Button size</td>
+                  </tr>
+                  <tr>
+                    <td><code>href</code></td>
+                    <td>string</td>
+                    <td>-</td>
+                    <td>Render as link</td>
+                  </tr>
+                  <tr>
+                    <td><code>type</code></td>
+                    <td>"button" | "submit" | "reset"</td>
+                    <td><code>"button"</code></td>
+                    <td>Button type</td>
+                  </tr>
+                  <tr>
+                    <td><code>fullWidth</code></td>
+                    <td>boolean</td>
+                    <td><code>false</code></td>
+                    <td>Full width button</td>
+                  </tr>
+                  <tr>
+                    <td><code>loading</code></td>
+                    <td>boolean</td>
+                    <td><code>false</code></td>
+                    <td>Show loading spinner</td>
+                  </tr>
+                  <tr>
+                    <td><code>disabled</code></td>
+                    <td>boolean</td>
+                    <td><code>false</code></td>
+                    <td>Disable button</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={600}>
+          <section class="docs-section">
+            <h2>Button Variants</h2>
+            <div class="example-box">
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <Button variant="primary">Primary</Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button variant="outline">Outline</Button>
+                <Button variant="ghost">Ghost</Button>
+              </div>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={700}>
+          <section class="docs-section">
+            <h2>Contact Form Example</h2>
+            <div class="code-block">
+              <pre><code>{`<Form action="/api/contact" name="contact">
+  <div class="form-fields">
+    <Input
+      type="text"
+      name="name"
+      label="Name"
+      required
+    />
+    <Input
+      type="email"
+      name="email"
+      label="Email"
+      required
+    />
+    <Input
+      type="textarea"
+      name="message"
+      label="Message"
+      rows={5}
+      required
+    />
+    <Button type="submit" variant="primary" fullWidth>
+      Send Message
+    </Button>
+  </div>
+</Form>`}</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={800}>
+          <section class="docs-section">
+            <h2>Spam Protection</h2>
+            <p>The Form component includes built-in honeypot spam protection. A hidden field is automatically added that bots will fill out, but humans won't see. If this field is filled, the form silently "succeeds" without actually submitting.</p>
+            <p>For additional protection, consider:</p>
+            <ul>
+              <li>Rate limiting on your API endpoint</li>
+              <li>CAPTCHA integration (hCaptcha, Turnstile)</li>
+              <li>Server-side validation</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={900}>
+          <section class="docs-section">
+            <h2>Using with Netlify Forms</h2>
+            <div class="code-block">
+              <pre><code>{`<Form
+  name="contact"
+  netlify={true}
+  successMessage="Thanks! We'll be in touch."
+>
+  <!-- form fields -->
+</Form>`}</code></pre>
+            </div>
+            <p>When <code>netlify={`{true}`}</code>, the component adds <code>data-netlify="true"</code> to the form element.</p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={1000}>
+          <section class="docs-section">
+            <h2>Using with Formspree</h2>
+            <div class="code-block">
+              <pre><code>{`<Form
+  action="https://formspree.io/f/YOUR_FORM_ID"
+  name="contact"
+>
+  <!-- form fields -->
+</Form>`}</code></pre>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={1100}>
+          <section class="docs-section">
+            <h2>Using with Web3Forms</h2>
+            <p><a href="https://web3forms.com/" target="_blank" rel="noopener">Web3Forms</a> is a free, no-backend form solution. Get your access key from the dashboard.</p>
+            <div class="code-block">
+              <pre><code>{`<Form
+  action="https://api.web3forms.com/submit"
+  name="contact"
+>
+  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY" />
+  <!-- form fields -->
+</Form>`}</code></pre>
+            </div>
+            <p>Features:</p>
+            <ul>
+              <li>Free tier: 250 submissions/month</li>
+              <li>No account required for basic usage</li>
+              <li>Email notifications included</li>
+              <li>Spam protection via hCaptcha (optional)</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .docs-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .docs-section {
+    margin-bottom: 3rem;
+  }
+
+  .docs-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .docs-section p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .docs-section ul {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .docs-section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .docs-section code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+    color: #cdd6f4;
+    line-height: 1.6;
+    background: transparent;
+    padding: 0;
+  }
+
+  .example-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 1rem 0;
+  }
+
+  .props-table {
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .props-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .props-table th,
+  .props-table td {
+    text-align: left;
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .props-table th {
+    font-weight: 600;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+  }
+
+  .props-table td {
+    color: var(--text-secondary);
+  }
+
+  .props-table code {
+    background: var(--bg-secondary);
+    padding: 0.125rem 0.375rem;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+  }
+
+  /* Inline form layout for live example */
+  .inline-form {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .inline-form-input {
+    flex: 1;
+    min-width: 200px;
+  }
+</style>

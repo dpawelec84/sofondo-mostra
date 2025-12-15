@@ -1,0 +1,252 @@
+---
+/**
+ * Input Component
+ *
+ * A styled input field with:
+ * - Multiple types (text, email, password, tel, url, textarea)
+ * - Validation states (error, success)
+ * - Accessible labels and error messages
+ * - Required field indicator
+ */
+
+interface Props {
+  /** Input type */
+  type?: "text" | "email" | "password" | "tel" | "url" | "textarea" | "number";
+  /** Input name attribute */
+  name: string;
+  /** Label text */
+  label?: string;
+  /** Placeholder text */
+  placeholder?: string;
+  /** Is field required? */
+  required?: boolean;
+  /** Default value */
+  value?: string;
+  /** Error message to display */
+  error?: string;
+  /** Help text below input */
+  helpText?: string;
+  /** Disable the input */
+  disabled?: boolean;
+  /** Additional CSS classes */
+  class?: string;
+  /** Autocomplete attribute */
+  autocomplete?: string;
+  /** Pattern for validation */
+  pattern?: string;
+  /** Min length */
+  minlength?: number;
+  /** Max length */
+  maxlength?: number;
+  /** Rows for textarea */
+  rows?: number;
+  /** Input ID (defaults to name) */
+  id?: string;
+}
+
+const {
+  type = "text",
+  name,
+  label,
+  placeholder,
+  required = false,
+  value = "",
+  error,
+  helpText,
+  disabled = false,
+  class: className = "",
+  autocomplete,
+  pattern,
+  minlength,
+  maxlength,
+  rows = 4,
+  id = name,
+} = Astro.props;
+
+const errorId = `${id}-error`;
+const helpId = `${id}-help`;
+const hasError = !!error;
+const describedBy = [error && errorId, helpText && helpId].filter(Boolean).join(" ") || undefined;
+---
+
+<div class:list={["input-wrapper", className, { "has-error": hasError, "is-disabled": disabled }]}>
+  {label && (
+    <label for={id} class="input-label">
+      {label}
+      {required && <span class="input-required" aria-hidden="true">*</span>}
+    </label>
+  )}
+
+  {type === "textarea" ? (
+    <textarea
+      id={id}
+      name={name}
+      placeholder={placeholder}
+      required={required}
+      disabled={disabled}
+      rows={rows}
+      minlength={minlength}
+      maxlength={maxlength}
+      aria-invalid={hasError ? "true" : undefined}
+      aria-describedby={describedBy}
+      class="input-field input-textarea"
+    >{value}</textarea>
+  ) : (
+    <input
+      type={type}
+      id={id}
+      name={name}
+      placeholder={placeholder}
+      required={required}
+      disabled={disabled}
+      value={value}
+      autocomplete={autocomplete}
+      pattern={pattern}
+      minlength={minlength}
+      maxlength={maxlength}
+      aria-invalid={hasError ? "true" : undefined}
+      aria-describedby={describedBy}
+      class="input-field"
+    />
+  )}
+
+  {helpText && !error && (
+    <p id={helpId} class="input-help">{helpText}</p>
+  )}
+
+  {error && (
+    <p id={errorId} class="input-error" role="alert">{error}</p>
+  )}
+</div>
+
+<style>
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .input-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .input-required {
+    color: #dc2626;
+    margin-left: 0.125rem;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text-primary);
+    background: var(--bg-card, #ffffff);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .input-field::placeholder {
+    color: var(--text-secondary, #9ca3af);
+  }
+
+  .input-field:focus {
+    border-color: var(--accent-primary, #3b82f6);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .input-field:disabled {
+    background: var(--bg-secondary, #f3f4f6);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  /* Error state */
+  .has-error .input-field {
+    border-color: #dc2626;
+  }
+
+  .has-error .input-field:focus {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  }
+
+  /* Textarea specific */
+  .input-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  /* Help text */
+  .input-help {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  /* Error message */
+  .input-error {
+    font-size: 0.75rem;
+    color: #dc2626;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .input-error::before {
+    content: "";
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dc2626' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+  }
+
+  /* Disabled state */
+  .is-disabled .input-label {
+    opacity: 0.7;
+  }
+
+  /* Dark mode */
+  [data-theme="dark"] .input-field {
+    background: var(--bg-secondary, #1f2937);
+    border-color: var(--border-color, #374151);
+    color: var(--text-primary, #f9fafb);
+  }
+
+  [data-theme="dark"] .input-field::placeholder {
+    color: var(--text-secondary, #6b7280);
+  }
+
+  [data-theme="dark"] .input-field:focus {
+    border-color: var(--accent-primary, #60a5fa);
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15);
+  }
+
+  [data-theme="dark"] .has-error .input-field {
+    border-color: #f87171;
+  }
+
+  [data-theme="dark"] .has-error .input-field:focus {
+    box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.15);
+  }
+
+  [data-theme="dark"] .input-error {
+    color: #f87171;
+  }
+
+  [data-theme="dark"] .input-error::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f87171' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='8' x2='12' y2='12'/%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'/%3E%3C/svg%3E");
+  }
+
+  [data-theme="dark"] .input-required {
+    color: #f87171;
+  }
+</style>

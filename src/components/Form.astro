@@ -1,0 +1,251 @@
+---
+/**
+ * Form Component
+ *
+ * A generic form wrapper with:
+ * - Client-side validation
+ * - Success/error state handling
+ * - Honeypot spam protection
+ * - Loading state during submission
+ * - Accessible error messages
+ *
+ * Works with any backend (Netlify Forms, Formspree, custom API, etc.)
+ */
+
+interface Props {
+  /** Form action URL or endpoint */
+  action?: string;
+  /** HTTP method */
+  method?: "POST" | "GET";
+  /** Form name (required for Netlify Forms) */
+  name?: string;
+  /** Success message to display */
+  successMessage?: string;
+  /** Error message to display on failure */
+  errorMessage?: string;
+  /** Enable Netlify Forms */
+  netlify?: boolean;
+  /** Additional form attributes */
+  class?: string;
+  /** Redirect URL after successful submission (optional) */
+  redirectUrl?: string;
+}
+
+const {
+  action = "",
+  method = "POST",
+  name = "contact",
+  successMessage = "Thank you! Your submission has been received.",
+  errorMessage = "Something went wrong. Please try again.",
+  netlify = false,
+  class: className = "",
+  redirectUrl,
+} = Astro.props;
+---
+
+<form
+  action={action}
+  method={method}
+  name={name}
+  class:list={["form-component", className]}
+  data-success-message={successMessage}
+  data-error-message={errorMessage}
+  data-redirect-url={redirectUrl}
+  {...netlify && { "data-netlify": "true" }}
+>
+  {/* Honeypot field for spam protection */}
+  <div class="form-honeypot" aria-hidden="true">
+    <label for={`${name}-hp`}>Don't fill this out</label>
+    <input type="text" name={`${name}_hp`} id={`${name}-hp`} tabindex="-1" autocomplete="off" />
+  </div>
+
+  {/* Form content slot */}
+  <slot />
+
+  {/* Status messages */}
+  <div class="form-status" role="alert" aria-live="polite">
+    <div class="form-status-success" hidden>
+      <svg class="form-status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="22,4 12,14.01 9,11.01" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="form-status-text">{successMessage}</span>
+    </div>
+    <div class="form-status-error" hidden>
+      <svg class="form-status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="15" y1="9" x2="9" y2="15" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="9" y1="9" x2="15" y2="15" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="form-status-text">{errorMessage}</span>
+    </div>
+  </div>
+</form>
+
+<style>
+  .form-component {
+    position: relative;
+  }
+
+  /* Honeypot - hidden from users but visible to bots */
+  .form-honeypot {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
+  }
+
+  /* Status messages */
+  .form-status {
+    margin-top: 1rem;
+  }
+
+  .form-status-success,
+  .form-status-error {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .form-status-success[hidden],
+  .form-status-error[hidden] {
+    display: none;
+  }
+
+  .form-status-success {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+  }
+
+  .form-status-error {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+  }
+
+  .form-status-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .form-status-success .form-status-icon {
+    color: #059669;
+  }
+
+  .form-status-error .form-status-icon {
+    color: #dc2626;
+  }
+
+  /* Loading state */
+  .form-component[data-loading="true"] {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  .form-component[data-loading="true"] :global(button[type="submit"]) {
+    cursor: wait;
+  }
+
+  /* Success state - hide form fields */
+  .form-component[data-success="true"] :global(.form-fields),
+  .form-component[data-success="true"] :global(button[type="submit"]) {
+    display: none;
+  }
+
+  /* Dark mode support */
+  [data-theme="dark"] .form-status-success {
+    background: rgba(5, 150, 105, 0.1);
+    color: #6ee7b7;
+    border-color: rgba(6, 95, 70, 0.3);
+  }
+
+  [data-theme="dark"] .form-status-error {
+    background: rgba(220, 38, 38, 0.1);
+    color: #fca5a5;
+    border-color: rgba(153, 27, 27, 0.3);
+  }
+
+  [data-theme="dark"] .form-status-success .form-status-icon {
+    color: #34d399;
+  }
+
+  [data-theme="dark"] .form-status-error .form-status-icon {
+    color: #f87171;
+  }
+</style>
+
+<script>
+  // Form submission handler
+  document.querySelectorAll('.form-component').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formEl = e.target as HTMLFormElement;
+      const successEl = formEl.querySelector('.form-status-success') as HTMLElement;
+      const errorEl = formEl.querySelector('.form-status-error') as HTMLElement;
+      const honeypot = formEl.querySelector('[name$="_hp"]') as HTMLInputElement;
+
+      // Check honeypot - if filled, silently "succeed" (it's a bot)
+      if (honeypot && honeypot.value) {
+        successEl.hidden = false;
+        errorEl.hidden = true;
+        formEl.dataset.success = 'true';
+        return;
+      }
+
+      // Client-side validation
+      if (!formEl.checkValidity()) {
+        formEl.reportValidity();
+        return;
+      }
+
+      // Set loading state
+      formEl.dataset.loading = 'true';
+      successEl.hidden = true;
+      errorEl.hidden = true;
+
+      try {
+        const formData = new FormData(formEl);
+        const action = formEl.action || window.location.href;
+
+        const response = await fetch(action, {
+          method: formEl.method || 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          successEl.hidden = false;
+          formEl.dataset.success = 'true';
+          formEl.reset();
+
+          // Redirect if URL provided
+          const redirectUrl = formEl.dataset.redirectUrl;
+          if (redirectUrl) {
+            setTimeout(() => {
+              window.location.href = redirectUrl;
+            }, 1500);
+          }
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        errorEl.hidden = false;
+        console.error('Form submission error:', error);
+      } finally {
+        formEl.dataset.loading = 'false';
+      }
+    });
+  });
+</script>
