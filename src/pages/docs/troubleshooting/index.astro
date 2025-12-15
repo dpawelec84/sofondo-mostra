@@ -140,10 +140,10 @@ npm run init:recipe -- --recipe=corporate</code></pre>
               <h3>404 errors on deployed site</h3>
               <p>For GitHub Pages or subfolder deployments, set the <code>base</code> in <code>astro.config.mjs</code>:</p>
               <div class="code-block">
-                <pre><code>export default defineConfig({
+                <pre><code>{`export default defineConfig({
   site: 'https://username.github.io',
   base: '/repo-name',
-});</code></pre>
+});`}</code></pre>
               </div>
             </div>
 
@@ -151,9 +151,9 @@ npm run init:recipe -- --recipe=corporate</code></pre>
               <h3>Sitemap URLs are wrong</h3>
               <p>Set the correct <code>site</code> URL in <code>astro.config.mjs</code>:</p>
               <div class="code-block">
-                <pre><code>export default defineConfig({
+                <pre><code>{`export default defineConfig({
   site: 'https://yourdomain.com',
-});</code></pre>
+});`}</code></pre>
               </div>
             </div>
 
