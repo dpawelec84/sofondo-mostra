@@ -42,15 +42,15 @@ This checklist identifies features needed before launching as a premium Astro ma
 - [x] **Footer support section** - Links in footer
 
 ### Image Optimization
-- [ ] **Use Astro Image component** - Replace `<img>` with `<Image />` throughout
-- [ ] **Lazy loading** - Add loading="lazy" to below-fold images
-- [ ] **Responsive images** - Generate srcset for different screen sizes
-- [ ] **Modern formats** - WebP/AVIF conversion
+- [x] **Use Astro Image component** - Logo components use optimized `<img>` with width/height (SVGs don't need `<Image />`)
+- [x] **Lazy loading** - Logo uses `loading="eager"` (above-fold), no below-fold images currently
+- [ ] **Responsive images** - Generate srcset for different screen sizes (when raster images added)
+- [ ] **Modern formats** - WebP/AVIF conversion (when raster images added)
 
 ### Accessibility Essentials
 - [x] **Skip to main content link** - Add skip link for keyboard users
 - [ ] **Heading hierarchy** - Audit and enforce proper h1-h6 order
-- [ ] **Alt text audit** - Ensure all images have meaningful alt text
+- [x] **Alt text audit** - All images have meaningful alt text from config
 - [x] **Focus indicators** - Visible focus states on all interactive elements
 - [ ] **Color contrast** - Verify WCAG AA compliance (4.5:1 ratio)
 
@@ -145,9 +145,9 @@ This checklist identifies features needed before launching as a premium Astro ma
 ## Quick Wins (Next Up)
 
 1. ~~**Skip link** - Add skip-to-main link (~15 mins)~~ ✅ Done
-2. **Image optimization** - Replace key images with `<Image />` (~2 hours)
+2. ~~**Image optimization** - Replace key images with `<Image />`~~ ✅ N/A (all SVGs, properly optimized)
 3. **Lighthouse audit** - Run and document scores (~30 mins)
-4. **Alt text audit** - Review all images (~1 hour)
+4. ~~**Alt text audit** - Review all images (~1 hour)~~ ✅ Done (all have alt from config)
 
 ---
 
