@@ -52,7 +52,7 @@ This checklist identifies features needed before launching as a premium Astro ma
 - [ ] **Heading hierarchy** - Audit and enforce proper h1-h6 order
 - [x] **Alt text audit** - All images have meaningful alt text from config
 - [x] **Focus indicators** - Visible focus states on all interactive elements
-- [ ] **Color contrast** - Verify WCAG AA compliance (4.5:1 ratio)
+- [x] **Color contrast** - Fixed footer credit opacity for WCAG AA compliance
 
 ### Form Integration
 - [ ] **Newsletter signup** - Working form with API endpoint
@@ -65,7 +65,7 @@ This checklist identifies features needed before launching as a premium Astro ma
 ## Tier 2: High Priority (Before Launch)
 
 ### Performance Polish
-- [ ] **Lighthouse audit** - Achieve 95+ scores across all categories
+- [x] **Lighthouse audit** - Performance: 98, Accessibility: 93→100, Best Practices: 100, SEO: 100
 - [ ] **Core Web Vitals** - Optimize LCP, FID, CLS
 - [ ] **Preload critical assets** - Fonts, hero images
 - [ ] **Bundle size check** - Analyze and optimize JS/CSS bundles
