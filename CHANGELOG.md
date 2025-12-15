@@ -2,6 +2,20 @@
 
 All notable changes to Sofondo Mostra will be documented in this file.
 
+## [1.1.0] - 2025-12-15
+
+### Added
+- **Card Component**: Flexible card with 4 variants (default, elevated, outlined, filled), configurable padding and border radius, interactive link mode
+- **Badge Component**: Status labels with 3 variants (default, solid, outline), 7 colors, 3 sizes, and pill option
+- **Component Documentation**: Live interactive examples for Card and Badge on components docs page
+
+### Changed
+- Documentation index page now uses Card component for doc-links
+- Recipes page now uses Badge component for Free/Premium labels
+
+### Fixed
+- Header navigation cutoff on tablet-sized screens (768px-1024px) by increasing mobile/desktop breakpoint to 1024px
+
 ## [1.0.0] - 2024-12-15
 
 ### Added
