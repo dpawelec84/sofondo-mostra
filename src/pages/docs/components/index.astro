@@ -238,6 +238,58 @@ import {'{'} newsletterRecipe {'}'} from "../../recipes";
             </p>
           </section>
         </FadeInOnScroll>
+
+        <FadeInOnScroll delay={900}>
+          <section class="content-section">
+            <h2>Card</h2>
+            <p>
+              A flexible card component for displaying content in a contained box.
+              Supports multiple variants and optional interactive states.
+            </p>
+            <div class="code-block">
+              <pre><code>{`<Card variant="default" padding="md" rounded="md">
+  <h3>Card Title</h3>
+  <p>Card content goes here.</p>
+</Card>
+
+<!-- As a clickable link -->
+<Card href="/page" variant="elevated">
+  Click me
+</Card>`}</code></pre>
+            </div>
+            <p>Props:</p>
+            <ul class="feature-list">
+              <li><strong>variant</strong> - 'default' | 'elevated' | 'outlined' | 'filled'</li>
+              <li><strong>padding</strong> - 'none' | 'sm' | 'md' | 'lg'</li>
+              <li><strong>rounded</strong> - 'none' | 'sm' | 'md' | 'lg' | 'full'</li>
+              <li><strong>href</strong> - Makes card clickable as a link</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={1000}>
+          <section class="content-section">
+            <h2>Badge</h2>
+            <p>
+              A small label for status indicators, tags, and categories.
+              Available in multiple colors and variants.
+            </p>
+            <div class="code-block">
+              <pre><code>{`<Badge>Default</Badge>
+<Badge color="blue">Blue</Badge>
+<Badge color="green" variant="solid">Success</Badge>
+<Badge color="red" variant="outline">Error</Badge>
+<Badge color="purple" pill>Tag</Badge>`}</code></pre>
+            </div>
+            <p>Props:</p>
+            <ul class="feature-list">
+              <li><strong>variant</strong> - 'default' | 'solid' | 'outline'</li>
+              <li><strong>color</strong> - 'gray' | 'blue' | 'green' | 'yellow' | 'red' | 'purple' | 'pink'</li>
+              <li><strong>size</strong> - 'sm' | 'md' | 'lg'</li>
+              <li><strong>pill</strong> - Fully rounded badge (boolean)</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
       </div>
     </div>
   </section>

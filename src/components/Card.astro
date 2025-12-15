@@ -1,0 +1,179 @@
+---
+/**
+ * Card Component
+ *
+ * A flexible card component for displaying content in a contained box.
+ * Supports multiple variants and optional interactive states.
+ *
+ * Variants:
+ * - default: Standard card with border
+ * - elevated: Card with shadow
+ * - outlined: Subtle border, no background
+ * - filled: Solid background color
+ */
+
+interface Props {
+  /** Card variant */
+  variant?: "default" | "elevated" | "outlined" | "filled";
+  /** Make card clickable (renders as link or adds hover effects) */
+  href?: string;
+  /** Padding size */
+  padding?: "none" | "sm" | "md" | "lg";
+  /** Border radius */
+  rounded?: "none" | "sm" | "md" | "lg" | "full";
+  /** Additional CSS classes */
+  class?: string;
+  /** Open link in new tab */
+  target?: string;
+  /** Link rel attribute */
+  rel?: string;
+}
+
+const {
+  variant = "default",
+  href,
+  padding = "md",
+  rounded = "md",
+  class: className = "",
+  target,
+  rel,
+} = Astro.props;
+
+const Tag = href ? "a" : "div";
+const isInteractive = !!href;
+---
+
+<Tag
+  class:list={[
+    "card",
+    `card-${variant}`,
+    `card-padding-${padding}`,
+    `card-rounded-${rounded}`,
+    { "card-interactive": isInteractive },
+    className,
+  ]}
+  {...href && { href }}
+  {...target && { target }}
+  {...rel && { rel }}
+>
+  <slot />
+</Tag>
+
+<style>
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+  }
+
+  /* Variants */
+  .card-default {
+    background: var(--bg-card, #ffffff);
+    border: 1px solid var(--border-color, #e5e7eb);
+  }
+
+  .card-elevated {
+    background: var(--bg-card, #ffffff);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-outlined {
+    background: transparent;
+    border: 1px solid var(--border-color, #e5e7eb);
+  }
+
+  .card-filled {
+    background: var(--bg-secondary, #f3f4f6);
+    border: none;
+  }
+
+  /* Padding */
+  .card-padding-none {
+    padding: 0;
+  }
+
+  .card-padding-sm {
+    padding: 0.75rem;
+  }
+
+  .card-padding-md {
+    padding: 1.25rem;
+  }
+
+  .card-padding-lg {
+    padding: 2rem;
+  }
+
+  /* Border radius */
+  .card-rounded-none {
+    border-radius: 0;
+  }
+
+  .card-rounded-sm {
+    border-radius: 4px;
+  }
+
+  .card-rounded-md {
+    border-radius: 8px;
+  }
+
+  .card-rounded-lg {
+    border-radius: 12px;
+  }
+
+  .card-rounded-full {
+    border-radius: 9999px;
+  }
+
+  /* Interactive states */
+  .card-interactive {
+    cursor: pointer;
+  }
+
+  .card-interactive:hover {
+    transform: translateY(-2px);
+  }
+
+  .card-interactive.card-default:hover,
+  .card-interactive.card-outlined:hover {
+    border-color: var(--accent-primary, #3b82f6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .card-interactive.card-elevated:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-interactive.card-filled:hover {
+    background: var(--border-color, #e5e7eb);
+  }
+
+  .card-interactive:focus-visible {
+    outline: 2px solid var(--accent-primary, #3b82f6);
+    outline-offset: 2px;
+  }
+
+  /* Dark mode */
+  [data-theme="dark"] .card-default {
+    background: var(--bg-card, #1f2937);
+    border-color: var(--border-color, #374151);
+  }
+
+  [data-theme="dark"] .card-elevated {
+    background: var(--bg-card, #1f2937);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  }
+
+  [data-theme="dark"] .card-outlined {
+    border-color: var(--border-color, #374151);
+  }
+
+  [data-theme="dark"] .card-filled {
+    background: var(--bg-secondary, #374151);
+  }
+
+  [data-theme="dark"] .card-interactive.card-filled:hover {
+    background: var(--border-color, #4b5563);
+  }
+</style>
