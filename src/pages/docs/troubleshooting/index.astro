@@ -1,0 +1,298 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+---
+
+<Layout title="Troubleshooting - Sofondo Mostra">
+  <SubNav variant="simple">
+    <a href="/docs/">Getting Started</a>
+    <a href="/docs/configuration/">Configuration</a>
+    <a href="/docs/components/">Components</a>
+    <a href="/docs/components/forms/">Forms</a>
+    <a href="/docs/seo/">SEO</a>
+    <a href="/docs/customization/">Customization</a>
+    <a href="/docs/recipes/">Recipes</a>
+    <a href="/docs/deployment/">Deployment</a>
+    <a href="/docs/troubleshooting/" class="active">Help</a>
+  </SubNav>
+
+  <section class="page-content" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <div class="page-header">
+          <h1 class="page-title">Troubleshooting</h1>
+          <p class="page-description intro">
+            Common issues and how to fix them.
+          </p>
+        </div>
+      </FadeInOnScroll>
+
+      <div class="docs-content">
+        <FadeInOnScroll delay={0}>
+          <section class="docs-section">
+            <h2>Build Errors</h2>
+
+            <div class="issue">
+              <h3>Module not found errors</h3>
+              <p>If you see errors like <code>Cannot find module</code>:</p>
+              <div class="code-block">
+                <pre><code># Delete node_modules and reinstall
+rm -rf node_modules
+npm install</code></pre>
+              </div>
+            </div>
+
+            <div class="issue">
+              <h3>TypeScript errors in site.ts</h3>
+              <p>Ensure all required fields are present. Check the <a href="/docs/configuration/">Configuration docs</a> for the full schema.</p>
+            </div>
+
+            <div class="issue">
+              <h3>Recipe initialization fails</h3>
+              <p>Make sure you're using the correct recipe name:</p>
+              <div class="code-block">
+                <pre><code># List available recipes
+npm run init:recipe -- --help
+
+# Use exact recipe name
+npm run init:recipe -- --recipe=corporate</code></pre>
+              </div>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <section class="docs-section">
+            <h2>Styling Issues</h2>
+
+            <div class="issue">
+              <h3>CSS variables not applying</h3>
+              <p>CSS variables are defined in <code>src/styles/global.css</code>. Make sure:</p>
+              <ul>
+                <li>The variable name matches exactly (case-sensitive)</li>
+                <li>You're using <code>var(--variable-name)</code> syntax</li>
+                <li>The variable is defined in <code>:root</code> or a parent element</li>
+              </ul>
+            </div>
+
+            <div class="issue">
+              <h3>Dark mode colors not working</h3>
+              <p>Dark mode uses <code>[data-theme="dark"]</code> selector. Check that:</p>
+              <ul>
+                <li>Your component has dark mode variants defined</li>
+                <li>The <code>data-theme</code> attribute is on <code>&lt;html&gt;</code> or <code>&lt;body&gt;</code></li>
+              </ul>
+            </div>
+
+            <div class="issue">
+              <h3>Fonts not loading</h3>
+              <p>Fonts are loaded via Google Fonts in <code>Layout.astro</code>. To use custom fonts:</p>
+              <ol>
+                <li>Add font files to <code>public/fonts/</code></li>
+                <li>Define <code>@font-face</code> in <code>global.css</code></li>
+                <li>Update <code>--font-primary</code> and <code>--font-heading</code> variables</li>
+              </ol>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <section class="docs-section">
+            <h2>Component Issues</h2>
+
+            <div class="issue">
+              <h3>Navigation mega menu not working</h3>
+              <p>The mega menu requires React hydration. Ensure:</p>
+              <ul>
+                <li><code>client:load</code> directive is on the Navigation component</li>
+                <li>Radix UI packages are installed (<code>@radix-ui/react-navigation-menu</code>)</li>
+              </ul>
+            </div>
+
+            <div class="issue">
+              <h3>Logo not displaying</h3>
+              <p>Check your <code>site.ts</code> logo configuration:</p>
+              <ul>
+                <li><strong>text-only</strong>: Only needs <code>text</code> field</li>
+                <li><strong>icon-text</strong>: Needs <code>src</code>, <code>svgIcon</code>, or <code>emoji</code></li>
+                <li><strong>gradient-box</strong>: Needs <code>text</code> (first character used)</li>
+              </ul>
+            </div>
+
+            <div class="issue">
+              <h3>Form not submitting</h3>
+              <p>Check the browser console for errors. Common causes:</p>
+              <ul>
+                <li>Invalid <code>action</code> URL</li>
+                <li>CORS issues with external endpoints</li>
+                <li>Missing required fields</li>
+              </ul>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <section class="docs-section">
+            <h2>Deployment Issues</h2>
+
+            <div class="issue">
+              <h3>404 errors on deployed site</h3>
+              <p>For GitHub Pages or subfolder deployments, set the <code>base</code> in <code>astro.config.mjs</code>:</p>
+              <div class="code-block">
+                <pre><code>export default defineConfig({
+  site: 'https://username.github.io',
+  base: '/repo-name',
+});</code></pre>
+              </div>
+            </div>
+
+            <div class="issue">
+              <h3>Sitemap URLs are wrong</h3>
+              <p>Set the correct <code>site</code> URL in <code>astro.config.mjs</code>:</p>
+              <div class="code-block">
+                <pre><code>export default defineConfig({
+  site: 'https://yourdomain.com',
+});</code></pre>
+              </div>
+            </div>
+
+            <div class="issue">
+              <h3>Assets not loading in production</h3>
+              <p>Ensure paths are relative or use the <code>base</code> config. Avoid absolute paths like <code>/images/logo.png</code> if using a subfolder deployment.</p>
+            </div>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <section class="docs-section">
+            <h2>Still Stuck?</h2>
+            <p>If you can't find a solution:</p>
+            <ul>
+              <li>Check <a href="https://docs.astro.build" target="_blank" rel="noopener">Astro documentation</a> for framework-specific issues</li>
+              <li>Search or open an issue on <a href="https://github.com/dpawelec84/sofondo-mostra/issues" target="_blank" rel="noopener">GitHub</a></li>
+              <li>Review the <a href="https://github.com/dpawelec84/sofondo-mostra" target="_blank" rel="noopener">source code</a> for implementation details</li>
+            </ul>
+          </section>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .docs-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .docs-section {
+    margin-bottom: 3rem;
+  }
+
+  .docs-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  .docs-section p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .docs-section a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+  }
+
+  .docs-section ul,
+  .docs-section ol {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .docs-section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .docs-section code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  .issue {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .issue h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .issue p:last-child,
+  .issue ul:last-child,
+  .issue ol:last-child {
+    margin-bottom: 0;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 0.75rem 0;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.8125rem;
+    color: #cdd6f4;
+    line-height: 1.5;
+    background: transparent;
+    padding: 0;
+  }
+</style>

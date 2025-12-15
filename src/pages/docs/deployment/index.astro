@@ -1,0 +1,220 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SubNav from "../../../components/SubNav.astro";
+import FadeInOnScroll from "../../../components/FadeInOnScroll.astro";
+---
+
+<Layout title="Deployment - Sofondo Mostra">
+  <SubNav variant="simple">
+    <a href="/docs/">Getting Started</a>
+    <a href="/docs/configuration/">Configuration</a>
+    <a href="/docs/components/">Components</a>
+    <a href="/docs/components/forms/">Forms</a>
+    <a href="/docs/seo/">SEO</a>
+    <a href="/docs/customization/">Customization</a>
+    <a href="/docs/recipes/">Recipes</a>
+    <a href="/docs/deployment/" class="active">Deployment</a>
+    <a href="/docs/troubleshooting/">Help</a>
+  </SubNav>
+
+  <section class="page-content" data-bg-theme="light">
+    <div class="container">
+      <FadeInOnScroll>
+        <div class="page-header">
+          <h1 class="page-title">Deployment</h1>
+          <p class="page-description intro">
+            Deploy your Mostra site to any static hosting platform.
+          </p>
+        </div>
+      </FadeInOnScroll>
+
+      <div class="docs-content">
+        <FadeInOnScroll delay={0}>
+          <section class="docs-section">
+            <h2>Build for Production</h2>
+            <p>Generate a static build:</p>
+            <div class="code-block">
+              <pre><code>npm run build</code></pre>
+            </div>
+            <p>Output is in the <code>dist/</code> folder, ready to deploy anywhere.</p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={100}>
+          <section class="docs-section">
+            <h2>Vercel</h2>
+            <div class="code-block">
+              <pre><code># Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel</code></pre>
+            </div>
+            <p>Or connect your GitHub repo at <a href="https://vercel.com/new" target="_blank" rel="noopener">vercel.com/new</a> for automatic deployments.</p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={200}>
+          <section class="docs-section">
+            <h2>Netlify</h2>
+            <div class="code-block">
+              <pre><code># Install Netlify CLI
+npm i -g netlify-cli
+
+# Deploy
+netlify deploy --prod --dir=dist</code></pre>
+            </div>
+            <p>Or drag and drop the <code>dist/</code> folder at <a href="https://app.netlify.com/drop" target="_blank" rel="noopener">app.netlify.com/drop</a>.</p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={300}>
+          <section class="docs-section">
+            <h2>Cloudflare Pages</h2>
+            <div class="code-block">
+              <pre><code># Install Wrangler CLI
+npm i -g wrangler
+
+# Deploy
+wrangler pages deploy dist</code></pre>
+            </div>
+            <p>Or connect your repo at <a href="https://dash.cloudflare.com/?to=/:account/pages" target="_blank" rel="noopener">Cloudflare Dashboard</a>.</p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={400}>
+          <section class="docs-section">
+            <h2>GitHub Pages</h2>
+            <p>Add to your <code>astro.config.mjs</code>:</p>
+            <div class="code-block">
+              <pre><code>export default defineConfig({
+  site: 'https://username.github.io',
+  base: '/repo-name',
+});</code></pre>
+            </div>
+            <p>Then use GitHub Actions or push the <code>dist/</code> folder to a <code>gh-pages</code> branch.</p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={500}>
+          <section class="docs-section">
+            <h2>Environment Variables</h2>
+            <p>Set your production site URL in your hosting platform:</p>
+            <div class="code-block">
+              <pre><code>SITE_URL=https://yourdomain.com</code></pre>
+            </div>
+            <p>This ensures correct sitemap URLs and canonical links.</p>
+          </section>
+        </FadeInOnScroll>
+
+        <FadeInOnScroll delay={600}>
+          <section class="docs-section">
+            <h2>Other Platforms</h2>
+            <p>Mostra generates static HTML/CSS/JS, so it works with any static host:</p>
+            <ul>
+              <li><strong>AWS S3 + CloudFront</strong></li>
+              <li><strong>Firebase Hosting</strong></li>
+              <li><strong>DigitalOcean App Platform</strong></li>
+              <li><strong>Render</strong></li>
+              <li><strong>Surge.sh</strong></li>
+            </ul>
+            <p>See <a href="https://docs.astro.build/en/guides/deploy/" target="_blank" rel="noopener">Astro's deployment guides</a> for detailed instructions.</p>
+          </section>
+        </FadeInOnScroll>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-content {
+    padding: 2rem 0 4rem;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .docs-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .docs-section {
+    margin-bottom: 3rem;
+  }
+
+  .docs-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .docs-section p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .docs-section a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+  }
+
+  .docs-section ul {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .docs-section li {
+    margin-bottom: 0.5rem;
+  }
+
+  .docs-section code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    background: var(--bg-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  .code-block {
+    background: #1e1e2e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+    color: #cdd6f4;
+    line-height: 1.6;
+    background: transparent;
+    padding: 0;
+  }
+</style>
