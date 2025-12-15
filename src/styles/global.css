@@ -560,7 +560,8 @@ h6 {
 }
 
 /* Responsive Visibility */
-@media (max-width: 767px) {
+/* Breakpoint at 1024px to ensure enough space for nav items + CTA on desktop */
+@media (max-width: 1023px) {
 
   /* Mobile Sub-menu Styles */
   .MobileMenuTrigger {
@@ -626,7 +627,7 @@ h6 {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .BurgerButton {
     display: none;
   }
