@@ -31,7 +31,7 @@ if (tailwindEnabled) {
 export default defineConfig({
   // Site URL - required for sitemap generation and canonical URLs
   // Update this to your production URL before deploying
-  site: 'https://example.com',
+  site: 'https://mostra.sofondo.com',
 
   integrations: [
     react(),
