@@ -234,16 +234,20 @@ Set `tailwind: false` to exclude Tailwind CSS for a smaller bundle size. The tem
 
 ### SubNav
 
-A sticky sub-navigation component with two variants:
+A sticky sub-navigation component with two variants.
 
-```jsx
-{/* Simple variant - flat list of links */}
+**Simple variant** - flat list of links:
+
+```tsx
 <SubNav variant="simple">
   <a href="/docs/" class="active">Getting Started</a>
   <a href="/docs/config/">Configuration</a>
 </SubNav>
+```
 
-{/* Grouped variant - links with color indicators */}
+**Grouped variant** - links with color indicators:
+
+```tsx
 <SubNav variant="grouped">
   <div class="sub-nav-group sub-nav-group-primary">
     <a href="/features/" class="active">Overview</a>
@@ -256,7 +260,7 @@ A sticky sub-navigation component with two variants:
 
 Wrapper component for scroll-triggered animations:
 
-```jsx
+```tsx
 <FadeInOnScroll delay={100}>
   <h2>This content fades in on scroll</h2>
 </FadeInOnScroll>
@@ -264,13 +268,17 @@ Wrapper component for scroll-triggered animations:
 
 ### Logo
 
-Supports multiple logo styles:
+Supports multiple logo styles.
 
-```jsx
-{/* Automatically uses siteConfig settings */}
+Automatically uses siteConfig settings:
+
+```tsx
 <Logo />
+```
 
-{/* Or with ShowcaseLayout config override */}
+Or with ShowcaseLayout config override:
+
+```tsx
 <Logo config={showcaseConfig} />
 ```
 
