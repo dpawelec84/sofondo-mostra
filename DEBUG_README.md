@@ -72,3 +72,17 @@ This file is used to debug rendering artifacts on GitHub.
 &lt;/SubNav&gt;
 </code>
 </pre>
+
+## 11. Astro Block
+```astro
+<SubNav variant="simple">
+  <a href="/docs/" class="active">Getting Started</a>
+</SubNav>
+```
+
+## 12. JSX Block
+```jsx
+<SubNav variant="simple">
+  <a href="/docs/" class="active">Getting Started</a>
+</SubNav>
+```
