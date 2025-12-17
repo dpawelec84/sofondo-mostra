@@ -238,7 +238,7 @@ A sticky sub-navigation component with two variants.
 
 **Simple variant** - flat list of links:
 
-```javascript
+```text
 <SubNav variant="simple">
   <a href="/docs/" class="active">Getting Started</a>
   <a href="/docs/config/">Configuration</a>
@@ -247,7 +247,7 @@ A sticky sub-navigation component with two variants.
 
 **Grouped variant** - links with color indicators:
 
-```javascript
+```text
 <SubNav variant="grouped">
   <div class="sub-nav-group sub-nav-group-primary">
     <a href="/features/" class="active">Overview</a>
@@ -260,7 +260,7 @@ A sticky sub-navigation component with two variants.
 
 Wrapper component for scroll-triggered animations:
 
-```javascript
+```text
 <FadeInOnScroll delay={100}>
   <h2>This content fades in on scroll</h2>
 </FadeInOnScroll>
@@ -272,13 +272,13 @@ Supports multiple logo styles.
 
 Automatically uses siteConfig settings:
 
-```javascript
+```text
 <Logo />
 ```
 
 Or with ShowcaseLayout config override:
 
-```javascript
+```text
 <Logo config={showcaseConfig} />
 ```
 
