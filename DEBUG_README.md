@@ -49,3 +49,26 @@ This file is used to debug rendering artifacts on GitHub.
   <​a href="/docs/" class="active">Getting Started<​/a>
 <​/SubNav>
 ```
+
+## 8. HTML Pre Tag (Bypassing Markdown)
+<pre>
+&lt;SubNav variant="simple"&gt;
+  &lt;a href="/docs/" class="active"&gt;Getting Started&lt;/a&gt;
+&lt;/SubNav&gt;
+</pre>
+
+## 9. Space Hack (Space after &lt;)
+```text
+< SubNav variant="simple">
+  < a href="/docs/" class="active">Getting Started< /a>
+< /SubNav>
+```
+
+## 10. Manual HTML Code Block
+<pre>
+<code>
+&lt;SubNav variant="simple"&gt;
+  &lt;a href="/docs/" class="active"&gt;Getting Started&lt;/a&gt;
+&lt;/SubNav&gt;
+</code>
+</pre>
