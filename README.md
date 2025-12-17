@@ -236,7 +236,7 @@ Set `tailwind: false` to exclude Tailwind CSS for a smaller bundle size. The tem
 
 A sticky sub-navigation component with two variants:
 
-```tsx
+```html
 <!-- Simple variant - flat list of links -->
 <SubNav variant="simple">
   <a href="/docs/" class="active">Getting Started</a>
@@ -256,7 +256,7 @@ A sticky sub-navigation component with two variants:
 
 Wrapper component for scroll-triggered animations:
 
-```tsx
+```html
 <FadeInOnScroll delay={100}>
   <h2>This content fades in on scroll</h2>
 </FadeInOnScroll>
@@ -266,7 +266,7 @@ Wrapper component for scroll-triggered animations:
 
 Supports multiple logo styles:
 
-```tsx
+```html
 <!-- Automatically uses siteConfig settings -->
 <Logo />
 
